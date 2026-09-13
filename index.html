@@ -1440,9 +1440,68 @@ body.dedicatedPage .routeVisible{padding-top:72px}
 }
 </style>
 
+
+<style id="mine-zec-home-entry">
+.mineNavLink{color:#F4B728!important}
+.mineHomeCta{
+  margin:18px 0 24px;
+  padding:20px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  border:1px solid rgba(244,183,40,.24);
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 88% 15%,rgba(244,183,40,.045),transparent 32%),
+    linear-gradient(180deg,rgba(244,183,40,.018),rgba(6,10,13,.96));
+  box-shadow:0 14px 34px rgba(0,0,0,.18);
+}
+.mineHomeCta>div{min-width:0}
+.mineHomeEyebrow{
+  display:block;
+  margin-bottom:7px;
+  font:800 9px var(--mono);
+  letter-spacing:.15em;
+  color:#F4B728;
+}
+.mineHomeCta strong{
+  display:block;
+  font:800 18px/1.15 var(--mono);
+  letter-spacing:-.025em;
+  color:#eef4f0;
+}
+.mineHomeCta p{
+  margin:7px 0 0;
+  max-width:680px;
+  font:11px/1.55 var(--mono);
+  color:#85938c;
+}
+.mineHomeBtn{
+  flex:0 0 auto;
+  display:inline-flex;
+  min-height:42px;
+  align-items:center;
+  justify-content:center;
+  padding:0 15px;
+  border:1px solid rgba(244,183,40,.38);
+  border-radius:8px;
+  text-decoration:none;
+  font:800 10px var(--mono);
+  letter-spacing:.055em;
+  color:#F4B728;
+  background:rgba(244,183,40,.035);
+}
+.mineHomeBtn:hover{background:rgba(244,183,40,.085)}
+@media(max-width:760px){
+  .mineHomeCta{align-items:flex-start;flex-direction:column;padding:18px}
+  .mineHomeBtn{width:100%}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage">
-<nav><div class="wrap navin"><a class="brand brandV7" href="#top"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="#top">HOME</a><a href="#lab">PRIVACY LAB</a><a href="#learn">PRIVACY 101</a><a href="#practice">SHIELDED GUIDE</a><a href="#network">NETWORK</a><a class="routeNavLink" href="signal/">SIGNAL</a><a class="routeNavLink" href="explorer/">EXPLORER</a><a class="routeNavLink" href="rabbit-hole/">RABBIT HOLE</a><a href="resources/">RESOURCES</a></div><a class="supportTop" href="support/">♥ SUPPORT</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="#lab" onclick="closeMenu()">PRIVACY LAB</a><a href="#learn" onclick="closeMenu()">PRIVACY 101</a><a href="#practice" onclick="closeMenu()">HOW TO SHIELD</a><a href="#network" onclick="closeMenu()">MINER STATS</a><a class="routeNavLink" href="signal/" onclick="closeMenu()">ZEROTRACE SIGNAL</a><a class="routeNavLink" href="explorer/" onclick="closeMenu()">BLOCK EXPLORER</a><a class="routeNavLink" href="rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="resources/" onclick="closeMenu()">RESOURCES</a><a href="support/" onclick="closeMenu()">SUPPORT</a></div>
+<nav><div class="wrap navin"><a class="brand brandV7" href="#top"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="#top">HOME</a><a href="#lab">PRIVACY LAB</a><a href="#learn">PRIVACY 101</a><a href="#practice">SHIELDED GUIDE</a><a href="#network">NETWORK</a><a class="routeNavLink mineNavLink" href="mine/">MINE ZEC</a><a class="routeNavLink" href="signal/">SIGNAL</a><a class="routeNavLink" href="explorer/">EXPLORER</a><a class="routeNavLink" href="rabbit-hole/">RABBIT HOLE</a><a href="resources/">RESOURCES</a></div><a class="supportTop" href="support/">♥ SUPPORT</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="#lab" onclick="closeMenu()">PRIVACY LAB</a><a href="#learn" onclick="closeMenu()">PRIVACY 101</a><a href="#practice" onclick="closeMenu()">HOW TO SHIELD</a><a href="#network" onclick="closeMenu()">MINER STATS</a><a class="routeNavLink" href="mine/" onclick="closeMenu()">HOW TO MINE ZEC</a><a class="routeNavLink" href="signal/" onclick="closeMenu()">ZEROTRACE SIGNAL</a><a class="routeNavLink" href="explorer/" onclick="closeMenu()">BLOCK EXPLORER</a><a class="routeNavLink" href="rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="resources/" onclick="closeMenu()">RESOURCES</a><a href="support/" onclick="closeMenu()">SUPPORT</a></div>
 <main>
 <section class="hero heroV7" id="top"><div class="wrap heroV7inner"><div class="heroV7art"><img alt="ZeroTrace hooded privacy figure" src="assets/zerotrace-hood.png"/></div><div class="heroV7copy"><h1 class="heroChoice"><span class="heroChoiceTop">WHAT YOU REVEAL.</span><br/><span class="heroChoiceBottom">IS YOUR CHOICE.</span></h1><i></i><p>Zcash gives you the choice.<br/>Transparent when you need it.<br/>Private when it matters.</p><strong>PRIVACY ISN’T ABOUT HIDING.<br/>IT’S ABOUT CONTROL.</strong></div></div></section>
 <section id="lab"><div class="wrap"><div class="sectionhead"><div><h2>01 // PRIVACY LAB</h2><p class="labIntro"><span>SEE WHAT'S PUBLIC. UNDERSTAND WHAT'S PRIVATE.</span><br/>Choose what you reveal — then change the observer and watch the story change.</p></div><span class="tag">INTERACTIVE</span></div><div class="observerLab"><div class="observerHead"><div><span class="eyebrow">WHAT CAN THEY SEE?</span><h3>CHANGE THE OBSERVER. CHANGE THE STORY.</h3><p>Select a lens below. ZeroTrace separates what the public chain reveals from what a participant or service may know off-chain.</p></div><span class="tag">OBSERVER LENS</span></div><div class="observerTabs"><button class="observerBtn active" data-observer="public">PUBLIC LEDGER</button><button class="observerBtn" data-observer="analyst">CHAIN ANALYST</button><button class="observerBtn" data-observer="recipient">RECIPIENT</button><button class="observerBtn" data-observer="exchange">EXCHANGE</button></div><div class="observerReadout"><div><strong id="observerTitle">PUBLIC LEDGER</strong><p id="observerText">Public-chain observers can directly inspect transparent transaction details. Shielded transfers reveal much less transaction detail publicly.</p><small id="observerNote">Choose a transaction scenario below to change this readout.</small></div></div></div><div class="labShell"><div class="scenarioList">
@@ -1481,6 +1540,14 @@ body.dedicatedPage .routeVisible{padding-top:72px}
 <div class="pulseItem"><div class="label">Mempool</div><div class="value" id="pulseMempool">—</div><div class="sub">pending transactions</div></div>
 </div>
 <div class="minerNow" id="minerNow"><div class="minerNowTop"><div class="minerNowTitle">MINER EARNINGS // <b>LIVE ESTIMATE</b></div><button class="minerRefresh" id="minerRefreshBtn" type="button">CHECK LIVE NOW ↻</button></div><div class="minerEarnGrid"><div class="minerEarn"><div class="label">Miner reward / block</div><div class="value" id="minerZecBlock">—</div></div><div class="minerEarn"><div class="label">USD / block</div><div class="value usd" id="minerUsdBlock">—</div></div><div class="minerEarn"><div class="label">All miners / hour</div><div class="value" id="minerZecHour">—</div></div><div class="minerEarn"><div class="label">USD / hour</div><div class="value usd" id="minerUsdHour">—</div></div><div class="minerEarn"><div class="label">All miners / 24h</div><div class="value" id="minerZecDay">—</div></div><div class="minerEarn"><div class="label">USD / 24h</div><div class="value usd" id="minerUsdDay">—</div></div></div><div class="minerNowFoot"><span id="minerEstimateNote">ESTIMATED FROM CURRENT SUBSIDY × MINER SHARE × OBSERVED BLOCK RATE</span><span class="live" id="minerLiveStamp">SOURCE SNAPSHOT —</span></div></div>
+<div class="mineHomeCta">
+  <div>
+    <span class="mineHomeEyebrow">ZEROTRACE // HOME MINING GUIDE</span>
+    <strong>MINE ZEC FROM HOME.</strong>
+    <p>Hardware. Power. Wallet. Pool. Miner setup. First accepted share. No missing steps.</p>
+  </div>
+  <a class="mineHomeBtn" href="mine/">HOW TO MINE ZEC →</a>
+</div>
 <div aria-hidden="true" class="sr"><span class="state" id="dataState">● CONNECTING</span><span id="liveAge">UPDATED —</span><span id="lastUpdated">Snapshot: —</span><span id="freshness">Source freshness: —</span></div>
 <div class="kpis">
 <div class="kpi purple"><div class="label">Halving</div><div class="value" id="kHalving">—</div><div class="note" id="kHalvingDate">estimated —</div></div>
