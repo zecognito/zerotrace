@@ -1367,191 +1367,75 @@ body.dedicatedPage .routeVisible{padding-top:72px}
 </style>
 
 
-<style id="privacy101-premium-polish">
-/* PRIVACY 101 — premium inline lesson treatment only */
-#learn .learnCard{
-  transition:border-color .22s ease, background .22s ease, box-shadow .22s ease, transform .22s ease;
+
+
+<style id="privacy101-cyberpunk-type-fix">
+/* Privacy 101 only — restore one consistent cyberpunk/mono visual language. */
+#learn .learnCard h3{
+  font:700 13px/1.35 var(--mono)!important;
+  letter-spacing:.025em!important;
 }
 
-#learn .learnCard.active{
-  border-color:rgba(244,183,40,.46)!important;
-  background:
-    radial-gradient(circle at 92% 10%,rgba(244,183,40,.055),transparent 34%),
-    linear-gradient(180deg,rgba(244,183,40,.025),transparent 70%),
-    #0a0d0b!important;
-  box-shadow:
-    inset 3px 0 0 #F4B728,
-    0 0 24px rgba(244,183,40,.055)!important;
+#learn .learnCard p{
+  font:400 12px/1.62 var(--mono)!important;
+  letter-spacing:.012em!important;
+  color:var(--muted)!important;
+  margin:0!important;
 }
 
-#learn .learnDemo{
-  overflow:hidden;
-  position:relative;
-  border-color:rgba(244,183,40,.24)!important;
-  background:
-    radial-gradient(circle at 92% 4%,rgba(244,183,40,.055),transparent 28%),
-    linear-gradient(180deg,rgba(244,183,40,.018),transparent 90px),
-    #070b08!important;
-  box-shadow:
-    0 18px 42px rgba(0,0,0,.26),
-    inset 0 1px 0 rgba(255,255,255,.018)!important;
-}
-
-#learn .learnDemo:after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(244,183,40,.66) 18%,
-    rgba(244,183,40,.12) 72%,
-    transparent
-  );
-}
-
-#learn .learnDemoTop{
-  align-items:flex-start!important;
-  padding-bottom:20px!important;
-  margin-bottom:20px!important;
-  border-bottom:1px solid rgba(244,183,40,.105)!important;
-}
-
-#learn #learnEyebrow{
-  display:inline-flex!important;
-  align-items:center;
-  gap:8px;
-  letter-spacing:.16em!important;
+/* Actual EXPLORE / CLOSE element is .learnHint */
+#learn .learnCard .learnHint{
+  position:static!important;
+  display:block!important;
+  width:max-content!important;
+  margin-top:14px!important;
+  font:700 10px/1 var(--mono)!important;
+  letter-spacing:.09em!important;
   color:#F4B728!important;
 }
 
-#learn #learnEyebrow:before{
-  content:"";
-  width:18px;
-  height:1px;
-  background:#F4B728;
-  box-shadow:0 0 8px rgba(244,183,40,.4);
-}
-
-#learn .learnProgress{
-  border:1px solid rgba(244,183,40,.34)!important;
-  background:rgba(244,183,40,.035)!important;
-  box-shadow:inset 0 0 18px rgba(244,183,40,.025)!important;
-  font-variant-numeric:tabular-nums;
+/* Expanded lesson */
+#learn #learnEyebrow{
+  font:700 10px/1 var(--mono)!important;
+  letter-spacing:.14em!important;
 }
 
 #learn #learnIntro{
-  max-width:600px;
-  line-height:1.55!important;
-  color:rgba(232,236,232,.70)!important;
+  font:400 12px/1.68 var(--mono)!important;
+  letter-spacing:.012em!important;
+  color:#aab3ae!important;
 }
 
-#learn .learnControls{
-  display:flex!important;
-  flex-wrap:wrap!important;
-  gap:10px!important;
-  margin:0 0 20px!important;
+#learn .learnProgress{
+  font:700 9px/1 var(--mono)!important;
+  letter-spacing:.06em!important;
 }
 
-#learn .learnControls button{
-  min-height:42px!important;
-  padding:10px 17px!important;
-  border-radius:999px!important;
-  border:1px solid rgba(151,164,157,.22)!important;
-  background:rgba(255,255,255,.015)!important;
-  color:rgba(226,232,228,.62)!important;
-  letter-spacing:.02em!important;
-  box-shadow:none!important;
-  transition:all .18s ease!important;
-}
-
-#learn .learnControls button:hover{
-  border-color:rgba(244,183,40,.34)!important;
-  color:#e8ece8!important;
-}
-
-#learn .learnControls button.active,
-#learn .learnControls button[aria-pressed="true"]{
-  border-color:rgba(244,183,40,.62)!important;
-  color:#F4B728!important;
-  background:
-    linear-gradient(180deg,rgba(244,183,40,.075),rgba(244,183,40,.025))!important;
-  box-shadow:
-    0 0 18px rgba(244,183,40,.07),
-    inset 0 0 14px rgba(244,183,40,.025)!important;
+#learn .learnControl{
+  font:700 10px/1 var(--mono)!important;
+  letter-spacing:.025em!important;
 }
 
 #learn .learnResult{
-  position:relative;
-  margin-top:0!important;
-  padding:26px 20px 20px 24px!important;
-  border:1px solid rgba(151,164,157,.09)!important;
-  border-left:2px solid #F4B728!important;
-  border-radius:0 14px 14px 0!important;
-  background:
-    linear-gradient(90deg,rgba(244,183,40,.025),transparent 28%),
-    rgba(255,255,255,.012)!important;
-  color:rgba(239,242,239,.88)!important;
-  line-height:1.55!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.012)!important;
-}
-
-#learn .learnResult:before{
-  content:"RESULT //";
-  display:block;
-  margin-bottom:10px;
-  color:#F4B728;
-  font-family:inherit;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.15em;
+  font:400 12px/1.68 var(--mono)!important;
+  letter-spacing:.012em!important;
+  color:#c8d0cc!important;
 }
 
 @media(max-width:760px){
-  #learn .learnGrid{
-    row-gap:16px!important;
+  #learn .learnCard h3{
+    font-size:13px!important;
   }
 
-  #learn .learnCard.active + .learnDemo{
-    margin-top:-4px!important;
-    margin-left:10px!important;
-    margin-right:10px!important;
-    border-radius:18px!important;
-    padding:24px 20px 22px!important;
-  }
-
-  #learn .learnDemoTop{
-    gap:14px!important;
-    padding-bottom:18px!important;
-    margin-bottom:18px!important;
-  }
-
-  #learn .learnProgress{
-    flex:0 0 auto;
-    padding:9px 12px!important;
-  }
-
-  #learn #learnIntro{
-    font-size:15px!important;
-    line-height:1.55!important;
-    margin-top:8px!important;
-  }
-
-  #learn .learnControls{
-    margin-bottom:18px!important;
-  }
-
-  #learn .learnControls button{
-    min-height:40px!important;
-    padding:9px 15px!important;
-  }
-
+  #learn .learnCard p,
+  #learn #learnIntro,
   #learn .learnResult{
-    padding:24px 18px 18px 20px!important;
-    border-radius:0 12px 12px 0!important;
+    font-size:12px!important;
+  }
+
+  #learn .learnCard .learnHint{
+    margin-top:15px!important;
+    padding-top:1px!important;
   }
 }
 </style>
