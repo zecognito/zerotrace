@@ -1099,9 +1099,56 @@ body.ztDedicated main>section#manifesto{display:block!important}
 .dedicatedHero h1{font-size:clamp(38px,5.2vw,68px)!important;line-height:.96!important;letter-spacing:-.045em!important;max-width:820px!important}
 @media(max-width:760px){.dedicatedHero h1{font-size:clamp(30px,8.4vw,42px)!important;line-height:1.01!important;letter-spacing:-.035em!important;margin:18px 0 16px!important}.dedicatedHero{padding-top:88px!important}}
 </style>
+<style>.ztMineNav{color:#F4B728!important}</style>
+
+<style id="zt-mine-disclaimer-css">
+body.ztModalOpen{overflow:hidden}
+.ztMineModal{
+  position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+  padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);
+}
+.ztMineModal.open{display:flex}
+.ztMineDialog{
+  width:min(720px,100%);max-height:min(84vh,760px);overflow:auto;
+  border:1px solid rgba(244,183,40,.34);border-radius:16px;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
+    linear-gradient(180deg,#0b1014,#06090c);
+  box-shadow:0 28px 80px rgba(0,0,0,.55);
+  padding:24px;
+  color:#eef4f0;
+}
+.ztMineModalTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ztMineKicker{font:800 9px/1.2 var(--mono,monospace);letter-spacing:.15em;color:#F4B728}
+.ztMineDialog h2{margin:9px 0 15px;font:800 22px/1.08 var(--mono,monospace);letter-spacing:-.03em}
+.ztMineClose{
+  flex:0 0 auto;width:36px;height:36px;border:1px solid #263944;border-radius:8px;
+  background:#080d11;color:#aab4af;font:700 18px/1 monospace;cursor:pointer
+}
+.ztMineDialog p{margin:11px 0;color:#aab4af;font:11px/1.72 var(--mono,monospace)}
+.ztMineDialog strong{color:#e7eee9}
+.ztMineRisk{
+  margin:16px 0;padding:13px 14px;border:1px solid rgba(255,121,121,.23);
+  border-left:3px solid #ff7979;border-radius:8px;background:rgba(255,121,121,.025);
+  color:#c9b5b5!important
+}
+.ztMineActions{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:19px}
+.ztMineContinue,.ztMineCancel{
+  min-height:44px;border-radius:8px;padding:0 15px;cursor:pointer;
+  font:800 10px var(--mono,monospace);letter-spacing:.055em
+}
+.ztMineContinue{border:1px solid #F4B728;background:#F4B728;color:#080b09}
+.ztMineCancel{border:1px solid #263944;background:#080d11;color:#aab4af}
+@media(max-width:620px){
+ .ztMineModal{padding:14px}.ztMineDialog{padding:19px;max-height:88vh}
+ .ztMineDialog h2{font-size:19px}.ztMineActions{grid-template-columns:1fr}
+ .ztMineCancel{order:2}.ztMineContinue{order:1}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-about">
-<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
+<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a class="ztMineNav" href="../mine/" onclick="closeMenu()">MINE ZEC</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
 <main><div class="dedicatedHero"><div class="wrap"><div class="dedicatedKicker">ZEROTRACE // INDEPENDENT</div><h1>WHAT YOU REVEAL<span>IS YOUR CHOICE.</span></h1><p class="dedicatedLead">ZeroTrace is an independent privacy education project built to make Zcash understandable, inspectable and harder to reduce to slogans.</p><div class="dedicatedMode">WHOAMI // MISSION // VERIFY</div></div></div>
 <section class="hero heroV7" id="top"><div class="wrap heroV7inner"><div class="heroV7art"><img alt="ZeroTrace hooded privacy figure" src="../assets/zerotrace-hood.png"/></div><div class="heroV7copy"><h1 class="heroChoice"><span class="heroChoiceTop">WHAT YOU REVEAL.</span><br/><span class="heroChoiceBottom">IS YOUR CHOICE.</span></h1><i></i><p>Zcash gives you the choice.<br/>Transparent when you need it.<br/>Private when it matters.</p><strong>PRIVACY ISN’T ABOUT HIDING.<br/>IT’S ABOUT CONTROL.</strong></div></div></section>
 <section aria-label="ZeroTrace mission" class="identityBridge" id="identityBridge">
@@ -1466,6 +1513,61 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   document.querySelectorAll('[data-zt-command]').forEach(btn=>btn.addEventListener('click',()=>{const cmd=btn.dataset.ztCommand;run(cmd);if(cmd!=='clear'){input.value='';input.focus({preventScroll:true})}}));
 })();
 </script>
+
+<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
+ <div class="ztMineDialog">
+  <div class="ztMineModalTop">
+   <div>
+    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
+    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
+   </div>
+   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
+  </div>
+  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
+  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
+  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
+  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
+  <div class="ztMineActions">
+   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
+   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
+  </div>
+ </div>
+</div>
+
+
+<script id="zt-mine-disclaimer-js">
+(()=>{
+ const modal=document.getElementById('ztMineModal');
+ const close=document.getElementById('ztMineClose');
+ const cancel=document.getElementById('ztMineCancel');
+ const go=document.getElementById('ztMineContinue');
+ let pending='../mine/';
+
+ function openMineDisclaimer(e){
+   if(e)e.preventDefault();
+   pending=(e&&e.currentTarget&&e.currentTarget.href)||'../mine/';
+   modal.classList.add('open');
+   document.body.classList.add('ztModalOpen');
+   go.focus();
+ }
+ function closeMineDisclaimer(){
+   modal.classList.remove('open');
+   document.body.classList.remove('ztModalOpen');
+ }
+ document.querySelectorAll('a[href]').forEach(a=>{
+   let u;
+   try{u=new URL(a.href,location.href)}catch(_e){return}
+   const p=u.pathname.replace(/\/+$/,'');
+   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
+ });
+ close?.addEventListener('click',closeMineDisclaimer);
+ cancel?.addEventListener('click',closeMineDisclaimer);
+ modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
+ go?.addEventListener('click',()=>{window.location.href=pending||'../mine/'});
+})();
+</script>
+
 </body></html>
 <style>
 /* V8.25.20 — center How to Shield flow-node labels on all screen sizes */
