@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#05070a"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="description" content="ZeroTrace step-by-step guide to mining Zcash (ZEC) from home with an Equihash ASIC: hardware, power, wallet, pool, miner configuration, payouts, shielding, monitoring and troubleshooting."/>
+<title>ZeroTrace // How to Mine ZEC From Home</title>
+<link rel="icon" href="../assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png"/>
+<style>
+:root{
+ --bg:#05070a;--panel:#090e12;--panel2:#0d1318;--line:#1a282f;--line2:#263944;
+ --text:#eef4f0;--muted:#89978f;--muted2:#637068;--gold:#F4B728;--green:#20F58A;--red:#ff7979;
+ --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+ --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+ margin:0;color:var(--text);font-family:var(--sans);line-height:1.6;background:
+ radial-gradient(circle at 72% -5%,rgba(244,183,40,.075),transparent 27%),
+ radial-gradient(circle at 12% 12%,rgba(32,245,138,.035),transparent 20%),var(--bg);
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.13;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(255,255,255,.014) 4px)}
+a{color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,7,10,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(38,57,68,.75)}
+.navin{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{text-decoration:none;font:800 14px var(--mono);letter-spacing:.11em}
+.brand .z{color:#eef4f0}.brand .t{color:#F4B728}.brand .s{color:#F4B728}
+.navlinks{display:flex;align-items:center;gap:16px}
+.navlinks a{text-decoration:none;font:10px var(--mono);letter-spacing:.06em;color:#9aa79f}
+.navlinks a:hover,.navlinks a.active{color:var(--gold)}
+.menuBtn{display:none;width:42px;height:38px;border:1px solid var(--line2);border-radius:8px;background:transparent;color:var(--gold);font:700 18px var(--mono)}
+.mobileMenu{display:none;position:fixed;top:64px;left:0;right:0;z-index:49;padding:12px 4%;background:rgba(5,7,10,.98);border-bottom:1px solid var(--line)}
+.mobileMenu.open{display:grid}
+.mobileMenu a{padding:13px 8px;border-bottom:1px solid #121c22;text-decoration:none;font:11px var(--mono);color:#bbc6c0}
+.mobileMenu a:last-child{border:0;color:var(--gold)}
+.hero{padding:86px 0 64px;border-bottom:1px solid var(--line);overflow:hidden}
+.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{font:800 10px var(--mono);letter-spacing:.18em;color:var(--gold)}
+.hero h1{margin:16px 0 18px;font:800 clamp(40px,7vw,74px)/.96 var(--mono);letter-spacing:-.055em}
+.hero h1 span{display:block;color:var(--gold)}
+.hero p{max-width:690px;margin:0;color:#a9b4ae;font-size:16px}
+.heroActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;border:1px solid var(--line2);border-radius:8px;text-decoration:none;font:800 10px var(--mono);letter-spacing:.05em;background:#0a0f14}
+.btn.gold{color:#081008;background:var(--gold);border-color:var(--gold)}
+.btn.ghost{color:var(--gold);border-color:rgba(244,183,40,.4)}
+.heroTerminal{border:1px solid rgba(244,183,40,.24);border-radius:16px;background:linear-gradient(180deg,#0b1014,#070b0e);padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.termTop{display:flex;justify-content:space-between;gap:12px;padding-bottom:13px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.termTop span{font:800 9px var(--mono);letter-spacing:.12em;color:var(--gold)}
+.termRow{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid rgba(27,40,50,.55);font:11px/1.45 var(--mono)}
+.termRow:last-child{border:0}.termRow b{color:#73827b;font-weight:500}.termRow strong{color:#dce5e0;font-weight:700}
+.reality{padding:34px 0;border-bottom:1px solid var(--line)}
+.realityCard{padding:22px;border:1px solid rgba(244,183,40,.25);border-radius:14px;background:rgba(244,183,40,.025);box-shadow:inset 3px 0 0 var(--gold)}
+.realityCard h2{margin:0 0 10px;font:800 18px var(--mono);letter-spacing:-.02em}
+.realityCard p{margin:0;color:#a5b0aa;font:12px/1.65 var(--mono)}
+.realityCard strong{color:var(--gold)}
+.guide{padding:68px 0}
+.guideHead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.guideHead h2{margin:0;font:800 clamp(28px,4.2vw,43px)/1 var(--mono);letter-spacing:-.045em}
+.guideHead p{max-width:560px;margin:10px 0 0;color:#87948d;font:12px/1.6 var(--mono)}
+.tag{display:inline-flex;padding:7px 9px;border:1px solid rgba(244,183,40,.3);border-radius:999px;font:800 9px var(--mono);letter-spacing:.1em;color:var(--gold)}
+.steps{display:grid;gap:14px}
+.step{border:1px solid var(--line);border-radius:15px;background:linear-gradient(180deg,rgba(13,19,24,.94),rgba(7,11,14,.96));overflow:hidden}
+.stepHead{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;padding:20px 22px;cursor:pointer}
+.stepNum{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(244,183,40,.34);border-radius:9px;font:800 11px var(--mono);color:var(--gold);background:rgba(244,183,40,.025)}
+.stepHead h3{margin:0;font:800 15px/1.3 var(--mono);letter-spacing:-.02em}
+.stepHead p{margin:4px 0 0;color:#77857e;font:11px/1.5 var(--mono)}
+.stepToggle{font:800 10px var(--mono);color:var(--gold);letter-spacing:.08em}
+.stepBody{display:none;padding:0 22px 24px 90px;border-top:1px solid rgba(244,183,40,.09)}
+.step.open .stepBody{display:block}
+.step.open{border-color:rgba(244,183,40,.3);box-shadow:0 10px 34px rgba(0,0,0,.18)}
+.stepBody h4{margin:22px 0 9px;font:800 11px var(--mono);letter-spacing:.06em;color:var(--gold)}
+.stepBody p,.stepBody li{color:#a8b3ad;font:12px/1.7 var(--mono)}
+.stepBody ul,.stepBody ol{padding-left:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.info{padding:15px;border:1px solid var(--line);border-radius:10px;background:#070b0e}
+.info b{display:block;margin-bottom:7px;font:800 10px var(--mono);letter-spacing:.06em;color:#dce5e0}
+.info span{display:block;font:11px/1.55 var(--mono);color:#819088}
+.warn{margin:14px 0;padding:14px 15px;border:1px solid rgba(255,121,121,.25);border-left:3px solid var(--red);border-radius:8px;background:rgba(255,121,121,.025);font:11px/1.65 var(--mono);color:#c8b0b0}
+.good{margin:14px 0;padding:14px 15px;border:1px solid rgba(32,245,138,.2);border-left:3px solid var(--green);border-radius:8px;background:rgba(32,245,138,.02);font:11px/1.65 var(--mono);color:#a9c3b2}
+.code{position:relative;margin:11px 0;padding:14px 15px;border:1px solid #21323a;border-radius:9px;background:#030608;overflow:auto;font:11px/1.7 var(--mono);color:#dbe4df;white-space:pre-wrap;word-break:break-word}
+.code strong{color:var(--gold)}
+.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.check{padding:12px 13px;border:1px solid var(--line);border-radius:9px;font:11px/1.5 var(--mono);color:#9eaaa4;background:#070b0e}
+.check:before{content:"✓ ";color:var(--green);font-weight:800}
+.calc{margin-top:18px;padding:18px;border:1px solid rgba(244,183,40,.24);border-radius:12px;background:rgba(244,183,40,.018)}
+.calc h4{margin-top:0}
+.calcGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.calc label{display:grid;gap:7px;font:800 9px var(--mono);letter-spacing:.05em;color:#84928b}
+.calc input{width:100%;padding:11px;border:1px solid var(--line2);border-radius:7px;background:#05090c;color:#e8efeb;font:12px var(--mono)}
+.calcResult{margin-top:12px;padding:13px;border:1px solid var(--line);border-radius:8px;font:11px var(--mono);color:#a8b3ad}
+.calcResult strong{color:var(--gold)}
+.sources{padding:64px 0;border-top:1px solid var(--line);background:radial-gradient(circle at 50% 0%,rgba(244,183,40,.035),transparent 35%)}
+.sources h2{margin:0 0 8px;font:800 28px var(--mono);letter-spacing:-.04em}
+.sources>div>p{margin:0 0 22px;color:#819088;font:11px/1.6 var(--mono)}
+.sourceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.source{display:block;padding:16px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:#080c10}
+.source:hover{border-color:rgba(244,183,40,.35)}
+.source b{display:block;font:800 11px var(--mono);color:#dfe7e2}
+.source span{display:block;margin-top:6px;font:10px/1.5 var(--mono);color:#728078}
+footer{padding:30px 0;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:18px;align-items:center;font:10px var(--mono);color:#6e7b75}
+.foot a{text-decoration:none;color:#a4b0aa}.foot a:hover{color:var(--gold)}
+@media(max-width:820px){
+ .navlinks{display:none}.menuBtn{display:block}
+ .hero{padding:70px 0 50px}.heroGrid{grid-template-columns:1fr}.heroTerminal{margin-top:6px}
+ .guideHead{align-items:flex-start;flex-direction:column}.grid2,.sourceGrid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+ .hero h1{font-size:clamp(34px,10.5vw,48px)}
+ .stepHead{grid-template-columns:42px 1fr;gap:12px;padding:17px}
+ .stepToggle{grid-column:2;margin-top:-4px}.stepBody{padding:0 17px 21px}
+ .calcGrid{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}
+ .termRow{grid-template-columns:95px 1fr}.foot{align-items:flex-start;flex-direction:column}
+}
+</style>
+
+<style id="mine-guide-spacing-fix">
+.guideHead .tag{
+  margin-bottom:16px;
+}
+.guideHead h2{
+  margin-top:0!important;
+}
+</style>
+
+
+<style id="mine-safety-disclaimer-style">
+.mineDisclaimer{padding:34px 0 0}
+.mineDisclaimerCard{
+  padding:22px;
+  border:1px solid rgba(255,121,121,.28);
+  border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,121,121,.035),rgba(7,11,14,.96));
+  box-shadow:inset 3px 0 0 var(--red);
+}
+.mineDisclaimerEyebrow{
+  display:block;
+  margin-bottom:8px;
+  font:800 9px var(--mono);
+  letter-spacing:.14em;
+  color:var(--red);
+}
+.mineDisclaimerCard h2{
+  margin:0 0 12px;
+  font:800 18px var(--mono);
+  letter-spacing:-.02em;
+}
+.mineDisclaimerCard p{
+  margin:10px 0 0;
+  color:#aab4af;
+  font:11px/1.72 var(--mono);
+}
+.mineDisclaimerCard strong{color:#e4ebe7}
+</style>
+
+
+<style id="mine-hero-scale-fix">
+/* Match the restrained scale of the other ZeroTrace pages */
+.hero h1{
+  font-size:clamp(34px,5.2vw,58px)!important;
+  line-height:.98!important;
+  letter-spacing:-.045em!important;
+}
+.hero p{
+  max-width:640px!important;
+  font-size:14px!important;
+  line-height:1.58!important;
+}
+@media(max-width:620px){
+  .hero h1{
+    font-size:clamp(31px,8.5vw,42px)!important;
+  }
+  .hero p{
+    font-size:13px!important;
+    line-height:1.55!important;
+  }
+}
+</style>
+
+</head>
+<body>
+<nav>
+ <div class="wrap navin">
+  <a class="brand" href="../"><span class="z">ZERO</span><span class="t">TRACE</span><span class="s">//</span></a>
+  <div class="navlinks">
+   <a href="../">HOME</a>
+   <a href="../#network">MINER STATS</a>
+   <a class="active" href="./">MINE ZEC</a>
+   <a href="../resources/">RESOURCES</a>
+   <a href="../support/">SUPPORT</a>
+  </div>
+  <button class="menuBtn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
+ </div>
+</nav>
+<div class="mobileMenu" id="mobileMenu">
+ <a href="../">HOME</a>
+ <a href="../#network">MINER STATS</a>
+ <a href="./">HOW TO MINE ZEC</a>
+ <a href="../resources/">RESOURCES</a>
+ <a href="../support/">SUPPORT</a>
+</div>
+
+<main>
+<section class="hero">
+ <div class="wrap heroGrid">
+  <div>
+   <div class="eyebrow">ZEROTRACE // HOME MINING GUIDE</div>
+   <h1>MINE ZEC.<span>FROM YOUR HOUSE.</span></h1>
+   <p>This is the complete path from an unopened ASIC to your first accepted share and first payout. No “buy a miner and join a pool” hand-wave. Every step is here.</p>
+   <div class="heroActions">
+    <a class="btn gold" href="#guide">START AT STEP 00 ↓</a>
+    <a class="btn ghost" href="#sources">VERIFY THE SOURCES</a>
+   </div>
+  </div>
+  <div class="heroTerminal">
+   <div class="termTop"><span>HOME MINING // REALITY CHECK</span><span>2026</span></div>
+   <div class="termRow"><b>ALGORITHM</b><strong>Equihash (200,9)</strong></div>
+   <div class="termRow"><b>REALISTIC HW</b><strong>Equihash ASIC</strong></div>
+   <div class="termRow"><b>REFERENCE</b><strong>Antminer Z15 Pro</strong></div>
+   <div class="termRow"><b>HASHRATE</b><strong>840 KSol/s ±3%</strong></div>
+   <div class="termRow"><b>POWER</b><strong>2650 W ±10%</strong></div>
+   <div class="termRow"><b>INPUT</b><strong>200–240 V AC</strong></div>
+   <div class="termRow"><b>NETWORK</b><strong>Wired Ethernet</strong></div>
+  </div>
+ </div>
+</section>
+
+<section class="reality">
+ <div class="wrap">
+  <div class="realityCard">
+   <h2>00 // FIRST: THIS IS ASIC MINING.</h2>
+   <p>Zcash still uses Proof of Work with <strong>Equihash n=200, k=9</strong>. In practice, home ZEC mining today means a purpose-built Equihash ASIC. A gaming GPU can technically perform Equihash work, but it is not a realistic competitor against the ASIC-dominated network. This guide therefore uses the <strong>Antminer Z15 Pro</strong> as the concrete reference machine, while the setup logic also applies to compatible Equihash ASICs.</p>
+  </div>
+ </div>
+</section>
+
+
+<section class="mineDisclaimer" aria-label="Mining safety disclaimer">
+ <div class="wrap">
+  <div class="mineDisclaimerCard">
+   <span class="mineDisclaimerEyebrow">SAFETY // READ BEFORE CONTINUING</span>
+   <h2>MINE AT YOUR OWN RISK.</h2>
+   <p>This guide is educational information, not electrical, financial, or professional safety advice. ASIC miners are high-power electrical equipment that produce substantial heat and noise and are intended to run for long periods. Incorrect power, wiring, ventilation, placement, modification, or operation can create a risk of electric shock, fire, equipment damage, overheating, data loss, or financial loss.</p>
+   <p><strong>Follow the ASIC and power-supply manufacturer's current instructions.</strong> Use properly grounded, correctly rated electrical equipment and a code-compliant circuit. Never improvise mains wiring, overload a circuit, use undersized cables or adapters, defeat grounding, obstruct cooling fans, or operate the miner around water or flammable material. If you are unsure whether your electrical service, receptacle, circuit, cable, or ventilation is suitable, stop and have a qualified/licensed electrician or other appropriate professional inspect the installation before powering the miner.</p>
+   <p>Mining profitability is never guaranteed. Network difficulty, ZEC price, pool rules, electricity rates, hardware failure, taxes, and other costs can change. <strong>You are responsible for your equipment, electrical installation, wallet security, pool configuration, local rules, costs, and any consequences of operating the miner.</strong></p>
+  </div>
+ </div>
+</section>
+
+<section class="guide" id="guide">
+ <div class="wrap">
+  <div class="guideHead">
+   <div><span class="tag">12 STEPS // NOTHING SKIPPED</span><h2>FROM BOX TO FIRST PAYOUT.</h2><p>Open each step in order. Do not buy hardware until you have completed the power, heat and noise checks.</p></div>
+  </div>
+
+  <div class="steps">
+
+   <article class="step open">
+    <div class="stepHead"><span class="stepNum">00</span><div><h3>KNOW WHAT YOU ARE BUILDING</h3><p>An ASIC is a 24/7 appliance, not a desktop PC.</p></div><span class="stepToggle">CLOSE ↑</span></div>
+    <div class="stepBody">
+     <p>Your miner continuously asks a pool for Equihash work, computes solutions, submits shares, and earns a fraction of pool rewards based on the pool's payout method. You do not need to run a full Zcash node to pool-mine.</p>
+     <div class="grid2">
+      <div class="info"><b>Z15 PRO REFERENCE</b><span>840 KSol/s ±3%, 2650 W ±10%, 200–240 V AC input, RJ45 Ethernet, 0–40°C operating range.</span></div>
+      <div class="info"><b>OLDER Z15 REFERENCE</b><span>420 KSol/s, about 1510 W at 25°C, RJ45 Ethernet. Still compatible with Equihash/ZEC, but less efficient.</span></div>
+     </div>
+     <div class="warn"><strong>Do not buy a Bitcoin SHA-256 ASIC or Litecoin Scrypt ASIC.</strong> ZEC requires an Equihash-compatible miner.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">01</span><div><h3>BUY / PREPARE EVERYTHING YOU NEED</h3><p>The complete home-mining checklist.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <div class="checklist">
+      <div class="check">Equihash ASIC miner (example: Antminer Z15 Pro)</div>
+      <div class="check">Correct manufacturer-approved PSU / integrated PSU</div>
+      <div class="check">Proper 200–240 V power source for Z15 Pro</div>
+      <div class="check">Dedicated, code-compliant circuit sized for the miner</div>
+      <div class="check">Grounded receptacle and correct rated power cable</div>
+      <div class="check">Ethernet cable to router or non-PoE switch</div>
+      <div class="check">Laptop/desktop/phone on the same LAN for setup</div>
+      <div class="check">Exhaust path / ventilation for continuous heat</div>
+      <div class="check">ZEC wallet or pool-supported payout destination</div>
+      <div class="check">Mining pool choice and current stratum settings</div>
+     </div>
+     <div class="warn">Do not use cheap plug adapters, undersized extension cords, improvised splitters, or DIY mains wiring. If your location does not already have the required circuit, have a licensed electrician install the correct branch circuit/receptacle for the miner and local electrical code.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">02</span><div><h3>SOLVE POWER, HEAT AND LOCATION BEFORE YOU PLUG IN</h3><p>This is the part that makes or breaks home mining.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <h4>POWER</h4>
+     <p>The Z15 Pro manual specifies 200–240 V AC input and roughly 2650 W at the wall. Treat the manufacturer's maximum input/current requirements as the design constraint, not just the average wattage.</p>
+     <h4>LOCATION</h4>
+     <ul>
+      <li>Use a dry, clean space with a clear intake and exhaust path.</li>
+      <li>Keep intake air cool and do not recirculate the miner's hot exhaust directly back into its intake.</li>
+      <li>Do not block fans or place the miner against fabric, cardboard or flammable clutter.</li>
+      <li>Expect continuous fan noise and substantial heat; a bedroom or quiet office is usually a poor location.</li>
+      <li>BITMAIN specifies reliable grounding and wired networking; its Z15 setup guidance also warns against PoE network connections.</li>
+     </ul>
+     <div class="calc">
+      <h4>YOUR ELECTRICITY COST // QUICK CHECK</h4>
+      <div class="calcGrid">
+       <label>MINER WATTS<input id="watts" type="number" value="2650" min="1"/></label>
+       <label>YOUR RATE ($ / kWh)<input id="rate" type="number" value="0.15" min="0" step="0.01"/></label>
+       <label>HOURS / DAY<input id="hours" type="number" value="24" min="1" max="24"/></label>
+      </div>
+      <div class="calcResult" id="powerResult">—</div>
+     </div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">03</span><div><h3>CREATE THE PAYOUT DESTINATION</h3><p>Know where the ZEC will go before the miner starts.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>Create a Zcash wallet you control, back up the recovery material offline, and verify what address format your chosen pool accepts. Pool requirements differ: some pools use a pool account/worker and let you set payout separately; others use a ZEC address directly as the worker identity.</p>
+     <div class="good">Privacy path: if the pool requires a transparent payout receiver, receive the payout there and then move the funds into a shielded wallet/address. Do not assume a pool accepts a shielded-only receiver unless the pool explicitly says it does.</div>
+     <div class="warn">Never paste your seed phrase, private key, spending key or wallet backup into a mining pool or ASIC web interface. A pool only needs the payout destination/account information it explicitly requests.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">04</span><div><h3>CHOOSE A MINING POOL</h3><p>Pool mining is the practical home route.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>Compare pool fee, payout model (for example PPLNS/PPS+), minimum payout, server region, reputation and whether the pool requires an account. Always copy the current server/port from the pool itself immediately before configuring your ASIC.</p>
+     <div class="grid2">
+      <div class="info"><b>2MINERS // ADDRESS-BASED EXAMPLE</b><span>Publishes ZEC Equihash servers and supports ASICs such as Z15/Z11/Z9. Current USA endpoint is shown as us-zec.2miners.com:1010.</span></div>
+      <div class="info"><b>VIABTC // ACCOUNT-BASED EXAMPLE</b><span>Publishes ZEC endpoints at mining.viabtc.io:3002 and :302; worker format is userID.workerID.</span></div>
+     </div>
+     <div class="warn">Pool endpoints, fees and payout rules can change. Treat the examples below as configuration examples, then verify the live pool page before saving them in your miner.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">05</span><div><h3>PHYSICALLY CONNECT THE ASIC</h3><p>Ethernet first. Power second.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <ol>
+      <li>Place the miner flat with completely unobstructed intake and exhaust.</li>
+      <li>Connect Ethernet from the miner's ETH/RJ45 port to your router or a normal non-PoE switch.</li>
+      <li>Confirm the power cable, receptacle, circuit and PSU match the manufacturer requirements.</li>
+      <li>Apply power. Let the miner boot until its normal/status indicator and fans stabilize.</li>
+     </ol>
+     <div class="warn">BITMAIN specifically warns that the AC power supply must be reliably grounded and that power/signal cables should not be connected or disconnected while the unit is energized.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">06</span><div><h3>FIND THE MINER'S IP ADDRESS</h3><p>You need the local IP to open the miner dashboard.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>You have two straightforward methods:</p>
+     <ol>
+      <li><strong>Router method:</strong> open your router's connected-device / DHCP-client list and look for the newly connected wired device.</li>
+      <li><strong>BITMAIN IP Reporter:</strong> run BITMAIN's IP Reporter tool on a computer on the same network, click Start, then press the miner's IP Report button. BITMAIN's setup guide says the computer and miner must be on the same network.</li>
+     </ol>
+     <p>Once found, enter the miner's local IP address in your browser.</p>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">07</span><div><h3>LOG IN AND LOCK DOWN THE MINER</h3><p>Do not leave factory credentials in place.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>BITMAIN's Z15 documentation lists the default web-interface username and password as <strong>root / root</strong>. Log in locally, then immediately change the administrator password in the miner's Administration/System area.</p>
+     <div class="good">Keep the miner dashboard on your LAN. Do not expose the ASIC web interface directly to the public internet with router port forwarding.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">08</span><div><h3>ENTER YOUR POOL SETTINGS</h3><p>This is the exact moment your ASIC becomes a ZEC miner.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>Open the miner's <strong>Miner Configuration / Miner General Configuration</strong> page. You will normally see Pool 1, Pool 2 and Pool 3 fields. Use multiple working endpoints so the miner has a fallback if one server is unavailable.</p>
+     <h4>EXAMPLE A // 2MINERS — USA</h4>
+     <div class="code"><strong>Pool 1 URL</strong>
+stratum+tcp://us-zec.2miners.com:1010
+
+<strong>Worker</strong>
+YOUR_ZEC_ADDRESS.zerotrace01
+
+<strong>Password</strong>
+x</div>
+     <p>2Miners also publishes Europe and Asia ZEC endpoints. Its public instructions show the ZEC wallet address as the worker identity and allow an optional ASIC/rig ID after it.</p>
+     <h4>EXAMPLE B // VIABTC</h4>
+     <div class="code"><strong>Pool URL</strong>
+stratum+tcp://mining.viabtc.io:3002
+
+<strong>Backup port</strong>
+stratum+tcp://mining.viabtc.io:302
+
+<strong>Worker</strong>
+YOUR_VIABTC_USERID.zerotrace01
+
+<strong>Password</strong>
+x</div>
+     <p>ViaBTC uses an account/worker model, so payout destination is managed in the pool account rather than embedded as the worker address.</p>
+     <div class="warn">Do not blindly copy old pool addresses from YouTube, forums or screenshots. Open the pool's current ZEC help page and confirm the hostname, port and worker format first.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">09</span><div><h3>SAVE, APPLY AND WATCH FOR ACCEPTED SHARES</h3><p>Hashrate on the miner is not enough; the pool must see you.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <ol>
+      <li>Save/Apply the pool configuration.</li>
+      <li>Give the ASIC time to restart its mining process.</li>
+      <li>Open the miner Status page. Confirm hashboards are detected, temperatures are sane, fans are running and hashrate is close to the hardware's expected range after warm-up.</li>
+      <li>Open the pool dashboard and find your worker.</li>
+      <li>Confirm <strong>accepted shares</strong> are increasing. A worker that shows zero accepted shares is not successfully mining for the pool.</li>
+     </ol>
+     <p>BITMAIN notes that pool-side hashrate can take roughly 30 minutes to appear. ViaBTC says workers commonly stabilize on its dashboard after about 10–20 minutes.</p>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">10</span><div><h3>VERIFY YOUR FIRST PAYOUT</h3><p>Do not call the setup finished until value actually reaches you.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <ol>
+      <li>Open the pool's Earnings / Payments page.</li>
+      <li>Confirm your unpaid balance is increasing.</li>
+      <li>Check the minimum payout and payout schedule.</li>
+      <li>When the pool sends ZEC, verify the transaction and balance in your own wallet.</li>
+      <li>If privacy is part of your goal, shield the received ZEC after the payout using a wallet that supports Zcash shielded transactions.</li>
+     </ol>
+     <div class="good">Mining privately and mining ZEC are not the same thing. Pool accounts, IP addresses and transparent payout receivers can create off-chain/on-chain metadata. Shielding the payout protects later transaction details; it does not erase what the pool already knew.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">11</span><div><h3>RUN IT LIKE A 24/7 MACHINE</h3><p>Monitoring, maintenance and the common failure checks.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <h4>DAILY / REGULAR CHECKS</h4>
+     <ul>
+      <li>Pool worker is online and accepted shares continue to rise.</li>
+      <li>Miner hashrate is not materially below normal for the model.</li>
+      <li>No hashboard is missing.</li>
+      <li>Temperatures and fan behavior are stable.</li>
+      <li>Intake/exhaust path is clear and dust is not accumulating excessively.</li>
+      <li>Pool payout address and account security have not changed unexpectedly.</li>
+     </ul>
+     <h4>IF THE POOL SHOWS OFFLINE</h4>
+     <ol>
+      <li>Check Ethernet link and internet connection.</li>
+      <li>Confirm pool hostname/port and worker syntax.</li>
+      <li>Try the pool's backup endpoint/port.</li>
+      <li>Check DNS/gateway settings if the miner can reach the LAN but not the pool.</li>
+      <li>Review miner logs for connection, hashboard or temperature errors.</li>
+     </ol>
+     <div class="warn">Do not flash random third-party firmware just because a forum post promises higher hashrate. Firmware changes can alter power draw, thermals, reliability and warranty/security assumptions.</div>
+    </div>
+   </article>
+
+   <article class="step">
+    <div class="stepHead"><span class="stepNum">12</span><div><h3>KNOW YOUR TRUE PROFIT — NOT JUST YOUR ZEC</h3><p>Revenue is not profit.</p></div><span class="stepToggle">EXPLORE ↓</span></div>
+    <div class="stepBody">
+     <p>Your real result depends on ZEC earned, ZEC/USD price, network difficulty/hashrate, pool fee and payout model, hardware cost, electricity, cooling/ventilation overhead, downtime and hardware failure. Recalculate regularly; what is profitable today can become unprofitable without the ASIC changing at all.</p>
+     <div class="good">Use the live Miner Stats on ZeroTrace for network context, but use the pool's own earnings dashboard plus your actual electric rate for your accounting.</div>
+     <p><a class="btn ghost" href="../#network">OPEN ZEROTRACE MINER STATS →</a></p>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section class="sources" id="sources">
+ <div class="wrap">
+  <h2>VERIFY BEFORE YOU PLUG IT IN.</h2>
+  <p>This guide is intentionally concrete, but hardware specifications and pool endpoints can change. These are the primary/current references used to build it.</p>
+  <div class="sourceGrid">
+   <a class="source" href="https://support.bitmain.com/hc/en-us/articles/19260050740889-ANTMINER-Z15-Pro" target="_blank" rel="noopener"><b>BITMAIN // ANTMINER Z15 PRO</b><span>Manufacturer support, manual and specifications.</span></a>
+   <a class="source" href="https://support.bitmain.com/hc/en-us/articles/7942533055641-How-to-set-up-Z15-Server" target="_blank" rel="noopener"><b>BITMAIN // Z15 SETUP</b><span>IP Reporter, login, network and pool configuration flow.</span></a>
+   <a class="source" href="https://www.zcashcommunity.com/mining/" target="_blank" rel="noopener"><b>ZCASH COMMUNITY // MINING GUIDE</b><span>Equihash, ASIC reality and mining overview.</span></a>
+   <a class="source" href="https://zec.2miners.com/help" target="_blank" rel="noopener"><b>2MINERS // CURRENT ZEC HELP</b><span>Live ZEC stratum endpoints and ASIC worker format.</span></a>
+   <a class="source" href="https://support.viabtc.com/hc/en-us/articles/7207399677711-ZEC-Mining" target="_blank" rel="noopener"><b>VIABTC // ZEC MINING</b><span>Current ViaBTC endpoints, worker syntax and monitoring.</span></a>
+   <a class="source" href="https://zips.z.cash/protocol/protocol.pdf" target="_blank" rel="noopener"><b>ZCASH PROTOCOL // PROOF OF WORK</b><span>Protocol-level Equihash parameters n=200, k=9.</span></a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap foot">
+  <span>ZEROTRACE // MINE WHAT YOU VERIFY.</span>
+  <div><a href="../">HOME</a> · <a href="../resources/">RESOURCES</a> · <a href="../support/">SUPPORT</a></div>
+ </div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+menuBtn?.addEventListener('click',()=>{
+ const open=mobileMenu.classList.toggle('open');
+ menuBtn.setAttribute('aria-expanded',String(open));
+ menuBtn.textContent=open?'×':'☰';
+});
+document.querySelectorAll('.stepHead').forEach(head=>{
+ head.addEventListener('click',()=>{
+  const step=head.closest('.step');
+  const wasOpen=step.classList.contains('open');
+  document.querySelectorAll('.step.open').forEach(x=>{
+   x.classList.remove('open');
+   const t=x.querySelector('.stepToggle'); if(t)t.textContent='EXPLORE ↓';
+  });
+  if(!wasOpen){
+   step.classList.add('open');
+   const t=step.querySelector('.stepToggle'); if(t)t.textContent='CLOSE ↑';
+  }
+ });
+});
+function updatePower(){
+ const w=Math.max(0,Number(document.getElementById('watts')?.value||0));
+ const r=Math.max(0,Number(document.getElementById('rate')?.value||0));
+ const h=Math.min(24,Math.max(0,Number(document.getElementById('hours')?.value||0)));
+ const kwh=w*h/1000;
+ const day=kwh*r;
+ const month=day*30;
+ document.getElementById('powerResult').innerHTML=
+  '<strong>'+kwh.toFixed(2)+' kWh/day</strong> · $'+day.toFixed(2)+'/day · $'+month.toFixed(2)+'/30 days';
+}
+['watts','rate','hours'].forEach(id=>document.getElementById(id)?.addEventListener('input',updatePower));
+updatePower();
+</script>
+</body>
+</html>
