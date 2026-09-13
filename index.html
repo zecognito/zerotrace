@@ -741,6 +741,7 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 #learn .learnCard h3{margin:14px 0 8px;font-size:12px;letter-spacing:.035em}
 #learn .learnCard p{font:10px/1.65 var(--mono);color:#8f9994}
 #learn .learnHint{position:absolute;left:19px;bottom:16px;color:#F4B728!important;letter-spacing:.09em}
+#learn .learnDemo[hidden]{display:none!important}
 #learn .learnDemo{margin-top:8px;padding:24px;border-color:#4b3a1b;border-radius:12px;background:radial-gradient(circle at 88% 0,rgba(244,183,40,.055),transparent 34%),#050706;box-shadow:0 0 30px rgba(244,183,40,.04),inset 0 1px rgba(244,183,40,.025)}
 #learn .learnDemoTop{padding-bottom:18px;border-bottom:1px solid #211d14}
 #learn .learnDemo h3{font-size:17px;letter-spacing:-.01em}
@@ -1355,6 +1356,206 @@ body.dedicatedPage .routeVisible{padding-top:72px}
  #dedicated-tools .deeperTitle:after{width:58px;margin-top:12px}
 }
 </style>
+
+
+
+<style id="privacy101-no-duplicate-expanded-title">
+/* The card already shows the lesson title, so don't repeat it in the expanded panel. */
+#learn #learnTitle{
+  display:none!important;
+}
+</style>
+
+
+<style id="privacy101-premium-polish">
+/* PRIVACY 101 — premium inline lesson treatment only */
+#learn .learnCard{
+  transition:border-color .22s ease, background .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+#learn .learnCard.active{
+  border-color:rgba(244,183,40,.46)!important;
+  background:
+    radial-gradient(circle at 92% 10%,rgba(244,183,40,.055),transparent 34%),
+    linear-gradient(180deg,rgba(244,183,40,.025),transparent 70%),
+    #0a0d0b!important;
+  box-shadow:
+    inset 3px 0 0 #F4B728,
+    0 0 24px rgba(244,183,40,.055)!important;
+}
+
+#learn .learnDemo{
+  overflow:hidden;
+  position:relative;
+  border-color:rgba(244,183,40,.24)!important;
+  background:
+    radial-gradient(circle at 92% 4%,rgba(244,183,40,.055),transparent 28%),
+    linear-gradient(180deg,rgba(244,183,40,.018),transparent 90px),
+    #070b08!important;
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.26),
+    inset 0 1px 0 rgba(255,255,255,.018)!important;
+}
+
+#learn .learnDemo:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(244,183,40,.66) 18%,
+    rgba(244,183,40,.12) 72%,
+    transparent
+  );
+}
+
+#learn .learnDemoTop{
+  align-items:flex-start!important;
+  padding-bottom:20px!important;
+  margin-bottom:20px!important;
+  border-bottom:1px solid rgba(244,183,40,.105)!important;
+}
+
+#learn #learnEyebrow{
+  display:inline-flex!important;
+  align-items:center;
+  gap:8px;
+  letter-spacing:.16em!important;
+  color:#F4B728!important;
+}
+
+#learn #learnEyebrow:before{
+  content:"";
+  width:18px;
+  height:1px;
+  background:#F4B728;
+  box-shadow:0 0 8px rgba(244,183,40,.4);
+}
+
+#learn .learnProgress{
+  border:1px solid rgba(244,183,40,.34)!important;
+  background:rgba(244,183,40,.035)!important;
+  box-shadow:inset 0 0 18px rgba(244,183,40,.025)!important;
+  font-variant-numeric:tabular-nums;
+}
+
+#learn #learnIntro{
+  max-width:600px;
+  line-height:1.55!important;
+  color:rgba(232,236,232,.70)!important;
+}
+
+#learn .learnControls{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+  margin:0 0 20px!important;
+}
+
+#learn .learnControls button{
+  min-height:42px!important;
+  padding:10px 17px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(151,164,157,.22)!important;
+  background:rgba(255,255,255,.015)!important;
+  color:rgba(226,232,228,.62)!important;
+  letter-spacing:.02em!important;
+  box-shadow:none!important;
+  transition:all .18s ease!important;
+}
+
+#learn .learnControls button:hover{
+  border-color:rgba(244,183,40,.34)!important;
+  color:#e8ece8!important;
+}
+
+#learn .learnControls button.active,
+#learn .learnControls button[aria-pressed="true"]{
+  border-color:rgba(244,183,40,.62)!important;
+  color:#F4B728!important;
+  background:
+    linear-gradient(180deg,rgba(244,183,40,.075),rgba(244,183,40,.025))!important;
+  box-shadow:
+    0 0 18px rgba(244,183,40,.07),
+    inset 0 0 14px rgba(244,183,40,.025)!important;
+}
+
+#learn .learnResult{
+  position:relative;
+  margin-top:0!important;
+  padding:26px 20px 20px 24px!important;
+  border:1px solid rgba(151,164,157,.09)!important;
+  border-left:2px solid #F4B728!important;
+  border-radius:0 14px 14px 0!important;
+  background:
+    linear-gradient(90deg,rgba(244,183,40,.025),transparent 28%),
+    rgba(255,255,255,.012)!important;
+  color:rgba(239,242,239,.88)!important;
+  line-height:1.55!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.012)!important;
+}
+
+#learn .learnResult:before{
+  content:"RESULT //";
+  display:block;
+  margin-bottom:10px;
+  color:#F4B728;
+  font-family:inherit;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+}
+
+@media(max-width:760px){
+  #learn .learnGrid{
+    row-gap:16px!important;
+  }
+
+  #learn .learnCard.active + .learnDemo{
+    margin-top:-4px!important;
+    margin-left:10px!important;
+    margin-right:10px!important;
+    border-radius:18px!important;
+    padding:24px 20px 22px!important;
+  }
+
+  #learn .learnDemoTop{
+    gap:14px!important;
+    padding-bottom:18px!important;
+    margin-bottom:18px!important;
+  }
+
+  #learn .learnProgress{
+    flex:0 0 auto;
+    padding:9px 12px!important;
+  }
+
+  #learn #learnIntro{
+    font-size:15px!important;
+    line-height:1.55!important;
+    margin-top:8px!important;
+  }
+
+  #learn .learnControls{
+    margin-bottom:18px!important;
+  }
+
+  #learn .learnControls button{
+    min-height:40px!important;
+    padding:9px 15px!important;
+  }
+
+  #learn .learnResult{
+    padding:24px 18px 18px 20px!important;
+    border-radius:0 12px 12px 0!important;
+  }
+}
+</style>
+
 </head>
 <body class="ztLoading homePage">
 <nav><div class="wrap navin"><a class="brand brandV7" href="#top"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="#top">HOME</a><a href="#lab">PRIVACY LAB</a><a href="#learn">PRIVACY 101</a><a href="#practice">SHIELDED GUIDE</a><a href="#network">NETWORK</a><a class="routeNavLink" href="signal/">SIGNAL</a><a class="routeNavLink" href="explorer/">EXPLORER</a><a class="routeNavLink" href="rabbit-hole/">RABBIT HOLE</a><a href="resources/">RESOURCES</a></div><a class="supportTop" href="support/">♥ SUPPORT</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="#lab" onclick="closeMenu()">PRIVACY LAB</a><a href="#learn" onclick="closeMenu()">PRIVACY 101</a><a href="#practice" onclick="closeMenu()">HOW TO SHIELD</a><a href="#network" onclick="closeMenu()">MINER STATS</a><a class="routeNavLink" href="signal/" onclick="closeMenu()">ZEROTRACE SIGNAL</a><a class="routeNavLink" href="explorer/" onclick="closeMenu()">BLOCK EXPLORER</a><a class="routeNavLink" href="rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="resources/" onclick="closeMenu()">RESOURCES</a><a href="support/" onclick="closeMenu()">SUPPORT</a></div>
@@ -1580,7 +1781,10 @@ const privacyLessons=[
 ];
 let activeLesson=0;
 function renderLesson(i=activeLesson,choice=0){activeLesson=i;const l=privacyLessons[i];$('learnEyebrow').textContent='LESSON '+String(i+1).padStart(2,'0');$('learnTitle').textContent=l.title;$('learnIntro').textContent=l.intro;$('learnProgress').textContent=String(i+1).padStart(2,'0')+' / 06';const c=$('learnControls');c.innerHTML='';l.options.forEach((o,n)=>{const b=document.createElement('button');b.className='learnControl'+(n===choice?' active':'');b.type='button';b.textContent=o[0];b.addEventListener('click',()=>renderLesson(i,n));c.appendChild(b)});$('learnResult').textContent=l.options[choice][1];document.querySelectorAll('.learnCard').forEach(card=>card.classList.toggle('active',Number(card.dataset.lesson)===i))}
-document.querySelectorAll('.learnCard').forEach(card=>{const open=()=>{renderLesson(Number(card.dataset.lesson),0);$('learnDemo').scrollIntoView({behavior:'smooth',block:'nearest'})};card.addEventListener('click',open);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});renderLesson();
+const learnDemo=$('learnDemo');
+learnDemo.hidden=true;
+function setLearnHints(openCard=null){document.querySelectorAll('.learnCard').forEach(card=>{const hint=card.querySelector('.learnHint');if(hint)hint.textContent=card===openCard?'CLOSE ↑':'EXPLORE ↓';card.setAttribute('aria-expanded',card===openCard?'true':'false')})}
+document.querySelectorAll('.learnCard').forEach(card=>{const open=()=>{const i=Number(card.dataset.lesson);const isOpen=!learnDemo.hidden&&activeLesson===i&&learnDemo.previousElementSibling===card;if(isOpen){learnDemo.hidden=true;card.classList.remove('active');setLearnHints();return}renderLesson(i,0);card.insertAdjacentElement('afterend',learnDemo);learnDemo.hidden=false;setLearnHints(card)};card.addEventListener('click',open);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});renderLesson();setLearnHints();
 
 const scenarios={
  tt:{title:'TRANSPARENT → TRANSPARENT',score:'PUBLIC VISIBILITY: HIGH',meter:'18%',sender:['visible','PUBLICLY VISIBLE'],receiver:['visible','PUBLICLY VISIBLE'],amount:['visible','PUBLICLY VISIBLE'],graph:['visible','PUBLICLY LINKABLE'],timing:['visible','OBSERVABLE'],explain:'A transparent Zcash transaction publishes familiar blockchain details such as addresses and amounts.',caveat:'Transparent activity is designed to be publicly inspectable. Anyone analyzing the chain can work with the public transaction graph.'},
