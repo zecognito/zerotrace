@@ -1420,54 +1420,77 @@ body.page-rabbit .dedicatedHero h1{
 </style>
 
 
-<style id="zt-rabbit-clean-final-v7">
-
-/* HERO / TITLE — remove the loose 'double spaced' look */
+<style id="zt-rabbit-cleanup-final-v8">
+/* MAIN HERO — tight two-line title, natural word spacing */
 body.page-rabbit .dedicatedHero h1{
-  line-height:.80!important;
-  word-spacing:-.10em!important;
+  margin:18px 0 16px!important;
+  font-size:clamp(30px,4.5vw,50px)!important;
+  line-height:.84!important;
+  letter-spacing:-.052em!important;
+  word-spacing:normal!important;
 }
 body.page-rabbit .dedicatedHero h1 span{
-  margin-top:-5px!important;
-}
-.ztRabbitEntriesHead h3{
-  word-spacing:-.12em!important;
-  letter-spacing:-.055em!important;
-  line-height:.92!important;
+  display:block!important;
+  margin-top:-2px!important;
+  word-spacing:normal!important;
 }
 
-/* FEATURED ENTRY — no graphic, just a clean premium editorial card */
+/* ENTRIES HEADER — no duplicate Rabbit Hole headline */
+.ztRabbitEntriesHead{
+  align-items:flex-end!important;
+  padding-bottom:18px!important;
+}
+.ztRabbitEntriesHead h3{
+  margin:0!important;
+  color:#eef4f0!important;
+  font:800 clamp(22px,3vw,32px)/.95 var(--mono)!important;
+  letter-spacing:-.045em!important;
+  word-spacing:normal!important;
+}
+.ztRabbitEntriesHead p{
+  margin-top:10px!important;
+}
+
+/* FEATURED ENTRY — editorial, clean, no graphic */
 .ztRabbitFeatureGrid{
   display:block!important;
-  margin-top:22px!important;
+  margin-top:19px!important;
 }
 .ztRabbitFeatured{
-  padding:29px 26px 25px!important;
-  border:1px solid rgba(244,183,40,.34)!important;
-  border-radius:15px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  padding:27px 25px 23px!important;
+  border:1px solid rgba(244,183,40,.30)!important;
+  border-radius:14px!important;
   background:
-    radial-gradient(circle at 92% 8%,rgba(244,183,40,.055),transparent 31%),
-    linear-gradient(145deg,#0a0f12,#06090b 72%)!important;
-  box-shadow:
-    0 18px 46px rgba(0,0,0,.24),
-    inset 0 1px 0 rgba(255,255,255,.018)!important;
+    linear-gradient(135deg,rgba(244,183,40,.025),transparent 30%),
+    linear-gradient(180deg,#090e11,#06090b)!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.20)!important;
+}
+.ztRabbitFeatured:before{
+  content:"";
+  position:absolute;
+  left:24px;
+  right:24px;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(244,183,40,.62),transparent);
 }
 .ztRabbitFeatured h4{
+  margin-top:1px!important;
   max-width:760px!important;
 }
 .ztRabbitFeatured p{
-  max-width:720px!important;
+  max-width:700px!important;
 }
 .ztRabbitFeatured .ztEntryStatus{
-  margin-top:25px!important;
-  padding-top:16px!important;
-  border-top:1px solid rgba(244,183,40,.13)!important;
+  margin-top:24px!important;
+  padding-top:15px!important;
+  border-top:1px solid rgba(244,183,40,.12)!important;
 }
-.ztLedgerGlyph{
-  display:none!important;
-}
+.ztLedgerGlyph{display:none!important}
 
-/* SUPPORT — exact visual language of the mining disclaimer dialog */
+/* SUPPORT CARD — use the exact visual language of the mining disclaimer dialog */
 .ztArticleSupport{
   position:relative!important;
   overflow:hidden!important;
@@ -1483,37 +1506,65 @@ body.page-rabbit .dedicatedHero h1 span{
 .ztArticleSupport:after{
   display:none!important;
 }
+.ztArticleSupport span{
+  font-size:9px!important;
+  letter-spacing:.15em!important;
+}
+.ztArticleSupport h3{
+  margin:9px 0 10px!important;
+  font:800 22px/1.08 var(--mono)!important;
+  letter-spacing:-.03em!important;
+}
+.ztArticleSupport p{
+  color:#aab4af!important;
+  font:11px/1.72 var(--mono)!important;
+}
 .ztArticleSupport a{
-  border:1px solid rgba(244,183,40,.44)!important;
+  min-height:44px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  margin-top:19px!important;
+  padding:0 15px!important;
+  border:1px solid #263944!important;
+  border-radius:8px!important;
   background:#080d11!important;
   color:#F4B728!important;
+  font:800 10px/1 var(--mono)!important;
+  letter-spacing:.055em!important;
   box-shadow:none!important;
 }
 .ztArticleSupport a:hover,
 .ztArticleSupport a:focus-visible{
-  background:rgba(244,183,40,.06)!important;
+  border-color:#F4B728!important;
+  background:rgba(244,183,40,.035)!important;
 }
 
 @media(max-width:760px){
   body.page-rabbit .dedicatedHero h1{
-    line-height:.82!important;
-    word-spacing:-.12em!important;
+    font-size:clamp(30px,8.7vw,38px)!important;
+    line-height:.84!important;
+    letter-spacing:-.055em!important;
+    word-spacing:normal!important;
   }
   body.page-rabbit .dedicatedHero h1 span{
-    margin-top:-4px!important;
+    margin-top:-1px!important;
   }
   .ztRabbitEntriesHead h3{
-    line-height:.94!important;
-    word-spacing:-.13em!important;
+    font-size:21px!important;
+    line-height:.95!important;
   }
   .ztRabbitFeatured{
-    padding:21px 18px 20px!important;
+    padding:20px 17px 18px!important;
   }
-  .ztRabbitFeatureGrid{
-    margin-top:17px!important;
+  .ztRabbitFeatured:before{
+    left:17px;
+    right:17px;
   }
   .ztArticleSupport{
     padding:19px!important;
+  }
+  .ztArticleSupport h3{
+    font-size:19px!important;
   }
 }
 </style>
@@ -1584,7 +1635,7 @@ body.page-rabbit .dedicatedHero h1 span{
   <div class="ztRabbitEntriesHead">
     <div>
       <span class="ztRabbitKicker">ZEROTRACE // ENTRIES</span>
-      <h3>DOWN THE RABBIT HOLE.</h3>
+      <h3>LATEST ENTRIES.</h3>
       <p>Long-form ZeroTrace research and interactive breakdowns. Read the argument. Check the sources. Make up your own mind.</p>
     </div>
     <span class="ztRabbitCount" id="ztRabbitCount">LOADING // ENTRIES</span>
