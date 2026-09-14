@@ -1419,6 +1419,153 @@ body.page-rabbit .dedicatedHero h1{
 }
 </style>
 
+
+<style id="zt-rabbit-final-polish-v3">
+/* Hero: remove the loose/double-looking line spacing */
+body.page-rabbit .dedicatedHero h1{
+  line-height:.88!important;
+}
+body.page-rabbit .dedicatedHero h1 span{
+  margin-top:2px!important;
+}
+
+/* Featured article visual: public ledger vs shielded ZEC */
+.ztLedgerGlyph{
+  min-height:112px!important;
+  display:grid!important;
+  grid-template-columns:1fr 30px 1fr!important;
+  gap:8px!important;
+  align-items:stretch!important;
+  padding-left:24px!important;
+  border-left:1px solid rgba(244,183,40,.13)!important;
+  font-family:var(--mono)!important;
+}
+.ztLedgerPanel{
+  min-width:0;
+  padding:13px 11px;
+  border:1px solid #1c292f;
+  border-radius:10px;
+  background:linear-gradient(180deg,#080d10,#05090b);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:10px;
+}
+.ztLedgerPanel small{
+  color:#6f7d77;
+  font:800 7px/1.2 var(--mono);
+  letter-spacing:.09em;
+  white-space:nowrap;
+}
+.ztLedgerPanel b{
+  color:#9ca9a3;
+  font:800 7px/1.2 var(--mono);
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.ztLedgerVs{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#F4B728;
+  font:900 11px/1 var(--mono);
+}
+.ztLedgerLines{
+  display:grid;
+  gap:6px;
+}
+.ztLedgerLines i{
+  position:relative;
+  display:block;
+  height:5px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#718079 0 24%,#28353a 24% 38%,#9aa6a0 38% 64%,#28353a 64% 77%,#718079 77%);
+  opacity:.72;
+}
+.ztLedgerLines i:nth-child(2){width:82%}
+.ztLedgerLines i:nth-child(3){width:64%}
+.ztLedgerShielded{
+  border-color:rgba(244,183,40,.26);
+  background:
+    radial-gradient(circle at 50% 48%,rgba(244,183,40,.08),transparent 44%),
+    linear-gradient(180deg,#0b0e0c,#060908);
+}
+.ztLedgerShielded small,
+.ztLedgerShielded b{color:#F4B728}
+.ztShieldMark{
+  align-self:center;
+  width:40px;
+  height:40px;
+  border:1px solid rgba(244,183,40,.42);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 0 5px rgba(244,183,40,.025),0 0 20px rgba(244,183,40,.06);
+}
+.ztShieldMark span{
+  width:14px;
+  height:17px;
+  border:1px solid #F4B728;
+  border-radius:3px;
+  position:relative;
+}
+.ztShieldMark span:before{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:7px;
+  left:2px;
+  top:-7px;
+  border:1px solid #F4B728;
+  border-bottom:0;
+  border-radius:7px 7px 0 0;
+}
+
+/* Support card: same visual language as the mining disclaimer popup */
+.ztArticleSupport{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:24px!important;
+  border:1px solid rgba(244,183,40,.34)!important;
+  border-radius:16px!important;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
+    linear-gradient(180deg,#0b1014,#06090c)!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.34)!important;
+}
+.ztArticleSupport:before,
+.ztArticleSupport:after{display:none!important}
+.ztArticleSupport a{
+  border:1px solid #F4B728!important;
+  background:#F4B728!important;
+  color:#080b09!important;
+  border-radius:8px!important;
+  box-shadow:none!important;
+}
+.ztArticleSupport a:hover,
+.ztArticleSupport a:focus-visible{
+  background:#f7c84a!important;
+}
+
+@media(max-width:760px){
+  body.page-rabbit .dedicatedHero h1{
+    line-height:.9!important;
+  }
+  .ztLedgerGlyph{
+    min-height:0!important;
+    padding:14px 0 0!important;
+    border-left:0!important;
+    border-top:1px solid rgba(244,183,40,.13)!important;
+    grid-template-columns:1fr 24px 1fr!important;
+    gap:6px!important;
+  }
+  .ztLedgerPanel{padding:11px 9px;min-height:88px}
+  .ztLedgerPanel small,.ztLedgerPanel b{font-size:6px}
+  .ztShieldMark{width:34px;height:34px}
+  .ztArticleSupport{padding:19px!important}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
@@ -1863,7 +2010,19 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
            <div class="ztRabbitFeatureGrid"><div>
              <h4>${title}</h4><strong>${sub}</strong><p>${desc}</p>
-           </div><div class="ztLedgerGlyph" aria-hidden="true"><span>ZERO</span><i>//</i><span>TRACE</span></div></div>
+           </div><div class="ztLedgerGlyph" aria-hidden="true">
+  <div class="ztLedgerPanel ztLedgerPublic">
+    <small>BTC // PUBLIC</small>
+    <div class="ztLedgerLines"><i></i><i></i><i></i></div>
+    <b>GRAPH VISIBLE</b>
+  </div>
+  <div class="ztLedgerVs">//</div>
+  <div class="ztLedgerPanel ztLedgerShielded">
+    <small>ZEC // SHIELDED</small>
+    <div class="ztShieldMark"><span></span></div>
+    <b>DETAILS PROTECTED</b>
+  </div>
+</div></div>
            <div class="ztEntryStatus">${tag}</div>${close}`;
        }
 
