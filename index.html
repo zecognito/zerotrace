@@ -1450,12 +1450,12 @@ body.dedicatedPage .routeVisible{padding-top:72px}
   align-items:center;
   justify-content:space-between;
   gap:22px;
-  border:1px solid rgba(244,183,40,.24);
+  border:1px solid rgba(244,183,40,.28);
   border-radius:14px;
   background:
-    radial-gradient(circle at 88% 15%,rgba(244,183,40,.045),transparent 32%),
-    linear-gradient(180deg,rgba(244,183,40,.018),rgba(6,10,13,.96));
-  box-shadow:0 14px 34px rgba(0,0,0,.18);
+    radial-gradient(circle at 88% 15%,rgba(244,183,40,.07),transparent 30%),
+    linear-gradient(180deg,rgba(244,183,40,.025),rgba(6,10,13,.96));
+  box-shadow:0 14px 34px rgba(0,0,0,.20),inset 3px 0 0 #F4B728;
 }
 .mineHomeCta>div{min-width:0}
 .mineHomeEyebrow{
@@ -1484,7 +1484,7 @@ body.dedicatedPage .routeVisible{padding-top:72px}
   align-items:center;
   justify-content:center;
   padding:0 15px;
-  border:1px solid rgba(244,183,40,.38);
+  border:1px solid rgba(244,183,40,.55);
   border-radius:8px;
   text-decoration:none;
   font:800 10px var(--mono);
@@ -1497,52 +1497,10 @@ body.dedicatedPage .routeVisible{padding-top:72px}
   .mineHomeCta{align-items:flex-start;flex-direction:column;padding:18px}
   .mineHomeBtn{width:100%}
 }
-</style>
 
-
-<style id="zt-mine-disclaimer-css">
-body.ztModalOpen{overflow:hidden}
-.ztMineModal{
-  position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
-  padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);
-}
-.ztMineModal.open{display:flex}
-.ztMineDialog{
-  width:min(720px,100%);max-height:min(84vh,760px);overflow:auto;
-  border:1px solid rgba(244,183,40,.34);border-radius:16px;
-  background:
-    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
-    linear-gradient(180deg,#0b1014,#06090c);
-  box-shadow:0 28px 80px rgba(0,0,0,.55);
-  padding:24px;
-  color:#eef4f0;
-}
-.ztMineModalTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.ztMineKicker{font:800 9px/1.2 var(--mono,monospace);letter-spacing:.15em;color:#F4B728}
-.ztMineDialog h2{margin:9px 0 15px;font:800 22px/1.08 var(--mono,monospace);letter-spacing:-.03em}
-.ztMineClose{
-  flex:0 0 auto;width:36px;height:36px;border:1px solid #263944;border-radius:8px;
-  background:#080d11;color:#aab4af;font:700 18px/1 monospace;cursor:pointer
-}
-.ztMineDialog p{margin:11px 0;color:#aab4af;font:11px/1.72 var(--mono,monospace)}
-.ztMineDialog strong{color:#e7eee9}
-.ztMineRisk{
-  margin:16px 0;padding:13px 14px;border:1px solid rgba(255,121,121,.23);
-  border-left:3px solid #ff7979;border-radius:8px;background:rgba(255,121,121,.025);
-  color:#c9b5b5!important
-}
-.ztMineActions{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:19px}
-.ztMineContinue,.ztMineCancel{
-  min-height:44px;border-radius:8px;padding:0 15px;cursor:pointer;
-  font:800 10px var(--mono,monospace);letter-spacing:.055em
-}
-.ztMineContinue{border:1px solid #F4B728;background:#F4B728;color:#080b09}
-.ztMineCancel{border:1px solid #263944;background:#080d11;color:#aab4af}
-@media(max-width:620px){
- .ztMineModal{padding:14px}.ztMineDialog{padding:19px;max-height:88vh}
- .ztMineDialog h2{font-size:19px}.ztMineActions{grid-template-columns:1fr}
- .ztMineCancel{order:2}.ztMineContinue{order:1}
-}
+/* ZeroTrace // nav consistency fix: use the clean compact menu at every viewport */
+.navlinks,.supportTop{display:none!important}
+.menuBtn{display:flex!important}
 </style>
 
 </head>
@@ -1677,7 +1635,7 @@ function setOffline(on){document.body.classList.toggle('ztOffline',!!on)}
 function renderSummary(s){state.summary=s;state.lastSuccess=Date.now();const h=sourceHealth(s);setState(h.status);$('lastUpdated').textContent='Snapshot: '+(s.generatedAt?new Date(s.generatedAt).toLocaleString():'—');$('freshness').textContent='Source freshness: '+h.note;
 $('pulsePrice').textContent=money(s.price?.usd);$('pulsePriceSub').textContent='24h '+pct(s.price?.change24hPct);$('pulseHeight').textContent=fmt(s.network?.height,0);$('pulseBlockSub').textContent=`${fmt(s.network?.tx24h,0)} tx / 24h`;$('pulseShielded').textContent=compact(s.pools?.shieldedTotal)+' ZEC';$('pulseShieldedSub').textContent=fmt(s.pools?.shieldedPct,2)+'% of supply';const d1=s.pools?.deltas?.d1?.shieldedTotal??s.pools?.deltas?.d1?.shieldedPct??s.pools?.deltas?.shieldedTotal?.d1;const tr=$('pulseShieldTrend');if(tr){tr.textContent=Number.isFinite(Number(d1))?`24h ${Number(d1)>=0?'▲':'▼'} ${pct(Math.abs(Number(d1)))}`:'24h trend —';tr.classList.toggle('down',Number(d1)<0)}updateLiveAge();updateFeedBadges();$('pulseHash').textContent=s.network?.hashrate||compact(s.network?.hashrateRaw);$('pulseDifficulty').textContent=s.network?.difficulty==null?'—':compact(s.network.difficulty);const bt=Number(s.network?.avgBlockTimeSeconds);$('pulseBlockTime').textContent=Number.isFinite(bt)?(bt>=60?fmt(bt/60,1)+' min':fmt(bt,0)+' sec'):'—';const subsidy=Number(s.halving?.currentSubsidy),minerPct=Number(s.halving?.minerSharePct);$('pulseSubsidy').textContent=Number.isFinite(subsidy)?fmt(subsidy,4)+' ZEC':'—';$('pulseMinerShare').textContent=Number.isFinite(minerPct)?fmt(minerPct,1)+'%':'—';const minerReward=Number.isFinite(subsidy)&&Number.isFinite(minerPct)?subsidy*minerPct/100:NaN;$('pulseMinerReward').textContent=Number.isFinite(minerReward)?fmt(minerReward,4)+' ZEC / block':'— ZEC / block';const zecUsd=Number(s.price?.usd),blocks24=Number(s.network?.blocks24h),avgBt=Number(s.network?.avgBlockTimeSeconds);const blocksPerDay=Number.isFinite(blocks24)&&blocks24>0?blocks24:(Number.isFinite(avgBt)&&avgBt>0?86400/avgBt:NaN);const minerDay=Number.isFinite(minerReward)&&Number.isFinite(blocksPerDay)?minerReward*blocksPerDay:NaN;const minerHour=Number.isFinite(minerDay)?minerDay/24:NaN;const setMiner=(id,v,suffix='')=>{$(id).textContent=Number.isFinite(v)?fmt(v,v>=100?2:4)+suffix:'—'};setMiner('minerZecBlock',minerReward,' ZEC');$('minerUsdBlock').textContent=Number.isFinite(minerReward)&&Number.isFinite(zecUsd)?money(minerReward*zecUsd):'—';setMiner('minerZecHour',minerHour,' ZEC');$('minerUsdHour').textContent=Number.isFinite(minerHour)&&Number.isFinite(zecUsd)?money(minerHour*zecUsd):'—';setMiner('minerZecDay',minerDay,' ZEC');$('minerUsdDay').textContent=Number.isFinite(minerDay)&&Number.isFinite(zecUsd)?money(minerDay*zecUsd):'—';const mst=$('minerLiveStamp');if(mst){const gt=s.generatedAt?new Date(s.generatedAt):null;mst.textContent=gt&&!isNaN(gt)?'SOURCE SNAPSHOT '+gt.toLocaleTimeString():'SOURCE SNAPSHOT —'}const mn=$('minerEstimateNote');if(mn)mn.textContent=Number.isFinite(blocks24)&&blocks24>0?`ESTIMATE USES ${fmt(blocks24,0)} OBSERVED BLOCKS / 24H`:'ESTIMATED FROM CURRENT SUBSIDY × MINER SHARE × BLOCK RATE';const f=s.flows?.last24h||{};$('pulseShield24').textContent=compact(f.shield)+' ZEC';$('pulseShieldTx').textContent=fmt(f.shieldTx,0)+' tx';$('pulseDeshield24').textContent=compact(f.deshield)+' ZEC';$('pulseDeshieldTx').textContent=fmt(f.deshieldTx,0)+' tx';$('pulseIronwood').textContent=fmt(s.ironwood?.migrationPct,1)+'%';$('pulseMempool').textContent=fmt(s.mempool?.count??s.network?.mempoolCount,0);
 $('kShielded').textContent=compact(s.pools?.shieldedTotal)+' ZEC';$('kShieldDelta').textContent='30d change '+pct(s.pools?.deltas?.d30?.shieldedTotal??s.pools?.deltas?.shieldedTotal?.d30);$('kShieldedPct').textContent=fmt(s.pools?.shieldedPct,2)+'%';$('kTx24').textContent=fmt(s.network?.tx24h,0);$('kBlocks24').textContent=fmt(s.network?.blocks24h,0)+' blocks / 24h';$('kSupply').textContent=compact(s.supply?.total)+' ZEC';$('kEmission').textContent='emission '+fmt(s.supply?.emissionPerDayZec,1)+' ZEC / day';$('kNodes').textContent=fmt(s.network?.nodes,0);$('kPeers').textContent=fmt(s.network?.peers,0)+' peers';$('kMempool').textContent=fmt(s.mempool?.count??s.network?.mempoolCount,0);$('kHalving').textContent=compact(s.halving?.blocksRemaining)+' blocks';$('kHalvingDate').textContent=s.halving?.estimatedDate?'estimated '+new Date(s.halving.estimatedDate).toLocaleDateString():'estimated —';$('kMarketCap').textContent=s.price?.marketCapUsd==null?'—':'$'+compact(s.price.marketCapUsd);$('kRank').textContent=s.price?.marketCapRank?'market cap rank #'+s.price.marketCapRank:'rank —';
-$('flowValue').textContent='NET '+((f.net??0)>=0?'+':'')+fmt(f.net,0)+' ZEC / 24H';$('compositionValue').textContent='TOTAL '+compact(s.pools?.shieldedTotal)+' ZEC';metricStamp('flow',Number(f.net),{unit:'ZEC',digits:0,compact:true});metricStamp('composition',Number(s.pools?.shieldedTotal),{unit:'ZEC',digits:0,compact:true});metricStamp('price',Number(s.price?.usd),{unit:'USD',digits:2});renderHourly(s.flows?.hourly||[]);renderComposition(s.pools||{});if($('signalBody'))renderSignal(s);if($('blocksTable'))renderBlocks(s.recentBlocks||[]);}
+$('flowValue').textContent='NET '+((f.net??0)>=0?'+':'')+fmt(f.net,0)+' ZEC / 24H';$('compositionValue').textContent='TOTAL '+compact(s.pools?.shieldedTotal)+' ZEC';metricStamp('flow',Number(f.net),{unit:'ZEC',digits:0,compact:true});metricStamp('composition',Number(s.pools?.shieldedTotal),{unit:'ZEC',digits:0,compact:true});metricStamp('price',Number(s.price?.usd),{unit:'USD',digits:2});renderHourly(s.flows?.hourly||[]);renderComposition(s.pools||{});if($('signalBody'))renderSignal(s);if($('blocksTable'))renderBlocks(s.recentBlocks||[]);else{state.lastBlocks=(s.recentBlocks||[]).slice(0,12);renderBlockActivity(s.recentBlocks||[]);}}
 function signalTxType(tx){return String(tx?.type??tx?.kind??tx?.direction??tx?.flowType??'').toLowerCase().replace(/[- ]/g,'_')}
 function signalTxAmount(tx){const v=tx?.amount??tx?.zec??tx?.value??tx?.amountZec;return Number(v)}
 function signalTxTimestamp(tx){const raw=tx?.timestampMs??tx?.timeMs??tx?.timestamp??tx?.time??tx?.date??tx?.createdAt;if(raw==null)return NaN;if(Number.isFinite(Number(raw))){const n=Number(raw);return n<1e12?n*1000:n}const p=Date.parse(raw);return Number.isFinite(p)?p:NaN}
@@ -1895,61 +1853,6 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   document.querySelectorAll('[data-zt-command]').forEach(btn=>btn.addEventListener('click',()=>{const cmd=btn.dataset.ztCommand;run(cmd);if(cmd!=='clear'){input.value='';input.focus({preventScroll:true})}}));
 })();
 </script>
-
-<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
- <div class="ztMineDialog">
-  <div class="ztMineModalTop">
-   <div>
-    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
-    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
-   </div>
-   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
-  </div>
-  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
-  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
-  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
-  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
-  <div class="ztMineActions">
-   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
-   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
-  </div>
- </div>
-</div>
-
-
-<script id="zt-mine-disclaimer-js">
-(()=>{
- const modal=document.getElementById('ztMineModal');
- const close=document.getElementById('ztMineClose');
- const cancel=document.getElementById('ztMineCancel');
- const go=document.getElementById('ztMineContinue');
- let pending='mine/';
-
- function openMineDisclaimer(e){
-   if(e)e.preventDefault();
-   pending=(e&&e.currentTarget&&e.currentTarget.href)||'mine/';
-   modal.classList.add('open');
-   document.body.classList.add('ztModalOpen');
-   go.focus();
- }
- function closeMineDisclaimer(){
-   modal.classList.remove('open');
-   document.body.classList.remove('ztModalOpen');
- }
- document.querySelectorAll('a[href]').forEach(a=>{
-   let u;
-   try{u=new URL(a.href,location.href)}catch(_e){return}
-   const p=u.pathname.replace(/\/+$/,'');
-   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
- });
- close?.addEventListener('click',closeMineDisclaimer);
- cancel?.addEventListener('click',closeMineDisclaimer);
- modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
- go?.addEventListener('click',()=>{window.location.href=pending||'mine/'});
-})();
-</script>
-
 </body></html>
 <style>
 /* V8.25.20 — center How to Shield flow-node labels on all screen sizes */
