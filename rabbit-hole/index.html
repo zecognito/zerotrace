@@ -1420,108 +1420,54 @@ body.page-rabbit .dedicatedHero h1{
 </style>
 
 
-<style id="zt-rabbit-final-polish-v3">
-/* Hero: remove the loose/double-looking line spacing */
+<style id="zt-rabbit-clean-final-v7">
+
+/* HERO / TITLE — remove the loose 'double spaced' look */
 body.page-rabbit .dedicatedHero h1{
-  line-height:.88!important;
+  line-height:.80!important;
+  word-spacing:-.10em!important;
 }
 body.page-rabbit .dedicatedHero h1 span{
-  margin-top:2px!important;
+  margin-top:-5px!important;
+}
+.ztRabbitEntriesHead h3{
+  word-spacing:-.12em!important;
+  letter-spacing:-.055em!important;
+  line-height:.92!important;
 }
 
-/* Featured article visual: public ledger vs shielded ZEC */
-.ztLedgerGlyph{
-  min-height:112px!important;
-  display:grid!important;
-  grid-template-columns:1fr 30px 1fr!important;
-  gap:8px!important;
-  align-items:stretch!important;
-  padding-left:24px!important;
-  border-left:1px solid rgba(244,183,40,.13)!important;
-  font-family:var(--mono)!important;
+/* FEATURED ENTRY — no graphic, just a clean premium editorial card */
+.ztRabbitFeatureGrid{
+  display:block!important;
+  margin-top:22px!important;
 }
-.ztLedgerPanel{
-  min-width:0;
-  padding:13px 11px;
-  border:1px solid #1c292f;
-  border-radius:10px;
-  background:linear-gradient(180deg,#080d10,#05090b);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  gap:10px;
-}
-.ztLedgerPanel small{
-  color:#6f7d77;
-  font:800 7px/1.2 var(--mono);
-  letter-spacing:.09em;
-  white-space:nowrap;
-}
-.ztLedgerPanel b{
-  color:#9ca9a3;
-  font:800 7px/1.2 var(--mono);
-  letter-spacing:.08em;
-  white-space:nowrap;
-}
-.ztLedgerVs{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#F4B728;
-  font:900 11px/1 var(--mono);
-}
-.ztLedgerLines{
-  display:grid;
-  gap:6px;
-}
-.ztLedgerLines i{
-  position:relative;
-  display:block;
-  height:5px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#718079 0 24%,#28353a 24% 38%,#9aa6a0 38% 64%,#28353a 64% 77%,#718079 77%);
-  opacity:.72;
-}
-.ztLedgerLines i:nth-child(2){width:82%}
-.ztLedgerLines i:nth-child(3){width:64%}
-.ztLedgerShielded{
-  border-color:rgba(244,183,40,.26);
+.ztRabbitFeatured{
+  padding:29px 26px 25px!important;
+  border:1px solid rgba(244,183,40,.34)!important;
+  border-radius:15px!important;
   background:
-    radial-gradient(circle at 50% 48%,rgba(244,183,40,.08),transparent 44%),
-    linear-gradient(180deg,#0b0e0c,#060908);
+    radial-gradient(circle at 92% 8%,rgba(244,183,40,.055),transparent 31%),
+    linear-gradient(145deg,#0a0f12,#06090b 72%)!important;
+  box-shadow:
+    0 18px 46px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.018)!important;
 }
-.ztLedgerShielded small,
-.ztLedgerShielded b{color:#F4B728}
-.ztShieldMark{
-  align-self:center;
-  width:40px;
-  height:40px;
-  border:1px solid rgba(244,183,40,.42);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  box-shadow:0 0 0 5px rgba(244,183,40,.025),0 0 20px rgba(244,183,40,.06);
+.ztRabbitFeatured h4{
+  max-width:760px!important;
 }
-.ztShieldMark span{
-  width:14px;
-  height:17px;
-  border:1px solid #F4B728;
-  border-radius:3px;
-  position:relative;
+.ztRabbitFeatured p{
+  max-width:720px!important;
 }
-.ztShieldMark span:before{
-  content:"";
-  position:absolute;
-  width:8px;
-  height:7px;
-  left:2px;
-  top:-7px;
-  border:1px solid #F4B728;
-  border-bottom:0;
-  border-radius:7px 7px 0 0;
+.ztRabbitFeatured .ztEntryStatus{
+  margin-top:25px!important;
+  padding-top:16px!important;
+  border-top:1px solid rgba(244,183,40,.13)!important;
+}
+.ztLedgerGlyph{
+  display:none!important;
 }
 
-/* Support card: same visual language as the mining disclaimer popup */
+/* SUPPORT — exact visual language of the mining disclaimer dialog */
 .ztArticleSupport{
   position:relative!important;
   overflow:hidden!important;
@@ -1531,156 +1477,44 @@ body.page-rabbit .dedicatedHero h1 span{
   background:
     radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
     linear-gradient(180deg,#0b1014,#06090c)!important;
-  box-shadow:0 28px 80px rgba(0,0,0,.34)!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.55)!important;
 }
 .ztArticleSupport:before,
-.ztArticleSupport:after{display:none!important}
+.ztArticleSupport:after{
+  display:none!important;
+}
 .ztArticleSupport a{
-  border:1px solid #F4B728!important;
-  background:#F4B728!important;
-  color:#080b09!important;
-  border-radius:8px!important;
+  border:1px solid rgba(244,183,40,.44)!important;
+  background:#080d11!important;
+  color:#F4B728!important;
   box-shadow:none!important;
 }
 .ztArticleSupport a:hover,
 .ztArticleSupport a:focus-visible{
-  background:#f7c84a!important;
+  background:rgba(244,183,40,.06)!important;
 }
 
 @media(max-width:760px){
   body.page-rabbit .dedicatedHero h1{
-    line-height:.9!important;
+    line-height:.82!important;
+    word-spacing:-.12em!important;
   }
-  .ztLedgerGlyph{
-    min-height:0!important;
-    padding:14px 0 0!important;
-    border-left:0!important;
-    border-top:1px solid rgba(244,183,40,.13)!important;
-    grid-template-columns:1fr 24px 1fr!important;
-    gap:6px!important;
+  body.page-rabbit .dedicatedHero h1 span{
+    margin-top:-4px!important;
   }
-  .ztLedgerPanel{padding:11px 9px;min-height:88px}
-  .ztLedgerPanel small,.ztLedgerPanel b{font-size:6px}
-  .ztShieldMark{width:34px;height:34px}
-  .ztArticleSupport{padding:19px!important}
-}
-</style>
-
-
-<style id="zt-featured-flow-v6">
-/* Featured article visual — clean, integrated, no mini-card boxes */
-.ztRabbitFeatured .ztLedgerGlyph.ztLedgerFlow{
-  min-height:108px!important;
-  display:grid!important;
-  grid-template-columns:auto minmax(90px,1fr) auto!important;
-  gap:18px!important;
-  align-items:center!important;
-  padding-left:24px!important;
-  border-left:1px solid rgba(244,183,40,.12)!important;
-}
-.ztFlowNode{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  grid-template-rows:auto auto;
-  column-gap:9px;
-  row-gap:4px;
-  align-items:center;
-  min-width:0;
-}
-.ztFlowNode small{
-  color:#76847e;
-  font:800 7px/1.1 var(--mono);
-  letter-spacing:.11em;
-  white-space:nowrap;
-}
-.ztFlowNode b{
-  color:#b7c0bb;
-  font:900 8px/1.1 var(--mono);
-  letter-spacing:.06em;
-  white-space:nowrap;
-}
-.ztFlowDot{
-  grid-row:1/3;
-  width:31px;
-  height:31px;
-  border:1px solid #687871;
-  border-radius:50%;
-  position:relative;
-  box-shadow:0 0 0 5px rgba(120,135,128,.025);
-}
-.ztFlowDot:before,
-.ztFlowDot:after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  background:#718078;
-  transform:translate(-50%,-50%);
-}
-.ztFlowDot:before{width:12px;height:1px}
-.ztFlowDot:after{width:1px;height:12px}
-.ztFlowTrack{
-  position:relative;
-  height:42px;
-}
-.ztFlowTrack:before{
-  content:"";
-  position:absolute;
-  left:0;right:0;top:50%;
-  height:1px;
-  background:linear-gradient(90deg,rgba(113,128,120,.25),rgba(113,128,120,.72) 42%,rgba(244,183,40,.7) 72%,rgba(244,183,40,.22));
-}
-.ztFlowTrack i{
-  position:absolute;
-  top:50%;
-  width:5px;height:5px;
-  margin-top:-2px;
-  border-radius:50%;
-  background:#7f8d86;
-}
-.ztFlowTrack i:nth-child(1){left:10%}
-.ztFlowTrack i:nth-child(2){left:30%}
-.ztFlowTrack i:nth-child(3){left:52%}
-.ztFlowTrack i:nth-child(4){left:74%;background:#F4B728}
-.ztFlowTrack span{
-  position:absolute;
-  right:2px;
-  top:50%;
-  transform:translateY(-56%);
-  color:#F4B728;
-  font:900 11px/1 var(--mono);
-  background:#071014;
-  padding-left:8px;
-}
-.ztFlowShield{
-  grid-row:1/3;
-  width:35px;
-  height:35px;
-  border:1px solid rgba(244,183,40,.5);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:#F4B728;
-  font:900 14px/1 var(--mono);
-  box-shadow:0 0 0 5px rgba(244,183,40,.025),0 0 22px rgba(244,183,40,.08);
-}
-.ztFlowPrivate small,
-.ztFlowPrivate b{color:#F4B728}
-
-@media(max-width:760px){
-  .ztRabbitFeatured .ztLedgerGlyph.ztLedgerFlow{
-    min-height:72px!important;
-    padding:14px 0 0!important;
-    border-left:0!important;
-    border-top:1px solid rgba(244,183,40,.12)!important;
-    grid-template-columns:auto 1fr auto!important;
-    gap:10px!important;
+  .ztRabbitEntriesHead h3{
+    line-height:.94!important;
+    word-spacing:-.13em!important;
   }
-  .ztFlowNode small{font-size:6px}
-  .ztFlowNode b{font-size:6px}
-  .ztFlowDot{width:27px;height:27px}
-  .ztFlowShield{width:31px;height:31px;font-size:12px}
-  .ztFlowTrack{height:34px}
+  .ztRabbitFeatured{
+    padding:21px 18px 20px!important;
+  }
+  .ztRabbitFeatureGrid{
+    margin-top:17px!important;
+  }
+  .ztArticleSupport{
+    padding:19px!important;
+  }
 }
 </style>
 
@@ -2128,22 +1962,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
            <div class="ztRabbitFeatureGrid"><div>
              <h4>${title}</h4><strong>${sub}</strong><p>${desc}</p>
-           </div><div class="ztLedgerGlyph ztLedgerFlow" aria-hidden="true">
-  <div class="ztFlowNode ztFlowPublic">
-    <span class="ztFlowDot"></span>
-    <small>BTC // PUBLIC</small>
-    <b>VISIBLE GRAPH</b>
-  </div>
-  <div class="ztFlowTrack">
-    <i></i><i></i><i></i><i></i>
-    <span>//</span>
-  </div>
-  <div class="ztFlowNode ztFlowPrivate">
-    <span class="ztFlowShield">Z</span>
-    <small>ZEC // SHIELDED</small>
-    <b>PROTECTED DETAILS</b>
-  </div>
-</div></div>
+           </div></div>
            <div class="ztEntryStatus">${tag}</div>${close}`;
        }
 
