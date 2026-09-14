@@ -90,44 +90,62 @@ header{position:relative;z-index:50}
 </style>
 
 
-<style id="zt-mining-disclaimer-support-v1">
-.miningDisclaimer{
-  position:fixed;inset:0;z-index:9999;display:none;place-items:center;
-  padding:20px;background:rgba(0,0,0,.82);backdrop-filter:blur(8px)
+<style id="zt-mining-disclaimer-exact-v2">
+.ztMineGate{
+  position:fixed;inset:0;z-index:99999;display:none;overflow:auto;
+  padding:clamp(20px,6vh,68px) 20px;background:rgba(0,0,0,.88);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
 }
-.miningDisclaimer.open{display:grid}
-.miningDisclaimerCard{
-  width:min(620px,100%);max-height:min(82vh,760px);overflow:auto;
-  border:1px solid rgba(244,183,40,.34);border-radius:16px;
-  background:radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),linear-gradient(180deg,#0b1014,#06090c);
-  box-shadow:0 28px 80px rgba(0,0,0,.55);padding:24px
+.ztMineGate.open{display:block}
+.ztMineGateCard{
+  position:relative;width:min(646px,100%);margin:0 auto;
+  padding:29px 29px 30px;border:1px solid rgba(244,183,40,.38);
+  border-radius:18px;background:
+    radial-gradient(circle at 84% 8%,rgba(244,183,40,.055),transparent 29%),
+    linear-gradient(180deg,#0a0f12,#05090c);
+  box-shadow:0 30px 90px rgba(0,0,0,.62)
 }
-.miningDisclaimerCard .kicker{
-  color:#F4B728;font:800 10px/1 var(--mono);letter-spacing:.14em
+.ztMineGateClose{
+  position:absolute;right:29px;top:29px;width:56px;height:56px;
+  display:grid;place-items:center;border:1px solid #2a3942;border-radius:10px;
+  background:#081015;color:#aeb9b4;font:800 24px/1 var(--mono);cursor:pointer
 }
-.miningDisclaimerCard h2{
-  margin:10px 0 14px;color:#f2f6f3;font:800 clamp(24px,5vw,34px)/1 var(--mono);letter-spacing:-.04em
+.ztMineGateKicker{
+  padding-right:72px;color:#F4B728;font:800 10px/1.2 var(--mono);
+  letter-spacing:.15em
 }
-.miningDisclaimerCard p{
-  margin:0 0 13px;color:#aab4af;font:11px/1.7 var(--mono)
+.ztMineGateCard h2{
+  margin:13px 74px 39px 0;color:#f2f6f3;
+  font:800 clamp(27px,5vw,34px)/1 var(--mono);letter-spacing:-.045em
 }
-.miningDisclaimerCard strong{color:#f4f7f5}
-.miningDisclaimerActions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-.miningDisclaimerActions button,
-.miningDisclaimerActions a{
-  min-height:44px;display:inline-flex;align-items:center;justify-content:center;
-  padding:0 15px;border-radius:8px;font:800 10px/1 var(--mono);
-  letter-spacing:.055em;text-decoration:none;cursor:pointer
+.ztMineGateCard p{
+  margin:0 0 20px;color:#aeb8b3;font:12px/1.72 var(--mono);
+  letter-spacing:.015em
 }
-.miningDisclaimerBack{
-  border:1px solid #263944;background:#080d11;color:#aeb9b4
+.ztMineGateCard strong{color:#f2f5f3}
+.ztMineRisk{
+  margin:8px 0 19px;padding:20px 21px;
+  border:1px solid rgba(255,103,111,.28);border-left:4px solid #ff6b72;
+  border-radius:10px;background:rgba(255,70,80,.025);
+  color:#bcb1b2;font:12px/1.72 var(--mono)
 }
-.miningDisclaimerContinue{
-  border:1px solid #F4B728;background:#F4B728;color:#080b09
+.ztMineRisk strong{margin-right:8px;color:#f4f5f4}
+.ztMineGateActions{display:grid;gap:14px;margin-top:28px}
+.ztMineGateActions a,.ztMineGateActions button{
+  min-height:68px;border-radius:10px;font:800 11px/1 var(--mono);
+  letter-spacing:.07em;cursor:pointer
 }
+.ztMineContinue{
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #F4B728;background:#F4B728;color:#080b09;text-decoration:none
+}
+.ztMineBack{border:1px solid #2b3a43;background:#070d11;color:#aeb7b3}
 @media(max-width:760px){
-  .miningDisclaimerCard{padding:19px}
-  .miningDisclaimerActions{display:grid;grid-template-columns:1fr}
+  .ztMineGate{padding:38px 21px}
+  .ztMineGateCard{padding:29px 30px 30px}
+  .ztMineGateClose{right:29px;top:29px;width:56px;height:56px}
+  .ztMineGateCard h2{margin-bottom:38px}
+  .ztMineGateCard p,.ztMineRisk{font-size:11px}
 }
 </style>
 
@@ -173,59 +191,60 @@ header{position:relative;z-index:50}
 </script>
 
 
-<div class="miningDisclaimer" id="miningDisclaimer" aria-hidden="true">
-  <div class="miningDisclaimerCard" role="dialog" aria-modal="true" aria-labelledby="miningDisclaimerTitle">
-    <div class="kicker">ZEROTRACE // MINING DISCLAIMER</div>
-    <h2 id="miningDisclaimerTitle">BEFORE YOU CONTINUE.</h2>
-    <p>This guide is for <strong>educational and informational purposes only.</strong> ZeroTrace is not encouraging, recommending, or promoting mining.</p>
-    <p>Nothing here is electrical, financial, legal, tax, or other professional advice. <strong>YOU MINE AT YOUR OWN RISK.</strong></p>
-    <p>ASIC miners are high-power equipment that can produce substantial heat and noise. Use properly rated, grounded equipment and follow the manufacturer’s current instructions.</p>
-    <p>Do not use improvised mains wiring or overloaded circuits. If you are unsure about electrical requirements, use a licensed electrician.</p>
-    <p>Mining profitability is not guaranteed. Hardware cost, electricity, network difficulty, pool fees, downtime, taxes, and market conditions can materially affect results.</p>
-    <p>You are responsible for your own equipment, power, ventilation, network setup, safety, compliance, and financial decisions.</p>
-    <div class="miningDisclaimerActions">
-      <button class="miningDisclaimerBack" id="miningDisclaimerBack" type="button">GO BACK</button>
-      <a class="miningDisclaimerContinue" id="miningDisclaimerContinue" href="../mine/">I UNDERSTAND — CONTINUE →</a>
+<div class="ztMineGate" id="ztMineGate" aria-hidden="true">
+  <div class="ztMineGateCard" role="dialog" aria-modal="true" aria-labelledby="ztMineGateTitle">
+    <button class="ztMineGateClose" id="ztMineGateClose" type="button" aria-label="Close">×</button>
+    <div class="ztMineGateKicker">ZEROTRACE // MINING DISCLAIMER</div>
+    <h2 id="ztMineGateTitle">READ BEFORE YOU MINE.</h2>
+
+    <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
+
+    <div class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</div>
+
+    <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified licensed electrician when you are not certain that your electrical installation is suitable.</p>
+
+    <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
+
+    <div class="ztMineGateActions">
+      <a class="ztMineContinue" href="../mine/">I UNDERSTAND — CONTINUE →</a>
+      <button class="ztMineBack" id="ztMineGateBack" type="button">GO BACK</button>
     </div>
   </div>
 </div>
 
 
-<script id="zt-mining-disclaimer-support-js-v1">
+<script id="zt-mining-disclaimer-exact-js-v2">
 (function(){
-  const modal=document.getElementById('miningDisclaimer');
-  const back=document.getElementById('miningDisclaimerBack');
-  const go=document.getElementById('miningDisclaimerContinue');
-  if(!modal||!back||!go)return;
+  const gate=document.getElementById('ztMineGate');
+  const close=document.getElementById('ztMineGateClose');
+  const back=document.getElementById('ztMineGateBack');
+  if(!gate||!close||!back)return;
 
-  function isMineLink(a){
+  function mineLink(a){
     try{
       const u=new URL(a.href,location.href);
       return u.pathname.replace(/\/+$/,'').endsWith('/mine');
     }catch(e){return false}
   }
-
+  function hide(){
+    gate.classList.remove('open');
+    gate.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow='';
+  }
+  function show(){
+    if(typeof closeMenu==='function')closeMenu();
+    gate.classList.add('open');
+    gate.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow='hidden';
+  }
   document.addEventListener('click',function(e){
     const a=e.target.closest('a');
-    if(!a||!isMineLink(a))return;
-    e.preventDefault();
-    if(typeof closeMenu==='function') closeMenu();
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
+    if(!a||a.classList.contains('ztMineContinue')||!mineLink(a))return;
+    e.preventDefault();show();
   });
-
-  back.addEventListener('click',function(){
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
-  });
-
-  modal.addEventListener('click',function(e){
-    if(e.target===modal) back.click();
-  });
-
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&modal.classList.contains('open')) back.click();
-  });
+  close.addEventListener('click',hide);
+  back.addEventListener('click',hide);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
 })();
 </script>
 
