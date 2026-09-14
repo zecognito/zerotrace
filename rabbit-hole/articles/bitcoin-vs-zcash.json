@@ -1,0 +1,140 @@
+{
+  "title": "BITCOIN VS ZCASH",
+  "subtitle": "WHAT THE LEDGER REVEALS.",
+  "category": "001 // PRIVACY // INTERACTIVE",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "Same public blockchain idea. Two different answers to what the public should be allowed to see."
+    },
+    {
+      "type": "heading",
+      "text": "START WITH ONE PAYMENT."
+    },
+    {
+      "type": "paragraph",
+      "text": "Alice sends Bob $100. Those names are only labels for this example; neither Bitcoin nor Zcash writes a real-world identity called “Alice” or “Bob” into the ledger."
+    },
+    {
+      "type": "heading",
+      "text": "BITCOIN // THE PUBLIC GRAPH"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Bitcoin transaction spends one or more previous outputs and creates new outputs. The inputs identify earlier transaction outputs, and outputs carry amounts and spending conditions. When those outputs are later spent, the next transaction points back to them. That is how a public transaction graph forms."
+    },
+    {
+      "type": "paragraph",
+      "text": "The important distinction is pseudonymity versus secrecy. A Bitcoin address is not automatically a person’s legal identity. But transaction relationships and amounts are recorded publicly, and address reuse or outside information can make activity easier to associate and follow."
+    },
+    {
+      "type": "callout",
+      "text": "PUBLIC DOES NOT MEAN “YOUR NAME IS ON THE BLOCKCHAIN.” IT MEANS THE TRANSACTION GRAPH IS AVAILABLE TO OBSERVE."
+    },
+    {
+      "type": "heading",
+      "text": "ZCASH // FULLY SHIELDED"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash supports transparent and shielded activity. This comparison is specifically about a fully shielded payment. In that case, the public blockchain does not disclose the protected sender address, recipient address, or transferred amount."
+    },
+    {
+      "type": "paragraph",
+      "text": "That does not make the transaction invisible to consensus. The network still verifies the rules needed to accept it. Zcash uses commitments, nullifiers, signatures and zero-knowledge proofs so nodes can validate a shielded spend without learning the protected payment details."
+    },
+    {
+      "type": "heading",
+      "text": "SO HOW DOES THE NETWORK STOP A DOUBLE SPEND?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A shielded note has a corresponding nullifier when it is spent. Consensus checks that the nullifier has not already appeared. Reusing it would reveal an attempted second spend and the transaction would be rejected. The nullifier prevents reuse without publicly identifying which earlier note was spent."
+    },
+    {
+      "type": "callout",
+      "text": "THE LEDGER CAN VERIFY A RULE WITHOUT REQUIRING THE PAYMENT DETAILS TO BECOME PUBLIC."
+    },
+    {
+      "type": "heading",
+      "text": "WHAT AN OBSERVER GETS"
+    },
+    {
+      "type": "paragraph",
+      "text": "With ordinary Bitcoin activity, an observer can inspect the transaction’s inputs and outputs, amounts, and the links created when outputs are later spent. With a fully shielded Zcash payment, the blockchain alone does not provide enough information to reconstruct and verify the private payment details."
+    },
+    {
+      "type": "paragraph",
+      "text": "That difference matters. Public verifiability and public disclosure are not the same requirement."
+    },
+    {
+      "type": "heading",
+      "text": "THE BOUNDARIES MATTER."
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash is not universally private. It also supports transparent activity, and moving across transparent and shielded boundaries can expose information. Even fully shielded cryptography does not magically hide every form of metadata: timing, network information, wallet behavior, or information you reveal elsewhere can still create clues."
+    },
+    {
+      "type": "paragraph",
+      "text": "Privacy therefore depends on what transaction type you use and what information leaks outside the cryptographic protocol. The strongest comparison here is Bitcoin’s transparent ledger model versus a fully shielded Zcash payment."
+    },
+    {
+      "type": "heading",
+      "text": "THE DIFFERENCE IN ONE LINE."
+    },
+    {
+      "type": "callout",
+      "text": "BITCOIN MAKES THE PAYMENT GRAPH PUBLIC. ZCASH CAN PROVE A SHIELDED PAYMENT IS VALID WITHOUT MAKING ITS PROTECTED DETAILS PUBLIC."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Bitcoin Developer Guide — Transactions",
+      "url": "https://developer.bitcoin.org/devguide/transactions.html"
+    },
+    {
+      "type": "source",
+      "label": "Bitcoin Developer Guide — Block Chain",
+      "url": "https://developer.bitcoin.org/devguide/block_chain.html"
+    },
+    {
+      "type": "source",
+      "label": "Zcash — How to use Zcash",
+      "url": "https://z.cash/learn/how-to-use-zcash/"
+    },
+    {
+      "type": "source",
+      "label": "Zcash — Is Zcash traceable?",
+      "url": "https://z.cash/learn/is-zcash-traceable/"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 311 — Zcash Payment Disclosures",
+      "url": "https://zips.z.cash/zip-0311"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "source",
+      "label": "The Orchard Book — Nullifiers",
+      "url": "https://zcash.github.io/orchard/design/nullifiers.html"
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    },
+    {
+      "type": "paragraph",
+      "text": "Privacy should be understood, not trusted."
+    }
+  ]
+}
