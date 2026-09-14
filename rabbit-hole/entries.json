@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "number": "001",
+      "category": "PRIVACY // INTERACTIVE",
+      "title": "BITCOIN VS ZCASH",
+      "subtitle": "WHAT THE LEDGER REVEALS.",
+      "description": "Same public blockchain idea. Two different answers to what the public should be allowed to see.",
+      "status": "IN DEVELOPMENT",
+      "href": "bitcoin-vs-zcash/"
+    },
+    {
+      "number": "002",
+      "category": "HISTORY // SOURCE LINKED",
+      "title": "PRIVACY WAS ALWAYS PART OF THE CONVERSATION",
+      "subtitle": "BEFORE PRIVACY COINS. BEFORE MAXIMALISM.",
+      "description": "A sourced look at the ideas already being discussed.",
+      "status": "PLANNED",
+      "href": "privacy-was-always-part-of-the-conversation/"
+    },
+    {
+      "number": "003",
+      "category": "TECHNOLOGY // ZCASH",
+      "title": "INSIDE A SHIELDED TRANSACTION",
+      "subtitle": "WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.",
+      "description": "",
+      "status": "PLANNED",
+      "href": "inside-a-shielded-transaction/"
+    }
+  ]
+}
