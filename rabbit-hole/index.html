@@ -1228,6 +1228,17 @@ body.ztModalOpen{overflow:hidden}
 }
 </style>
 
+
+<style id="zt-rabbit-dynamic-links-v1">
+.ztRabbitFeaturedLink,.ztRabbitEntryLink{text-decoration:none;color:inherit}
+.ztRabbitFeaturedLink{display:block;cursor:pointer;transition:border-color .18s ease,transform .18s ease}
+.ztRabbitFeaturedLink:hover,.ztRabbitFeaturedLink:focus-visible{border-color:rgba(244,183,40,.5);transform:translateY(-1px);outline:none}
+.ztRabbitFeaturedLink .ztEntryStatus,.ztRabbitEntryLink>b{color:#F4B728}
+.ztRabbitEntryLink{cursor:pointer;transition:background .18s ease,padding-left .18s ease}
+.ztRabbitEntryLink:hover,.ztRabbitEntryLink:focus-visible{background:rgba(244,183,40,.025);padding-left:8px;outline:none}
+#ztRabbitEntriesFeed>.ztEntryStatus{padding:22px 2px;border-bottom:1px solid #151f24;color:#66736d;font:800 8px/1.4 var(--mono);letter-spacing:.1em}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
@@ -1297,46 +1308,9 @@ body.ztModalOpen{overflow:hidden}
       <h3>DOWN THE RABBIT HOLE.</h3>
       <p>Long-form ZeroTrace research and interactive breakdowns. Read the argument. Check the sources. Make up your own mind.</p>
     </div>
-    <span class="ztRabbitCount">003 // LAUNCH SET</span>
+    <span class="ztRabbitCount" id="ztRabbitCount">LOADING // ENTRIES</span>
   </div>
-
-  <div class="ztRabbitFeatured">
-    <div class="ztEntryMeta"><span>001</span><i></i><b>PRIVACY // INTERACTIVE</b></div>
-    <div class="ztRabbitFeatureGrid">
-      <div>
-        <h4>BITCOIN VS ZCASH</h4>
-        <strong>WHAT THE LEDGER REVEALS.</strong>
-        <p>Same public blockchain idea. Two different answers to what the public should be allowed to see.</p>
-      </div>
-      <div class="ztLedgerGlyph" aria-hidden="true">
-        <span>BTC</span><i>//</i><span>ZEC</span>
-      </div>
-    </div>
-    <div class="ztEntryStatus">ENTRY 001 // IN DEVELOPMENT</div>
-  </div>
-
-  <div class="ztRabbitEntryList">
-    <article class="ztRabbitEntry">
-      <div class="ztEntryNo">002</div>
-      <div>
-        <span>HISTORY // SOURCE LINKED</span>
-        <h4>PRIVACY WAS ALWAYS PART OF THE CONVERSATION</h4>
-        <p>Before privacy coins. Before maximalism. A sourced look at the ideas already being discussed.</p>
-      </div>
-      <b>PLANNED</b>
-    </article>
-
-    <article class="ztRabbitEntry">
-      <div class="ztEntryNo">003</div>
-      <div>
-        <span>TECHNOLOGY // ZCASH</span>
-        <h4>INSIDE A SHIELDED TRANSACTION</h4>
-        <p>What disappears. What remains. What gets proven.</p>
-      </div>
-      <b>PLANNED</b>
-    </article>
-  </div>
-
+  <div id="ztRabbitEntriesFeed" aria-live="polite"></div>
   <div class="ztRabbitDivider"><span></span><b>THE ORIGINAL TRAIL CONTINUES BELOW</b><span></span></div>
 </div>
 <div class="rabbitIntro"><span class="eyebrow">THE ARCHIVE</span><h3>YOU MADE IT THIS FAR.<br/><span class="g">WANT TO KNOW HOW WE GOT HERE?</span></h3><p>Follow the ideas. Read the originals. Verify the history. Earlier entries are broader intellectual or technical context; Zerocoin → Zerocash → Zcash is a direct research and project lineage.</p><button aria-controls="rabbitBody" aria-expanded="true" class="rabbitEnter" id="rabbitEnter" type="button">ARCHIVE OPEN // EXPLORE BELOW ↓</button></div><div class="rabbitBody open" id="rabbitBody"><div class="rabbitNote">DON'T TRUST OUR VERSION OF HISTORY. VERIFY IT. Each entry separates what happened from why it matters, and links to source material.</div><div class="rabbitTimeline">
@@ -1668,6 +1642,59 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
  close?.addEventListener('click',closeMineDisclaimer);cancel?.addEventListener('click',closeMineDisclaimer);modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
  go?.addEventListener('click',()=>{window.location.href=pending||'../mine/'});
+})();
+</script>
+
+
+<script id="zt-rabbit-entry-feed-v1">
+(()=>{
+ const feed=document.getElementById('ztRabbitEntriesFeed');
+ const count=document.getElementById('ztRabbitCount');
+ if(!feed)return;
+
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+ const validHref=v=>{
+   const x=String(v||'').trim();
+   return /^(?!javascript:)(?!data:)[a-z0-9][a-z0-9._~!$&'()*+,;=:@%/-]*\/?$/i.test(x)?x:'';
+ };
+
+ fetch('entries.json',{cache:'no-store'})
+   .then(r=>{if(!r.ok)throw new Error('entries');return r.json()})
+   .then(data=>{
+     const entries=Array.isArray(data.entries)?data.entries:[];
+     count.textContent=String(entries.length).padStart(3,'0')+' // ENTRIES';
+     if(!entries.length){feed.innerHTML='<div class="ztEntryStatus">NO ENTRIES PUBLISHED YET.</div>';return}
+
+     feed.innerHTML=entries.map((e,i)=>{
+       const no=esc(e.number||String(i+1).padStart(3,'0'));
+       const cat=esc(e.category||'ZEROTRACE');
+       const title=esc(e.title||'UNTITLED');
+       const sub=esc(e.subtitle||'');
+       const desc=esc(e.description||'');
+       const status=esc(e.status||'PUBLISHED');
+       const href=validHref(e.href);
+       const live=status.toUpperCase()==='PUBLISHED' && href;
+
+       if(i===0){
+         const tag=live?'OPEN ENTRY '+no+' →':status;
+         const open=live?`<a class="ztRabbitFeatured ztRabbitFeaturedLink" href="${esc(href)}">`:'<div class="ztRabbitFeatured">';
+         const close=live?'</a>':'</div>';
+         return `${open}
+           <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
+           <div class="ztRabbitFeatureGrid"><div>
+             <h4>${title}</h4><strong>${sub}</strong><p>${desc}</p>
+           </div><div class="ztLedgerGlyph" aria-hidden="true"><span>ZERO</span><i>//</i><span>TRACE</span></div></div>
+           <div class="ztEntryStatus">${tag}</div>${close}`;
+       }
+
+       const inner=`<div class="ztEntryNo">${no}</div><div><span>${cat}</span><h4>${title}</h4><p>${sub}${sub&&desc?' — ':''}${desc}</p></div><b>${live?'OPEN →':status}</b>`;
+       return live?`<a class="ztRabbitEntry ztRabbitEntryLink" href="${esc(href)}">${inner}</a>`:`<article class="ztRabbitEntry">${inner}</article>`;
+     }).join('');
+   })
+   .catch(()=>{
+     count.textContent='ENTRIES // OFFLINE';
+     feed.innerHTML='<div class="ztEntryStatus">ENTRY INDEX COULD NOT BE LOADED. REFRESH TO TRY AGAIN.</div>';
+   });
 })();
 </script>
 
