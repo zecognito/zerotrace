@@ -16,103 +16,117 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 
 
-<style id="zt-mine-disclaimer-css">
-body.ztModalOpen{overflow:hidden}
-.ztMineModal{
-  position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
-  padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);
+<style id="zt-support-nav-fix-v1">
+header{position:relative;z-index:50}
+.ztSupportNav{position:relative}
+.ztWordmark{
+  color:#f1f5f2!important;
+  text-decoration:none!important;
+  font:800 17px/1 var(--mono)!important;
+  letter-spacing:.18em!important;
+  white-space:nowrap!important;
 }
-.ztMineModal.open{display:flex}
-.ztMineDialog{
-  width:min(720px,100%);max-height:min(84vh,760px);overflow:auto;
-  border:1px solid rgba(244,183,40,.34);border-radius:16px;
-  background:
-    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
-    linear-gradient(180deg,#0b1014,#06090c);
-  box-shadow:0 28px 80px rgba(0,0,0,.55);
-  padding:24px;
-  color:#eef4f0;
+.ztWordmark span{
+  color:#F4B728!important;
+  margin-left:4px!important;
+  letter-spacing:.06em!important;
 }
-.ztMineModalTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.ztMineKicker{font:800 9px/1.2 var(--mono,monospace);letter-spacing:.15em;color:#F4B728}
-.ztMineDialog h2{margin:9px 0 15px;font:800 22px/1.08 var(--mono,monospace);letter-spacing:-.03em}
-.ztMineClose{
-  flex:0 0 auto;width:36px;height:36px;border:1px solid #263944;border-radius:8px;
-  background:#080d11;color:#aab4af;font:700 18px/1 monospace;cursor:pointer
+.menuBtn{
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  display:flex!important;
+  width:42px!important;
+  height:38px!important;
+  padding:0!important;
+  margin:0!important;
+  border:1px solid #2b3942!important;
+  border-radius:7px!important;
+  background:#05090c!important;
+  box-shadow:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-direction:column!important;
+  gap:4px!important;
+  cursor:pointer!important;
 }
-.ztMineDialog p{margin:11px 0;color:#aab4af;font:11px/1.72 var(--mono,monospace)}
-.ztMineDialog strong{color:#e7eee9}
-.ztMineRisk{
-  margin:16px 0;padding:13px 14px;border:1px solid rgba(255,121,121,.23);
-  border-left:3px solid #ff7979;border-radius:8px;background:rgba(255,121,121,.025);
-  color:#c9b5b5!important
+.menuBtn span{
+  display:block!important;
+  width:18px!important;
+  height:2px!important;
+  border-radius:2px!important;
+  background:#F4B728!important;
+  box-shadow:0 0 5px rgba(244,183,40,.18)!important;
 }
-.ztMineActions{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:19px}
-.ztMineContinue,.ztMineCancel{
-  min-height:44px;border-radius:8px;padding:0 15px;cursor:pointer;
-  font:800 10px var(--mono,monospace);letter-spacing:.055em
+.mobileMenu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 12px);
+  right:0;
+  width:min(286px,calc(100vw - 40px));
+  padding:8px;
+  border:1px solid #2b3942;
+  border-radius:10px;
+  background:#05090c;
+  box-shadow:0 22px 60px rgba(0,0,0,.58);
+  z-index:100;
 }
-.ztMineContinue{border:1px solid #F4B728;background:#F4B728;color:#080b09}
-.ztMineCancel{border:1px solid #263944;background:#080d11;color:#aab4af}
-@media(max-width:620px){
- .ztMineModal{padding:14px}.ztMineDialog{padding:19px;max-height:88vh}
- .ztMineDialog h2{font-size:19px}.ztMineActions{grid-template-columns:1fr}
- .ztMineCancel{order:2}.ztMineContinue{order:1}
+.mobileMenu.open{display:block}
+.mobileMenu a{
+  display:block;
+  padding:12px 13px;
+  border-radius:7px;
+  color:#aeb9b4;
+  text-decoration:none;
+  font:800 10px/1.15 var(--mono);
+  letter-spacing:.07em;
+}
+.mobileMenu a:hover,.mobileMenu a:focus-visible{
+  color:#F4B728;
+  background:rgba(244,183,40,.045);
+}
+@media(max-width:760px){
+  .ztWordmark{font-size:16px!important;letter-spacing:.17em!important}
 }
 </style>
 
-</head><body><header><div class="wrap nav"><a class="brand" href="../">ZERO<span>TRACE //</span></a><nav class="links"><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a><a class="home" href="../">HOME</a></nav></div></header><main><div class="wrap"><section class="hero"><div class="eyebrow">ZEROTRACE // SUPPORT</div><h1>SUPPORT THE SIGNAL.<br><span class="g">KEEP IT INDEPENDENT.</span></h1><p class="lead">ZeroTrace is built as an independent privacy resource — no accounts, no ad network, no invasive analytics. If it helps you understand Zcash, privacy, or the chain, you can support the project directly with ZEC.</p><div class="signal"><i class="dot"></i> ZEC ONLY // SHIELDED UNIFIED ADDRESS</div></section><section class="grid"><div class="card"><div class="label">01 // DIRECT SUPPORT</div><h2>PRIVACY INFRASTRUCTURE DOESN'T BUILD ITSELF.</h2><p class="muted">Support helps keep ZeroTrace online, independent, and focused on useful privacy tools instead of attention harvesting.</p><div class="addressLabel"><span>SHIELDED ZEC UNIFIED ADDRESS</span><span>VERIFY BEFORE SENDING</span></div><div class="address" id="addr" title="u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh">u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh</div><div class="buttons"><button id="copy">COPY FULL ADDRESS</button><button class="alt" id="share">SHARE</button></div><div class="notice">Always verify the full address before sending. Never share a seed phrase or private key. ZeroTrace will never ask for either.</div></div><div class="card qrWrap"><div class="label">02 // SCAN</div><div class="qr"><img src="zerotrace-donate-qr.png" alt="ZeroTrace Zcash support QR code"></div><div class="qrCap">SCAN TO SEND ZEC</div><div class="qrSub">zcash: unified address</div></div></section><section class="principles"><div class="mini"><b>NO PAYWALL //</b><span>The core site stays open. Support is optional.</span></div><div class="mini"><b>NO TRACKING //</b><span>No ad network or invasive analytics added in exchange for funding.</span></div><div class="mini"><b>VERIFY //</b><span>Check the address yourself before every transaction.</span></div></section><section class="closing"><strong>DON'T TRUST ZEROTRACE.</strong><span>VERIFY IT. //</span></section></div></main><footer><div class="wrap foot"><div>ZEROTRACE // WHAT YOU REVEAL IS YOUR CHOICE.</div><div><a href="../about/">ABOUT</a> · <a href="../resources/">RESOURCES</a> · <a href="../">HOME</a></div></div></footer><div class="toast" id="toast">COPIED //</div><script>const addr='u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh';const toast=document.getElementById('toast');function pop(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(addr);pop('ADDRESS COPIED //')}catch(e){const x=document.createElement('textarea');x.value=addr;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove();pop('ADDRESS COPIED //')}};document.getElementById('share').onclick=()=>{const text='Support ZeroTrace with ZEC\n'+addr;if(navigator.share)navigator.share({title:'Support ZeroTrace',text}).catch(()=>{});else navigator.clipboard?.writeText(text).then(()=>pop('SUPPORT DETAILS COPIED //'))};</script>
-<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
- <div class="ztMineDialog">
-  <div class="ztMineModalTop">
-   <div>
-    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
-    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
-   </div>
-   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
+</head><body><header>
+  <div class="wrap nav ztSupportNav">
+    <a class="ztWordmark" href="../" aria-label="ZeroTrace home">ZEROTRACE<span>//</span></a>
+    <button class="menuBtn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobileMenu" id="mobileMenu">
+      <a href="../#lab" onclick="closeMenu()">PRIVACY LAB</a>
+      <a href="../#network" onclick="closeMenu()">MINER STATS</a>
+      <a href="../mine/" onclick="closeMenu()">HOW TO MINE ZEC</a>
+      <a href="../signal/" onclick="closeMenu()">ZEROTRACE SIGNAL</a>
+      <a href="../explorer/" onclick="closeMenu()">BLOCK EXPLORER</a>
+      <a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a>
+      <a href="../resources/" onclick="closeMenu()">RESOURCES</a>
+      <a href="./" onclick="closeMenu()">SUPPORT</a>
+    </div>
   </div>
-  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
-  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
-  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
-  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
-  <div class="ztMineActions">
-   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
-   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
-  </div>
- </div>
-</div>
-
-
-<script id="zt-mine-disclaimer-js">
-(()=>{
- const modal=document.getElementById('ztMineModal');
- const close=document.getElementById('ztMineClose');
- const cancel=document.getElementById('ztMineCancel');
- const go=document.getElementById('ztMineContinue');
- let pending='../mine/';
-
- function openMineDisclaimer(e){
-   if(e)e.preventDefault();
-   pending=(e&&e.currentTarget&&e.currentTarget.href)||'../mine/';
-   modal.classList.add('open');
-   document.body.classList.add('ztModalOpen');
-   go.focus();
- }
- function closeMineDisclaimer(){
-   modal.classList.remove('open');
-   document.body.classList.remove('ztModalOpen');
- }
- document.querySelectorAll('a[href]').forEach(a=>{
-   let u;
-   try{u=new URL(a.href,location.href)}catch(_e){return}
-   const p=u.pathname.replace(/\/+$/,'');
-   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
- });
- close?.addEventListener('click',closeMineDisclaimer);
- cancel?.addEventListener('click',closeMineDisclaimer);
- modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
- go?.addEventListener('click',()=>{window.location.href=pending||'../mine/'});
+</header><main><div class="wrap"><section class="hero"><div class="eyebrow">ZEROTRACE // SUPPORT</div><h1>SUPPORT THE SIGNAL.<br><span class="g">KEEP IT INDEPENDENT.</span></h1><p class="lead">ZeroTrace is built as an independent privacy resource — no accounts, no ad network, no invasive analytics. If it helps you understand Zcash, privacy, or the chain, you can support the project directly with ZEC.</p><div class="signal"><i class="dot"></i> ZEC ONLY // SHIELDED UNIFIED ADDRESS</div></section><section class="grid"><div class="card"><div class="label">01 // DIRECT SUPPORT</div><h2>PRIVACY INFRASTRUCTURE DOESN'T BUILD ITSELF.</h2><p class="muted">Support helps keep ZeroTrace online, independent, and focused on useful privacy tools instead of attention harvesting.</p><div class="addressLabel"><span>SHIELDED ZEC UNIFIED ADDRESS</span><span>VERIFY BEFORE SENDING</span></div><div class="address" id="addr" title="u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh">u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh</div><div class="buttons"><button id="copy">COPY FULL ADDRESS</button><button class="alt" id="share">SHARE</button></div><div class="notice">Always verify the full address before sending. Never share a seed phrase or private key. ZeroTrace will never ask for either.</div></div><div class="card qrWrap"><div class="label">02 // SCAN</div><div class="qr"><img src="zerotrace-donate-qr.png" alt="ZeroTrace Zcash support QR code"></div><div class="qrCap">SCAN TO SEND ZEC</div><div class="qrSub">zcash: unified address</div></div></section><section class="principles"><div class="mini"><b>NO PAYWALL //</b><span>The core site stays open. Support is optional.</span></div><div class="mini"><b>NO TRACKING //</b><span>No ad network or invasive analytics added in exchange for funding.</span></div><div class="mini"><b>VERIFY //</b><span>Check the address yourself before every transaction.</span></div></section><section class="closing"><strong>DON'T TRUST ZEROTRACE.</strong><span>VERIFY IT. //</span></section></div></main><footer><div class="wrap foot"><div>ZEROTRACE // WHAT YOU REVEAL IS YOUR CHOICE.</div><div><a href="../about/">ABOUT</a> · <a href="../resources/">RESOURCES</a> · <a href="../">HOME</a></div></div></footer><div class="toast" id="toast">COPIED //</div><script>const addr='u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh';const toast=document.getElementById('toast');function pop(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(addr);pop('ADDRESS COPIED //')}catch(e){const x=document.createElement('textarea');x.value=addr;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove();pop('ADDRESS COPIED //')}};document.getElementById('share').onclick=()=>{const text='Support ZeroTrace with ZEC\n'+addr;if(navigator.share)navigator.share({title:'Support ZeroTrace',text}).catch(()=>{});else navigator.clipboard?.writeText(text).then(()=>pop('SUPPORT DETAILS COPIED //'))};</script>
+<script id="zt-support-menu-v1">
+(function(){
+  const btn=document.getElementById('menuBtn');
+  const menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  window.closeMenu=function(){
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+  };
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    const open=menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.addEventListener('click',function(e){
+    if(!menu.contains(e.target)&&e.target!==btn) closeMenu();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeMenu();
+  });
 })();
 </script>
 
