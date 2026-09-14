@@ -1337,6 +1337,31 @@ body.ztModalOpen{overflow:hidden}
 }
 </style>
 
+
+<style id="zt-article-end-cta-v1">
+.ztArticleEnd{margin-top:54px;padding-top:28px;border-top:1px solid rgba(244,183,40,.14)}
+.ztArticleSupport{
+  position:relative;overflow:hidden;
+  padding:24px 24px 25px;border:1px solid rgba(244,183,40,.18);border-radius:14px;
+  background:radial-gradient(circle at 92% 8%,rgba(244,183,40,.07),transparent 34%),#060a0c
+}
+.ztArticleSupport span{display:block;color:#F4B728;font:800 8px/1 var(--mono);letter-spacing:.12em}
+.ztArticleSupport h3{margin:10px 0 8px!important;padding:0!important;border:0!important;font-size:21px!important}
+.ztArticleSupport p{max-width:650px;margin:0!important;color:#8d9a94!important;font:400 11px/1.7 var(--mono)!important}
+.ztArticleSupport a{
+  display:inline-block;margin-top:18px;padding:11px 14px;border:1px solid rgba(244,183,40,.34);border-radius:8px;
+  color:#F4B728;text-decoration:none;font:900 8px/1 var(--mono);letter-spacing:.1em
+}
+.ztArticleSupport a:hover,.ztArticleSupport a:focus-visible{background:rgba(244,183,40,.055);outline:none}
+.ztArticleBackBottom{margin:24px 0 0!important;padding:12px 0!important}
+@media(max-width:760px){
+ .ztArticleEnd{margin-top:40px}
+ .ztArticleSupport{padding:19px 17px 20px}
+ .ztArticleSupport h3{font-size:18px!important}
+ .ztArticleSupport p{font-size:10px!important}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
@@ -1821,6 +1846,15 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
           <div class="ztArticleMeta">${safe(a.date||'')} ${a.readTime?'// '+safe(a.readTime):''}</div>
         </header>
         <article class="ztArticleBody">${renderBlocks(a.blocks||[])}</article>
+        <div class="ztArticleEnd">
+          <div class="ztArticleSupport">
+            <span>SUPPORT // ZEROTRACE</span>
+            <h3>LIKED WHAT YOU SAW?</h3>
+            <p>If ZeroTrace helped you see things a little differently, consider supporting the project and helping me keep building.</p>
+            <a href="../support/">SUPPORT ZEROTRACE →</a>
+          </div>
+          <a class="ztArticleBack ztArticleBackBottom" href="./">← BACK TO RABBIT HOLE</a>
+        </div>
       </div>`;
     scrollTo(0,0);
   })
@@ -1869,6 +1903,14 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
      firstHeading.before(lab);
      const btn=lab.querySelector('.ztSendBtn'),res=lab.querySelector('.ztCompareResult');
      btn.addEventListener('click',()=>{const open=res.classList.toggle('open');btn.textContent=open?'RESET PAYMENT ↑':'SEND PAYMENT →'});
+   }
+
+   const hs=[...body.querySelectorAll('h3')];
+   const legacy=hs.find(h=>h.textContent.trim()==='ZEROTRACE //');
+   if(legacy){
+     const next=legacy.nextElementSibling;
+     legacy.remove();
+     if(next && next.tagName==='P') next.remove();
    }
 
    const sources=[...body.querySelectorAll('.ztArticleSource')];
