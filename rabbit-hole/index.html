@@ -1375,6 +1375,50 @@ body.page-rabbit .dedicatedHero h1{
 }
 </style>
 
+
+<style id="zt-article-support-emphasis-v2">
+.ztArticleSupport{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(244,183,40,.42)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(244,183,40,.06),
+    0 18px 42px rgba(0,0,0,.28)!important;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(244,183,40,.11),transparent 30%),
+    linear-gradient(180deg,rgba(244,183,40,.035),rgba(5,9,11,.98))!important;
+}
+.ztArticleSupport:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(244,183,40,.10);
+  border-radius:10px;
+  pointer-events:none;
+}
+.ztArticleSupport:after{
+  content:"";
+  position:absolute;
+  left:0;top:18px;bottom:18px;
+  width:3px;
+  background:#F4B728;
+  box-shadow:0 0 18px rgba(244,183,40,.22);
+}
+.ztArticleSupport span,
+.ztArticleSupport h3,
+.ztArticleSupport p,
+.ztArticleSupport a{position:relative;z-index:1}
+.ztArticleSupport a{
+  border:1px solid rgba(244,183,40,.55)!important;
+  background:rgba(244,183,40,.055)!important;
+  box-shadow:inset 0 0 0 1px rgba(244,183,40,.05);
+}
+.ztArticleSupport a:hover,
+.ztArticleSupport a:focus-visible{
+  background:rgba(244,183,40,.095)!important;
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
