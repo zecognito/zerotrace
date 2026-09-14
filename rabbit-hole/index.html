@@ -1366,7 +1366,7 @@ body.ztModalOpen{overflow:hidden}
 <style id="zt-rabbit-final-hero-scale">
 body.page-rabbit .dedicatedHero h1{
   font-size:clamp(30px,4.5vw,50px)!important;
-  line-height:.98!important;
+  line-height:.88!important;
 }
 @media(max-width:760px){
   body.page-rabbit .dedicatedHero h1{
@@ -1376,195 +1376,142 @@ body.page-rabbit .dedicatedHero h1{
 </style>
 
 
-<style id="zt-article-support-emphasis-v2">
-.ztArticleSupport{
-  position:relative!important;
-  overflow:hidden!important;
-  border:1px solid rgba(244,183,40,.42)!important;
-  box-shadow:
-    inset 0 0 0 1px rgba(244,183,40,.06),
-    0 18px 42px rgba(0,0,0,.28)!important;
-  background:
-    radial-gradient(circle at 88% 12%,rgba(244,183,40,.11),transparent 30%),
-    linear-gradient(180deg,rgba(244,183,40,.035),rgba(5,9,11,.98))!important;
-}
-.ztArticleSupport:before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:1px solid rgba(244,183,40,.10);
-  border-radius:10px;
-  pointer-events:none;
-}
-.ztArticleSupport:after{
-  content:"";
-  position:absolute;
-  left:0;top:18px;bottom:18px;
-  width:3px;
-  background:#F4B728;
-  box-shadow:0 0 18px rgba(244,183,40,.22);
-}
-.ztArticleSupport span,
-.ztArticleSupport h3,
-.ztArticleSupport p,
-.ztArticleSupport a{position:relative;z-index:1}
-.ztArticleSupport a{
-  border:1px solid rgba(244,183,40,.55)!important;
-  background:rgba(244,183,40,.055)!important;
-  box-shadow:inset 0 0 0 1px rgba(244,183,40,.05);
-}
-.ztArticleSupport a:hover,
-.ztArticleSupport a:focus-visible{
-  background:rgba(244,183,40,.095)!important;
-}
-</style>
+<style id="zt-rabbit-reference-match-v9">
 
-
-<style id="zt-rabbit-cleanup-final-v8">
-/* MAIN HERO — tight two-line title, natural word spacing */
-body.page-rabbit .dedicatedHero h1{
-  margin:18px 0 16px!important;
-  font-size:clamp(30px,4.5vw,50px)!important;
-  line-height:.84!important;
-  letter-spacing:-.052em!important;
-  word-spacing:normal!important;
-}
-body.page-rabbit .dedicatedHero h1 span{
-  display:block!important;
-  margin-top:-2px!important;
-  word-spacing:normal!important;
-}
-
-/* ENTRIES HEADER — no duplicate Rabbit Hole headline */
-.ztRabbitEntriesHead{
-  align-items:flex-end!important;
-  padding-bottom:18px!important;
-}
-.ztRabbitEntriesHead h3{
-  margin:0!important;
-  color:#eef4f0!important;
-  font:800 clamp(22px,3vw,32px)/.95 var(--mono)!important;
-  letter-spacing:-.045em!important;
-  word-spacing:normal!important;
-}
-.ztRabbitEntriesHead p{
-  margin-top:10px!important;
-}
-
-/* FEATURED ENTRY — editorial, clean, no graphic */
-.ztRabbitFeatureGrid{
-  display:block!important;
-  margin-top:19px!important;
-}
+/* FEATURED ARTICLE — premium cover treatment inspired by the live article hero */
 .ztRabbitFeatured{
   position:relative!important;
   overflow:hidden!important;
-  padding:27px 25px 23px!important;
-  border:1px solid rgba(244,183,40,.30)!important;
+  padding:28px!important;
+  border:1px solid rgba(244,183,40,.25)!important;
   border-radius:14px!important;
   background:
-    linear-gradient(135deg,rgba(244,183,40,.025),transparent 30%),
-    linear-gradient(180deg,#090e11,#06090b)!important;
-  box-shadow:0 16px 38px rgba(0,0,0,.20)!important;
+    radial-gradient(circle at 88% 15%,rgba(244,183,40,.06),transparent 30%),
+    linear-gradient(180deg,#0b0e0a,#060a0b)!important;
+  box-shadow:none!important;
 }
-.ztRabbitFeatured:before{
-  content:"";
+.ztRabbitFeatured:after{
+  content:"001";
   position:absolute;
-  left:24px;
-  right:24px;
-  top:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(244,183,40,.62),transparent);
+  right:-12px;
+  bottom:-38px;
+  color:rgba(244,183,40,.025);
+  font:900 126px/.8 var(--mono);
+  letter-spacing:-.08em;
+  pointer-events:none;
+}
+.ztRabbitFeatureGrid{
+  display:block!important;
+  margin-top:22px!important;
 }
 .ztRabbitFeatured h4{
-  margin-top:1px!important;
-  max-width:760px!important;
+  position:relative;
+  z-index:1;
+  max-width:none!important;
+  margin:0!important;
+  color:#f1f5f2!important;
+  font:800 clamp(27px,4vw,44px)/.96 var(--mono)!important;
+  letter-spacing:-.055em!important;
+}
+.ztRabbitFeatured strong{
+  position:relative;
+  z-index:1;
+  margin-top:14px!important;
+  color:#F4B728!important;
+  font:800 clamp(12px,1.7vw,17px)/1.25 var(--mono)!important;
+  letter-spacing:.035em!important;
 }
 .ztRabbitFeatured p{
-  max-width:700px!important;
+  position:relative;
+  z-index:1;
+  max-width:650px!important;
+  margin-top:16px!important;
+}
+.ztArticleCoverMeta{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid rgba(244,183,40,.12);
+  color:#718078;
+  font:800 9px/1 var(--mono);
+  letter-spacing:.12em;
+}
+.ztArticleCoverMeta i{
+  color:#F4B728;
+  font-style:normal;
 }
 .ztRabbitFeatured .ztEntryStatus{
-  margin-top:24px!important;
+  position:relative;
+  z-index:1;
+  margin-top:17px!important;
   padding-top:15px!important;
-  border-top:1px solid rgba(244,183,40,.12)!important;
+  border-top:1px solid #172127!important;
 }
-.ztLedgerGlyph{display:none!important}
 
-/* SUPPORT CARD — use the exact visual language of the mining disclaimer dialog */
+/* SUPPORT ZEROTRACE — same box language as the mining "00 // FIRST" card */
 .ztArticleSupport{
   position:relative!important;
   overflow:hidden!important;
-  padding:24px!important;
-  border:1px solid rgba(244,183,40,.34)!important;
-  border-radius:16px!important;
-  background:
-    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
-    linear-gradient(180deg,#0b1014,#06090c)!important;
-  box-shadow:0 28px 80px rgba(0,0,0,.55)!important;
+  padding:22px!important;
+  border:1px solid rgba(244,183,40,.25)!important;
+  border-radius:14px!important;
+  background:rgba(244,183,40,.025)!important;
+  box-shadow:inset 3px 0 0 #F4B728!important;
 }
 .ztArticleSupport:before,
 .ztArticleSupport:after{
   display:none!important;
 }
 .ztArticleSupport span{
-  font-size:9px!important;
-  letter-spacing:.15em!important;
+  color:#F4B728!important;
 }
 .ztArticleSupport h3{
-  margin:9px 0 10px!important;
-  font:800 22px/1.08 var(--mono)!important;
-  letter-spacing:-.03em!important;
+  color:#f1f5f2!important;
 }
 .ztArticleSupport p{
-  color:#aab4af!important;
-  font:11px/1.72 var(--mono)!important;
+  color:#a5b0aa!important;
 }
 .ztArticleSupport a{
-  min-height:44px!important;
-  display:inline-flex!important;
-  align-items:center!important;
-  margin-top:19px!important;
-  padding:0 15px!important;
-  border:1px solid #263944!important;
-  border-radius:8px!important;
-  background:#080d11!important;
+  border:1px solid rgba(244,183,40,.34)!important;
+  background:transparent!important;
   color:#F4B728!important;
-  font:800 10px/1 var(--mono)!important;
-  letter-spacing:.055em!important;
   box-shadow:none!important;
 }
 .ztArticleSupport a:hover,
 .ztArticleSupport a:focus-visible{
-  border-color:#F4B728!important;
-  background:rgba(244,183,40,.035)!important;
+  background:rgba(244,183,40,.055)!important;
 }
 
+/* Hide the old glyph styling if any stale markup gets cached */
+.ztLedgerGlyph{display:none!important}
+
 @media(max-width:760px){
-  body.page-rabbit .dedicatedHero h1{
-    font-size:clamp(30px,8.7vw,38px)!important;
-    line-height:.84!important;
-    letter-spacing:-.055em!important;
-    word-spacing:normal!important;
-  }
-  body.page-rabbit .dedicatedHero h1 span{
-    margin-top:-1px!important;
-  }
-  .ztRabbitEntriesHead h3{
-    font-size:21px!important;
-    line-height:.95!important;
-  }
   .ztRabbitFeatured{
-    padding:20px 17px 18px!important;
+    padding:23px 19px!important;
   }
-  .ztRabbitFeatured:before{
-    left:17px;
-    right:17px;
+  .ztRabbitFeatured:after{
+    font-size:92px;
+    right:-8px;
+    bottom:-27px;
+  }
+  .ztRabbitFeatured h4{
+    font-size:clamp(28px,8vw,36px)!important;
+  }
+  .ztRabbitFeatured strong{
+    font-size:12px!important;
+    margin-top:11px!important;
+  }
+  .ztArticleCoverMeta{
+    margin-top:20px;
+    padding-top:15px;
+    font-size:8px;
   }
   .ztArticleSupport{
-    padding:19px!important;
-  }
-  .ztArticleSupport h3{
-    font-size:19px!important;
+    padding:20px!important;
   }
 }
 </style>
@@ -1635,7 +1582,7 @@ body.page-rabbit .dedicatedHero h1 span{
   <div class="ztRabbitEntriesHead">
     <div>
       <span class="ztRabbitKicker">ZEROTRACE // ENTRIES</span>
-      <h3>LATEST ENTRIES.</h3>
+      <h3>DOWN THE RABBIT HOLE.</h3>
       <p>Long-form ZeroTrace research and interactive breakdowns. Read the argument. Check the sources. Make up your own mind.</p>
     </div>
     <span class="ztRabbitCount" id="ztRabbitCount">LOADING // ENTRIES</span>
@@ -2013,7 +1960,9 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
            <div class="ztRabbitFeatureGrid"><div>
              <h4>${title}</h4><strong>${sub}</strong><p>${desc}</p>
-           </div></div>
+           </div><div class="ztArticleCoverMeta" aria-hidden="true">
+  <span>SEPTEMBER 2026</span><i>//</i><span>8 MIN READ</span>
+</div></div>
            <div class="ztEntryStatus">${tag}</div>${close}`;
        }
 
