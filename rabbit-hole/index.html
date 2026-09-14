@@ -1566,6 +1566,124 @@ body.page-rabbit .dedicatedHero h1 span{
 }
 </style>
 
+
+<style id="zt-featured-flow-v6">
+/* Featured article visual — clean, integrated, no mini-card boxes */
+.ztRabbitFeatured .ztLedgerGlyph.ztLedgerFlow{
+  min-height:108px!important;
+  display:grid!important;
+  grid-template-columns:auto minmax(90px,1fr) auto!important;
+  gap:18px!important;
+  align-items:center!important;
+  padding-left:24px!important;
+  border-left:1px solid rgba(244,183,40,.12)!important;
+}
+.ztFlowNode{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-rows:auto auto;
+  column-gap:9px;
+  row-gap:4px;
+  align-items:center;
+  min-width:0;
+}
+.ztFlowNode small{
+  color:#76847e;
+  font:800 7px/1.1 var(--mono);
+  letter-spacing:.11em;
+  white-space:nowrap;
+}
+.ztFlowNode b{
+  color:#b7c0bb;
+  font:900 8px/1.1 var(--mono);
+  letter-spacing:.06em;
+  white-space:nowrap;
+}
+.ztFlowDot{
+  grid-row:1/3;
+  width:31px;
+  height:31px;
+  border:1px solid #687871;
+  border-radius:50%;
+  position:relative;
+  box-shadow:0 0 0 5px rgba(120,135,128,.025);
+}
+.ztFlowDot:before,
+.ztFlowDot:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  background:#718078;
+  transform:translate(-50%,-50%);
+}
+.ztFlowDot:before{width:12px;height:1px}
+.ztFlowDot:after{width:1px;height:12px}
+.ztFlowTrack{
+  position:relative;
+  height:42px;
+}
+.ztFlowTrack:before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:50%;
+  height:1px;
+  background:linear-gradient(90deg,rgba(113,128,120,.25),rgba(113,128,120,.72) 42%,rgba(244,183,40,.7) 72%,rgba(244,183,40,.22));
+}
+.ztFlowTrack i{
+  position:absolute;
+  top:50%;
+  width:5px;height:5px;
+  margin-top:-2px;
+  border-radius:50%;
+  background:#7f8d86;
+}
+.ztFlowTrack i:nth-child(1){left:10%}
+.ztFlowTrack i:nth-child(2){left:30%}
+.ztFlowTrack i:nth-child(3){left:52%}
+.ztFlowTrack i:nth-child(4){left:74%;background:#F4B728}
+.ztFlowTrack span{
+  position:absolute;
+  right:2px;
+  top:50%;
+  transform:translateY(-56%);
+  color:#F4B728;
+  font:900 11px/1 var(--mono);
+  background:#071014;
+  padding-left:8px;
+}
+.ztFlowShield{
+  grid-row:1/3;
+  width:35px;
+  height:35px;
+  border:1px solid rgba(244,183,40,.5);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#F4B728;
+  font:900 14px/1 var(--mono);
+  box-shadow:0 0 0 5px rgba(244,183,40,.025),0 0 22px rgba(244,183,40,.08);
+}
+.ztFlowPrivate small,
+.ztFlowPrivate b{color:#F4B728}
+
+@media(max-width:760px){
+  .ztRabbitFeatured .ztLedgerGlyph.ztLedgerFlow{
+    min-height:72px!important;
+    padding:14px 0 0!important;
+    border-left:0!important;
+    border-top:1px solid rgba(244,183,40,.12)!important;
+    grid-template-columns:auto 1fr auto!important;
+    gap:10px!important;
+  }
+  .ztFlowNode small{font-size:6px}
+  .ztFlowNode b{font-size:6px}
+  .ztFlowDot{width:27px;height:27px}
+  .ztFlowShield{width:31px;height:31px;font-size:12px}
+  .ztFlowTrack{height:34px}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
@@ -2010,17 +2128,20 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
            <div class="ztRabbitFeatureGrid"><div>
              <h4>${title}</h4><strong>${sub}</strong><p>${desc}</p>
-           </div><div class="ztLedgerGlyph" aria-hidden="true">
-  <div class="ztLedgerPanel ztLedgerPublic">
+           </div><div class="ztLedgerGlyph ztLedgerFlow" aria-hidden="true">
+  <div class="ztFlowNode ztFlowPublic">
+    <span class="ztFlowDot"></span>
     <small>BTC // PUBLIC</small>
-    <div class="ztLedgerLines"><i></i><i></i><i></i></div>
-    <b>GRAPH VISIBLE</b>
+    <b>VISIBLE GRAPH</b>
   </div>
-  <div class="ztLedgerVs">//</div>
-  <div class="ztLedgerPanel ztLedgerShielded">
+  <div class="ztFlowTrack">
+    <i></i><i></i><i></i><i></i>
+    <span>//</span>
+  </div>
+  <div class="ztFlowNode ztFlowPrivate">
+    <span class="ztFlowShield">Z</span>
     <small>ZEC // SHIELDED</small>
-    <div class="ztShieldMark"><span></span></div>
-    <b>DETAILS PROTECTED</b>
+    <b>PROTECTED DETAILS</b>
   </div>
 </div></div>
            <div class="ztEntryStatus">${tag}</div>${close}`;
