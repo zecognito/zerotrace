@@ -89,6 +89,48 @@ header{position:relative;z-index:50}
 }
 </style>
 
+
+<style id="zt-mining-disclaimer-support-v1">
+.miningDisclaimer{
+  position:fixed;inset:0;z-index:9999;display:none;place-items:center;
+  padding:20px;background:rgba(0,0,0,.82);backdrop-filter:blur(8px)
+}
+.miningDisclaimer.open{display:grid}
+.miningDisclaimerCard{
+  width:min(620px,100%);max-height:min(82vh,760px);overflow:auto;
+  border:1px solid rgba(244,183,40,.34);border-radius:16px;
+  background:radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),linear-gradient(180deg,#0b1014,#06090c);
+  box-shadow:0 28px 80px rgba(0,0,0,.55);padding:24px
+}
+.miningDisclaimerCard .kicker{
+  color:#F4B728;font:800 10px/1 var(--mono);letter-spacing:.14em
+}
+.miningDisclaimerCard h2{
+  margin:10px 0 14px;color:#f2f6f3;font:800 clamp(24px,5vw,34px)/1 var(--mono);letter-spacing:-.04em
+}
+.miningDisclaimerCard p{
+  margin:0 0 13px;color:#aab4af;font:11px/1.7 var(--mono)
+}
+.miningDisclaimerCard strong{color:#f4f7f5}
+.miningDisclaimerActions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.miningDisclaimerActions button,
+.miningDisclaimerActions a{
+  min-height:44px;display:inline-flex;align-items:center;justify-content:center;
+  padding:0 15px;border-radius:8px;font:800 10px/1 var(--mono);
+  letter-spacing:.055em;text-decoration:none;cursor:pointer
+}
+.miningDisclaimerBack{
+  border:1px solid #263944;background:#080d11;color:#aeb9b4
+}
+.miningDisclaimerContinue{
+  border:1px solid #F4B728;background:#F4B728;color:#080b09
+}
+@media(max-width:760px){
+  .miningDisclaimerCard{padding:19px}
+  .miningDisclaimerActions{display:grid;grid-template-columns:1fr}
+}
+</style>
+
 </head><body><header>
   <div class="wrap nav ztSupportNav">
     <a class="ztWordmark" href="../" aria-label="ZeroTrace home">ZEROTRACE<span>//</span></a>
@@ -126,6 +168,63 @@ header{position:relative;z-index:50}
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape') closeMenu();
+  });
+})();
+</script>
+
+
+<div class="miningDisclaimer" id="miningDisclaimer" aria-hidden="true">
+  <div class="miningDisclaimerCard" role="dialog" aria-modal="true" aria-labelledby="miningDisclaimerTitle">
+    <div class="kicker">ZEROTRACE // MINING DISCLAIMER</div>
+    <h2 id="miningDisclaimerTitle">BEFORE YOU CONTINUE.</h2>
+    <p>This guide is for <strong>educational and informational purposes only.</strong> ZeroTrace is not encouraging, recommending, or promoting mining.</p>
+    <p>Nothing here is electrical, financial, legal, tax, or other professional advice. <strong>YOU MINE AT YOUR OWN RISK.</strong></p>
+    <p>ASIC miners are high-power equipment that can produce substantial heat and noise. Use properly rated, grounded equipment and follow the manufacturer’s current instructions.</p>
+    <p>Do not use improvised mains wiring or overloaded circuits. If you are unsure about electrical requirements, use a licensed electrician.</p>
+    <p>Mining profitability is not guaranteed. Hardware cost, electricity, network difficulty, pool fees, downtime, taxes, and market conditions can materially affect results.</p>
+    <p>You are responsible for your own equipment, power, ventilation, network setup, safety, compliance, and financial decisions.</p>
+    <div class="miningDisclaimerActions">
+      <button class="miningDisclaimerBack" id="miningDisclaimerBack" type="button">GO BACK</button>
+      <a class="miningDisclaimerContinue" id="miningDisclaimerContinue" href="../mine/">I UNDERSTAND — CONTINUE →</a>
+    </div>
+  </div>
+</div>
+
+
+<script id="zt-mining-disclaimer-support-js-v1">
+(function(){
+  const modal=document.getElementById('miningDisclaimer');
+  const back=document.getElementById('miningDisclaimerBack');
+  const go=document.getElementById('miningDisclaimerContinue');
+  if(!modal||!back||!go)return;
+
+  function isMineLink(a){
+    try{
+      const u=new URL(a.href,location.href);
+      return u.pathname.replace(/\/+$/,'').endsWith('/mine');
+    }catch(e){return false}
+  }
+
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('a');
+    if(!a||!isMineLink(a))return;
+    e.preventDefault();
+    if(typeof closeMenu==='function') closeMenu();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  });
+
+  back.addEventListener('click',function(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  });
+
+  modal.addEventListener('click',function(e){
+    if(e.target===modal) back.click();
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&modal.classList.contains('open')) back.click();
   });
 })();
 </script>
