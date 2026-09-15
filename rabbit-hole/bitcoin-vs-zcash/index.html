@@ -36,8 +36,14 @@ a{color:#F4B728}
   if(location.search!=="?no-redirect=1") location.replace(target);
 })();
 </script>
+
+<style id="zt-universal-article-fallback">
+.ztFallbackNav{position:fixed;top:18px;right:18px;z-index:10}.ztFallbackBtn{width:42px;height:38px;border:1px solid #2b3942;border-radius:8px;background:#080d11;color:#F4B728;font-size:19px}.ztFallbackMenu{display:none;position:absolute;right:0;top:50px;width:min(340px,calc(100vw - 28px));padding:15px;border:1px solid rgba(244,183,40,.34);border-radius:14px;background:linear-gradient(155deg,#080c0f,#030608);box-shadow:0 28px 80px rgba(0,0,0,.72),inset 3px 0 0 rgba(244,183,40,.88)}.ztFallbackMenu.open{display:block}.ztFallbackHead{padding:7px 10px 12px;font-size:10px;letter-spacing:.13em;font-weight:900}.ztFallbackHead b{color:#F4B728}.ztFallbackMenu a{display:grid;grid-template-columns:28px 1fr 16px;align-items:center;min-height:43px;padding:0 10px;color:#c0cbc5;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:.065em}.ztFallbackMenu a span:first-child{color:#69756f}.ztFallbackMenu a b{color:#F4B728;text-align:right}.ztFallbackRule{height:1px;background:linear-gradient(90deg,#F4B728,rgba(244,183,40,.08));margin:0 8px 7px}.ztFallbackFoot{margin:10px 8px 2px;padding-top:11px;border-top:1px solid rgba(244,183,40,.14);color:#68746e;font-size:8px;letter-spacing:.1em}
+</style>
 </head>
 <body>
+<div class="ztFallbackNav"><button class="ztFallbackBtn" type="button" aria-label="Open menu" onclick="document.getElementById('ztFallbackMenu').classList.toggle('open')">☰</button><div class="ztFallbackMenu" id="ztFallbackMenu"><div class="ztFallbackHead">ZEROTRACE <b>// NAVIGATION</b></div><div class="ztFallbackRule"></div><a href="/#lab"><span>01</span><span>PRIVACY LAB</span></a><a href="/#network"><span>02</span><span>MINER STATS</span></a><a href="/mine/"><span>03</span><span>HOW TO MINE ZEC</span><b>→</b></a><a href="/signal/"><span>04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a><a href="/explorer/"><span>05</span><span>BLOCK EXPLORER</span><b>→</b></a><a href="/rabbit-hole/"><span>06</span><span>RABBIT HOLE</span><b>→</b></a><a href="/resources/"><span>07</span><span>RESOURCES</span></a><a href="/support/"><span>08</span><span>SUPPORT</span></a><div class="ztFallbackFoot">WHAT YOU REVEAL IS YOUR CHOICE.</div></div></div>
+
 <main>
   <p>Opening <a href="../?article=bitcoin-vs-zcash">Bitcoin vs Zcash — What the Ledger Reveals</a>…</p>
 </main>
