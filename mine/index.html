@@ -254,6 +254,14 @@ body.ztModalOpen{overflow:hidden}
  .ztMineCancel{order:2}.ztMineContinue{order:1}
 }
 </style>
+
+<style id="zt-desktop-header-match-v1">
+/* Desktop-only header normalization. Mobile rules remain untouched. */
+@media (min-width:761px){
+  .navlinks,.supportTop{display:none!important}
+  .menuBtn{display:flex!important}
+}
+</style>
 </head>
 <body>
 <nav>
