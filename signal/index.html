@@ -1732,86 +1732,73 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
 
 <script>
-/* SIGNAL V8.34.0 // rolling real-time executed order flow. Coinbase match side is maker side, so aggressor side is inverted. */
+/* SIGNAL V8.35.1 // synchronized rolling 5m SPOT executed flow: REST backfill + live WebSocket. */
 (function(){
-  const WS='wss://ws-feed.exchange.coinbase.com', PRODUCT='ZEC-USD', WINDOW=5*60*1000, MAX_TICKS=42;
-  let socket=null,retry=null,trades=[],lastPrice=null;
-  const $=id=>document.getElementById(id), fmt=n=>n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2});
+  const WS='wss://ws-feed.exchange.coinbase.com', PRODUCT='ZEC-USD', REST='https://api.exchange.coinbase.com/products/ZEC-USD/trades', WINDOW=5*60*1000, MAX_TICKS=42;
+  let socket=null,retry=null,trades=[],lastPrice=null,booting=true;
+  const seen=new Set(), $=id=>document.getElementById(id), fmt=n=>n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2});
   function flash(el){if(!el)return;el.style.transform='scale(1.045)';el.style.opacity='.72';setTimeout(()=>{el.style.transform='';el.style.opacity=''},120)}
-  function prune(){const cut=Date.now()-WINDOW;trades=trades.filter(t=>t.ts>=cut)}
+  function prune(){const cut=Date.now()-WINDOW;trades=trades.filter(t=>t.ts>=cut);for(const k of [...seen]){const p=k.split('|');if(+p[p.length-1]<cut)seen.delete(k)}}
   function render(){
-    prune(); let buy=0,sell=0;
-    for(const t of trades)(t.side==='BUY'?buy+=t.size:sell+=t.size);
+    prune();let buy=0,sell=0;for(const t of trades)(t.side==='BUY'?buy+=t.size:sell+=t.size);
     const total=buy+sell,bp=total?buy/total*100:50,sp=100-bp,net=buy-sell;
-    $('ztBuyPct').textContent=total?bp.toFixed(0)+'%':'—'; $('ztSellPct').textContent=total?sp.toFixed(0)+'%':'—';
-    $('ztBuyBar').style.width=bp+'%'; $('ztSellBar').style.width=sp+'%';
-    $('ztBuyVol').textContent='BUY // '+(total?fmt(buy):'—')+' ZEC'; $('ztSellVol').textContent='SELL // '+(total?fmt(sell):'—')+' ZEC';
-    $('ztBuyVolStat').textContent=total?fmt(buy)+' ZEC':'—'; $('ztSellVolStat').textContent=total?fmt(sell)+' ZEC':'—';
-    const ne=$('ztNetPressure'); ne.textContent=total?(net>=0?'+':'')+fmt(net)+' ZEC '+(net>0?'BUY':net<0?'SELL':'EVEN'):'—'; ne.className=net>0?'buy':net<0?'sell':'';
+    $('ztBuyPct').textContent=total?bp.toFixed(0)+'%':'—';$('ztSellPct').textContent=total?sp.toFixed(0)+'%':'—';
+    $('ztBuyBar').style.width=bp+'%';$('ztSellBar').style.width=sp+'%';
+    $('ztBuyVol').textContent='BUY // '+(total?fmt(buy):'—')+' ZEC';$('ztSellVol').textContent='SELL // '+(total?fmt(sell):'—')+' ZEC';
+    $('ztBuyVolStat').textContent=total?fmt(buy)+' ZEC':'—';$('ztSellVolStat').textContent=total?fmt(sell)+' ZEC':'—';
+    const ne=$('ztNetPressure');ne.textContent=total?(net>=0?'+':'')+fmt(net)+' ZEC '+(net>0?'BUY':net<0?'SELL':'EVEN'):'—';ne.className=net>0?'buy':net<0?'sell':'';
     if(lastPrice!=null)$('ztFlowPrice').textContent='$'+lastPrice.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
   }
-  function tick(side,size){
-    const tape=$('ztOrderTape'); if(!tape)return; const i=document.createElement('i'); i.className='ztOrderTick '+side.toLowerCase(); i.style.height=Math.max(5,Math.min(22,5+Math.log10(1+size)*9))+'px'; tape.appendChild(i); while(tape.children.length>MAX_TICKS)tape.firstChild.remove();
+  function tick(side,size){const tape=$('ztOrderTape');if(!tape)return;const i=document.createElement('i');i.className='ztOrderTick '+side.toLowerCase();i.style.height=Math.max(5,Math.min(22,5+Math.log10(1+size)*9))+'px';tape.appendChild(i);while(tape.children.length>MAX_TICKS)tape.firstChild.remove()}
+  function ingest(m,live=false){
+    const size=+m.size,price=+m.price,ts=m.time?Date.parse(m.time):Date.now();if(!(size>0)||!(price>0)||!Number.isFinite(ts)||ts<Date.now()-WINDOW-5000)return;
+    const side=String(m.side||'').toLowerCase()==='sell'?'BUY':String(m.side||'').toLowerCase()==='buy'?'SELL':null;if(!side)return;
+    const id=String(m.trade_id??m.sequence??'')+'|'+price+'|'+size+'|'+ts;if(seen.has(id))return;seen.add(id);trades.push({ts,size,side});lastPrice=price;
+    if(live){tick(side,size);flash($(side==='BUY'?'ztBuyPct':'ztSellPct'));$('ztOrderStamp').textContent='LAST TRADE // '+new Date(ts).toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'})}
   }
-  function addTrade(m){
-    const size=+m.size,price=+m.price;if(!(size>0)||!(price>0))return;
-    // Coinbase Exchange match `side` is the maker order side; opposite side is the aggressive executed flow.
-    const side=m.side==='sell'?'BUY':m.side==='buy'?'SELL':null;if(!side)return;
-    const ts=m.time?Date.parse(m.time):Date.now(); trades.push({ts:Number.isFinite(ts)?ts:Date.now(),size,side}); lastPrice=price;
-    tick(side,size); flash($(side==='BUY'?'ztBuyPct':'ztSellPct')); $('ztOrderStamp').textContent='LAST TRADE // '+new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'}); render();
+  async function backfill(){
+    $('ztOrderFeed').textContent='SYNCING 5M';const cut=Date.now()-WINDOW;let after=null,pages=0;
+    try{
+      while(pages++<12){const u=REST+(after?'?after='+encodeURIComponent(after):'');const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const a=await r.json();if(!Array.isArray(a)||!a.length)break;
+        for(const m of a)ingest(m,false);const oldest=Math.min(...a.map(x=>Date.parse(x.time)).filter(Number.isFinite));if(oldest<=cut)break;after=a[a.length-1]?.trade_id;if(!after)break;
+      }
+    }catch(e){console.warn('Spot 5m backfill unavailable',e)}
+    booting=false;render();connect();
   }
-  function connect(){
-    clearTimeout(retry); try{socket?.close()}catch(e){}
-    $('ztOrderFeed').textContent='CONNECTING'; socket=new WebSocket(WS);
+  function connect(){clearTimeout(retry);try{socket?.close()}catch(e){};$('ztOrderFeed').textContent='CONNECTING';socket=new WebSocket(WS);
     socket.onopen=()=>{socket.send(JSON.stringify({type:'subscribe',product_ids:[PRODUCT],channels:['matches']}));$('ztOrderFeed').textContent='LIVE TRADES'};
-    socket.onmessage=e=>{try{const m=JSON.parse(e.data);if((m.type==='match'||m.type==='last_match')&&m.product_id===PRODUCT)addTrade(m)}catch(_){}};
-    socket.onerror=()=>{$('ztOrderFeed').textContent='RECONNECTING'};
-    socket.onclose=()=>{if(document.visibilityState==='visible'){$('ztOrderFeed').textContent='RECONNECTING';retry=setTimeout(connect,2500)}};
+    socket.onmessage=e=>{try{const m=JSON.parse(e.data);if((m.type==='match'||m.type==='last_match')&&m.product_id===PRODUCT){ingest(m,true);render()}}catch(_){}};
+    socket.onerror=()=>{$('ztOrderFeed').textContent='RECONNECTING'};socket.onclose=()=>{if(document.visibilityState==='visible'&&!booting){$('ztOrderFeed').textContent='RECONNECTING';retry=setTimeout(connect,2500)}};
   }
-  setInterval(render,1000);
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1))connect()});
-  connect();render();
+  setInterval(render,1000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1)){backfill()}});backfill();render();
 })();
 </script>
 
 <script>
-/* SIGNAL V8.35.0 // Coinbase Advanced public ZEC perpetual executed flow, rolling 5m. */
+/* SIGNAL V8.35.1 // synchronized rolling 5m PERP executed flow: REST backfill + live WebSocket. */
 (function(){
-  const WS='wss://advanced-trade-ws.coinbase.com', PRODUCT='ZEC-PERP-INTX', WINDOW=5*60*1000, MAX_TICKS=42;
-  let socket=null,retry=null,trades=[],lastPrice=null;
-  const $=id=>document.getElementById(id), fmt=n=>n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2});
+  const WS='wss://advanced-trade-ws.coinbase.com', PRODUCT='ZEC-PERP-INTX', REST='https://api.coinbase.com/api/v3/brokerage/market/products/ZEC-PERP-INTX/ticker?limit=1000', WINDOW=5*60*1000, MAX_TICKS=42;
+  let socket=null,retry=null,trades=[],lastPrice=null,booting=true;
+  const seen=new Set(),$=id=>document.getElementById(id),fmt=n=>n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2});
   function flash(el){if(!el)return;el.style.transform='scale(1.045)';el.style.opacity='.72';setTimeout(()=>{el.style.transform='';el.style.opacity=''},120)}
   function prune(){const cut=Date.now()-WINDOW;trades=trades.filter(t=>t.ts>=cut)}
-  function render(){
-    prune();let buy=0,sell=0;for(const t of trades)(t.side==='BUY'?buy+=t.size:sell+=t.size);
-    const total=buy+sell,bp=total?buy/total*100:50,sp=100-bp,net=buy-sell;
-    $('ztPerpBuyPct').textContent=total?bp.toFixed(0)+'%':'—';$('ztPerpSellPct').textContent=total?sp.toFixed(0)+'%':'—';
-    $('ztPerpBuyBar').style.width=bp+'%';$('ztPerpSellBar').style.width=sp+'%';
-    $('ztPerpBuyVol').textContent='BUY // '+(total?fmt(buy):'—')+' ZEC';$('ztPerpSellVol').textContent='SELL // '+(total?fmt(sell):'—')+' ZEC';
-    $('ztPerpBuyVolStat').textContent=total?fmt(buy)+' ZEC':'—';$('ztPerpSellVolStat').textContent=total?fmt(sell)+' ZEC':'—';
-    const ne=$('ztPerpNetPressure');ne.textContent=total?(net>=0?'+':'')+fmt(net)+' ZEC '+(net>0?'BUY':net<0?'SELL':'EVEN'):'—';ne.className=net>0?'buy':net<0?'sell':'';
-    if(lastPrice!=null)$('ztPerpFlowPrice').textContent='$'+lastPrice.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-  }
+  function render(){prune();let buy=0,sell=0;for(const t of trades)(t.side==='BUY'?buy+=t.size:sell+=t.size);const total=buy+sell,bp=total?buy/total*100:50,sp=100-bp,net=buy-sell;
+    $('ztPerpBuyPct').textContent=total?bp.toFixed(0)+'%':'—';$('ztPerpSellPct').textContent=total?sp.toFixed(0)+'%':'—';$('ztPerpBuyBar').style.width=bp+'%';$('ztPerpSellBar').style.width=sp+'%';
+    $('ztPerpBuyVol').textContent='BUY // '+(total?fmt(buy):'—')+' ZEC';$('ztPerpSellVol').textContent='SELL // '+(total?fmt(sell):'—')+' ZEC';$('ztPerpBuyVolStat').textContent=total?fmt(buy)+' ZEC':'—';$('ztPerpSellVolStat').textContent=total?fmt(sell)+' ZEC':'—';
+    const ne=$('ztPerpNetPressure');ne.textContent=total?(net>=0?'+':'')+fmt(net)+' ZEC '+(net>0?'BUY':net<0?'SELL':'EVEN'):'—';ne.className=net>0?'buy':net<0?'sell':'';if(lastPrice!=null)$('ztPerpFlowPrice').textContent='$'+lastPrice.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
   function tick(side,size){const tape=$('ztPerpOrderTape');if(!tape)return;const i=document.createElement('i');i.className='ztOrderTick '+side.toLowerCase();i.style.height=Math.max(5,Math.min(22,5+Math.log10(1+size)*9))+'px';tape.appendChild(i);while(tape.children.length>MAX_TICKS)tape.firstChild.remove()}
-  function addTrade(t){
-    const size=+(t.size??t.trade_size),price=+t.price;if(!(size>0)||!(price>0))return;
-    // Advanced Trade market_trades reports maker side, so invert it for aggressive executed BUY/SELL flow.
-    const maker=String(t.side||'').toUpperCase(),side=maker==='SELL'?'BUY':maker==='BUY'?'SELL':null;if(!side)return;
-    const ts=t.time?Date.parse(t.time):Date.now();trades.push({ts:Number.isFinite(ts)?ts:Date.now(),size,side});lastPrice=price;
-    tick(side,size);flash($(side==='BUY'?'ztPerpBuyPct':'ztPerpSellPct'));$('ztPerpOrderStamp').textContent='LAST TRADE // '+new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'});render();
+  function ingest(t,live=false){const size=+(t.size??t.trade_size),price=+t.price,ts=t.time?Date.parse(t.time):Date.now();if(!(size>0)||!(price>0)||!Number.isFinite(ts)||ts<Date.now()-WINDOW-5000)return;
+    const maker=String(t.side||'').toUpperCase(),side=maker==='SELL'?'BUY':maker==='BUY'?'SELL':null;if(!side)return;const id=String(t.trade_id??'')+'|'+price+'|'+size+'|'+ts;if(seen.has(id))return;seen.add(id);trades.push({ts,size,side});lastPrice=price;
+    if(live){tick(side,size);flash($(side==='BUY'?'ztPerpBuyPct':'ztPerpSellPct'));$('ztPerpOrderStamp').textContent='LAST TRADE // '+new Date(ts).toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'})}}
+  async function backfill(){
+    $('ztPerpOrderFeed').textContent='SYNCING 5M';
+    try{const r=await fetch(REST,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const a=Array.isArray(j.trades)?j.trades:Array.isArray(j)?j:[];for(const t of a)if(!t.product_id||t.product_id===PRODUCT)ingest(t,false)}catch(e){console.warn('Perp 5m backfill unavailable',e)}
+    booting=false;render();connect();
   }
-  function connect(){
-    clearTimeout(retry);try{socket?.close()}catch(e){};$('ztPerpOrderFeed').textContent='CONNECTING';socket=new WebSocket(WS);
-    socket.onopen=()=>{
-      socket.send(JSON.stringify({type:'subscribe',product_ids:[PRODUCT],channel:'market_trades'}));
-      socket.send(JSON.stringify({type:'subscribe',channel:'heartbeats'}));
-      $('ztPerpOrderFeed').textContent='LIVE TRADES';
-    };
-    socket.onmessage=e=>{try{const m=JSON.parse(e.data);if(m.channel!=='market_trades')return;for(const ev of (m.events||[]))for(const t of (ev.trades||[]))if(t.product_id===PRODUCT)addTrade(t)}catch(_){}};
-    socket.onerror=()=>{$('ztPerpOrderFeed').textContent='RECONNECTING'};
-    socket.onclose=()=>{if(document.visibilityState==='visible'){$('ztPerpOrderFeed').textContent='RECONNECTING';retry=setTimeout(connect,2500)}};
-  }
-  setInterval(render,1000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1))connect()});connect();render();
+  function connect(){clearTimeout(retry);try{socket?.close()}catch(e){};$('ztPerpOrderFeed').textContent='CONNECTING';socket=new WebSocket(WS);socket.onopen=()=>{socket.send(JSON.stringify({type:'subscribe',product_ids:[PRODUCT],channel:'market_trades'}));socket.send(JSON.stringify({type:'subscribe',channel:'heartbeats'}));$('ztPerpOrderFeed').textContent='LIVE TRADES'};
+    socket.onmessage=e=>{try{const m=JSON.parse(e.data);if(m.channel!=='market_trades')return;for(const ev of (m.events||[]))for(const t of (ev.trades||[]))if(t.product_id===PRODUCT){ingest(t,true);render()}}catch(_){}};
+    socket.onerror=()=>{$('ztPerpOrderFeed').textContent='RECONNECTING'};socket.onclose=()=>{if(document.visibilityState==='visible'&&!booting){$('ztPerpOrderFeed').textContent='RECONNECTING';retry=setTimeout(connect,2500)}}}
+  setInterval(render,1000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1))backfill()});backfill();render();
 })();
 </script>
 
