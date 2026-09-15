@@ -184,6 +184,76 @@ footer{padding:30px 0;border-top:1px solid var(--line)}
 }
 </style>
 
+<style id="zt-universal-menu-v1">
+/* ZeroTrace universal navigation — same component on every page */
+.mobileMenu.ztUniversalMenu{
+  display:none!important;position:fixed!important;top:76px!important;right:max(18px,calc((100vw - 1180px)/2))!important;left:auto!important;
+  width:min(340px,calc(100vw - 28px))!important;max-height:calc(100vh - 96px)!important;overflow:auto!important;
+  padding:15px!important;border:1px solid rgba(244,183,40,.34)!important;border-radius:14px!important;
+  background:linear-gradient(155deg,rgba(8,12,15,.985),rgba(3,6,8,.995))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.72),inset 3px 0 0 rgba(244,183,40,.88),inset 0 1px 0 rgba(255,255,255,.025)!important;
+  z-index:100000!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.mobileMenu.ztUniversalMenu.open{display:block!important;animation:ztNavIn .16s ease-out both}
+@keyframes ztNavIn{from{opacity:0;transform:translateY(-7px) scale(.985)}to{opacity:1;transform:none}}
+.ztUniversalMenu .ztNavHeader{display:flex;align-items:center;gap:7px;padding:7px 10px 12px!important;font-family:monospace!important;font-size:10px!important;letter-spacing:.13em!important}
+.ztUniversalMenu .ztNavHeader span{color:#eef4f0!important;font-weight:900!important}.ztUniversalMenu .ztNavHeader b{color:#F4B728!important;font-weight:900!important}
+.ztUniversalMenu .ztNavRule{height:1px;background:linear-gradient(90deg,#F4B728,rgba(244,183,40,.08));margin:0 8px 7px}
+.mobileMenu.ztUniversalMenu a{display:grid!important;grid-template-columns:28px minmax(0,1fr) 16px!important;align-items:center!important;gap:8px!important;
+  min-height:43px!important;margin:2px 0!important;padding:0 10px!important;border:1px solid transparent!important;border-radius:8px!important;
+  background:transparent!important;color:#c0cbc5!important;text-decoration:none!important;font-family:monospace!important;font-size:10px!important;font-weight:800!important;line-height:1.15!important;letter-spacing:.065em!important;transition:.14s ease!important}
+.mobileMenu.ztUniversalMenu a:hover,.mobileMenu.ztUniversalMenu a:focus-visible{color:#fff!important;border-color:rgba(244,183,40,.2)!important;background:rgba(244,183,40,.055)!important;transform:translateX(2px)}
+.mobileMenu.ztUniversalMenu a .ztNavNo{color:#69756f!important;font-size:9px!important;letter-spacing:.08em!important}.mobileMenu.ztUniversalMenu a:hover .ztNavNo{color:#F4B728!important}
+.mobileMenu.ztUniversalMenu a>b{color:#F4B728!important;font-size:13px!important;text-align:right!important}.ztUniversalMenu .ztNavGap{height:7px;margin:4px 8px;border-top:1px solid rgba(255,255,255,.045)}
+.ztUniversalMenu .ztNavMine{border-color:rgba(244,183,40,.12)!important;background:rgba(244,183,40,.025)!important}
+.ztUniversalMenu .ztNavFooter{display:flex;align-items:center;gap:9px;margin:10px 8px 2px;padding-top:11px;border-top:1px solid rgba(244,183,40,.14);color:#68746e;font:700 8px/1.3 monospace;letter-spacing:.1em}
+.ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
+@media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
+</style>
+<style id="zt-mine-modal-style-universal">
+body.ztModalOpen{overflow:hidden}
+.ztMineModal{
+  position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+  padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);
+}
+.ztMineModal.open{display:flex}
+.ztMineDialog{
+  width:min(720px,100%);max-height:min(84vh,760px);overflow:auto;
+  border:1px solid rgba(244,183,40,.34);border-radius:16px;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
+    linear-gradient(180deg,#0b1014,#06090c);
+  box-shadow:0 28px 80px rgba(0,0,0,.55);
+  padding:24px;
+  color:#eef4f0;
+}
+.ztMineModalTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ztMineKicker{font:800 9px/1.2 var(--mono,monospace);letter-spacing:.15em;color:#F4B728}
+.ztMineDialog h2{margin:9px 0 15px;font:800 22px/1.08 var(--mono,monospace);letter-spacing:-.03em}
+.ztMineClose{
+  flex:0 0 auto;width:36px;height:36px;border:1px solid #263944;border-radius:8px;
+  background:#080d11;color:#aab4af;font:700 18px/1 monospace;cursor:pointer
+}
+.ztMineDialog p{margin:11px 0;color:#aab4af;font:11px/1.72 var(--mono,monospace)}
+.ztMineDialog strong{color:#e7eee9}
+.ztMineRisk{
+  margin:16px 0;padding:13px 14px;border:1px solid rgba(255,121,121,.23);
+  border-left:3px solid #ff7979;border-radius:8px;background:rgba(255,121,121,.025);
+  color:#c9b5b5!important
+}
+.ztMineActions{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:19px}
+.ztMineContinue,.ztMineCancel{
+  min-height:44px;border-radius:8px;padding:0 15px;cursor:pointer;
+  font:800 10px var(--mono,monospace);letter-spacing:.055em
+}
+.ztMineContinue{border:1px solid #F4B728;background:#F4B728;color:#080b09}
+.ztMineCancel{border:1px solid #263944;background:#080d11;color:#aab4af}
+@media(max-width:620px){
+ .ztMineModal{padding:14px}.ztMineDialog{padding:19px;max-height:88vh}
+ .ztMineDialog h2{font-size:19px}.ztMineActions{grid-template-columns:1fr}
+ .ztMineCancel{order:2}.ztMineContinue{order:1}
+}
+</style>
 </head>
 <body>
 <nav>
@@ -199,12 +269,20 @@ footer{padding:30px 0;border-top:1px solid var(--line)}
   <button class="menuBtn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
  </div>
 </nav>
-<div class="mobileMenu" id="mobileMenu">
- <a href="../">HOME</a>
- <a href="../#network">MINER STATS</a>
- <a href="./">HOW TO MINE ZEC</a>
- <a href="../resources/">RESOURCES</a>
- <a href="../support/">SUPPORT</a>
+<div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+  <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
+  <div class="ztNavRule"></div>
+  <a href="/#lab" onclick="closeMenu()"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
+  <a href="/#network" onclick="closeMenu()"><span class="ztNavNo">02</span><span>MINER STATS</span></a>
+  <div class="ztNavGap"></div>
+  <a class="routeNavLink ztNavRoute ztNavMine" href="/mine/" onclick="closeMenu()"><span class="ztNavNo">03</span><span>HOW TO MINE ZEC</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/signal/" onclick="closeMenu()"><span class="ztNavNo">04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/explorer/" onclick="closeMenu()"><span class="ztNavNo">05</span><span>BLOCK EXPLORER</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/rabbit-hole/" onclick="closeMenu()"><span class="ztNavNo">06</span><span>RABBIT HOLE</span><b>→</b></a>
+  <div class="ztNavGap"></div>
+  <a href="/resources/" onclick="closeMenu()"><span class="ztNavNo">07</span><span>RESOURCES</span></a>
+  <a href="/support/" onclick="closeMenu()"><span class="ztNavNo">08</span><span>SUPPORT</span></a>
+  <div class="ztNavFooter"><i></i><span>WHAT YOU REVEAL IS YOUR CHOICE.</span></div>
 </div>
 
 <main>
@@ -525,6 +603,57 @@ function updatePower(){
 }
 ['watts','rate','hours'].forEach(id=>document.getElementById(id)?.addEventListener('input',updatePower));
 updatePower();
+</script>
+<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
+ <div class="ztMineDialog">
+  <div class="ztMineModalTop">
+   <div>
+    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
+    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
+   </div>
+   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
+  </div>
+  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
+  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
+  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
+  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
+  <div class="ztMineActions">
+   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
+   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
+  </div>
+ </div>
+</div>
+<script id="zt-mine-disclaimer-js">
+(()=>{
+ const modal=document.getElementById('ztMineModal');
+ const close=document.getElementById('ztMineClose');
+ const cancel=document.getElementById('ztMineCancel');
+ const go=document.getElementById('ztMineContinue');
+ let pending='mine/';
+
+ function openMineDisclaimer(e){
+   if(e)e.preventDefault();
+   pending=(e&&e.currentTarget&&e.currentTarget.href)||'mine/';
+   modal.classList.add('open');
+   document.body.classList.add('ztModalOpen');
+   go.focus();
+ }
+ function closeMineDisclaimer(){
+   modal.classList.remove('open');
+   document.body.classList.remove('ztModalOpen');
+ }
+ document.querySelectorAll('a[href]').forEach(a=>{
+   let u;
+   try{u=new URL(a.href,location.href)}catch(_e){return}
+   const p=u.pathname.replace(/\/+$/,'');
+   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
+ });
+ close?.addEventListener('click',closeMineDisclaimer);
+ cancel?.addEventListener('click',closeMineDisclaimer);
+ modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
+ go?.addEventListener('click',()=>{window.location.href=pending||'mine/'});
+})();
 </script>
 </body>
 </html>
