@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.29.2 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.29.3 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -2108,11 +2108,40 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     lastStreamAt=Date.now();
 
     if(typeof state!=='undefined' && Array.isArray(state.price)){
-      const last=state.price[state.price.length-1];
-      if(last && last.label==='NOW') last.value=price;
-      else state.price.push({label:'NOW',value:price});
+      /* Keep historical points intact and append a small rolling live tail.
+         This makes the far-right edge visibly move/form while ticks arrive. */
+      const now=Date.now();
+      if(!Array.isArray(state._ztLiveTail) || state._ztLiveTailRange!==state.priceRange){
+        state._ztLiveTail=[];
+        state._ztLiveTailRange=state.priceRange;
+      }
+
+      const tail=state._ztLiveTail;
+      const prev=tail[tail.length-1];
+      /* Add a point whenever the quote changes; also refresh the last point
+         if multiple ticks arrive in the same instant. */
+      if(!prev || Math.abs(Number(prev.value)-price)>1e-9){
+        tail.push({
+          label:new Date(now).toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'}),
+          value:price,
+          _ztLive:true,
+          _ztAt:now
+        });
+      }else{
+        prev.value=price;
+        prev._ztAt=now;
+      }
+
+      /* Enough points to see motion, without letting a long-open tab grow forever. */
+      const maxTail=36;
+      if(tail.length>maxTail) tail.splice(0,tail.length-maxTail);
+
+      const historical=state.price.filter(p=>p && p.label!=='NOW' && !p._ztLive);
+      const livePoints=historical.concat(tail);
+      state.price=livePoints;
+
       if(typeof setupChart==='function'){
-        setupChart('priceChart',[{name:'ZEC / USD',points:state.price,color:'#67d8ff'}],{format:'usd'});
+        setupChart('priceChart',[{name:'ZEC / USD',points:livePoints,color:'#67d8ff'}],{format:'usd'});
       }
     }
 
@@ -2180,6 +2209,15 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
   document.addEventListener('visibilitychange',()=>{
     if(!document.hidden && (!ws || ws.readyState>1)) connect();
+  });
+
+  document.querySelectorAll('.rangeBtn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(typeof state!=='undefined'){
+        state._ztLiveTail=[];
+        state._ztLiveTailRange=btn.dataset.range;
+      }
+    },{capture:true});
   });
 
   connect();
