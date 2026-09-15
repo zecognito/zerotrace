@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.30.0 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.31.0 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -2260,6 +2260,92 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     }catch(_e){}
   }
   setInterval(glow,700);
+})();
+</script>
+
+
+<script>
+/* ZeroTrace V8.31.0 // live observable shield/deshield boundary flow
+   Source: ZecStats public /api/zec/summary (~2 minute upstream cadence).
+   Never fabricates shielded-to-shielded amounts. */
+(function(){
+  const ZS='https://zecstats.org/api/zec/summary';
+  let lastGenerated=null, timer=null;
+
+  function n(v){ const x=Number(v); return Number.isFinite(x)?x:null; }
+  function compact(v){
+    const x=n(v); if(x===null)return '—';
+    return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(x);
+  }
+  function getFlowCanvas(){
+    return document.getElementById('flowChart') ||
+      document.querySelector('[data-live-card="flow"] canvas') ||
+      [...document.querySelectorAll('.chartbox canvas')].find(c=>{
+        const box=c.closest('.chartbox'); return box && /SHIELD\s*\/\s*DESHIELD/i.test(box.textContent||'');
+      });
+  }
+  function getFlowBox(){
+    const c=getFlowCanvas(); return c&&c.closest('.chartbox');
+  }
+
+  async function refreshLiveFlows(){
+    try{
+      const r=await fetch(ZS,{cache:'no-store',headers:{Accept:'application/json'}});
+      if(!r.ok) throw new Error('ZecStats '+r.status);
+      const s=await r.json();
+      const f=s&&s.flows;
+      if(!f || !Array.isArray(f.hourly) || !f.hourly.length) return;
+
+      const generated=s.generatedAt||null;
+      const rows=f.hourly.slice(-24);
+      const shield=rows.map(x=>({
+        label:new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),
+        value:n(x.shield)??0
+      }));
+      const deshield=rows.map(x=>({
+        label:new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),
+        value:n(x.deshield)??0
+      }));
+
+      const c=getFlowCanvas();
+      if(c && typeof setupChart==='function'){
+        setupChart(c.id,[
+          {name:'shield',points:shield,color:'#f6bd2a'},
+          {name:'deshield',points:deshield,color:'#67d8ff'}
+        ],{format:'zec'});
+      }
+
+      const box=getFlowBox();
+      if(box){
+        const h=box.querySelector('.chartValue');
+        const last=f.last24h||{};
+        const net=n(last.net ?? last.netZec ?? last.net_zec);
+        if(h && net!==null) h.textContent='NET '+(net>=0?'+':'')+compact(net)+' ZEC / 24H';
+
+        const note=box.querySelector('.chartnote');
+        const txs=Array.isArray(f.recentTxs)?f.recentTxs:[];
+        const boundary=txs.filter(t=>t && (t.type==='shield'||t.type==='deshield'));
+        const fully=txs.filter(t=>t && t.type==='fully_shielded').length;
+        if(note){
+          note.innerHTML='<span style="color:#f6bd2a">■ shield</span> · <span style="color:#67d8ff">■ deshield</span> · observable boundary flow · live ZecStats snapshots'
+            +(fully?' · '+fully+' recent fully-shielded tx'+(fully===1?'':'s')+' (amount hidden)':'');
+        }
+
+        const stamp=box.querySelector('.changeStamp');
+        if(stamp && generated){
+          const d=new Date(generated);
+          stamp.textContent=(generated!==lastGenerated?'UPDATED':'LIVE')+' // '+d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'});
+        }
+      }
+      lastGenerated=generated;
+    }catch(e){
+      console.warn('ZeroTrace live flow refresh:',e);
+    }
+  }
+
+  refreshLiveFlows();
+  timer=setInterval(refreshLiveFlows,60000);
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshLiveFlows(); });
 })();
 </script>
 
