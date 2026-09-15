@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.29.1 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.29.2 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -2095,7 +2095,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   let ws=null,retryTimer=null,retryMs=1500,lastStreamAt=0,streamPrice=null;
 
   function rangeMove(price){
-    const pts=(window.state&&Array.isArray(state.price))?state.price:[];
+    const pts=(typeof state!=='undefined'&&Array.isArray(state.price))?state.price:[];
     const historical=pts.filter(p=>p && p.label!=='NOW' && Number.isFinite(Number(p.value)));
     if(!historical.length || !Number.isFinite(price)) return null;
     const base=Number(historical[0].value);
@@ -2107,7 +2107,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     streamPrice=price;
     lastStreamAt=Date.now();
 
-    if(window.state && Array.isArray(state.price)){
+    if(typeof state!=='undefined' && Array.isArray(state.price)){
       const last=state.price[state.price.length-1];
       if(last && last.label==='NOW') last.value=price;
       else state.price.push({label:'NOW',value:price});
@@ -2127,7 +2127,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     }
 
     const note=document.getElementById('priceNote');
-    if(note && window.state){
+    if(note && typeof state!=='undefined'){
       const r=(state.priceRange||'1m').toUpperCase();
       note.textContent=`${r} performance ${Number.isFinite(move)?((move>=0?'+':'')+move.toFixed(2)+'%'):'—'} · live market stream connected`;
     }
