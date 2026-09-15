@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.32.1 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.32.2 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -1704,63 +1704,26 @@ body.ztModalOpen{overflow:hidden}
 
 
 <style>
-/* V8.32.1 // decorative living flow DOM; factual values remain in chart layer */
-.ztFlowDOM{position:relative}
-.ztFlowDOMHead{
-  grid-template-columns:1fr auto 1fr;
-  padding:10px 12px;
-}
-.ztFlowDOMHead .sh,.ztFlowDOMHead .de{
-  font-size:12px;letter-spacing:.13em;
-}
+/* V8.32.2 // lightweight decorative flow animation */
+.ztFlowDOMHead .realVal,.ztFlowDOMFoot .realVal{display:none!important}
+.ztFlowDOMHead{padding:10px 12px}
+.ztFlowDOMHead .sh,.ztFlowDOMHead .de{font-size:12px;letter-spacing:.13em}
 .ztFlowDOMHead .mid{font-size:8px;letter-spacing:.16em}
-.ztFlowDOMHead .realVal{display:none!important}
-.ztFlowDOMFoot{
-  grid-template-columns:1fr;
-  min-height:28px;padding:7px 10px;
-}
+.ztFlowDOMFoot{display:block!important;text-align:center;padding:7px 10px}
 .ztFlowDOMFoot .sh,.ztFlowDOMFoot .de{display:none!important}
-.ztFlowDOMFoot .snapshot{
-  text-align:center;font-size:8px;letter-spacing:.18em;
-}
-.ztFlowBook{min-height:154px}
-.ztFlowSide{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:10px 9px}
+.ztFlowDOMFoot .snapshot{font-size:8px;letter-spacing:.16em}
+.ztFlowBook{min-height:148px}
+.ztFlowSide{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:9px}
 .ztFlowRow{height:18px;margin:0}
-.ztFlowRow .bar{
-  opacity:.16!important;
-  width:var(--zt-w,45%)!important;
-  border-radius:1px;
-  transition:width 140ms ease-out,opacity 140ms ease-out,filter 140ms ease-out;
-}
-.ztFlowSide.sh .bar{
-  box-shadow:0 0 9px rgba(244,183,40,.12);
-}
-.ztFlowSide.de .bar{
-  box-shadow:0 0 9px rgba(103,216,255,.12);
-}
 .ztFlowRow .tick{display:none!important}
-.ztFlowSide.sh .ztFlowPulse{
-  opacity:.11;background:radial-gradient(circle at 100% 50%,rgba(244,183,40,.34),transparent 62%);
+.ztFlowRow .bar{
+  opacity:.16!important;border-radius:1px;
+  transition:width 180ms cubic-bezier(.2,.8,.2,1),filter 180ms ease;
 }
-.ztFlowSide.de .ztFlowPulse{
-  opacity:.11;background:radial-gradient(circle at 0 50%,rgba(103,216,255,.34),transparent 62%);
-}
-.ztFlowDOM:after{
-  content:"VISUALIZATION // NETWORK FLOW";
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  z-index:3;pointer-events:none;white-space:nowrap;
-  font:700 7px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-  letter-spacing:.16em;color:rgba(170,183,190,.42);
-}
-@media(max-width:520px){
- .ztFlowBook{min-height:142px}
- .ztFlowSide{gap:2px;padding:9px 7px}
- .ztFlowRow{height:17px}
- .ztFlowDOM:after{font-size:6px;letter-spacing:.12em}
-}
-@media(prefers-reduced-motion:reduce){
- .ztFlowRow .bar{transition:none!important}
-}
+.ztFlowSide.sh .bar{box-shadow:0 0 8px rgba(244,183,40,.12)}
+.ztFlowSide.de .bar{box-shadow:0 0 8px rgba(103,216,255,.12)}
+@media(max-width:520px){.ztFlowBook{min-height:136px}.ztFlowRow{height:17px}}
+@media(prefers-reduced-motion:reduce){.ztFlowRow .bar{transition:none!important}}
 </style>
 
 </head>
@@ -2512,55 +2475,51 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
 
 <script>
-/* V8.32.1 // continuous decorative DOM motion; no synthetic data displayed */
+/* V8.32.2 // decorative only; chart/source values are not modified */
 (function(){
-  let phase=0,last=0;
-  const speeds=[1.00,.78,1.23,.91,1.37,.69];
-  const offsets=[0,.85,1.72,2.55,3.28,4.15];
+  let timer=null, step=0;
 
-  function animate(t){
+  function prepare(){
     const dom=document.querySelector('.ztFlowDOM');
-    if(dom && t-last>115){
-      last=t; phase+=0.17;
-      ['sh','de'].forEach((sideName,sideIndex)=>{
-        const rows=dom.querySelectorAll('.ztFlowSide.'+sideName+' .ztFlowRow');
-        rows.forEach((row,i)=>{
-          // Layered sine waves create an organic equalizer / breathing effect.
-          // Values below are visual percentages only and are never shown as ZEC.
-          const p=phase*speeds[i%speeds.length] + offsets[i] + sideIndex*1.35;
-          const wave=(Math.sin(p)+1)/2;
-          const wave2=(Math.sin(p*.47 + i*.8)+1)/2;
-          const beat=Math.pow((Math.sin(phase*.72 + i*.42 + sideIndex)+1)/2,3);
-          let width=18 + wave*38 + wave2*22 + beat*18;
-          width=Math.max(12,Math.min(94,width));
-          const bar=row.querySelector('.bar');
-          if(bar){
-            bar.style.setProperty('--zt-w',width.toFixed(1)+'%');
-            bar.style.opacity=(.08 + (width/100)*.18).toFixed(3);
-            bar.style.filter='brightness('+(0.78+(width/100)*.62).toFixed(2)+')';
-          }
-        });
-      });
-    }
-    requestAnimationFrame(animate);
-  }
-
-  function cleanLabels(){
-    const dom=document.querySelector('.ztFlowDOM');
-    if(!dom)return;
+    if(!dom)return false;
     const sh=dom.querySelector('.ztFlowDOMHead .sh');
     const de=dom.querySelector('.ztFlowDOMHead .de');
     const mid=dom.querySelector('.ztFlowDOMHead .mid');
     const foot=dom.querySelector('.ztFlowDOMFoot .snapshot');
-    if(sh)sh.textContent='SHIELD';
-    if(de)de.textContent='DESHIELD';
+    if(sh)sh.childNodes[0].nodeValue='SHIELD ';
+    if(de){
+      const rv=de.querySelector('.realVal');
+      if(rv && rv.nextSibling) rv.nextSibling.nodeValue=' DESHIELD';
+    }
     if(mid)mid.textContent='FLOW';
     if(foot)foot.textContent='VISUAL REPRESENTATION // LIVE MOTION';
+    return true;
   }
 
-  const observer=new MutationObserver(cleanLabels);
-  observer.observe(document.documentElement,{childList:true,subtree:true});
-  setTimeout(()=>{cleanLabels();requestAnimationFrame(animate)},250);
+  function pulse(){
+    const dom=document.querySelector('.ztFlowDOM');
+    if(!dom)return;
+    step++;
+    ['sh','de'].forEach((side,sideIndex)=>{
+      dom.querySelectorAll('.ztFlowSide.'+side+' .ztFlowRow .bar').forEach((bar,i)=>{
+        const a=(Math.sin(step*.58+i*.92+sideIndex*1.7)+1)/2;
+        const b=(Math.sin(step*.27+i*.41+sideIndex*.8)+1)/2;
+        const c=(Math.sin(step*.91-i*.23+sideIndex*2.1)+1)/2;
+        const width=Math.max(14,Math.min(92,18+a*36+b*23+c*15));
+        bar.style.width=width.toFixed(1)+'%';
+        bar.style.filter='brightness('+(0.78+width/155).toFixed(2)+')';
+      });
+    });
+  }
+
+  function start(){
+    if(timer)return;
+    if(!prepare()){setTimeout(start,500);return}
+    pulse();
+    timer=setInterval(pulse,220);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,350));
+  else setTimeout(start,350);
 })();
 </script>
 
