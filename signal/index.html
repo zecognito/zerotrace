@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.26.5 // clean home section sequencing + spacing --><!DOCTYPE html>
+<!-- ZeroTrace Signal V8.33.0 // trading signal hero + existing live network signal --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -1180,6 +1180,48 @@ body.ztModalOpen{overflow:hidden}
   .menuBtn{display:flex!important}
 }
 </style>
+
+<style>
+/* SIGNAL V8.33.0 // trading signal hero */
+#signal .sectionhead{margin-bottom:22px}
+.ztTradeSignal{position:relative;overflow:hidden;margin:0 0 20px;border:1px solid #332b18;border-radius:12px;background:
+radial-gradient(circle at 50% 16%,rgba(244,183,40,.07),transparent 34%),
+linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,.018)}
+.ztTradeSignal:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,#F4B728,transparent);opacity:.8}
+.ztTradeTop{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;border-bottom:1px solid #23251f}
+.ztTradeTitle{font:800 10px var(--mono);letter-spacing:.14em;color:#e7ece8}
+.ztTradeLive{display:flex;align-items:center;gap:7px;font:800 8px var(--mono);letter-spacing:.12em;color:#20F58A}
+.ztTradeLive i{width:6px;height:6px;border-radius:50%;background:#20F58A;box-shadow:0 0 10px rgba(32,245,138,.65);animation:ztTradePulse 1.7s ease-in-out infinite}
+@keyframes ztTradePulse{50%{opacity:.35;transform:scale(.72)}}
+.ztTradeCore{text-align:center;padding:28px 18px 19px}
+.ztTradeKicker{font:800 8px var(--mono);letter-spacing:.2em;color:#68736e}
+.ztTradeState{margin:8px 0 5px;font:900 clamp(31px,6vw,58px)/.98 var(--mono);letter-spacing:-.045em;color:#d9e0dc;transition:color .35s,text-shadow .35s}
+.ztTradeState.bull,.ztTradeState.strongBull{color:#20F58A;text-shadow:0 0 25px rgba(32,245,138,.11)}
+.ztTradeState.bear,.ztTradeState.strongBear{color:#FF7272;text-shadow:0 0 25px rgba(255,114,114,.10)}
+.ztTradeScore{font:800 10px var(--mono);letter-spacing:.11em;color:#89958f}
+.ztTradeMeter{position:relative;max-width:690px;height:8px;margin:22px auto 9px;border:1px solid #292d29;background:linear-gradient(90deg,#b84f56 0%,rgba(255,114,114,.18) 37%,#343a37 50%,rgba(32,245,138,.18) 63%,#169d59 100%)}
+.ztTradeNeedle{position:absolute;left:50%;top:-6px;width:2px;height:20px;background:#f4f7f5;box-shadow:0 0 10px rgba(255,255,255,.55);transition:left .8s cubic-bezier(.2,.8,.2,1)}
+.ztTradeScale{display:flex;justify-content:space-between;max-width:690px;margin:auto;font:700 7px var(--mono);letter-spacing:.09em;color:#58635e}
+.ztTradeFactors{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #22251f;border-bottom:1px solid #22251f}
+.ztTradeFactor{padding:13px 10px;text-align:center;border-right:1px solid #22251f}
+.ztTradeFactor:last-child{border-right:0}.ztTradeFactor span{display:block;font:700 8px var(--mono);letter-spacing:.11em;color:#66716b;margin-bottom:6px}
+.ztTradeFactor b{font:900 11px var(--mono);color:#cdd5d1}.ztTradeFactor b.pos{color:#20F58A}.ztTradeFactor b.neg{color:#FF7272}.ztTradeFactor b.flat{color:#cdd5d1}
+.ztTradeWhy{padding:13px 16px;font:600 9px/1.65 var(--mono);letter-spacing:.025em;color:#8e9993}
+.ztTradeWhy strong{color:#F4B728;letter-spacing:.08em}
+.ztTradeFoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:9px 16px;border-top:1px solid #22251f;font:700 8px var(--mono);letter-spacing:.09em;color:#5f6964}
+.ztTradeSweep{height:2px;background:#151915;overflow:hidden;position:relative}.ztTradeSweep:after{content:"";position:absolute;top:0;bottom:0;width:24%;background:linear-gradient(90deg,transparent,#20F58A,transparent);animation:ztTradeSweep 3.7s linear infinite;opacity:.6}
+@keyframes ztTradeSweep{from{left:-25%}to{left:105%}}
+.ztTradeDisclaimer{margin:0 0 22px;padding:14px 16px;border:1px solid rgba(244,183,40,.18);border-radius:10px;background:rgba(244,183,40,.025);font:600 9px/1.6 var(--mono);color:#78847e}
+.ztTradeDisclaimer strong{color:#F4B728;letter-spacing:.1em}.ztTradeDisclaimer b{display:block;margin-top:8px;color:#dce3df;letter-spacing:.07em}
+.ztNetworkDivider{display:flex;align-items:center;gap:12px;margin:27px 0 16px;font:800 9px var(--mono);letter-spacing:.15em;color:#6e7973}
+.ztNetworkDivider:before,.ztNetworkDivider:after{content:"";height:1px;flex:1;background:#202821}
+@media(max-width:700px){
+ .ztTradeCore{padding:24px 13px 18px}.ztTradeState{font-size:clamp(29px,9.5vw,42px)}
+ .ztTradeFactors{grid-template-columns:1fr 1fr}.ztTradeFactor:nth-child(2){border-right:0}.ztTradeFactor:nth-child(-n+2){border-bottom:1px solid #22251f}
+ .ztTradeScale{font-size:6px}.ztTradeTop{padding:12px}.ztTradeWhy,.ztTradeFoot,.ztTradeDisclaimer{padding-left:12px;padding-right:12px}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-signal">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
@@ -1255,7 +1297,32 @@ body.ztModalOpen{overflow:hidden}
 <article class="chartbox" data-live-card="price"><div class="charttop"><div><h3>ZEC PRICE // LIVE HISTORY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="priceValue">—</div></div><div class="chartToolbar"><button class="rangeBtn" data-range="24h">24H</button><button class="rangeBtn" data-range="7d">7D</button><button class="rangeBtn active" data-range="1m">30D</button><button class="rangeBtn" data-range="1y">1Y</button></div></div><canvas id="priceChart"></canvas><div class="chartnote" id="priceNote">Public ZEC/USD market history.</div><span class="changeStamp" data-change-stamp="price">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
 <article class="chartbox compositionBox" data-live-card="composition"><div class="charttop"><div><h3>SHIELDED POOL COMPOSITION <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="compositionValue">—</div></div><button class="shareMini" data-share="composition">SHARE ↗</button></div><div aria-live="polite" class="poolComposition" id="compositionChart"></div><div class="chartnote">Live observed balances by shielded pool. Transparent value is excluded from this chart.</div><span class="changeStamp" data-change-stamp="composition">WAITING FOR FIRST VERIFIED READING</span></article>
 <article class="chartbox desktopOnlyChart" data-live-card="blockactivity"><div class="charttop"><div><h3>RECENT BLOCK ACTIVITY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="blockActivityValue">—</div></div><button class="shareMini" data-share="blockactivity">SHARE ↗</button></div><canvas id="blockActivityChart"></canvas><div class="chartnote">Transactions in the newest blocks reported by the live Zcash network feed. Updates when a new source snapshot arrives.</div><span class="changeStamp" data-change-stamp="blockactivity">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
-</div></div></section><section id="dedicated-tools"><div class="wrap"><div class="sectionhead"><div><h2>05 // GO DEEPER</h2><p>Signal, the live block explorer and the cypherpunk archive now live on dedicated pages.</p></div><span class="tag">DEDICATED TOOLS</span></div><div class="deeperCard"><div class="deeperLinks"><a class="btn" href="../signal/">OPEN SIGNAL →</a><a class="btn" href="../explorer/">OPEN EXPLORER →</a><a class="btn" href="../rabbit-hole/">ENTER RABBIT HOLE →</a></div></div></div></section><section class="ztPageSection" id="signal"><div class="wrap"><div class="sectionhead"><div><h2>05 // ZEROTRACE SIGNAL <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Real-time Zcash network activity. No price prediction. No investment advice.</p></div></div><div class="signalVisualShell"><div class="signalStreamCard"><div class="signalStreamHead"><span>LIVE EVENT STREAM //</span><button class="signalRefresh" id="signalRefreshBtn" onclick="manualSignalRefresh()" type="button">CHECK NOW ↻</button></div><div class="signalEventFeed signalEventFeedPrimary" id="signalEventFeed"><div class="signalEventEmpty">WAITING FOR RECENT EVENTS…</div></div><div class="signalStreamFoot"><span id="signalRecentCount">RECENT EVENTS</span><div class="signalTicker" id="signalTicker"><b>●</b> AUTO-UPDATE // —</div></div><div aria-live="polite" class="signalCheckStatus" id="signalCheckStatus"></div></div><div class="signalFlowCards" id="signalFlowCards"><div class="signalFlowCard"><span>SHIELD (24H)</span><b id="signalShield24">—</b><div class="miniBars" id="signalShieldBars"></div></div><div class="signalFlowCard"><span>DESHIELD (24H)</span><b id="signalDeshield24">—</b><div class="miniBars out" id="signalDeshieldBars"></div></div><div class="signalFlowCard"><span>NET (24H)</span><b id="signalNet24">—</b><div class="miniBars" id="signalNetBars"></div></div></div><div class="signalBottomStats"><div><span>SHIELDED POOL</span><b id="signalPoolNow">—</b><small id="signalPoolPct">—</small></div><div><span>TX (24H)</span><b id="signalTx24">—</b></div><div><span>BLOCKS / 24H</span><b id="signalBlocks24">—</b></div></div><div aria-hidden="true" class="signalHiddenData"><span id="signalStamp"></span><div id="signalLiveReadout"></div><b id="sigShield"></b><small id="sigShieldMeta"></small><b id="sigDeshield"></b><small id="sigDeshieldMeta"></small><b id="sigPool24"></b><small id="sigPoolMeta"></small><span id="signalBody"></span><span id="signalFreshness"></span><span id="signalWhy"></span><div id="signalMetrics"></div><span id="tapeTip"></span><span id="tapeBlockAge"></span><span id="tapeSource"></span><span id="tapeSourceAge"></span><span id="tapeBoundary"></span><span id="tapeBias"></span></div></div></div></section><section id="blocks"><div class="wrap"><div class="sectionhead"><div><h2>06 // LIVE BLOCK EXPLORER <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Watch the newest Zcash blocks arrive. Tap any block to inspect what the live feed can verify.</p></div><span class="tag">LIVE CHAIN</span></div><div class="blockExplorerShell"><div class="blockPulse" id="blockPulse"><div class="blockPulseItem"><span>CHAIN TIP</span><b id="beTip">—</b></div><div class="blockPulseItem"><span>AVG BLOCK TIME</span><b id="beBlockTime">—</b></div><div class="blockPulseItem"><span>LAST BLOCK AGE</span><b id="beLastBlockAge">—</b></div><div class="blockPulseItem"><span>RECENT AVG TX</span><b id="beAvgTx">—</b></div></div><div class="blocks" id="blocksTable"><div class="blockRow header"><span>HEIGHT</span><span>AGE</span><span>TX COUNT</span><span>SIZE</span></div><div class="blockRow"><span class="blockHeight">—</span><span>waiting</span><span>—</span><span>—</span></div></div><div aria-live="polite" class="blockInspector" id="blockInspector"><div class="blockInspectorEmpty"><span>BLOCK INSPECTOR //</span><b>SELECT A BLOCK</b><p>Tap a recent block above for a verified breakdown.</p></div></div><div class="blockExplorerFoot"><span id="blockExplorerFreshness">SOURCE UPDATED —</span><span>DATA: ZECSTATS // CC BY 4.0</span></div></div></div></section><section id="rabbit-hole"><div class="wrap"><div class="sectionhead"><div><h2>07 // CYPHERPUNK RABBIT HOLE</h2><p>A compact, source-linked trail through privacy, digital cash and the research path that eventually reaches Zcash.</p></div><span class="tag">HISTORY // VERIFY</span></div><div class="rabbitIntro"><span class="eyebrow">THE ARCHIVE</span><h3>YOU MADE IT THIS FAR.<br/><span class="g">WANT TO KNOW HOW WE GOT HERE?</span></h3><p>Follow the ideas. Read the originals. Verify the history. Earlier entries are broader intellectual or technical context; Zerocoin → Zerocash → Zcash is a direct research and project lineage.</p><button aria-controls="rabbitBody" aria-expanded="false" class="rabbitEnter" id="rabbitEnter" type="button">ENTER THE RABBIT HOLE ↓</button></div><div class="rabbitBody" id="rabbitBody"><div class="rabbitNote">DON'T TRUST OUR VERSION OF HISTORY. VERIFY IT. Each entry separates what happened from why it matters, and links to source material.</div><div class="rabbitTimeline">
+</div></div></section><section id="dedicated-tools"><div class="wrap"><div class="sectionhead"><div><h2>05 // GO DEEPER</h2><p>Signal, the live block explorer and the cypherpunk archive now live on dedicated pages.</p></div><span class="tag">DEDICATED TOOLS</span></div><div class="deeperCard"><div class="deeperLinks"><a class="btn" href="../signal/">OPEN SIGNAL →</a><a class="btn" href="../explorer/">OPEN EXPLORER →</a><a class="btn" href="../rabbit-hole/">ENTER RABBIT HOLE →</a></div></div></div></section><section class="ztPageSection" id="signal"><div class="wrap"><div class="sectionhead"><div><h2>05 // ZEROTRACE SIGNAL <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Real-time Zcash network activity. No price prediction. No investment advice.</p></div></div>
+<div class="ztTradeSignal" id="ztTradeSignal">
+  <div class="ztTradeTop">
+    <div class="ztTradeTitle">MARKET SIGNAL // ZEC-USD</div>
+    <div class="ztTradeLive"><i></i><span id="ztTradeFeed">LIVE MARKET</span></div>
+  </div>
+  <div class="ztTradeCore">
+    <div class="ztTradeKicker">QUANTITATIVE MARKET READOUT</div>
+    <div class="ztTradeState" id="ztTradeState">CALCULATING</div>
+    <div class="ztTradeScore">SIGNAL STRENGTH // <span id="ztTradeScore">—</span> / 100</div>
+    <div class="ztTradeMeter"><i class="ztTradeNeedle" id="ztTradeNeedle"></i></div>
+    <div class="ztTradeScale"><span>STRONG BEARISH</span><span>NEUTRAL</span><span>STRONG BULLISH</span></div>
+  </div>
+  <div class="ztTradeSweep"></div>
+  <div class="ztTradeFactors">
+    <div class="ztTradeFactor"><span>MOMENTUM</span><b id="ztMomentum">—</b></div>
+    <div class="ztTradeFactor"><span>TREND</span><b id="ztTrend">—</b></div>
+    <div class="ztTradeFactor"><span>VOLUME</span><b id="ztVolume">—</b></div>
+    <div class="ztTradeFactor"><span>VOLATILITY</span><b id="ztVolatility">—</b></div>
+  </div>
+  <div class="ztTradeWhy"><strong>WHY IT'S FIRING //</strong> <span id="ztTradeWhy">Waiting for verified market data.</span></div>
+  <div class="ztTradeFoot"><span>MODEL // MOMENTUM + TREND + VOLUME + VOLATILITY FILTER</span><span id="ztTradeStamp">UPDATED // —</span></div>
+</div>
+<div class="ztTradeDisclaimer"><strong>DISCLAIMER //</strong> ZeroTrace signals are quantitative indicators generated from market data for informational and educational purposes only. They are not financial, investment, or trading advice and do not constitute a recommendation to buy or sell any asset. Crypto markets are volatile. Verify the data and make your own decisions.<b>DON'T TRUST THE SIGNAL. VERIFY WHY IT'S FIRING.</b></div>
+<div class="ztNetworkDivider">NETWORK SIGNAL // LIVE ZCASH ACTIVITY</div>
+<div class="signalVisualShell"><div class="signalStreamCard"><div class="signalStreamHead"><span>LIVE EVENT STREAM //</span><button class="signalRefresh" id="signalRefreshBtn" onclick="manualSignalRefresh()" type="button">CHECK NOW ↻</button></div><div class="signalEventFeed signalEventFeedPrimary" id="signalEventFeed"><div class="signalEventEmpty">WAITING FOR RECENT EVENTS…</div></div><div class="signalStreamFoot"><span id="signalRecentCount">RECENT EVENTS</span><div class="signalTicker" id="signalTicker"><b>●</b> AUTO-UPDATE // —</div></div><div aria-live="polite" class="signalCheckStatus" id="signalCheckStatus"></div></div><div class="signalFlowCards" id="signalFlowCards"><div class="signalFlowCard"><span>SHIELD (24H)</span><b id="signalShield24">—</b><div class="miniBars" id="signalShieldBars"></div></div><div class="signalFlowCard"><span>DESHIELD (24H)</span><b id="signalDeshield24">—</b><div class="miniBars out" id="signalDeshieldBars"></div></div><div class="signalFlowCard"><span>NET (24H)</span><b id="signalNet24">—</b><div class="miniBars" id="signalNetBars"></div></div></div><div class="signalBottomStats"><div><span>SHIELDED POOL</span><b id="signalPoolNow">—</b><small id="signalPoolPct">—</small></div><div><span>TX (24H)</span><b id="signalTx24">—</b></div><div><span>BLOCKS / 24H</span><b id="signalBlocks24">—</b></div></div><div aria-hidden="true" class="signalHiddenData"><span id="signalStamp"></span><div id="signalLiveReadout"></div><b id="sigShield"></b><small id="sigShieldMeta"></small><b id="sigDeshield"></b><small id="sigDeshieldMeta"></small><b id="sigPool24"></b><small id="sigPoolMeta"></small><span id="signalBody"></span><span id="signalFreshness"></span><span id="signalWhy"></span><div id="signalMetrics"></div><span id="tapeTip"></span><span id="tapeBlockAge"></span><span id="tapeSource"></span><span id="tapeSourceAge"></span><span id="tapeBoundary"></span><span id="tapeBias"></span></div></div></div></section><section id="blocks"><div class="wrap"><div class="sectionhead"><div><h2>06 // LIVE BLOCK EXPLORER <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Watch the newest Zcash blocks arrive. Tap any block to inspect what the live feed can verify.</p></div><span class="tag">LIVE CHAIN</span></div><div class="blockExplorerShell"><div class="blockPulse" id="blockPulse"><div class="blockPulseItem"><span>CHAIN TIP</span><b id="beTip">—</b></div><div class="blockPulseItem"><span>AVG BLOCK TIME</span><b id="beBlockTime">—</b></div><div class="blockPulseItem"><span>LAST BLOCK AGE</span><b id="beLastBlockAge">—</b></div><div class="blockPulseItem"><span>RECENT AVG TX</span><b id="beAvgTx">—</b></div></div><div class="blocks" id="blocksTable"><div class="blockRow header"><span>HEIGHT</span><span>AGE</span><span>TX COUNT</span><span>SIZE</span></div><div class="blockRow"><span class="blockHeight">—</span><span>waiting</span><span>—</span><span>—</span></div></div><div aria-live="polite" class="blockInspector" id="blockInspector"><div class="blockInspectorEmpty"><span>BLOCK INSPECTOR //</span><b>SELECT A BLOCK</b><p>Tap a recent block above for a verified breakdown.</p></div></div><div class="blockExplorerFoot"><span id="blockExplorerFreshness">SOURCE UPDATED —</span><span>DATA: ZECSTATS // CC BY 4.0</span></div></div></div></section><section id="rabbit-hole"><div class="wrap"><div class="sectionhead"><div><h2>07 // CYPHERPUNK RABBIT HOLE</h2><p>A compact, source-linked trail through privacy, digital cash and the research path that eventually reaches Zcash.</p></div><span class="tag">HISTORY // VERIFY</span></div><div class="rabbitIntro"><span class="eyebrow">THE ARCHIVE</span><h3>YOU MADE IT THIS FAR.<br/><span class="g">WANT TO KNOW HOW WE GOT HERE?</span></h3><p>Follow the ideas. Read the originals. Verify the history. Earlier entries are broader intellectual or technical context; Zerocoin → Zerocash → Zcash is a direct research and project lineage.</p><button aria-controls="rabbitBody" aria-expanded="false" class="rabbitEnter" id="rabbitEnter" type="button">ENTER THE RABBIT HOLE ↓</button></div><div class="rabbitBody" id="rabbitBody"><div class="rabbitNote">DON'T TRUST OUR VERSION OF HISTORY. VERIFY IT. Each entry separates what happened from why it matters, and links to source material.</div><div class="rabbitTimeline">
 <article class="archiveItem"><button aria-expanded="false" class="archiveBtn" type="button"><span class="archiveYear">1982</span><span class="archiveName"><strong>DAVID CHAUM</strong><span>BLIND SIGNATURES FOR UNTRACEABLE PAYMENTS</span></span><span class="archiveArrow">+</span></button><div class="archiveDetail"><div class="archiveGrid"><div><h4>WHAT HAPPENED</h4><p>David Chaum published a blind-signature construction for privacy-preserving electronic payments, addressing how digital payment systems could avoid exposing a person's payment history.</p></div><div><h4>WHY IT MATTERS</h4><p>This is foundational private-digital-cash research. It is broad cryptographic lineage, not a claim that Chaum was building Zcash.</p></div></div><div class="archiveSources"><a class="archiveSource" href="https://chaum.com/wp-content/uploads/2022/01/Chaum-blind-signatures.pdf" rel="noopener" target="_blank">READ PAPER ↗</a></div></div></article>
 <article class="archiveItem"><button aria-expanded="false" class="archiveBtn" type="button"><span class="archiveYear">1993</span><span class="archiveName"><strong>ERIC HUGHES</strong><span>A CYPHERPUNK'S MANIFESTO</span></span><span class="archiveArrow">+</span></button><div class="archiveDetail"><div class="archiveGrid"><div><h4>WHAT HAPPENED</h4><p>Eric Hughes published A Cypherpunk's Manifesto on March 9, 1993, arguing for privacy through cryptography and systems that let people selectively reveal themselves.</p></div><div><h4>WHY IT MATTERS</h4><p>It captures the philosophy behind building privacy tools rather than merely asking institutions for privacy. This is ideological context, not a direct Zcash predecessor.</p></div></div><div class="archiveSources"><a class="archiveSource" href="https://cypherpunks.to/" rel="noopener" target="_blank">READ ORIGINAL ↗</a></div></div></article>
 <article class="archiveItem"><button aria-expanded="false" class="archiveBtn" type="button"><span class="archiveYear">1997</span><span class="archiveName"><strong>ADAM BACK</strong><span>HASHCASH</span></span><span class="archiveArrow">+</span></button><div class="archiveDetail"><div class="archiveGrid"><div><h4>WHAT HAPPENED</h4><p>Adam Back's Hashcash work introduced a computational proof-of-work mechanism originally aimed at limiting email abuse. The later Hashcash paper cites the original publication as May 1997.</p></div><div><h4>THE CONNECTION</h4><p>Bitcoin explicitly cites Hashcash and adapts proof of work as part of its consensus design. Hashcash belongs in the Bitcoin technical lineage, not as a privacy mechanism that directly became Zcash.</p></div></div><div class="archiveSources"><a class="archiveSource" href="https://nakamotoinstitute.org/library/hashcash/" rel="noopener" target="_blank">VERIFY HASHCASH ↗</a></div></div></article>
@@ -1613,6 +1680,71 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
  modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
  go?.addEventListener('click',()=>{window.location.href=pending||'../mine/'});
+})();
+</script>
+
+
+<script>
+/* SIGNAL V8.33.0 // transparent market signal. No synthetic fallback. */
+(function(){
+  const ZT_MARKET_API='https://api.exchange.coinbase.com/products/ZEC-USD/candles';
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const avg=a=>a.length?a.reduce((s,x)=>s+x,0)/a.length:0;
+  const pc=(a,b)=>b?((a/b)-1)*100:0;
+
+  async function ztCandles(){
+    const end=new Date(),start=new Date(end.getTime()-220*3600*1000);
+    const u=ZT_MARKET_API+'?granularity=3600&start='+encodeURIComponent(start.toISOString())+'&end='+encodeURIComponent(end.toISOString());
+    const r=await fetch(u,{cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const rows=await r.json();
+    return rows.sort((a,b)=>a[0]-b[0]).map(x=>({close:+x[4],vol:+x[5]}));
+  }
+  function setFactor(id,val){
+    const e=document.getElementById(id);if(!e)return;
+    const text=val>12?'BULLISH':val<-12?'BEARISH':'NEUTRAL';
+    e.textContent=text;e.className=val>12?'pos':val<-12?'neg':'flat';
+  }
+  async function updateZTTradeSignal(){
+    try{
+      const c=await ztCandles();
+      if(c.length<100)throw new Error('insufficient candles');
+      const closes=c.map(x=>x.close),vols=c.map(x=>x.vol),last=closes.at(-1);
+      const r6=pc(last,closes.at(-7)),r24=pc(last,closes.at(-25)),r72=pc(last,closes.at(-73));
+      const momentum=clamp(r6*7+r24*3+r72*1.2,-100,100);
+      const ma20=avg(closes.slice(-20)),ma50=avg(closes.slice(-50)),ma100=avg(closes.slice(-100));
+      const trend=clamp(((last/ma20-1)*900)+((ma20/ma50-1)*700)+((ma50/ma100-1)*450),-100,100);
+      const vNow=avg(vols.slice(-6)),vBase=avg(vols.slice(-48)),dir=Math.sign(r6*.65+r24*.35)||0;
+      const volume=clamp(((vNow/(vBase||1))-1)*65*dir,-100,100);
+      const rets=closes.slice(-25).map((v,i,a)=>i?pc(v,a[i-1]):0).slice(1);
+      const mean=avg(rets),sd=Math.sqrt(avg(rets.map(x=>(x-mean)**2)));
+      const penalty=clamp((sd-1.2)*18,0,28);
+      let raw=(momentum*.38)+(trend*.38)+(volume*.16); raw*=1-penalty/100;
+      const score=Math.round(clamp(50+raw/2,0,100));
+      const label=score>=80?'STRONG BULLISH':score>=60?'BULLISH':score>40?'NEUTRAL':score>20?'BEARISH':'STRONG BEARISH';
+      const state=document.getElementById('ztTradeState');
+      state.textContent=label;
+      state.className='ztTradeState '+(score>=80?'strongBull':score>=60?'bull':score>40?'':score>20?'bear':'strongBear');
+      document.getElementById('ztTradeScore').textContent=score;
+      document.getElementById('ztTradeNeedle').style.left=score+'%';
+      setFactor('ztMomentum',momentum);setFactor('ztTrend',trend);setFactor('ztVolume',volume);
+      const ve=document.getElementById('ztVolatility');
+      ve.textContent=sd>2.2?'HIGH':sd>1.2?'ELEVATED':'NORMAL';
+      ve.className=sd>2.2?'neg':sd>1.2?'flat':'pos';
+      document.getElementById('ztTradeWhy').textContent=
+        `6H ${r6>=0?'+':''}${r6.toFixed(2)}% · 24H ${r24>=0?'+':''}${r24.toFixed(2)}% · `+
+        `${last>ma20?'price above':'price below'} 20H trend · ${vNow>vBase?'short-term volume elevated':'volume near/below baseline'}`;
+      document.getElementById('ztTradeStamp').textContent='UPDATED // '+new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'});
+      document.getElementById('ztTradeFeed').textContent='LIVE MARKET';
+    }catch(err){
+      const state=document.getElementById('ztTradeState');
+      if(state){state.textContent='SIGNAL WITHHELD';state.className='ztTradeState'}
+      const why=document.getElementById('ztTradeWhy');if(why)why.textContent='Market feed unavailable. ZeroTrace will not fabricate a signal.';
+      const feed=document.getElementById('ztTradeFeed');if(feed)feed.textContent='FEED UNAVAILABLE';
+    }
+  }
+  setTimeout(updateZTTradeSignal,700);
+  setInterval(updateZTTradeSignal,60000);
 })();
 </script>
 
