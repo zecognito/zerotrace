@@ -1212,7 +1212,7 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
 .ztTradeSweep{height:2px;background:#151915;overflow:hidden;position:relative}.ztTradeSweep:after{content:"";position:absolute;top:0;bottom:0;width:24%;background:linear-gradient(90deg,transparent,#20F58A,transparent);animation:ztTradeSweep 3.7s linear infinite;opacity:.6}
 @keyframes ztTradeSweep{from{left:-25%}to{left:105%}}
 
-/* SIGNAL V8.34.0 // real-time executed ZEC-USD order flow */
+/* SIGNAL V8.35.0 // stacked real-time spot + perp order flow */
 .ztOrderFlow{margin:0 0 22px;border:1px solid #2b2a22;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,rgba(15,17,15,.98),rgba(8,10,9,.98));box-shadow:0 18px 60px rgba(0,0,0,.18)}
 .ztOrderTop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid #22251f}
 .ztOrderTitle{font:900 10px var(--mono);letter-spacing:.13em;color:#e5e9e7}.ztOrderLive{display:flex;align-items:center;gap:7px;font:800 8px var(--mono);letter-spacing:.1em;color:#20F58A}.ztOrderLive i{width:7px;height:7px;border-radius:50%;background:#20F58A;box-shadow:0 0 0 0 rgba(32,245,138,.45);animation:ztOrderPulse 1.7s infinite}
@@ -1337,7 +1337,7 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
 </div>
 <div class="ztTradeDisclaimer"><strong>DISCLAIMER //</strong> ZeroTrace signals are quantitative indicators generated from market data for informational and educational purposes only. They are not financial, investment, or trading advice and do not constitute a recommendation to buy or sell any asset. Crypto markets are volatile. Verify the data and make your own decisions.<b>DON'T TRUST THE SIGNAL. VERIFY WHY IT'S FIRING.</b></div>
 <div class="ztOrderFlow" id="ztOrderFlow">
-  <div class="ztOrderTop"><div class="ztOrderTitle">ORDER FLOW // ZEC-USD</div><div class="ztOrderLive"><i></i><span id="ztOrderFeed">CONNECTING</span></div></div>
+  <div class="ztOrderTop"><div class="ztOrderTitle">SPOT ORDER FLOW // ZEC-USD</div><div class="ztOrderLive"><i></i><span id="ztOrderFeed">CONNECTING</span></div></div>
   <div class="ztOrderCore">
     <div class="ztOrderWindow">EXECUTED TRADES // ROLLING 5 MINUTES</div>
     <div class="ztOrderNumbers">
@@ -1350,7 +1350,23 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
   </div>
   <div class="ztOrderTape" id="ztOrderTape" aria-hidden="true"></div>
   <div class="ztOrderStats"><div class="ztOrderStat"><span>BUY VOLUME</span><b class="buy" id="ztBuyVolStat">—</b></div><div class="ztOrderStat"><span>NET PRESSURE</span><b id="ztNetPressure">—</b></div><div class="ztOrderStat"><span>SELL VOLUME</span><b class="sell" id="ztSellVolStat">—</b></div></div>
-  <div class="ztOrderFoot"><span>REAL EXECUTED TRADES // COINBASE</span><span id="ztOrderStamp">WAITING FOR TRADE</span></div>
+  <div class="ztOrderFoot"><span>REAL EXECUTED SPOT TRADES // COINBASE</span><span id="ztOrderStamp">WAITING FOR TRADE</span></div>
+</div>
+<div class="ztOrderFlow" id="ztPerpOrderFlow">
+  <div class="ztOrderTop"><div class="ztOrderTitle">PERP ORDER FLOW // ZEC-PERP · USDC</div><div class="ztOrderLive"><i></i><span id="ztPerpOrderFeed">CONNECTING</span></div></div>
+  <div class="ztOrderCore">
+    <div class="ztOrderWindow">EXECUTED TRADES // ROLLING 5 MINUTES</div>
+    <div class="ztOrderNumbers">
+      <div class="ztOrderSide buy"><span>BUY</span><b id="ztPerpBuyPct">—</b></div>
+      <div class="ztOrderPrice">LAST PRICE<b id="ztPerpFlowPrice">—</b></div>
+      <div class="ztOrderSide sell"><span>SELL</span><b id="ztPerpSellPct">—</b></div>
+    </div>
+    <div class="ztOrderBar"><i class="ztOrderBuyBar" id="ztPerpBuyBar" style="width:50%"></i><i class="ztOrderSellBar" id="ztPerpSellBar" style="width:50%"></i></div>
+    <div class="ztOrderPct"><span class="buy" id="ztPerpBuyVol">BUY // — ZEC</span><span class="sell" id="ztPerpSellVol">SELL // — ZEC</span></div>
+  </div>
+  <div class="ztOrderTape" id="ztPerpOrderTape" aria-hidden="true"></div>
+  <div class="ztOrderStats"><div class="ztOrderStat"><span>BUY VOLUME</span><b class="buy" id="ztPerpBuyVolStat">—</b></div><div class="ztOrderStat"><span>NET PRESSURE</span><b id="ztPerpNetPressure">—</b></div><div class="ztOrderStat"><span>SELL VOLUME</span><b class="sell" id="ztPerpSellVolStat">—</b></div></div>
+  <div class="ztOrderFoot"><span>REAL EXECUTED PERP TRADES // COINBASE · USDC</span><span id="ztPerpOrderStamp">WAITING FOR TRADE</span></div>
 </div>
 <div class="ztNetworkDivider">NETWORK SIGNAL // LIVE ZCASH ACTIVITY</div>
 <div class="signalVisualShell"><div class="signalStreamCard"><div class="signalStreamHead"><span>LIVE EVENT STREAM //</span><button class="signalRefresh" id="signalRefreshBtn" onclick="manualSignalRefresh()" type="button">CHECK NOW ↻</button></div><div class="signalEventFeed signalEventFeedPrimary" id="signalEventFeed"><div class="signalEventEmpty">WAITING FOR RECENT EVENTS…</div></div><div class="signalStreamFoot"><span id="signalRecentCount">RECENT EVENTS</span><div class="signalTicker" id="signalTicker"><b>●</b> AUTO-UPDATE // —</div></div><div aria-live="polite" class="signalCheckStatus" id="signalCheckStatus"></div></div><div class="signalFlowCards" id="signalFlowCards"><div class="signalFlowCard"><span>SHIELD (24H)</span><b id="signalShield24">—</b><div class="miniBars" id="signalShieldBars"></div></div><div class="signalFlowCard"><span>DESHIELD (24H)</span><b id="signalDeshield24">—</b><div class="miniBars out" id="signalDeshieldBars"></div></div><div class="signalFlowCard"><span>NET (24H)</span><b id="signalNet24">—</b><div class="miniBars" id="signalNetBars"></div></div></div><div class="signalBottomStats"><div><span>SHIELDED POOL</span><b id="signalPoolNow">—</b><small id="signalPoolPct">—</small></div><div><span>TX (24H)</span><b id="signalTx24">—</b></div><div><span>BLOCKS / 24H</span><b id="signalBlocks24">—</b></div></div><div aria-hidden="true" class="signalHiddenData"><span id="signalStamp"></span><div id="signalLiveReadout"></div><b id="sigShield"></b><small id="sigShieldMeta"></small><b id="sigDeshield"></b><small id="sigDeshieldMeta"></small><b id="sigPool24"></b><small id="sigPoolMeta"></small><span id="signalBody"></span><span id="signalFreshness"></span><span id="signalWhy"></span><div id="signalMetrics"></div><span id="tapeTip"></span><span id="tapeBlockAge"></span><span id="tapeSource"></span><span id="tapeSourceAge"></span><span id="tapeBoundary"></span><span id="tapeBias"></span></div></div></div></section><section id="blocks"><div class="wrap"><div class="sectionhead"><div><h2>06 // LIVE BLOCK EXPLORER <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Watch the newest Zcash blocks arrive. Tap any block to inspect what the live feed can verify.</p></div><span class="tag">LIVE CHAIN</span></div><div class="blockExplorerShell"><div class="blockPulse" id="blockPulse"><div class="blockPulseItem"><span>CHAIN TIP</span><b id="beTip">—</b></div><div class="blockPulseItem"><span>AVG BLOCK TIME</span><b id="beBlockTime">—</b></div><div class="blockPulseItem"><span>LAST BLOCK AGE</span><b id="beLastBlockAge">—</b></div><div class="blockPulseItem"><span>RECENT AVG TX</span><b id="beAvgTx">—</b></div></div><div class="blocks" id="blocksTable"><div class="blockRow header"><span>HEIGHT</span><span>AGE</span><span>TX COUNT</span><span>SIZE</span></div><div class="blockRow"><span class="blockHeight">—</span><span>waiting</span><span>—</span><span>—</span></div></div><div aria-live="polite" class="blockInspector" id="blockInspector"><div class="blockInspectorEmpty"><span>BLOCK INSPECTOR //</span><b>SELECT A BLOCK</b><p>Tap a recent block above for a verified breakdown.</p></div></div><div class="blockExplorerFoot"><span id="blockExplorerFreshness">SOURCE UPDATED —</span><span>DATA: ZECSTATS // CC BY 4.0</span></div></div></div></section><section id="rabbit-hole"><div class="wrap"><div class="sectionhead"><div><h2>07 // CYPHERPUNK RABBIT HOLE</h2><p>A compact, source-linked trail through privacy, digital cash and the research path that eventually reaches Zcash.</p></div><span class="tag">HISTORY // VERIFY</span></div><div class="rabbitIntro"><span class="eyebrow">THE ARCHIVE</span><h3>YOU MADE IT THIS FAR.<br/><span class="g">WANT TO KNOW HOW WE GOT HERE?</span></h3><p>Follow the ideas. Read the originals. Verify the history. Earlier entries are broader intellectual or technical context; Zerocoin → Zerocash → Zcash is a direct research and project lineage.</p><button aria-controls="rabbitBody" aria-expanded="false" class="rabbitEnter" id="rabbitEnter" type="button">ENTER THE RABBIT HOLE ↓</button></div><div class="rabbitBody" id="rabbitBody"><div class="rabbitNote">DON'T TRUST OUR VERSION OF HISTORY. VERIFY IT. Each entry separates what happened from why it matters, and links to source material.</div><div class="rabbitTimeline">
@@ -1755,6 +1771,47 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   setInterval(render,1000);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1))connect()});
   connect();render();
+})();
+</script>
+
+<script>
+/* SIGNAL V8.35.0 // Coinbase Advanced public ZEC perpetual executed flow, rolling 5m. */
+(function(){
+  const WS='wss://advanced-trade-ws.coinbase.com', PRODUCT='ZEC-PERP-INTX', WINDOW=5*60*1000, MAX_TICKS=42;
+  let socket=null,retry=null,trades=[],lastPrice=null;
+  const $=id=>document.getElementById(id), fmt=n=>n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2});
+  function flash(el){if(!el)return;el.style.transform='scale(1.045)';el.style.opacity='.72';setTimeout(()=>{el.style.transform='';el.style.opacity=''},120)}
+  function prune(){const cut=Date.now()-WINDOW;trades=trades.filter(t=>t.ts>=cut)}
+  function render(){
+    prune();let buy=0,sell=0;for(const t of trades)(t.side==='BUY'?buy+=t.size:sell+=t.size);
+    const total=buy+sell,bp=total?buy/total*100:50,sp=100-bp,net=buy-sell;
+    $('ztPerpBuyPct').textContent=total?bp.toFixed(0)+'%':'—';$('ztPerpSellPct').textContent=total?sp.toFixed(0)+'%':'—';
+    $('ztPerpBuyBar').style.width=bp+'%';$('ztPerpSellBar').style.width=sp+'%';
+    $('ztPerpBuyVol').textContent='BUY // '+(total?fmt(buy):'—')+' ZEC';$('ztPerpSellVol').textContent='SELL // '+(total?fmt(sell):'—')+' ZEC';
+    $('ztPerpBuyVolStat').textContent=total?fmt(buy)+' ZEC':'—';$('ztPerpSellVolStat').textContent=total?fmt(sell)+' ZEC':'—';
+    const ne=$('ztPerpNetPressure');ne.textContent=total?(net>=0?'+':'')+fmt(net)+' ZEC '+(net>0?'BUY':net<0?'SELL':'EVEN'):'—';ne.className=net>0?'buy':net<0?'sell':'';
+    if(lastPrice!=null)$('ztPerpFlowPrice').textContent='$'+lastPrice.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+  function tick(side,size){const tape=$('ztPerpOrderTape');if(!tape)return;const i=document.createElement('i');i.className='ztOrderTick '+side.toLowerCase();i.style.height=Math.max(5,Math.min(22,5+Math.log10(1+size)*9))+'px';tape.appendChild(i);while(tape.children.length>MAX_TICKS)tape.firstChild.remove()}
+  function addTrade(t){
+    const size=+(t.size??t.trade_size),price=+t.price;if(!(size>0)||!(price>0))return;
+    // Advanced Trade market_trades reports maker side, so invert it for aggressive executed BUY/SELL flow.
+    const maker=String(t.side||'').toUpperCase(),side=maker==='SELL'?'BUY':maker==='BUY'?'SELL':null;if(!side)return;
+    const ts=t.time?Date.parse(t.time):Date.now();trades.push({ts:Number.isFinite(ts)?ts:Date.now(),size,side});lastPrice=price;
+    tick(side,size);flash($(side==='BUY'?'ztPerpBuyPct':'ztPerpSellPct'));$('ztPerpOrderStamp').textContent='LAST TRADE // '+new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'});render();
+  }
+  function connect(){
+    clearTimeout(retry);try{socket?.close()}catch(e){};$('ztPerpOrderFeed').textContent='CONNECTING';socket=new WebSocket(WS);
+    socket.onopen=()=>{
+      socket.send(JSON.stringify({type:'subscribe',product_ids:[PRODUCT],channel:'market_trades'}));
+      socket.send(JSON.stringify({type:'subscribe',channel:'heartbeats'}));
+      $('ztPerpOrderFeed').textContent='LIVE TRADES';
+    };
+    socket.onmessage=e=>{try{const m=JSON.parse(e.data);if(m.channel!=='market_trades')return;for(const ev of (m.events||[]))for(const t of (ev.trades||[]))if(t.product_id===PRODUCT)addTrade(t)}catch(_){}};
+    socket.onerror=()=>{$('ztPerpOrderFeed').textContent='RECONNECTING'};
+    socket.onclose=()=>{if(document.visibilityState==='visible'){$('ztPerpOrderFeed').textContent='RECONNECTING';retry=setTimeout(connect,2500)}};
+  }
+  setInterval(render,1000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&(!socket||socket.readyState>1))connect()});connect();render();
 })();
 </script>
 
