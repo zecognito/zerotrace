@@ -1172,6 +1172,14 @@ body.ztModalOpen{overflow:hidden}
 .ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
 @media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
 </style>
+
+<style id="zt-desktop-header-match-v1">
+/* Desktop-only header normalization. Mobile rules remain untouched. */
+@media (min-width:761px){
+  .navlinks,.supportTop{display:none!important}
+  .menuBtn{display:flex!important}
+}
+</style>
 </head>
 <body class="ztLoading homePage ztDedicated page-resources">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
