@@ -224,6 +224,14 @@ header{position:relative;z-index:50}
 .ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
 @media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
 </style>
+
+<style id="zt-desktop-header-match-v1">
+/* Desktop-only header normalization. Mobile rules remain untouched. */
+@media (min-width:761px){
+  .navlinks,.supportTop{display:none!important}
+  .menuBtn{display:flex!important}
+}
+</style>
 </head><body><header>
   <div class="wrap nav ztSupportNav">
     <a class="ztWordmark" href="../" aria-label="ZeroTrace home">ZEROTRACE<span>//</span></a>
