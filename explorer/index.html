@@ -1146,9 +1146,49 @@ body.ztModalOpen{overflow:hidden}
 }
 </style>
 
+<style id="zt-universal-menu-v1">
+/* ZeroTrace universal navigation — same component on every page */
+.mobileMenu.ztUniversalMenu{
+  display:none!important;position:fixed!important;top:76px!important;right:max(18px,calc((100vw - 1180px)/2))!important;left:auto!important;
+  width:min(340px,calc(100vw - 28px))!important;max-height:calc(100vh - 96px)!important;overflow:auto!important;
+  padding:15px!important;border:1px solid rgba(244,183,40,.34)!important;border-radius:14px!important;
+  background:linear-gradient(155deg,rgba(8,12,15,.985),rgba(3,6,8,.995))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.72),inset 3px 0 0 rgba(244,183,40,.88),inset 0 1px 0 rgba(255,255,255,.025)!important;
+  z-index:100000!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.mobileMenu.ztUniversalMenu.open{display:block!important;animation:ztNavIn .16s ease-out both}
+@keyframes ztNavIn{from{opacity:0;transform:translateY(-7px) scale(.985)}to{opacity:1;transform:none}}
+.ztUniversalMenu .ztNavHeader{display:flex;align-items:center;gap:7px;padding:7px 10px 12px!important;font-family:monospace!important;font-size:10px!important;letter-spacing:.13em!important}
+.ztUniversalMenu .ztNavHeader span{color:#eef4f0!important;font-weight:900!important}.ztUniversalMenu .ztNavHeader b{color:#F4B728!important;font-weight:900!important}
+.ztUniversalMenu .ztNavRule{height:1px;background:linear-gradient(90deg,#F4B728,rgba(244,183,40,.08));margin:0 8px 7px}
+.mobileMenu.ztUniversalMenu a{display:grid!important;grid-template-columns:28px minmax(0,1fr) 16px!important;align-items:center!important;gap:8px!important;
+  min-height:43px!important;margin:2px 0!important;padding:0 10px!important;border:1px solid transparent!important;border-radius:8px!important;
+  background:transparent!important;color:#c0cbc5!important;text-decoration:none!important;font-family:monospace!important;font-size:10px!important;font-weight:800!important;line-height:1.15!important;letter-spacing:.065em!important;transition:.14s ease!important}
+.mobileMenu.ztUniversalMenu a:hover,.mobileMenu.ztUniversalMenu a:focus-visible{color:#fff!important;border-color:rgba(244,183,40,.2)!important;background:rgba(244,183,40,.055)!important;transform:translateX(2px)}
+.mobileMenu.ztUniversalMenu a .ztNavNo{color:#69756f!important;font-size:9px!important;letter-spacing:.08em!important}.mobileMenu.ztUniversalMenu a:hover .ztNavNo{color:#F4B728!important}
+.mobileMenu.ztUniversalMenu a>b{color:#F4B728!important;font-size:13px!important;text-align:right!important}.ztUniversalMenu .ztNavGap{height:7px;margin:4px 8px;border-top:1px solid rgba(255,255,255,.045)}
+.ztUniversalMenu .ztNavMine{border-color:rgba(244,183,40,.12)!important;background:rgba(244,183,40,.025)!important}
+.ztUniversalMenu .ztNavFooter{display:flex;align-items:center;gap:9px;margin:10px 8px 2px;padding-top:11px;border-top:1px solid rgba(244,183,40,.14);color:#68746e;font:700 8px/1.3 monospace;letter-spacing:.1em}
+.ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
+@media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
+</style>
 </head>
 <body class="ztLoading homePage ztDedicated page-explorer">
-<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu" id="mobileMenu"><a href="../" onclick="closeMenu()">HOME</a><a href="../signal/" onclick="closeMenu()">SIGNAL</a><a href="../explorer/" onclick="closeMenu()">EXPLORER</a><a href="../rabbit-hole/" onclick="closeMenu()">RABBIT HOLE</a><a href="../resources/" onclick="closeMenu()">RESOURCES</a><a class="ztMineNav" href="../mine/" onclick="closeMenu()">MINE ZEC</a><a href="../about/" onclick="closeMenu()">ABOUT</a><a href="../support/" onclick="closeMenu()">SUPPORT ZEROTRACE</a></div>
+<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+  <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
+  <div class="ztNavRule"></div>
+  <a href="/#lab" onclick="closeMenu()"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
+  <a href="/#network" onclick="closeMenu()"><span class="ztNavNo">02</span><span>MINER STATS</span></a>
+  <div class="ztNavGap"></div>
+  <a class="routeNavLink ztNavRoute ztNavMine" href="/mine/" onclick="closeMenu()"><span class="ztNavNo">03</span><span>HOW TO MINE ZEC</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/signal/" onclick="closeMenu()"><span class="ztNavNo">04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/explorer/" onclick="closeMenu()"><span class="ztNavNo">05</span><span>BLOCK EXPLORER</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/rabbit-hole/" onclick="closeMenu()"><span class="ztNavNo">06</span><span>RABBIT HOLE</span><b>→</b></a>
+  <div class="ztNavGap"></div>
+  <a href="/resources/" onclick="closeMenu()"><span class="ztNavNo">07</span><span>RESOURCES</span></a>
+  <a href="/support/" onclick="closeMenu()"><span class="ztNavNo">08</span><span>SUPPORT</span></a>
+  <div class="ztNavFooter"><i></i><span>WHAT YOU REVEAL IS YOUR CHOICE.</span></div>
+</div>
 <main><div class="dedicatedHero"><div class="wrap"><div class="dedicatedKicker">ZEROTRACE // CHAIN INTELLIGENCE</div><h1>FOLLOW THE CHAIN.<span>BLOCK BY BLOCK.</span></h1><p class="dedicatedLead">Inspect the newest Zcash blocks as they arrive. Select a block, verify what the feed knows, and keep the chain in view.</p><div class="dedicatedMode">LIVE CHAIN // VERIFIED DATA</div></div></div>
 <section class="hero heroV7" id="top"><div class="wrap heroV7inner"><div class="heroV7art"><img alt="ZeroTrace hooded privacy figure" src="../assets/zerotrace-hood.png"/></div><div class="heroV7copy"><h1 class="heroChoice"><span class="heroChoiceTop">WHAT YOU REVEAL.</span><br/><span class="heroChoiceBottom">IS YOUR CHOICE.</span></h1><i></i><p>Zcash gives you the choice.<br/>Transparent when you need it.<br/>Private when it matters.</p><strong>PRIVACY ISN’T ABOUT HIDING.<br/>IT’S ABOUT CONTROL.</strong></div></div></section>
 <section aria-label="ZeroTrace mission" class="identityBridge" id="identityBridge">
