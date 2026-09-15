@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.29.3 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.30.0 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -1730,7 +1730,7 @@ body.ztModalOpen{overflow:hidden}
 <div aria-hidden="true" style="display:none"><span id="kShielded"></span><span id="kShieldDelta"></span><span id="kShieldedPct"></span><span id="kTx24"></span><span id="kBlocks24"></span><span id="kSupply"></span><span id="kEmission"></span><span id="kNodes"></span><span id="kPeers"></span><span id="kMempool"></span></div>
 <div class="chartgrid" id="charts">
 <article class="chartbox" data-live-card="flow"><div class="charttop"><div><h3>SHIELD / DESHIELD FLOW <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="flowValue">—</div></div><button class="shareMini" data-share="flow">SHARE ↗</button></div><canvas id="flowChart"></canvas><div class="chartnote"><span class="flowShield">■ shield</span> · <span class="flowDeshield">■ deshield</span> · rolling 24h from source-provided hourly buckets. ZeroTrace checks every 60s and redraws when ZecStats publishes a new snapshot.</div><span class="changeStamp" data-change-stamp="flow">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
-<article class="chartbox" data-live-card="price"><div class="charttop"><div><h3>ZEC PRICE // LIVE HISTORY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="priceValue">—</div></div><div class="chartToolbar"><button class="rangeBtn" data-range="24h">24H</button><button class="rangeBtn" data-range="7d">7D</button><button class="rangeBtn active" data-range="1m">30D</button><button class="rangeBtn" data-range="1y">1Y</button></div></div><canvas id="priceChart"></canvas><div class="chartnote" id="priceNote">Public ZEC/USD market history.</div><span class="changeStamp" data-change-stamp="price">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
+<article class="chartbox" data-live-card="price"><div class="charttop"><div><h3>ZEC PRICE // LIVE HISTORY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="priceValue">—</div></div></div><canvas id="priceChart"></canvas><div class="chartToolbar priceRangesBottom" aria-label="Price time range"><button class="rangeBtn active" data-range="1h">1H</button><button class="rangeBtn" data-range="24h">24H</button><button class="rangeBtn" data-range="7d">7D</button><button class="rangeBtn" data-range="1m">30D</button><button class="rangeBtn" data-range="1y">1Y</button></div><div class="chartnote" id="priceNote">Public ZEC/USD market history.</div><span class="changeStamp" data-change-stamp="price">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
 <article class="chartbox compositionBox" data-live-card="composition"><div class="charttop"><div><h3>SHIELDED POOL COMPOSITION <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="compositionValue">—</div></div><button class="shareMini" data-share="composition">SHARE ↗</button></div><div aria-live="polite" class="poolComposition" id="compositionChart"></div><div class="chartnote">Live observed balances by shielded pool. Transparent value is excluded from this chart.</div><span class="changeStamp" data-change-stamp="composition">WAITING FOR FIRST VERIFIED READING</span></article>
 <article class="chartbox desktopOnlyChart" data-live-card="blockactivity"><div class="charttop"><div><h3>RECENT BLOCK ACTIVITY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="blockActivityValue">—</div></div><button class="shareMini" data-share="blockactivity">SHARE ↗</button></div><canvas id="blockActivityChart"></canvas><div class="chartnote">Transactions in the newest blocks reported by the live Zcash network feed. Updates when a new source snapshot arrives.</div><span class="changeStamp" data-change-stamp="blockactivity">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
 </div></div></section><section id="dedicated-tools"><div class="wrap"><div class="deeperHead"><div><h2 class="deeperTitle"><span class="sectionKicker">ZEROTRACE // TOOLS</span>GO DEEPER</h2><p>Explore the network. Follow the chain. Dig into the history.</p></div><div class="deeperAside">EXPLORE<br>INVESTIGATE<br>LEARN<br><strong>GO DEEPER</strong></div></div><div class="deeperCard"><div class="deeperLinks"><a class="deeperTile signalTile" href="signal/"><span class="deeperIcon">▥</span><small>SIGNAL</small><strong>OPEN SIGNAL <b>→</b></strong><em>Live network data and metrics.</em></a><a class="deeperTile explorerTile" href="explorer/"><span class="deeperIcon">◇</span><small>EXPLORER</small><strong>OPEN EXPLORER <b>→</b></strong><em>Blocks, transactions and network details.</em></a><a class="deeperTile archiveTile" href="rabbit-hole/"><span class="deeperIcon">&gt;_</span><small>ARCHIVE</small><strong>ENTER RABBIT HOLE <b>→</b></strong><em>Cypherpunk history and references.</em></a></div></div><div class="deeperQuote"><span>SOME SEE A BLOCKCHAIN.</span><strong>WE SEE A BIGGER STORY.</strong></div></div></section>
@@ -1738,7 +1738,7 @@ body.ztModalOpen{overflow:hidden}
 <div class="toast" id="toast">COPIED</div>
 <script>
 const API='https://zecstats.org/api/zec/';
-const state={summary:null,pools:[],flows:[],price:[],priceRange:'1m',lastSuccess:0,lastBlocks:[],lastHeight:null,feedStatus:'offline',signalPrev:null,nextRefreshAt:0,signalFrame:0,signalFrames:[],signalPhraseIndex:0,signalHeads:[],metricPrev:{},metricSeen:{},selectedBlockHash:null,pool24hHistoryDelta:null,pool24hHistoryPct:null,signalSeenEvents:new Set(),signalBaselineReady:false,sessionShield:0,sessionDeshield:0,sessionPrivate:0,refreshing:false};
+const state={summary:null,pools:[],flows:[],price:[],priceRange:'1h',lastSuccess:0,lastBlocks:[],lastHeight:null,feedStatus:'offline',signalPrev:null,nextRefreshAt:0,signalFrame:0,signalFrames:[],signalPhraseIndex:0,signalHeads:[],metricPrev:{},metricSeen:{},selectedBlockHash:null,pool24hHistoryDelta:null,pool24hHistoryPct:null,signalSeenEvents:new Set(),signalBaselineReady:false,sessionShield:0,sessionDeshield:0,sessionPrivate:0,refreshing:false};
 const $=id=>document.getElementById(id);
 const practiceData={
  exchange:{title:'EXCHANGE → SHIELDED WALLET',path:[['EXCHANGE','public'],['PUBLIC WITHDRAWAL','public'],['WALLET','gold'],['SHIELDED BALANCE','private']],steps:[['OPEN A SHIELDED-CAPABLE WALLET','Use a Zcash wallet that supports shielded funds.'],['TAP RECEIVE','Copy the Zcash address your wallet gives you.'],['PASTE IT INTO THE EXCHANGE','Withdraw ZEC to that address. If the exchange only sends transparently, this part is public.'],['LET THE WALLET SHIELD IT','Some wallets shield automatically. Others ask you to tap Shield before the ZEC appears in your shielded balance.']],reveal:[['EXCHANGE WITHDRAWAL','VISIBLE','bad'],['BOUNDARY AMOUNT','VISIBLE','bad'],['SHIELDED BALANCE','PROTECTED','good'],['FUTURE SHIELDED → SHIELDED','PROTECTED','good']],note:'Shielding protects what happens inside the shielded pool. It does not erase the earlier transparent transaction.'},
@@ -1881,7 +1881,37 @@ async function loadHistories(){
    if(poolPts.length>=2&&Number.isFinite(Number(live?.pools?.shieldedTotal))){const livePool=Number(live.pools.shieldedTotal);const prior=Number(poolPts[poolPts.length-1]?.value);if(Number.isFinite(prior)){state.pool24hHistoryDelta=livePool-prior;state.pool24hHistoryPct=prior?((livePool-prior)/prior*100):null;const pe=$('sigPool24'),pm=$('sigPoolMeta');if(pe){const d=state.pool24hHistoryDelta;pe.className=d>0?'inward':d<0?'outward':'neutral';pe.textContent=(d>=0?'+':'')+compact(d)+' ZEC'}if(pm)pm.textContent=Number.isFinite(state.pool24hHistoryPct)?`${state.pool24hHistoryPct>=0?'+':''}${fmt(state.pool24hHistoryPct,3)}% vs last daily point`:'24h pool movement';}}
  }
 }
-async function loadPrice(range=state.priceRange){state.priceRange=range;document.querySelectorAll('.rangeBtn').forEach(b=>b.classList.toggle('active',b.dataset.range===range));try{const p=await getJSON(API+'price-history?window='+range);state.price=(p.points||[]).map(x=>({label:new Date(x.t).toLocaleString(undefined,range==='24h'?{hour:'numeric',minute:'2-digit'}:{month:'short',day:'numeric'}),value:Number(x.c)}));const livePrice=Number(state.summary?.price?.usd??p.currentPriceUsd);if(Number.isFinite(livePrice)){const last=state.price.at(-1);if(!last||Math.abs(Number(last.value)-livePrice)>1e-9)state.price.push({label:'NOW',value:livePrice});else if(last)last.label='NOW'}setupChart('priceChart',[{name:'ZEC / USD',points:state.price,color:'#67d8ff'}],{format:'usd'});$('priceValue').textContent=money(livePrice??state.price.at(-1)?.value);$('priceNote').textContent=`${range.toUpperCase()} performance ${pct(p.performancePct)} · high ${money(p.highUsd)} · low ${money(p.lowUsd)} · auto-refresh 60s`}catch{$('priceNote').textContent='Price history unavailable right now.';setupChart('priceChart',[],{format:'usd'})}}
+async function loadPrice(range=state.priceRange){
+state.priceRange=range;
+document.querySelectorAll('.rangeBtn').forEach(b=>b.classList.toggle('active',b.dataset.range===range));
+if(range==='1h'){
+  try{
+    const end=new Date(), start=new Date(end.getTime()-60*60*1000);
+    const url='https://api.exchange.coinbase.com/products/ZEC-USD/candles?granularity=60&start='+encodeURIComponent(start.toISOString())+'&end='+encodeURIComponent(end.toISOString());
+    const rows=await fetch(url,{headers:{'Accept':'application/json'}}).then(r=>{if(!r.ok)throw new Error('1H candles '+r.status);return r.json()});
+    const ordered=(Array.isArray(rows)?rows:[]).slice().sort((a,b)=>Number(a[0])-Number(b[0]));
+    state.price=ordered.map(x=>({label:new Date(Number(x[0])*1000).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}),value:Number(x[4])})).filter(x=>Number.isFinite(x.value));
+    const livePrice=Number(streamPrice??state.summary?.price?.usd??state.price.at(-1)?.value);
+    if(Number.isFinite(livePrice)){
+      const last=state.price.at(-1);
+      if(!last||Math.abs(Number(last.value)-livePrice)>1e-9)state.price.push({label:'NOW',value:livePrice});
+      else last.label='NOW';
+    }
+    setupChart('priceChart',[{name:'ZEC / USD',points:state.price,color:'#67d8ff'}],{format:'usd'});
+    const first=state.price.find(p=>p.label!=='NOW'&&Number.isFinite(Number(p.value)));
+    const vals=state.price.map(p=>Number(p.value)).filter(Number.isFinite);
+    const perf=first&&Number.isFinite(livePrice)&&Number(first.value)?((livePrice-Number(first.value))/Number(first.value)*100):null;
+    $('priceValue').textContent=money(livePrice);
+    $('priceNote').textContent=`1H performance ${Number.isFinite(perf)?((perf>=0?'+':'')+fmt(perf,2)+'%'):'—'} · high ${money(Math.max(...vals))} · low ${money(Math.min(...vals))} · live`;
+    return;
+  }catch(e){
+    console.warn('ZeroTrace 1H candles unavailable:',e);
+    $('priceNote').textContent='1H history unavailable right now.';
+    setupChart('priceChart',[],{format:'usd'});
+    return;
+  }
+}
+try{const p=await getJSON(API+'price-history?window='+range);state.price=(p.points||[]).map(x=>({label:new Date(x.t).toLocaleString(undefined,range==='24h'?{hour:'numeric',minute:'2-digit'}:{month:'short',day:'numeric'}),value:Number(x.c)}));const livePrice=Number(state.summary?.price?.usd??p.currentPriceUsd);if(Number.isFinite(livePrice)){const last=state.price.at(-1);if(!last||Math.abs(Number(last.value)-livePrice)>1e-9)state.price.push({label:'NOW',value:livePrice});else if(last)last.label='NOW'}setupChart('priceChart',[{name:'ZEC / USD',points:state.price,color:'#67d8ff'}],{format:'usd'});$('priceValue').textContent=money(livePrice??state.price.at(-1)?.value);$('priceNote').textContent=`${range.toUpperCase()} performance ${pct(p.performancePct)} · high ${money(p.highUsd)} · low ${money(p.lowUsd)} · auto-refresh 60s`}catch{$('priceNote').textContent='Price history unavailable right now.';setupChart('priceChart',[],{format:'usd'})}}
 function renderHourly(rows){const sh=rows.map(x=>({label:x.date?new Date(x.date).toLocaleString([],{month:'short',day:'numeric',hour:'numeric'}):'',value:Number(x.shield)})).filter(x=>Number.isFinite(x.value)),de=rows.map(x=>({label:x.date?new Date(x.date).toLocaleString([],{month:'short',day:'numeric',hour:'numeric'}):'',value:Number(x.deshield)})).filter(x=>Number.isFinite(x.value));setupChart('flowChart',[{name:'shield',points:sh,color:'#F4B728'},{name:'deshield',points:de,color:'#67d8ff'}],{format:'number',zeroMin:true})}
 function renderComposition(p){const keys=[['Sprout','sprout','#5f6d67'],['Sapling','sapling','#67d8ff'],['Orchard','orchard','#b583ff'],['Ironwood','ironwood','#7dff9b']];const rows=keys.map(([name,key,color])=>({name,value:Number(p[key]),color})).filter(x=>Number.isFinite(x.value)&&x.value>=0);const el=$('compositionChart');if(!el)return;const total=rows.reduce((a,b)=>a+b.value,0);if(!rows.length||!Number.isFinite(total)||total<=0){el.innerHTML='<div class="poolEmpty">WAITING FOR VERIFIED POOL DATA…</div>';return}el.innerHTML=rows.map(r=>{const pctv=total>0?r.value/total*100:0;const width=Math.max(pctv>0?2:0,Math.min(100,pctv));return `<div class="poolRow"><div class="poolRowTop"><div class="poolName"><i style="background:${r.color}"></i>${esc(r.name)}</div><div class="poolPct">${fmt(pctv,2)}%</div></div><div class="poolValue">${compact(r.value)} <span>ZEC</span></div><div class="poolTrack"><div class="poolFill" style="width:${width}%;background:${r.color}"></div></div></div>`}).join('');chartStore.compositionChart={series:rows,opt:{format:'number'}}}
 async function refresh(){if(refresh._busy)return;refresh._busy=true;const first=!state.lastSuccess;if(first)setLoading(true);try{const s=await getJSON(API+'summary');setOffline(false);renderSummary(s);await Promise.allSettled([loadHistories(),loadPrice(state.priceRange)])}catch(e){console.error('ZeroTrace live-data refresh failed:',e);state.feedStatus='offline';setOffline(true);updateFeedBadges();setState('dead');const lu=$('lastUpdated'),fr=$('freshness');if(lu)lu.textContent=state.lastSuccess?'Last successful refresh: '+new Date(state.lastSuccess).toLocaleString():'No successful live-data refresh yet';if(fr)fr.textContent='The site is online, but live data could not be loaded. Tap EXPLORE THE DATA to retry.'}finally{setLoading(false);refresh._busy=false}}
@@ -2108,40 +2138,12 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     lastStreamAt=Date.now();
 
     if(typeof state!=='undefined' && Array.isArray(state.price)){
-      /* Keep historical points intact and append a small rolling live tail.
-         This makes the far-right edge visibly move/form while ticks arrive. */
-      const now=Date.now();
-      if(!Array.isArray(state._ztLiveTail) || state._ztLiveTailRange!==state.priceRange){
-        state._ztLiveTail=[];
-        state._ztLiveTailRange=state.priceRange;
-      }
-
-      const tail=state._ztLiveTail;
-      const prev=tail[tail.length-1];
-      /* Add a point whenever the quote changes; also refresh the last point
-         if multiple ticks arrive in the same instant. */
-      if(!prev || Math.abs(Number(prev.value)-price)>1e-9){
-        tail.push({
-          label:new Date(now).toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'}),
-          value:price,
-          _ztLive:true,
-          _ztAt:now
-        });
-      }else{
-        prev.value=price;
-        prev._ztAt=now;
-      }
-
-      /* Enough points to see motion, without letting a long-open tab grow forever. */
-      const maxTail=36;
-      if(tail.length>maxTail) tail.splice(0,tail.length-maxTail);
-
-      const historical=state.price.filter(p=>p && p.label!=='NOW' && !p._ztLive);
-      const livePoints=historical.concat(tail);
-      state.price=livePoints;
-
+      /* Coinbase-style live endpoint: history stays fixed while NOW moves vertically. */
+      const clean=state.price.filter(p=>p && p.label!=='NOW' && !p._ztLive);
+      clean.push({label:'NOW',value:price,_ztLive:true,_ztAt:Date.now()});
+      state.price=clean;
       if(typeof setupChart==='function'){
-        setupChart('priceChart',[{name:'ZEC / USD',points:livePoints,color:'#67d8ff'}],{format:'usd'});
+        setupChart('priceChart',[{name:'ZEC / USD',points:state.price,color:'#67d8ff'}],{format:'usd'});
       }
     }
 
@@ -2221,6 +2223,43 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   });
 
   connect();
+})();
+</script>
+
+
+<style>
+/* V8.30.0 // cleaner Coinbase-inspired interaction, ZeroTrace skin */
+.priceRangesBottom{
+  display:flex!important;justify-content:space-between;align-items:center;
+  gap:8px;margin:12px 0 9px;padding:0 2px;width:100%;
+}
+.priceRangesBottom .rangeBtn{flex:1;min-width:0;padding:8px 4px}
+[data-live-card="price"] .charttop{align-items:flex-start}
+</style>
+<script>
+/* Draw a restrained glowing marker over the chart's live endpoint.
+   It is decorative only; the actual line/value still comes from setupChart. */
+(function(){
+  function glow(){
+    try{
+      if(typeof state==='undefined'||!Array.isArray(state.price)||!state.price.length)return;
+      const c=document.getElementById('priceChart'); if(!c)return;
+      const ctx=c.getContext('2d'); if(!ctx)return;
+      const vals=state.price.map(p=>Number(p.value)).filter(Number.isFinite); if(vals.length<2)return;
+      const min=Math.min(...vals), max=Math.max(...vals), span=(max-min)||1;
+      const dpr=window.devicePixelRatio||1;
+      const w=c.width/dpr,h=c.height/dpr;
+      const padX=16,padY=18;
+      const p=Number(state.price[state.price.length-1].value);
+      const x=w-padX;
+      const y=padY+(max-p)/span*(h-padY*2);
+      ctx.save(); ctx.scale(dpr,dpr);
+      ctx.shadowColor='#67d8ff';ctx.shadowBlur=13;
+      ctx.fillStyle='#67d8ff';ctx.beginPath();ctx.arc(x,y,3.7,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+    }catch(_e){}
+  }
+  setInterval(glow,700);
 })();
 </script>
 
