@@ -1,4 +1,4 @@
-<!-- ZeroTrace V8.31.0 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
+<!-- ZeroTrace V8.31.1 // rebuilt from user-proven working V8.26.5 chart baseline --><!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -2265,87 +2265,101 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
 
 <script>
-/* ZeroTrace V8.31.0 // live observable shield/deshield boundary flow
-   Source: ZecStats public /api/zec/summary (~2 minute upstream cadence).
-   Never fabricates shielded-to-shielded amounts. */
+/* ZeroTrace V8.31.1 // event-driven observable boundary-flow endpoint
+   ZecStats summary refreshes upstream ~2 min. We preserve completed hourly
+   buckets and rebuild the current hour from recent observable boundary txs.
+   No interpolation; fully-shielded amounts remain hidden and are never guessed. */
 (function(){
   const ZS='https://zecstats.org/api/zec/summary';
-  let lastGenerated=null, timer=null;
+  let lastGenerated=null;
 
-  function n(v){ const x=Number(v); return Number.isFinite(x)?x:null; }
-  function compact(v){
-    const x=n(v); if(x===null)return '—';
-    return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(x);
-  }
-  function getFlowCanvas(){
-    return document.getElementById('flowChart') ||
-      document.querySelector('[data-live-card="flow"] canvas') ||
-      [...document.querySelectorAll('.chartbox canvas')].find(c=>{
-        const box=c.closest('.chartbox'); return box && /SHIELD\s*\/\s*DESHIELD/i.test(box.textContent||'');
-      });
-  }
-  function getFlowBox(){
-    const c=getFlowCanvas(); return c&&c.closest('.chartbox');
-  }
+  const num=v=>{const x=Number(v);return Number.isFinite(x)?x:null};
+  const amountOf=t=>{
+    for(const k of ['amount','zec','value','amountZec','amount_zec']){
+      const x=num(t&&t[k]); if(x!==null)return x;
+    }
+    return null;
+  };
+  const timeOf=t=>{
+    for(const k of ['date','timestamp','time','at','createdAt']){
+      const v=t&&t[k]; if(v==null)continue;
+      const d=new Date(typeof v==='number' && v<1e12 ? v*1000 : v);
+      if(!isNaN(d))return d;
+    }
+    return null;
+  };
+  const canvas=()=>document.getElementById('flowChart') ||
+    [...document.querySelectorAll('.chartbox canvas')].find(c=>/SHIELD\s*\/\s*DESHIELD/i.test(c.closest('.chartbox')?.textContent||''));
+  const box=()=>canvas()?.closest('.chartbox');
+  const hourKey=d=>`${d.getUTCFullYear()}-${d.getUTCMonth()}-${d.getUTCDate()}-${d.getUTCHours()}`;
 
-  async function refreshLiveFlows(){
+  async function tick(){
     try{
       const r=await fetch(ZS,{cache:'no-store',headers:{Accept:'application/json'}});
-      if(!r.ok) throw new Error('ZecStats '+r.status);
-      const s=await r.json();
-      const f=s&&s.flows;
-      if(!f || !Array.isArray(f.hourly) || !f.hourly.length) return;
+      if(!r.ok)throw new Error('ZecStats '+r.status);
+      const s=await r.json(), f=s?.flows;
+      if(!f||!Array.isArray(f.hourly)||!f.hourly.length)return;
 
-      const generated=s.generatedAt||null;
-      const rows=f.hourly.slice(-24);
-      const shield=rows.map(x=>({
-        label:new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),
-        value:n(x.shield)??0
-      }));
-      const deshield=rows.map(x=>({
-        label:new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),
-        value:n(x.deshield)??0
-      }));
+      const now=new Date(s.generatedAt||Date.now());
+      const currentKey=hourKey(now);
+      const completed=f.hourly
+        .filter(x=>{const d=new Date(x.date);return !isNaN(d)&&hourKey(d)!==currentKey})
+        .slice(-23);
 
-      const c=getFlowCanvas();
-      if(c && typeof setupChart==='function'){
-        setupChart(c.id,[
-          {name:'shield',points:shield,color:'#f6bd2a'},
-          {name:'deshield',points:deshield,color:'#67d8ff'}
-        ],{format:'zec'});
+      let curShield=0,curDeshield=0,shieldTx=0,deshieldTx=0;
+      const recent=Array.isArray(f.recentTxs)?f.recentTxs:[];
+      for(const t of recent){
+        if(!t||(t.type!=='shield'&&t.type!=='deshield'))continue;
+        const d=timeOf(t), a=amountOf(t);
+        if(!d||hourKey(d)!==currentKey||a===null)continue;
+        if(t.type==='shield'){curShield+=a;shieldTx++}
+        else {curDeshield+=a;deshieldTx++}
       }
 
-      const box=getFlowBox();
-      if(box){
-        const h=box.querySelector('.chartValue');
+      /* If recentTxs does not cover every tx in the current hour, never
+         understate an already-published hourly bucket. Use the larger observed
+         value on each side, while individual new txs can move the endpoint. */
+      const published=f.hourly.find(x=>{const d=new Date(x.date);return !isNaN(d)&&hourKey(d)===currentKey});
+      if(published){
+        curShield=Math.max(curShield,num(published.shield)||0);
+        curDeshield=Math.max(curDeshield,num(published.deshield)||0);
+      }
+
+      const rows=completed.concat([{
+        date:now.toISOString(),shield:curShield,deshield:curDeshield,
+        shieldTx,deshieldTx,_live:true
+      }]);
+
+      const sh=rows.map(x=>({label:x._live?'NOW':new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),value:num(x.shield)||0}));
+      const de=rows.map(x=>({label:x._live?'NOW':new Date(x.date).toLocaleTimeString([],{hour:'numeric'}),value:num(x.deshield)||0}));
+      const c=canvas();
+      if(c&&typeof setupChart==='function'){
+        setupChart(c.id,[{name:'shield',points:sh,color:'#f6bd2a'},{name:'deshield',points:de,color:'#67d8ff'}],{format:'zec'});
+      }
+
+      const b=box();
+      if(b){
         const last=f.last24h||{};
-        const net=n(last.net ?? last.netZec ?? last.net_zec);
-        if(h && net!==null) h.textContent='NET '+(net>=0?'+':'')+compact(net)+' ZEC / 24H';
+        const net=num(last.net??last.netZec??last.net_zec);
+        const val=b.querySelector('.chartValue');
+        if(val&&net!==null)val.textContent='NET '+(net>=0?'+':'')+Math.round(net).toLocaleString('en-US')+' ZEC / 24H';
 
-        const note=box.querySelector('.chartnote');
-        const txs=Array.isArray(f.recentTxs)?f.recentTxs:[];
-        const boundary=txs.filter(t=>t && (t.type==='shield'||t.type==='deshield'));
-        const fully=txs.filter(t=>t && t.type==='fully_shielded').length;
-        if(note){
-          note.innerHTML='<span style="color:#f6bd2a">■ shield</span> · <span style="color:#67d8ff">■ deshield</span> · observable boundary flow · live ZecStats snapshots'
-            +(fully?' · '+fully+' recent fully-shielded tx'+(fully===1?'':'s')+' (amount hidden)':'');
-        }
+        const note=b.querySelector('.chartnote');
+        if(note)note.innerHTML='<span style="color:#f6bd2a">■ shield</span> · <span style="color:#67d8ff">■ deshield</span> · live current-hour boundary flow · Data: ZecStats';
 
-        const stamp=box.querySelector('.changeStamp');
-        if(stamp && generated){
-          const d=new Date(generated);
-          stamp.textContent=(generated!==lastGenerated?'UPDATED':'LIVE')+' // '+d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit',second:'2-digit'});
+        const stamp=b.querySelector('.changeStamp');
+        if(stamp){
+          const changed=s.generatedAt&&s.generatedAt!==lastGenerated;
+          stamp.textContent=(changed?'NEW SNAPSHOT':'LIVE')+' // CURRENT HOUR '+shieldTx+' SHIELD · '+deshieldTx+' DESHIELD';
         }
       }
-      lastGenerated=generated;
-    }catch(e){
-      console.warn('ZeroTrace live flow refresh:',e);
-    }
+      lastGenerated=s.generatedAt||lastGenerated;
+    }catch(e){console.warn('ZeroTrace live boundary flow:',e)}
   }
 
-  refreshLiveFlows();
-  timer=setInterval(refreshLiveFlows,60000);
-  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshLiveFlows(); });
+  tick();
+  setInterval(tick,60000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
 })();
 </script>
 
