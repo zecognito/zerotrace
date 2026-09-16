@@ -1,0 +1,15 @@
+{
+  "schema": "zerotrace.analytics.v1",
+  "as_of": null,
+  "metrics": {
+    "height": null,
+    "total_supply": null,
+    "shielded_supply": null,
+    "shielded_pct": null,
+    "difficulty": null,
+    "hashrate": null
+  },
+  "source_status": {
+    "state": "awaiting configured RPC"
+  }
+}
