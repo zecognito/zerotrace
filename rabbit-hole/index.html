@@ -1585,6 +1585,55 @@ body.page-rabbit .dedicatedHero h1{
   .menuBtn{display:flex!important}
 }
 </style>
+<style id="zt-rabbit-nine-entry-scroll-preview">
+/* PREVIEW V2 // Nine-entry Rabbit Hole pager — no nested mobile scroll trap */
+#ztRabbitEntriesFeed{
+  position:relative;
+  overflow:hidden !important;
+  padding-right:0;
+  mask-image:none !important;
+  -webkit-mask-image:none !important;
+  transition:height .28s ease;
+}
+.ztRabbitPager{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:18px 0 2px;
+  font-family:var(--mono);
+}
+.ztRabbitPager button{
+  appearance:none;
+  -webkit-appearance:none;
+  border:1px solid rgba(244,183,40,.26);
+  background:rgba(8,10,11,.94);
+  color:#F4B728;
+  border-radius:999px;
+  min-height:36px;
+  padding:0 14px;
+  font:800 9px/1 var(--mono);
+  letter-spacing:.11em;
+  cursor:pointer;
+  box-shadow:0 0 24px rgba(244,183,40,.05);
+}
+.ztRabbitPager button:disabled{
+  opacity:.24;
+  cursor:default;
+}
+.ztRabbitPager .ztRabbitPageState{
+  color:#7d817c;
+  font:700 8px/1 var(--mono);
+  letter-spacing:.13em;
+  min-width:64px;
+  text-align:center;
+}
+.ztRabbitPager button:not(:disabled):active{transform:scale(.97)}
+@media(max-width:760px){
+  .ztRabbitPager{margin-top:16px}
+  .ztRabbitPager button{min-height:38px;padding:0 13px}
+}
+</style>
 </head>
 <body class="ztLoading homePage ztDedicated page-rabbit">
 <nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
@@ -2163,6 +2212,53 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 })();
 </script>
 
+<script id="zt-rabbit-nine-entry-scroll-js">
+(()=>{
+  const feed=document.getElementById('ztRabbitEntriesFeed');
+  if(!feed)return;
+  const PAGE=9;
+  let page=0, pager=null;
+
+  function cards(){
+    return [...feed.children].filter(el=>el.matches('.ztRabbitFeatured,.ztRabbitEntry'));
+  }
+  function build(){
+    const all=cards();
+    if(all.length<=PAGE)return false;
+    const pages=Math.ceil(all.length/PAGE);
+    if(!pager){
+      pager=document.createElement('div');
+      pager.className='ztRabbitPager';
+      pager.innerHTML='<button type="button" class="ztPrev">↑ PREVIOUS</button><span class="ztRabbitPageState"></span><button type="button" class="ztNext">NEXT ↓</button>';
+      feed.insertAdjacentElement('afterend',pager);
+      pager.querySelector('.ztPrev').addEventListener('click',()=>show(page-1,true));
+      pager.querySelector('.ztNext').addEventListener('click',()=>show(page+1,true));
+    }
+    function show(next, userAction){
+      page=Math.max(0,Math.min(pages-1,next));
+      all.forEach((el,i)=>{
+        const visible=Math.floor(i/PAGE)===page;
+        el.style.display=visible?'':'none';
+      });
+      feed.style.height='auto';
+      pager.querySelector('.ztPrev').disabled=page===0;
+      pager.querySelector('.ztNext').disabled=page===pages-1;
+      pager.querySelector('.ztRabbitPageState').textContent=String(page+1).padStart(2,'0')+' / '+String(pages).padStart(2,'0');
+      if(userAction){
+        const top=feed.getBoundingClientRect().top+window.scrollY-78;
+        window.scrollTo({top,behavior:'smooth'});
+      }
+    }
+    window.__ztRabbitShowPage=show;
+    show(page,false);
+    return true;
+  }
+
+  const obs=new MutationObserver(()=>{ if(build()) obs.disconnect(); });
+  obs.observe(feed,{childList:true});
+  requestAnimationFrame(()=>setTimeout(build,60));
+})();
+</script>
 </body></html>
 <style>
 /* V8.25.20 — center Shielded in Practice flow-node labels on all screen sizes */
