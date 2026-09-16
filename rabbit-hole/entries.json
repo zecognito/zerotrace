@@ -1,31 +1,10 @@
 {
   "entries": [
-    {
-      "number": "001",
-      "id": "bitcoin-vs-zcash",
-      "category": "PRIVACY // INTERACTIVE",
-      "title": "BITCOIN VS ZCASH",
-      "subtitle": "WHAT THE LEDGER REVEALS.",
-      "description": "Same public blockchain idea. Two different answers to what the public should be allowed to see.",
-      "status": "PUBLISHED"
-    },
-    {
-      "number": "002",
-      "id": "privacy-was-always-part-of-the-conversation",
-      "category": "HISTORY // SOURCE LINKED",
-      "title": "PRIVACY WAS ALWAYS PART OF THE CONVERSATION",
-      "subtitle": "BEFORE PRIVACY COINS. BEFORE MAXIMALISM.",
-      "description": "A sourced look at the ideas already being discussed.",
-      "status": "PUBLISHED"
-    },
-    {
-      "number": "003",
-      "id": "inside-a-shielded-transaction",
-      "category": "TECHNOLOGY // ZCASH",
-      "title": "INSIDE A SHIELDED TRANSACTION",
-      "subtitle": "WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.",
-      "description": "",
-      "status": "PUBLISHED"
-    }
+    {"number":"001","id":"bitcoin-vs-zcash","category":"PRIVACY // INTERACTIVE","title":"BITCOIN VS ZCASH","subtitle":"WHAT THE LEDGER REVEALS.","description":"Same public blockchain idea. Two different answers to what the public should be allowed to see.","status":"PUBLISHED"},
+    {"number":"002","id":"privacy-was-always-part-of-the-conversation","category":"HISTORY // SOURCE LINKED","title":"PRIVACY WAS ALWAYS PART OF THE CONVERSATION","subtitle":"BEFORE PRIVACY COINS. BEFORE MAXIMALISM.","description":"A sourced look at the ideas already being discussed.","status":"PUBLISHED"},
+    {"number":"003","id":"inside-a-shielded-transaction","category":"TECHNOLOGY // ZCASH","title":"INSIDE A SHIELDED TRANSACTION","subtitle":"WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.","description":"","status":"PUBLISHED"},
+    {"number":"004","id":"the-metadata-you-didnt-know-you-were-leaking","category":"SURVEILLANCE // PRIVACY","title":"THE METADATA YOU DIDN'T KNOW YOU WERE LEAKING","subtitle":"YOUR ADDRESS IS ONLY THE BEGINNING.","description":"What a public ledger can reveal beyond the address itself — and what shielding changes.","status":"PUBLISHED"},
+    {"number":"005","id":"the-crowd-is-part-of-the-privacy","category":"PRIVACY // ANONYMITY SETS","title":"THE CROWD IS PART OF THE PRIVACY","subtitle":"WHY SHIELDED USAGE MATTERS.","description":"Anonymity sets, shielded pools and why private activity becomes stronger when private becomes normal.","status":"PUBLISHED"},
+    {"number":"006","id":"from-coinbase-to-darkness","category":"PRACTICE // SHIELDING","title":"FROM COINBASE TO DARKNESS","subtitle":"WHAT ACTUALLY HAPPENS WHEN YOU SHIELD ZEC.","description":"Follow ZEC from a public exchange withdrawal into shielded value and see exactly what changes — and what does not.","status":"PUBLISHED"}
   ]
 }
