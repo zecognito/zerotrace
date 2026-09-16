@@ -1,0 +1,192 @@
+{
+  "title": "INSIDE A SHIELDED TRANSACTION",
+  "subtitle": "WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.",
+  "category": "003 // TECHNOLOGY // ZCASH",
+  "date": "SEPTEMBER 2026",
+  "readTime": "10 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "A SHIELDED TRANSACTION DOES NOT ASK THE NETWORK TO TRUST A SECRET. IT GIVES THE NETWORK A WAY TO VERIFY THE RULES WITHOUT REVEALING THE SECRET."
+    },
+    {
+      "type": "heading",
+      "text": "START WITH A NOTE."
+    },
+    {
+      "type": "paragraph",
+      "text": "Value inside Zcash's shielded pools is represented by notes. A note contains information needed to describe shielded value, including an amount and a recipient-related destination. Those private note details are not simply written onto the public ledger in plaintext."
+    },
+    {
+      "type": "paragraph",
+      "text": "Instead, the protocol publishes cryptographic objects that let the chain track valid state while keeping the protected payment details hidden. To understand the transaction, follow three objects: commitments, nullifiers and proofs."
+    },
+    {
+      "type": "heading",
+      "text": "01 // COMMITMENT — SOMETHING EXISTS"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a shielded output is created, the transaction reveals a note commitment. Think of it as a cryptographic fingerprint that binds to the note without publicly exposing the note's private contents. The commitment is designed to hide those contents while preventing the sender from later pretending the commitment represented a different note."
+    },
+    {
+      "type": "callout",
+      "text": "THE CHAIN COMMITS TO THE NOTE WITHOUT PRINTING THE NOTE ON THE CHAIN."
+    },
+    {
+      "type": "heading",
+      "text": "02 // COMMITMENT TREE — PROVE IT BELONGS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Orchard note commitments are appended to a global commitment tree. When a wallet later spends a note, the proof can establish that a valid commitment for that note exists in an accepted tree state. The spender does not need to publicly point to the exact commitment being spent."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is one of the central privacy properties: membership can be proven without turning the spend into a public arrow from one specific old note to one specific new payment."
+    },
+    {
+      "type": "heading",
+      "text": "03 // NULLIFIER — PROVE IT HAS NOT BEEN SPENT TWICE"
+    },
+    {
+      "type": "paragraph",
+      "text": "A private ledger still needs a public answer to double spending. Zcash uses nullifiers. When a shielded note is spent, a nullifier associated with that note is revealed. Consensus rejects a transaction if that nullifier has already appeared."
+    },
+    {
+      "type": "paragraph",
+      "text": "The protocol is designed so that an observer cannot feasibly correlate a note commitment with its later nullifier without the relevant key material. The network can therefore recognize reuse without publicly identifying which earlier note was consumed."
+    },
+    {
+      "type": "callout",
+      "text": "PUBLIC QUESTION: HAS THIS SPEND MARKER APPEARED BEFORE? PRIVATE QUESTION: WHICH NOTE DID IT COME FROM?"
+    },
+    {
+      "type": "heading",
+      "text": "04 // ZERO-KNOWLEDGE PROOF — PROVE THE RULES"
+    },
+    {
+      "type": "paragraph",
+      "text": "Now comes the part that replaces disclosure with proof. A shielded transaction includes a zero-knowledge proof demonstrating that the required statements are true: the spender is authorized, the spent note is valid and belongs to the accepted commitment tree, the commitments and nullifiers are constructed correctly, and the shielded value rules are satisfied."
+    },
+    {
+      "type": "paragraph",
+      "text": "The verifier checks the proof rather than receiving the private witness used to create it. In other words, the network learns that the constraints passed without learning the protected note data that made them pass."
+    },
+    {
+      "type": "heading",
+      "text": "05 // AUTHORIZATION — PRIVACY DOES NOT REMOVE OWNERSHIP"
+    },
+    {
+      "type": "paragraph",
+      "text": "Shielding does not mean anyone can spend hidden value. Orchard uses spend authorization keys and signatures. The transaction proves and authenticates that the spender has the authority required by the note while avoiding publication of the underlying private spending key."
+    },
+    {
+      "type": "heading",
+      "text": "06 // NEW OUTPUT — CREATE THE NEXT PRIVATE NOTE"
+    },
+    {
+      "type": "paragraph",
+      "text": "The recipient's new shielded note gets its own commitment. Its note plaintext is encrypted so the intended recipient can recover the information needed to recognize and later spend the note. Orchard actions combine a spend side and an output side, and bundles can contain multiple actions."
+    },
+    {
+      "type": "paragraph",
+      "text": "What appears publicly is therefore not an ordinary transaction graph saying this visible address paid that visible address this visible amount. The chain receives the cryptographic data needed for consensus while the protected sender, recipient and amount of a fully shielded transfer remain undisclosed."
+    },
+    {
+      "type": "heading",
+      "text": "WHAT THE CHAIN STILL SEES"
+    },
+    {
+      "type": "paragraph",
+      "text": "Shielded does not mean absent from the blockchain. Orchard transactions publish protocol data including note commitments, nullifiers, value commitments, authorization material, encrypted note data and the proof needed for verification. Transactions also have observable timing and size."
+    },
+    {
+      "type": "paragraph",
+      "text": "Transfers between transparent and shielded value pools are a special boundary: the Zcash protocol specification states that the amount transferred between chain value pools is revealed. Privacy claims must therefore distinguish a fully shielded transfer from shielding or deshielding at a transparent boundary."
+    },
+    {
+      "type": "callout",
+      "text": "SHIELDED DOES NOT MEAN NOTHING IS PUBLIC. IT MEANS THE PAYMENT DETAILS DO NOT HAVE TO BE PUBLIC FOR CONSENSUS TO WORK."
+    },
+    {
+      "type": "heading",
+      "text": "WHAT DISAPPEARS"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a fully shielded transfer, the protected sender address, recipient address and transferred amount are not disclosed on the public blockchain. The direct transaction graph that would normally connect visible inputs to visible outputs is replaced by commitments, nullifiers and zero-knowledge verification."
+    },
+    {
+      "type": "heading",
+      "text": "WHAT REMAINS"
+    },
+    {
+      "type": "paragraph",
+      "text": "The transaction itself remains. So do the public cryptographic objects required by consensus, the fact that a transaction occurred, its placement in the chain and metadata outside the cryptographic privacy guarantee. Wallet behavior, network-layer observation, transparent interactions or information revealed elsewhere can still create clues."
+    },
+    {
+      "type": "heading",
+      "text": "WHAT GETS PROVEN"
+    },
+    {
+      "type": "paragraph",
+      "text": "The network verifies that the spend is authorized, that the shielded state transition is valid, that the required committed note exists, that its nullifier has not already been used, and that the transaction satisfies the protocol's value-balance rules. It can reject an invalid transaction without first demanding the protected payment details."
+    },
+    {
+      "type": "heading",
+      "text": "THE DIFFERENCE IN ONE LINE."
+    },
+    {
+      "type": "callout",
+      "text": "A SHIELDED LEDGER DOES NOT REMOVE VERIFICATION. IT REMOVES DISCLOSURE AS THE PRICE OF VERIFICATION."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 224 — Orchard Shielded Protocol",
+      "url": "https://zips.z.cash/zip-0224"
+    },
+    {
+      "type": "source",
+      "label": "The Orchard Book — Actions",
+      "url": "https://zcash.github.io/orchard/design/actions.html"
+    },
+    {
+      "type": "source",
+      "label": "The Orchard Book — Commitments",
+      "url": "https://zcash.github.io/orchard/design/commitments.html"
+    },
+    {
+      "type": "source",
+      "label": "The Orchard Book — Commitment Tree",
+      "url": "https://zcash.github.io/orchard/design/commitment-tree.html"
+    },
+    {
+      "type": "source",
+      "label": "The Orchard Book — Nullifiers",
+      "url": "https://zcash.github.io/orchard/design/nullifiers.html"
+    },
+    {
+      "type": "source",
+      "label": "Zerocash — Decentralized Anonymous Payments from Bitcoin",
+      "url": "https://zerocash-project.org/media/pdf/zerocash-extended-20140518.pdf"
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify the rules. Keep the payment private."
+    }
+  ]
+}
