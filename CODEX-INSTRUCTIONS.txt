@@ -1,0 +1,26 @@
+ZEROTRACE ANALYTICS — ACCEPTED BASELINE
+
+Integrate this package into repository zecognito/zerotrace without redesigning it.
+
+Rules:
+1. Preserve all existing production pages and functionality outside the files supplied here.
+2. analytics/index.html is the accepted V5 Analytics hub baseline.
+3. Dedicated analytics pages are accepted premium-template pages. Do not restyle or regenerate them.
+4. Do not fabricate live values. Existing placeholder/pipeline states must remain until verified sources are wired.
+5. The included live-data pipeline is V1 infrastructure and is NOT operational until a valid data source/RPC configuration exists.
+6. Before committing, inspect the diff and confirm no unrelated production files changed.
+7. Prefer a branch/PR rather than changing main directly.
+
+Package includes 12 dedicated metric pages:
+ZT-MON-001 Issued Supply
+ZT-MON-002 Supply Issuance
+ZT-MON-003 Halving Timeline
+ZT-PRV-001 Shielded Supply
+ZT-PRV-002 Shielded Pool Composition
+ZT-PRV-003 Shield/Deshield Flows
+ZT-NET-001 Network Difficulty
+ZT-MIN-001 Network Hashrate
+ZT-PRV-004 Shielded Transaction Share
+ZT-PRV-005 Shielded Action Density
+ZT-PRV-006 Orchard Internal Activity
+ZT-PRV-007 Ironwood Migration
