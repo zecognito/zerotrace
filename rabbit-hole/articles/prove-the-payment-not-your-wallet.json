@@ -1,0 +1,175 @@
+{
+  "title": "PROVE THE PAYMENT. NOT YOUR WALLET.",
+  "subtitle": "WHAT IF A PRIVATE TRANSACTION COULD PRODUCE A RECEIPT ON DEMAND?",
+  "category": "025 // ZCASH // PAYMENT DISCLOSURE // PROOFS",
+  "date": "SEPTEMBER 2026",
+  "readTime": "9 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "A PUBLIC TRANSACTION COMES WITH A RECEIPT THE WHOLE WORLD CAN READ. A PRIVATE TRANSACTION CREATES A HARDER QUESTION: HOW DO YOU PROVE YOU PAID?"
+    },
+    {
+      "type": "heading",
+      "text": "THE RECEIPT PROBLEM"
+    },
+    {
+      "type": "paragraph",
+      "text": "On a transparent chain, proof of payment is almost trivial. Give someone the transaction ID. They inspect the blockchain. The relevant addresses and transferred value are public enough for the transaction to be checked."
+    },
+    {
+      "type": "paragraph",
+      "text": "Shield the transaction and that shortcut disappears. The privacy is doing its job: an outside observer cannot reconstruct the payment merely from public chain data."
+    },
+    {
+      "type": "paragraph",
+      "text": "But sometimes the sender wants exactly one fact to become verifiable. A merchant claims the payment never arrived. A donor wants to prove a promised contribution. An exchange wants to prove a shielded withdrawal was sent."
+    },
+    {
+      "type": "callout",
+      "text": "PRIVACY CREATES A NEW PROBLEM ONLY BECAUSE PUBLIC LEDGERS SOLVE IT BY REVEALING TOO MUCH."
+    },
+    {
+      "type": "heading",
+      "text": "THE WRONG ANSWER IS: SHOW THEM EVERYTHING"
+    },
+    {
+      "type": "paragraph",
+      "text": "One solution would be to disclose broad viewing authority. That may reveal far more than the disputed payment. Another would be to abandon shielding and make the transaction public from the beginning."
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash researchers documented a narrower idea in ZIP 311: payment disclosures — cryptographic evidence designed to reveal facts about a particular payment without automatically revealing the sender's unrelated shielded history."
+    },
+    {
+      "type": "heading",
+      "text": "IMPORTANT: THIS IS A DRAFT"
+    },
+    {
+      "type": "paragraph",
+      "text": "ZIP 311 is a Draft Zcash Improvement Proposal. It should not be confused with a universally deployed wallet feature or a guarantee that today's Orchard wallets can generate the mechanism exactly as described."
+    },
+    {
+      "type": "paragraph",
+      "text": "In fact, the current draft contains unfinished items and explicitly lists Orchard support as a TODO. What makes the proposal interesting is the privacy model it is trying to build, not a claim that every Zcash user can press a 'prove payment' button today."
+    },
+    {
+      "type": "heading",
+      "text": "PROVE ONE EVENT"
+    },
+    {
+      "type": "paragraph",
+      "text": "The draft describes several cases. In one, a contributor can prove that the correct amount was sent to a recipient and that the contributor controlled the spend authority, while not revealing the contributor's payment address, other diversified addresses, or other transactions."
+    },
+    {
+      "type": "paragraph",
+      "text": "In another, a public donor could prove a matching donation to followers. In a merchant dispute, a customer could prove they were the sender of a particular transaction without disclosing unrelated transaction history."
+    },
+    {
+      "type": "paragraph",
+      "text": "The target is not secrecy forever. It is disclosure with a boundary."
+    },
+    {
+      "type": "callout",
+      "text": "A RECEIPT SHOULD PROVE THE PURCHASE. IT SHOULD NOT BECOME A MAP OF YOUR WALLET."
+    },
+    {
+      "type": "heading",
+      "text": "INTERACTIVE OR PUBLIC"
+    },
+    {
+      "type": "paragraph",
+      "text": "The proposal also distinguishes situations where a disclosure might be checked by a particular party from cases where it could be made publicly verifiable. A disclosure may be tied to a challenge, creating an interactive proof, and a sender may choose whether to reveal additional address information in supported cases."
+    },
+    {
+      "type": "paragraph",
+      "text": "That matters because even proof itself has an audience. Sometimes the merchant needs convincing. Sometimes the entire public does. Those are different disclosure requirements."
+    },
+    {
+      "type": "heading",
+      "text": "WHY A TRANSACTION ID IS NOT ENOUGH"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a shielded output, the public blockchain intentionally does not expose enough information to reconstruct all of the payment details. ZIP 311's motivation starts from exactly this limitation."
+    },
+    {
+      "type": "paragraph",
+      "text": "That is not a defect accidentally introduced by privacy. It is the consequence of refusing to publish the receipt to everyone by default."
+    },
+    {
+      "type": "heading",
+      "text": "THIS IS NOT ARTICLE 014 AGAIN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zero-knowledge proofs answer how a network can validate hidden transaction facts. Payment disclosure asks a different, post-transaction question: after the private payment is already on-chain, can the sender deliberately produce evidence about that specific payment for someone else?"
+    },
+    {
+      "type": "paragraph",
+      "text": "One protects validation from unnecessary disclosure. The other explores controlled disclosure after the fact."
+    },
+    {
+      "type": "heading",
+      "text": "THE BIGGER IDEA"
+    },
+    {
+      "type": "paragraph",
+      "text": "Physical cash has a familiar privacy property: handing a shop twenty dollars does not automatically publish your other purchases. But proving a past cash payment to a stranger can be difficult unless someone issued a receipt."
+    },
+    {
+      "type": "paragraph",
+      "text": "Transparent blockchains went to the opposite extreme. The ledger itself becomes a permanent public receipt system."
+    },
+    {
+      "type": "paragraph",
+      "text": "Payment disclosures explore a third model: keep the ledger private, then let the participant create a narrowly scoped receipt when one is actually needed."
+    },
+    {
+      "type": "callout",
+      "text": "DON'T MAKE EVERY TRANSACTION PUBLIC JUST IN CASE SOMEONE NEEDS PROOF LATER."
+    },
+    {
+      "type": "heading",
+      "text": "THE FEATURE THAT DOESN'T EXIST YET — BUT THE QUESTION ALREADY DOES"
+    },
+    {
+      "type": "paragraph",
+      "text": "ZIP 311 remains draft work, and its unfinished Orchard support is an important limitation. The proposal may change, be replaced, or never become the exact wallet experience it describes."
+    },
+    {
+      "type": "paragraph",
+      "text": "But the design question survives regardless: if private digital money is going to work in ordinary commerce, privacy and receipts cannot be treated as opposites."
+    },
+    {
+      "type": "paragraph",
+      "text": "The better target is a receipt that reveals the payment you chose to prove — not the financial life surrounding it."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 311 — Zcash Payment Disclosures (Draft)",
+      "url": "https://zips.z.cash/zip-0311"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "heading",
+      "text": "PROVE WHAT HAPPENED."
+    },
+    {
+      "type": "callout",
+      "text": "NOT EVERYTHING THAT HAPPENED BEFORE AND AFTER IT."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
