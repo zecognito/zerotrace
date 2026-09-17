@@ -1,0 +1,49 @@
+name: Normalize Rabbit cards to 001 baseline once
+on:
+  push:
+    paths:
+      - '.github/workflows/normalize-rabbit-cards-once.yml'
+permissions:
+  contents: write
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repair 002-021 from entries
+        run: |
+          set -euo pipefail
+          cp rabbit-hole/assets/002-privacy-was-always-part-of-the-conversation.png assets/rabbit-002.png
+          cp rabbit-hole/assets/020-the-address-is-not-the-identity.png assets/rabbit-020.png
+          cp rabbit-hole/assets/021-did-the-nsa-build-bitcoin.png assets/rabbit-021.png
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          baseline=Path('rabbit-hole/bitcoin-vs-zcash/index.html').read_bytes()
+          entries=json.loads(Path('rabbit-hole/entries.json').read_text())['entries']
+          done=[]
+          for e in entries:
+              n=e['number']
+              if n=='001' or not ('002' <= n <= '021'): continue
+              p=Path('rabbit-hole')/e['id']/'index.html'
+              if not p.exists(): raise SystemExit(f'Missing route: {p}')
+              s=p.read_text()
+              img=f'https://zerotrace.fyi/assets/rabbit-{n}.png'
+              s=re.sub(r'<meta property="og:image" content="[^"]*">',f'<meta property="og:image" content="{img}">',s)
+              s=re.sub(r'<meta property="og:image:secure_url" content="[^"]*">',f'<meta property="og:image:secure_url" content="{img}">',s)
+              s=re.sub(r'<meta name="twitter:image" content="[^"]*">',f'<meta name="twitter:image" content="{img}">',s)
+              s=re.sub(r'<meta property="og:image:type" content="[^"]*">','<meta property="og:image:type" content="image/png">',s)
+              s=re.sub(r'<meta name="twitter:card" content="[^"]*">','<meta name="twitter:card" content="summary_large_image">',s)
+              if 'property="og:image"' not in s or 'name="twitter:image"' not in s: raise SystemExit(f'Missing image tags: {p}')
+              p.write_text(s)
+              done.append(n)
+          expected=[f'{i:03d}' for i in range(2,22)]
+          if done!=expected: raise SystemExit(f'Expected {expected}, got {done}')
+          if Path('rabbit-hole/bitcoin-vs-zcash/index.html').read_bytes()!=baseline: raise SystemExit('001 changed; aborting')
+          PY
+          git rm .github/workflows/normalize-rabbit-cards-once.yml
+          git config user.name 'ZeroTrace Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add assets/rabbit-002.png assets/rabbit-020.png assets/rabbit-021.png rabbit-hole/*/index.html
+          git commit -m 'Repair Rabbit Hole 002-021 social cards from 001 baseline'
+          git push
