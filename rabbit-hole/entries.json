@@ -1,25 +1,202 @@
 {
   "entries": [
-    {"number":"001","id":"bitcoin-vs-zcash","category":"PRIVACY // INTERACTIVE","title":"BITCOIN VS ZCASH","subtitle":"WHAT THE LEDGER REVEALS.","description":"Same public blockchain idea. Two different answers to what the public should be allowed to see.","status":"PUBLISHED"},
-    {"number":"002","id":"privacy-was-always-part-of-the-conversation","category":"HISTORY // SOURCE LINKED","title":"PRIVACY WAS ALWAYS PART OF THE CONVERSATION","subtitle":"BEFORE PRIVACY COINS. BEFORE MAXIMALISM.","description":"A sourced look at the ideas already being discussed.","status":"PUBLISHED"},
-    {"number":"003","id":"inside-a-shielded-transaction","category":"TECHNOLOGY // ZCASH","title":"INSIDE A SHIELDED TRANSACTION","subtitle":"WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.","description":"","status":"PUBLISHED"},
-    {"number":"004","id":"the-metadata-you-didnt-know-you-were-leaking","category":"SURVEILLANCE // PRIVACY","title":"THE METADATA YOU DIDN'T KNOW YOU WERE LEAKING","subtitle":"YOUR ADDRESS IS ONLY THE BEGINNING.","description":"What a public ledger can reveal beyond the address itself — and what shielding changes.","status":"PUBLISHED"},
-    {"number":"005","id":"the-crowd-is-part-of-the-privacy","category":"PRIVACY // ANONYMITY SETS","title":"THE CROWD IS PART OF THE PRIVACY","subtitle":"WHY SHIELDED USAGE MATTERS.","description":"Anonymity sets, shielded pools and why private activity becomes stronger when private becomes normal.","status":"PUBLISHED"},
-    {"number":"006","id":"from-coinbase-to-darkness","category":"PRACTICE // SHIELDING","title":"FROM COINBASE TO DARKNESS","subtitle":"WHAT ACTUALLY HAPPENS WHEN YOU SHIELD ZEC.","description":"Follow ZEC from a public exchange withdrawal into shielded value and see exactly what changes — and what does not.","status":"PUBLISHED"},
-    {"number":"007","id":"your-blockchain-has-a-memory","category":"SURVEILLANCE // PERMANENCE","title":"YOUR BLOCKCHAIN HAS A MEMORY","subtitle":"THE TRANSACTION YOU MADE FIVE YEARS AGO IS STILL TALKING.","description":"Why public blockchain history can become more revealing years after a transaction was made.","status":"PUBLISHED"},
-    {"number":"008","id":"they-dont-need-your-name","category":"ANALYTICS // PSEUDONYMITY","title":"THEY DON'T NEED YOUR NAME","subtitle":"THE GRAPH CAN FIND YOU FIRST.","description":"How clustering, change detection, labels and patterns can turn pseudonymous activity into an attributable graph.","status":"PUBLISHED"},
-    {"number":"009","id":"privacy-has-an-exit-problem","category":"PRIVACY // BOUNDARIES","title":"PRIVACY HAS AN EXIT PROBLEM","subtitle":"WHAT HAPPENS WHEN PRIVATE MONEY TOUCHES A PUBLIC WORLD.","description":"Where shielded cryptography ends and operational privacy begins.","status":"PUBLISHED"},
-    {"number":"010","id":"cash-was-private-by-default","category":"HISTORY // MONEY","title":"CASH WAS PRIVATE BY DEFAULT","subtitle":"WE DIDN'T INVENT FINANCIAL PRIVACY. WE STARTED REMOVING IT.","description":"How digitization changed the data around payments — and why public ledgers changed the privacy model again.","status":"PUBLISHED"},
-    {"number":"011","id":"the-panopticon-has-an-api","category":"ANALYTICS // AUTOMATION","title":"THE PANOPTICON HAS AN API","subtitle":"FINANCIAL SURVEILLANCE DOESN'T NEED SOMEONE WATCHING.","description":"How public blockchain data becomes clustered, labeled, queried and automated at scale.","status":"PUBLISHED"},
-    {"number":"012","id":"when-money-becomes-a-permission-system","category":"ARCHITECTURE // CONTROL","title":"WHEN MONEY BECOMES A PERMISSION SYSTEM","subtitle":"PRIVACY. CENSORSHIP. CONTROL. THEY ARE DIFFERENT QUESTIONS.","description":"Separate privacy, censorship resistance and self-custody — three properties that are often mistaken for one.","status":"PUBLISHED"},
-    {"number":"013","id":"your-wallet-has-a-fingerprint","category":"NETWORK // METADATA","title":"YOUR WALLET HAS A FINGERPRINT","subtitle":"THE CHAIN ISN'T THE ONLY PLACE YOU LEAK.","description":"Why shielded ledger privacy does not automatically hide network metadata, fees or the context surrounding a transaction.","status":"PUBLISHED"},
-    {"number":"014","id":"zero-knowledge-changed-the-question","category":"CRYPTOGRAPHY // ZERO KNOWLEDGE","title":"ZERO KNOWLEDGE CHANGED THE QUESTION","subtitle":"PROVE IT. DON'T REVEAL IT.","description":"How zero-knowledge proofs separate verification from disclosure — and what that means inside Zcash Orchard.","status":"PUBLISHED"},
-    {"number":"015","id":"privacy-has-more-than-one-enemy","category":"PRIVACY // OPSEC","title":"PRIVACY HAS MORE THAN ONE ENEMY","subtitle":"CRYPTOGRAPHY CAN HIDE THE TRANSACTION. YOU CAN STILL REVEAL YOURSELF.","description":"Ledger privacy is one layer. Network metadata, counterparties, viewing keys and user behavior can expose another.","status":"PUBLISHED"},
-    {"number":"016","id":"transparency-is-not-privacy","category":"BITCOIN // PRIVACY","title":"TRANSPARENCY IS NOT PRIVACY","subtitle":"A PUBLIC LEDGER CAN BE TRUSTLESS AND STILL BE PUBLIC.","description":"Bitcoin can be decentralized, independently verifiable and still expose a public transaction history. Those properties answer different questions.","status":"PUBLISHED"},
-    {"number":"017","id":"the-travel-rule-came-to-crypto","category":"COMPLIANCE // METADATA","title":"THE TRAVEL RULE CAME TO CRYPTO","subtitle":"THE BLOCKCHAIN WAS ONLY ONE DATA LAYER.","description":"How regulated service-provider records and Travel Rule data create a second information layer beside the blockchain.","status":"PUBLISHED"},
-    {"number":"018","id":"privacy-is-not-a-confession","category":"PRIVACY // ASSUMPTIONS","title":"PRIVACY IS NOT A CONFESSION","subtitle":"HIDING INFORMATION IS NOT THE SAME AS HIDING A CRIME.","description":"Privacy technology controls disclosure. It does not tell you whether the activity behind it is legitimate or illicit.","status":"PUBLISHED"},
-    {"number":"019","id":"who-is-satoshi-nakamoto","category":"INVESTIGATION // SATOSHI","title":"WHO IS SATOSHI NAKAMOTO?","subtitle":"THE MAN. THE GROUP. THE GHOST.","description":"A cold-case investigation into the documented trail, major and overlooked suspects, collaboration theories, the CIA/NSA rabbit hole and what evidence would actually close the case.","status":"PUBLISHED"},
-    {"number":"020","id":"the-address-is-not-the-identity","category":"PRIVACY // PSEUDONYMITY","title":"THE ADDRESS IS NOT THE IDENTITY","subtitle":"UNTIL THE REST OF THE INTERNET CONNECTS THE DOTS.","description":"A crypto address may begin as an unidentified string. The surrounding graph and off-chain context can give that pseudonym meaning later.","status":"PUBLISHED"},
-    {"number":"021","id":"did-the-nsa-build-bitcoin","category":"INVESTIGATION // NSA // BITCOIN","title":"DID THE NSA BUILD BITCOIN?","subtitle":"THE CONNECTIONS NOBODY WANTS TO TALK ABOUT.","description":"A deep investigation into the NSA's pre-Bitcoin electronic-cash research, SHA lineage, the CIA meeting, Satoshi's disappearance, the public ledger and the uncomfortable government-funding footnote in Zerocash history.","status":"PUBLISHED"}
+    {
+      "number": "001",
+      "id": "bitcoin-vs-zcash",
+      "category": "PRIVACY // INTERACTIVE",
+      "title": "BITCOIN VS ZCASH",
+      "subtitle": "WHAT THE LEDGER REVEALS.",
+      "description": "Same public blockchain idea. Two different answers to what the public should be allowed to see.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "002",
+      "id": "privacy-was-always-part-of-the-conversation",
+      "category": "HISTORY // SOURCE LINKED",
+      "title": "PRIVACY WAS ALWAYS PART OF THE CONVERSATION",
+      "subtitle": "BEFORE PRIVACY COINS. BEFORE MAXIMALISM.",
+      "description": "A sourced look at the ideas already being discussed.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "003",
+      "id": "inside-a-shielded-transaction",
+      "category": "TECHNOLOGY // ZCASH",
+      "title": "INSIDE A SHIELDED TRANSACTION",
+      "subtitle": "WHAT DISAPPEARS. WHAT REMAINS. WHAT GETS PROVEN.",
+      "description": "",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "004",
+      "id": "the-metadata-you-didnt-know-you-were-leaking",
+      "category": "SURVEILLANCE // PRIVACY",
+      "title": "THE METADATA YOU DIDN'T KNOW YOU WERE LEAKING",
+      "subtitle": "YOUR ADDRESS IS ONLY THE BEGINNING.",
+      "description": "What a public ledger can reveal beyond the address itself — and what shielding changes.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "005",
+      "id": "the-crowd-is-part-of-the-privacy",
+      "category": "PRIVACY // ANONYMITY SETS",
+      "title": "THE CROWD IS PART OF THE PRIVACY",
+      "subtitle": "WHY SHIELDED USAGE MATTERS.",
+      "description": "Anonymity sets, shielded pools and why private activity becomes stronger when private becomes normal.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "006",
+      "id": "from-coinbase-to-darkness",
+      "category": "PRACTICE // SHIELDING",
+      "title": "FROM COINBASE TO DARKNESS",
+      "subtitle": "WHAT ACTUALLY HAPPENS WHEN YOU SHIELD ZEC.",
+      "description": "Follow ZEC from a public exchange withdrawal into shielded value and see exactly what changes — and what does not.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "007",
+      "id": "your-blockchain-has-a-memory",
+      "category": "SURVEILLANCE // PERMANENCE",
+      "title": "YOUR BLOCKCHAIN HAS A MEMORY",
+      "subtitle": "THE TRANSACTION YOU MADE FIVE YEARS AGO IS STILL TALKING.",
+      "description": "Why public blockchain history can become more revealing years after a transaction was made.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "008",
+      "id": "they-dont-need-your-name",
+      "category": "ANALYTICS // PSEUDONYMITY",
+      "title": "THEY DON'T NEED YOUR NAME",
+      "subtitle": "THE GRAPH CAN FIND YOU FIRST.",
+      "description": "How clustering, change detection, labels and patterns can turn pseudonymous activity into an attributable graph.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "009",
+      "id": "privacy-has-an-exit-problem",
+      "category": "PRIVACY // BOUNDARIES",
+      "title": "PRIVACY HAS AN EXIT PROBLEM",
+      "subtitle": "WHAT HAPPENS WHEN PRIVATE MONEY TOUCHES A PUBLIC WORLD.",
+      "description": "Where shielded cryptography ends and operational privacy begins.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "010",
+      "id": "cash-was-private-by-default",
+      "category": "HISTORY // MONEY",
+      "title": "CASH WAS PRIVATE BY DEFAULT",
+      "subtitle": "WE DIDN'T INVENT FINANCIAL PRIVACY. WE STARTED REMOVING IT.",
+      "description": "How digitization changed the data around payments — and why public ledgers changed the privacy model again.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "011",
+      "id": "the-panopticon-has-an-api",
+      "category": "ANALYTICS // AUTOMATION",
+      "title": "THE PANOPTICON HAS AN API",
+      "subtitle": "FINANCIAL SURVEILLANCE DOESN'T NEED SOMEONE WATCHING.",
+      "description": "How public blockchain data becomes clustered, labeled, queried and automated at scale.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "012",
+      "id": "when-money-becomes-a-permission-system",
+      "category": "ARCHITECTURE // CONTROL",
+      "title": "WHEN MONEY BECOMES A PERMISSION SYSTEM",
+      "subtitle": "PRIVACY. CENSORSHIP. CONTROL. THEY ARE DIFFERENT QUESTIONS.",
+      "description": "Separate privacy, censorship resistance and self-custody — three properties that are often mistaken for one.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "013",
+      "id": "your-wallet-has-a-fingerprint",
+      "category": "NETWORK // METADATA",
+      "title": "YOUR WALLET HAS A FINGERPRINT",
+      "subtitle": "THE CHAIN ISN'T THE ONLY PLACE YOU LEAK.",
+      "description": "Why shielded ledger privacy does not automatically hide network metadata, fees or the context surrounding a transaction.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "014",
+      "id": "zero-knowledge-changed-the-question",
+      "category": "CRYPTOGRAPHY // ZERO KNOWLEDGE",
+      "title": "ZERO KNOWLEDGE CHANGED THE QUESTION",
+      "subtitle": "PROVE IT. DON'T REVEAL IT.",
+      "description": "How zero-knowledge proofs separate verification from disclosure — and what that means inside Zcash Orchard.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "015",
+      "id": "privacy-has-more-than-one-enemy",
+      "category": "PRIVACY // OPSEC",
+      "title": "PRIVACY HAS MORE THAN ONE ENEMY",
+      "subtitle": "CRYPTOGRAPHY CAN HIDE THE TRANSACTION. YOU CAN STILL REVEAL YOURSELF.",
+      "description": "Ledger privacy is one layer. Network metadata, counterparties, viewing keys and user behavior can expose another.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "016",
+      "id": "transparency-is-not-privacy",
+      "category": "BITCOIN // PRIVACY",
+      "title": "TRANSPARENCY IS NOT PRIVACY",
+      "subtitle": "A PUBLIC LEDGER CAN BE TRUSTLESS AND STILL BE PUBLIC.",
+      "description": "Bitcoin can be decentralized, independently verifiable and still expose a public transaction history. Those properties answer different questions.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "017",
+      "id": "the-travel-rule-came-to-crypto",
+      "category": "COMPLIANCE // METADATA",
+      "title": "THE TRAVEL RULE CAME TO CRYPTO",
+      "subtitle": "THE BLOCKCHAIN WAS ONLY ONE DATA LAYER.",
+      "description": "How regulated service-provider records and Travel Rule data create a second information layer beside the blockchain.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "018",
+      "id": "privacy-is-not-a-confession",
+      "category": "PRIVACY // ASSUMPTIONS",
+      "title": "PRIVACY IS NOT A CONFESSION",
+      "subtitle": "HIDING INFORMATION IS NOT THE SAME AS HIDING A CRIME.",
+      "description": "Privacy technology controls disclosure. It does not tell you whether the activity behind it is legitimate or illicit.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "019",
+      "id": "who-is-satoshi-nakamoto",
+      "category": "INVESTIGATION // SATOSHI",
+      "title": "WHO IS SATOSHI NAKAMOTO?",
+      "subtitle": "THE MAN. THE GROUP. THE GHOST.",
+      "description": "A cold-case investigation into the documented trail, major and overlooked suspects, collaboration theories, the CIA/NSA rabbit hole and what evidence would actually close the case.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "020",
+      "id": "the-address-is-not-the-identity",
+      "category": "PRIVACY // PSEUDONYMITY",
+      "title": "THE ADDRESS IS NOT THE IDENTITY",
+      "subtitle": "UNTIL THE REST OF THE INTERNET CONNECTS THE DOTS.",
+      "description": "A crypto address may begin as an unidentified string. The surrounding graph and off-chain context can give that pseudonym meaning later.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "021",
+      "id": "did-the-nsa-build-bitcoin",
+      "category": "INVESTIGATION // NSA // BITCOIN",
+      "title": "DID THE NSA BUILD BITCOIN?",
+      "subtitle": "THE CONNECTIONS NOBODY WANTS TO TALK ABOUT.",
+      "description": "A deep investigation into the NSA's pre-Bitcoin electronic-cash research, SHA lineage, the CIA meeting, Satoshi's disappearance, the public ledger and the uncomfortable government-funding footnote in Zerocash history.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "022",
+      "id": "john-dobbertin",
+      "category": "INVESTIGATION // ZCASH // PRIVACY",
+      "title": "JOHN DOBBERTIN",
+      "subtitle": "THE MYSTERIOUS SIXTH PARTICIPANT. WHO WAS HE?",
+      "description": "Six people helped initialize Zcash's original privacy system. Five identities became known. The sixth stayed behind a pseudonym for six years.",
+      "status": "PUBLISHED"
+    }
   ]
 }
