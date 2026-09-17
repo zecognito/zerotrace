@@ -1,0 +1,245 @@
+{
+  "title": "JOHN DOBBERTIN",
+  "subtitle": "THE MYSTERIOUS SIXTH PARTICIPANT. WHO WAS HE?",
+  "category": "022 // INVESTIGATION // ZCASH // PRIVACY",
+  "date": "SEPTEMBER 2026",
+  "readTime": "10 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "IN 2016, SIX PEOPLE TOOK PART IN ONE OF THE STRANGEST LAUNCH CEREMONIES IN CRYPTO. FIVE NAMES BECAME KNOWN. ONE DID NOT."
+    },
+    {
+      "type": "heading",
+      "text": "SIX PEOPLE"
+    },
+    {
+      "type": "paragraph",
+      "text": "October 2016. Zcash was preparing to launch, but its original zk-SNARK system required something unusual first: a multi-party trusted setup that became known simply as THE CEREMONY."
+    },
+    {
+      "type": "paragraph",
+      "text": "Six participants, separated across different locations, each handled a private contribution to the setup. The design had one crucial property: if even one participant successfully destroyed their private key shard, the combined secret material — the so-called toxic waste — could not be reconstructed."
+    },
+    {
+      "type": "paragraph",
+      "text": "The ceremony combined multi-party computation, air-gapped machines and evidence trails. It was deliberately designed so the system did not have to depend on every participant being trustworthy."
+    },
+    {
+      "type": "heading",
+      "text": "JOHN DOBBERTIN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Three participants were initially introduced under invented names to make them harder for a potential attacker to identify in advance. One of those names was John Dobbertin."
+    },
+    {
+      "type": "paragraph",
+      "text": "After the ceremony, the masks began coming off. But one identity stayed hidden."
+    },
+    {
+      "type": "callout",
+      "text": "THE IDENTITY OF “JOHN DOBBERTIN” HAS NOT YET BEEN REVEALED."
+    },
+    {
+      "type": "paragraph",
+      "text": "That is how Zooko Wilcox described the remaining mystery after the ceremony. John had done his part. The network launched. The pseudonym remained."
+    },
+    {
+      "type": "heading",
+      "text": "THE GHOST"
+    },
+    {
+      "type": "paragraph",
+      "text": "Years passed. Zcash kept running. John Dobbertin stayed anonymous."
+    },
+    {
+      "type": "paragraph",
+      "text": "Meanwhile, one of the world's best-known privacy advocates was publicly talking about cryptocurrency, public ledgers and financial privacy."
+    },
+    {
+      "type": "paragraph",
+      "text": "Edward Snowden had become globally known after providing journalists with classified material about U.S. and allied surveillance programs in 2013. His actions remain politically and legally contested. What matters to this story is the privacy question that followed him: how much information should systems collect simply because they can?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Snowden also spoke publicly about cryptocurrency privacy. He criticized Bitcoin's open ledger and praised privacy-preserving approaches. What almost nobody knew was that his connection to Zcash went back much further."
+    },
+    {
+      "type": "heading",
+      "text": "2022"
+    },
+    {
+      "type": "paragraph",
+      "text": "Six years after the ceremony, the final identity was revealed."
+    },
+    {
+      "type": "callout",
+      "text": "JOHN DOBBERTIN WAS EDWARD SNOWDEN."
+    },
+    {
+      "type": "paragraph",
+      "text": "In April 2022, Snowden confirmed in an interview produced by Zcash Media that he had participated pseudonymously in Zcash's original 2016 trusted setup. Zooko Wilcox said he had recruited Snowden as one of the six participants."
+    },
+    {
+      "type": "paragraph",
+      "text": "Snowden had not simply commented on Zcash years later. He had been there before the network launched."
+    },
+    {
+      "type": "heading",
+      "text": "HE WAS THERE"
+    },
+    {
+      "type": "paragraph",
+      "text": "Reporting on the revelation described Snowden's operational-security experience as part of the story. Wilcox said Snowden introduced him to the idea of unpredictable hardware purchases: do not decide in advance exactly where a sensitive machine will come from, because predictability gives an attacker something to target."
+    },
+    {
+      "type": "paragraph",
+      "text": "The ceremony itself already treated hardware as part of the threat model. Compute nodes were bought new, kept air-gapped and physically isolated from networks. Participants took extraordinary measures to prevent secret material from surviving."
+    },
+    {
+      "type": "paragraph",
+      "text": "John Dobbertin generated his contribution, destroyed the secret material and disappeared back behind the pseudonym."
+    },
+    {
+      "type": "heading",
+      "text": "WHY WOULD SNOWDEN DO IT?"
+    },
+    {
+      "type": "paragraph",
+      "text": "When Snowden's identity was revealed, his explanation focused on the difference between a fair ledger and a private ledger. Bitcoin had demonstrated a way to maintain a monetary ledger without a traditional central operator, but its transaction history is public."
+    },
+    {
+      "type": "paragraph",
+      "text": "Snowden connected private trade with a free society. His interest was not simply whether cryptography could verify money. It was whether cryptography could verify money without exposing everyone's financial activity."
+    },
+    {
+      "type": "callout",
+      "text": "THE QUESTION WASN'T ONLY: CAN THE NETWORK VERIFY IT? THE QUESTION WAS: DOES EVERYONE NEED TO SEE IT?"
+    },
+    {
+      "type": "heading",
+      "text": "BITCOIN CHANGED THE LEDGER"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bitcoin's public ledger makes transactions independently verifiable, but it also leaves transaction relationships and amounts available for public analysis. Addresses are pseudonymous, not automatically anonymous."
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash took a different approach. Shielded transactions use zero-knowledge proofs so the network can verify validity without requiring the same transaction details to be publicly disclosed."
+    },
+    {
+      "type": "paragraph",
+      "text": "Verification and disclosure do not have to be the same operation."
+    },
+    {
+      "type": "heading",
+      "text": "THEN ZCASH OUTGREW THE CEREMONY"
+    },
+    {
+      "type": "paragraph",
+      "text": "There is another twist. The trusted setup that made the 2016 ceremony necessary is no longer required by Zcash's current Orchard shielded protocol. Halo-based proving technology removed the need for that kind of trusted setup."
+    },
+    {
+      "type": "paragraph",
+      "text": "The ceremony became history. The cryptography moved forward."
+    },
+    {
+      "type": "callout",
+      "text": "DON'T ASK PEOPLE FOR MORE TRUST THAN THE PROTOCOL NEEDS. ENGINEER THE TRUST OUT."
+    },
+    {
+      "type": "heading",
+      "text": "WHY JOHN DOBBERTIN MATTERS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not because Edward Snowden created Zcash. He did not."
+    },
+    {
+      "type": "paragraph",
+      "text": "Not because a famous participant proves a cryptocurrency is trustworthy. It does not."
+    },
+    {
+      "type": "paragraph",
+      "text": "John Dobbertin matters because the story is almost perfectly aligned with the problem Zcash was trying to solve: prove what must be proven while revealing less than the system would otherwise expose."
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the world's most recognizable privacy advocates participated before launch, did it under a pseudonym, and kept the connection private for six years."
+    },
+    {
+      "type": "heading",
+      "text": "THE NAME WAS THE CLUE"
+    },
+    {
+      "type": "paragraph",
+      "text": "John Dobbertin was a temporary identity created for an operation built around secret information that was supposed to disappear."
+    },
+    {
+      "type": "paragraph",
+      "text": "The participant mattered. His public identity did not."
+    },
+    {
+      "type": "paragraph",
+      "text": "For six years, almost nobody outside the small circle involved knew who stood behind the name."
+    },
+    {
+      "type": "heading",
+      "text": "WHO WAS JOHN DOBBERTIN?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The mysterious sixth participant in Zcash's original ceremony."
+    },
+    {
+      "type": "paragraph",
+      "text": "Someone trusted to understand operational security. Someone interested in financial privacy. Someone whose real identity the world already knew extremely well."
+    },
+    {
+      "type": "callout",
+      "text": "EDWARD SNOWDEN."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Electric Coin Company — The Design of the Ceremony",
+      "url": "https://electriccoin.co/blog/the-design-of-the-ceremony/"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Media / 37 Laines — Edward Snowden revealed as John Dobbertin",
+      "url": "https://www.prnewswire.com/news-releases/edward-snowden-revealed-as-john-dobbertin---the-final-pseudonymous-member-of-2016s-setup-process-for-privacy-preserving-cryptocurrency-zcash-confirmed-in-zcash-medias-latest-video-301534963.html"
+    },
+    {
+      "type": "source",
+      "label": "Forbes — Edward Snowden revealed as key participant in Zcash ceremony",
+      "url": "https://www.forbes.com/sites/michaeldelcastillo/2022/04/27/edward-snowden-revealed-as-key-participant-in-mysterious-ceremony-creating-2-billion-anonymous-cryptocurrency/"
+    },
+    {
+      "type": "source",
+      "label": "CoinDesk Research — Inside Zcash: Encrypted Money at Planetary Scale",
+      "url": "https://www.coindesk.com/research/inside-zcash-encrypted-money-at-planetary-scale"
+    },
+    {
+      "type": "heading",
+      "text": "HE EXPOSED A WORLD BUILT TO COLLECT INFORMATION."
+    },
+    {
+      "type": "callout",
+      "text": "THEN QUIETLY HELPED LAUNCH A NETWORK BUILT TO REVEAL LESS OF IT."
+    },
+    {
+      "type": "heading",
+      "text": "FOR SIX YEARS, THE WORLD KNEW HIM ONLY AS JOHN DOBBERTIN."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
