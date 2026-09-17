@@ -1,0 +1,165 @@
+{
+  "title": "THE MESSAGE INSIDE THE MONEY",
+  "subtitle": "A SHIELDED PAYMENT CAN CARRY MORE THAN VALUE.",
+  "category": "024 // ZCASH // MEMOS // ENCRYPTED DATA",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "INSIDE A ZCASH SHIELDED OUTPUT IS SOMETHING MOST PEOPLE NEVER TALK ABOUT: SPACE FOR A PRIVATE MESSAGE."
+    },
+    {
+      "type": "heading",
+      "text": "MONEY WITH A MESSAGE"
+    },
+    {
+      "type": "paragraph",
+      "text": "A payment usually needs context. Invoice 418. Thanks for dinner. Order reference. Refund reason. On ordinary payment systems, that context often lives in a separate database controlled by a bank, processor, merchant or app."
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash shielded notes have long carried a memo field alongside the value being transferred. In current pre-V7 Sapling and Orchard transaction formats, the note plaintext includes a 512-byte memo field, and the note plaintext is encrypted to the recipient."
+    },
+    {
+      "type": "callout",
+      "text": "THE PAYMENT AND ITS CONTEXT CAN TRAVEL TOGETHER WITHOUT TURNING THE MEMO INTO A PUBLIC BLOCKCHAIN MESSAGE."
+    },
+    {
+      "type": "heading",
+      "text": "512 BYTES"
+    },
+    {
+      "type": "paragraph",
+      "text": "Five hundred and twelve bytes is not a chat room. But it is enough for useful context: short UTF-8 text, an identifier, structured application data, or other information interpreted by software."
+    },
+    {
+      "type": "paragraph",
+      "text": "ZIP 302 describes conventions for that field. A memo can contain UTF-8 text; a defined encoding represents no memo; and other byte ranges allow private application-defined data or reserve room for future formats."
+    },
+    {
+      "type": "paragraph",
+      "text": "These memo-format rules are not consensus rules. They are conventions that help wallets and applications agree on what the bytes mean."
+    },
+    {
+      "type": "heading",
+      "text": "THE MEMO IS PART OF THE NOTE PLAINTEXT"
+    },
+    {
+      "type": "paragraph",
+      "text": "This detail is easy to miss. The protocol specification describes transmitted shielded notes as being stored on-chain in encrypted form. For Sapling and Orchard, the note plaintext is encrypted to the diversified payment address. The memo travels inside that encrypted material."
+    },
+    {
+      "type": "paragraph",
+      "text": "That makes the memo fundamentally different from attaching a public comment to a transparent transaction. A chain observer sees ciphertext, not the recipient's readable memo contents."
+    },
+    {
+      "type": "heading",
+      "text": "PRIVATE DOES NOT MEAN INVISIBLE TO EVERYONE"
+    },
+    {
+      "type": "paragraph",
+      "text": "The recipient who can decrypt the note can recover its memo. Depending on the relevant viewing authority and wallet behavior, parties given viewing access may also be able to recover information associated with shielded activity."
+    },
+    {
+      "type": "paragraph",
+      "text": "And the sender or recipient can always reveal a memo themselves. Encryption controls who can derive the plaintext from the transaction; it does not prevent the people who know the plaintext from copying it elsewhere."
+    },
+    {
+      "type": "callout",
+      "text": "ENCRYPTION PROTECTS THE MESSAGE IN TRANSIT AND ON THE PUBLIC LEDGER. IT DOES NOT ERASE THE HUMAN ON THE OTHER END."
+    },
+    {
+      "type": "heading",
+      "text": "THE PAYMENT REQUEST CAN PRELOAD IT"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash payment-request URIs defined by ZIP 321 can include a memo parameter for a shielded payment. That means an application can construct a payment request in which the destination, amount and memo data are already specified for the wallet."
+    },
+    {
+      "type": "paragraph",
+      "text": "The same standard rejects a memo parameter when the associated address does not permit memos, such as a transparent address. The feature belongs to the shielded-payment path."
+    },
+    {
+      "type": "heading",
+      "text": "THEN THE DESIGN STARTED MOVING AGAIN"
+    },
+    {
+      "type": "paragraph",
+      "text": "The fixed 512-byte memo is not necessarily the final shape of Zcash memos. Draft ZIP 231 proposes Memo Bundles for a future V7 transaction format."
+    },
+    {
+      "type": "paragraph",
+      "text": "Instead of placing a fixed 512-byte memo inside every shielded output, the proposal would put a memo key in the note plaintext and move encrypted memo chunks into a transaction-level bundle. The proposal allows larger memos, shared memo data for multiple recipients, and pruning memo data without preventing consensus validation."
+    },
+    {
+      "type": "paragraph",
+      "text": "The proposal sets a transaction-level limit of 16 KiB of memo data. It is a proposal, not a description of the current deployed pre-V7 format."
+    },
+    {
+      "type": "heading",
+      "text": "WHY THIS LITTLE FIELD MATTERS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Financial privacy is not only about hiding amounts and addresses. Real payments carry meaning. If the value is private but every invoice number, order reference and note has to move through a separate public or centralized channel, part of the transaction's context escapes the privacy boundary."
+    },
+    {
+      "type": "paragraph",
+      "text": "The memo field lets applications keep some of that context attached to the shielded payment itself."
+    },
+    {
+      "type": "callout",
+      "text": "MONEY IS DATA. SOMETIMES THE DATA ABOUT THE MONEY IS MORE REVEALING THAN THE AMOUNT."
+    },
+    {
+      "type": "heading",
+      "text": "A SMALL CHANNEL INSIDE THE TRANSACTION"
+    },
+    {
+      "type": "paragraph",
+      "text": "The surprising part is not that Zcash can move value privately. That is the feature everyone knows."
+    },
+    {
+      "type": "paragraph",
+      "text": "The surprising part is that the encrypted object can carry a small piece of private application context with the value — and the protocol's designers are still exploring how that channel could evolve."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification — Note Plaintexts and Memo Fields",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 302 — Standardized Memo Field Format",
+      "url": "https://zips.z.cash/zip-0302"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 321 — Payment Request URIs",
+      "url": "https://zips.z.cash/zip-0321"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 231 — Memo Bundles (Draft)",
+      "url": "https://zips.z.cash/zip-0231"
+    },
+    {
+      "type": "heading",
+      "text": "THE COIN MOVES."
+    },
+    {
+      "type": "callout",
+      "text": "THE MESSAGE CAN MOVE WITH IT — WITHOUT BECOMING EVERYONE'S MESSAGE."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
