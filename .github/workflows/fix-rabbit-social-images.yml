@@ -1,0 +1,41 @@
+name: Fix Rabbit Hole social image MIME
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-rabbit-social-images.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make JPEG assets and correct social metadata
+        run: |
+          set -e
+          for n in $(seq -w 1 19); do
+            cp "assets/rabbit-${n}.png" "assets/rabbit-${n}.jpg"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          changed=0
+          for p in Path('rabbit-hole').glob('*/index.html'):
+              s=p.read_text()
+              if 'rabbit-' not in s or 'og:image' not in s:
+                  continue
+              old=s
+              s=s.replace('.png?v=20260916', '.jpg?v=20260917')
+              s=s.replace('content="image/png"', 'content="image/jpeg"')
+              if s != old:
+                  p.write_text(s)
+                  changed += 1
+          if changed != 19:
+              raise SystemExit(f'Expected 19 social pages, changed {changed}; refusing partial patch')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name 'ZeroTrace Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add assets/rabbit-*.jpg rabbit-hole/*/index.html
+          git commit -m 'Serve Rabbit Hole social cards as JPEG assets'
+          git push
