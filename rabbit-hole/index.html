@@ -2124,7 +2124,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   .then(r=>{if(!r.ok)throw new Error('article');return r.json()})
   .then(a=>{
     document.title=(a.title||'Rabbit Hole')+' // ZeroTrace';
-     if(id==='bitcoin-vs-zcash') history.replaceState(null,'','/rabbit-hole/bitcoin-vs-zcash/');
+     history.replaceState(null,'','/rabbit-hole/'+encodeURIComponent(id)+'/');
     rabbit.innerHTML=`
       <div class="ztArticle">
         <a class="ztArticleBack" href="/rabbit-hole/">← RABBIT HOLE</a>
