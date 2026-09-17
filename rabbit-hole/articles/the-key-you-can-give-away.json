@@ -1,0 +1,152 @@
+{
+  "title": "THE KEY YOU CAN GIVE AWAY",
+  "subtitle": "LET SOMEONE SEE THE MONEY. NEVER LET THEM SPEND IT.",
+  "category": "023 // ZCASH // VIEWING KEYS // SELECTIVE DISCLOSURE",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "A CRYPTO KEY DOES NOT HAVE TO MEAN CONTROL. SOME KEYS ARE BUILT ONLY TO SEE."
+    },
+    {
+      "type": "heading",
+      "text": "THE USUAL CHOICE IS TOO SIMPLE"
+    },
+    {
+      "type": "paragraph",
+      "text": "Crypto teaches one rule early: whoever has the private key controls the money. That is true for spending authority. But Zcash has another class of keys designed for a different job: viewing."
+    },
+    {
+      "type": "paragraph",
+      "text": "A viewing key can give another person visibility into shielded activity without giving them the authority to create a spend. That separation creates a strange middle ground between total secrecy and total public disclosure."
+    },
+    {
+      "type": "heading",
+      "text": "THE AUDITOR DOESN'T NEED YOUR WALLET"
+    },
+    {
+      "type": "paragraph",
+      "text": "Imagine a business using shielded ZEC. An accountant needs transaction records. An auditor needs evidence. A compliance team may need visibility. Publishing the account on a public ledger solves that problem by exposing it to everyone. Handing over the spending key solves it by giving away far too much."
+    },
+    {
+      "type": "paragraph",
+      "text": "Viewing authority is a third option. Zcash's specifications explicitly describe viewing keys as useful when information should be revealed to a third party, including auditing and situations where authority is split between parties or devices."
+    },
+    {
+      "type": "callout",
+      "text": "THE PERSON WHO CAN VERIFY YOUR HISTORY DOES NOT HAVE TO BE THE PERSON WHO CAN MOVE YOUR MONEY."
+    },
+    {
+      "type": "heading",
+      "text": "NOT ALL VIEWING KEYS SEE THE SAME THING"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash distinguishes incoming viewing authority from full viewing authority. An Incoming Viewing Key is intended to let its holder detect incoming payments. A Full Viewing Key is intended to provide visibility into payments to and from the corresponding address or account."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unified Viewing Keys extend this idea across the receiver types bundled into a Unified Address. A Unified Full Viewing Key can combine the relevant full-viewing components; a Unified Incoming Viewing Key can combine incoming-viewing components."
+    },
+    {
+      "type": "paragraph",
+      "text": "The distinction matters. 'Can view' is not a single permission. Even observation can be divided into different capabilities."
+    },
+    {
+      "type": "heading",
+      "text": "PRIVACY BECOMES A PERMISSION"
+    },
+    {
+      "type": "paragraph",
+      "text": "On a transparent blockchain, the ledger decides who can inspect the transaction graph: everyone. Once information is public, the owner cannot choose which observer receives it."
+    },
+    {
+      "type": "paragraph",
+      "text": "A shielded system changes that starting point. The chain can validate the transaction without publishing the same transaction details, while the wallet holder can separately decide whether to provide viewing authority to another party."
+    },
+    {
+      "type": "callout",
+      "text": "PUBLIC TRANSPARENCY SAYS: EVERYONE MAY LOOK. SELECTIVE DISCLOSURE SAYS: I DECIDE WHO GETS THE WINDOW."
+    },
+    {
+      "type": "heading",
+      "text": "BUT A VIEWING KEY IS STILL A KEY"
+    },
+    {
+      "type": "paragraph",
+      "text": "The word 'viewing' can sound harmless. It is not. A viewing key can reveal sensitive financial information, and the exact guarantees depend on the type of viewing key and protocol involved."
+    },
+    {
+      "type": "paragraph",
+      "text": "ZIP 310 exists largely because a party relying on Sapling viewing-key data needs to understand exactly what the key proves and what it does not. For example, some relationships can be verified from a Full Viewing Key while other claims about outgoing-viewing authority are not automatically guaranteed merely because a key was presented as an FVK."
+    },
+    {
+      "type": "paragraph",
+      "text": "So selective disclosure is not magic revocable access. Once you give another party a viewing key, you should treat the information that key can reveal as disclosed to that party. Cryptography can separate viewing from spending; it cannot make a recipient forget what they learned."
+    },
+    {
+      "type": "heading",
+      "text": "THIS IS DIFFERENT FROM HIDING"
+    },
+    {
+      "type": "paragraph",
+      "text": "Privacy is often framed as refusal: hide the transaction, hide the balance, hide the history. Viewing keys expose a different design philosophy."
+    },
+    {
+      "type": "paragraph",
+      "text": "The goal is not necessarily to make financial information impossible to reveal. The goal is to avoid making disclosure mandatory to the entire world just because a transaction must be validated."
+    },
+    {
+      "type": "paragraph",
+      "text": "That is a much more precise idea of financial privacy: not zero disclosure, but controlled disclosure."
+    },
+    {
+      "type": "heading",
+      "text": "THE KEY THAT CANNOT BUY COFFEE"
+    },
+    {
+      "type": "paragraph",
+      "text": "A spending key answers the question: who may authorize the money to move? A viewing key answers a different question: who may inspect information about that money?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Public blockchains collapse observation into infrastructure. Zcash can make observation an authority that the user can deliberately share."
+    },
+    {
+      "type": "callout",
+      "text": "YOU DON'T HAVE TO GIVE AWAY CONTROL TO GIVE SOMEONE VISIBILITY."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 316 — Unified Addresses and Unified Viewing Keys",
+      "url": "https://zips.z.cash/zip-0316"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 310 — Security Properties of Sapling Viewing Keys",
+      "url": "https://zips.z.cash/zip-0310"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "heading",
+      "text": "PRIVACY IS NOT THE ABSENCE OF DISCLOSURE."
+    },
+    {
+      "type": "callout",
+      "text": "IT IS THE ABILITY TO CHOOSE THE DISCLOSURE."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
