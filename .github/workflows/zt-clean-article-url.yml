@@ -1,0 +1,31 @@
+name: ZeroTrace clean article URL patch
+on:
+  push:
+    paths:
+      - '.github/workflows/zt-clean-article-url.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generalize proven 001 clean URL behavior
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('rabbit-hole/index.html')
+          s=p.read_text()
+          old="if(id==='bitcoin-vs-zcash') history.replaceState(null,'','/rabbit-hole/bitcoin-vs-zcash/');"
+          new="history.replaceState(null,'','/rabbit-hole/'+encodeURIComponent(id)+'/');"
+          if old not in s:
+              raise SystemExit('Expected 001 history line not found; refusing blind patch')
+          p.write_text(s.replace(old,new,1))
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name 'ZeroTrace Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add rabbit-hole/index.html
+          git commit -m 'Keep every Rabbit Hole article on its clean canonical URL'
+          git push
