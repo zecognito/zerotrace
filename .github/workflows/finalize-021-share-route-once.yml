@@ -1,0 +1,67 @@
+name: Finalize permanent 021 share route once
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-021-share-route-once.yml'
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make fresh 021 route permanent
+        run: |
+          set -euo pipefail
+          mkdir -p rabbit-hole/did-nsa-build-bitcoin
+          cat > rabbit-hole/did-nsa-build-bitcoin/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>DID THE NSA BUILD BITCOIN? | ZeroTrace</title>
+          <meta name="description" content="THE CONNECTIONS NOBODY WANTS TO TALK ABOUT.">
+          <link rel="canonical" href="https://zerotrace.fyi/rabbit-hole/did-nsa-build-bitcoin/">
+          <meta property="og:type" content="article">
+          <meta property="og:site_name" content="ZeroTrace">
+          <meta property="og:title" content="DID THE NSA BUILD BITCOIN?">
+          <meta property="og:description" content="THE CONNECTIONS NOBODY WANTS TO TALK ABOUT.">
+          <meta property="og:url" content="https://zerotrace.fyi/rabbit-hole/did-nsa-build-bitcoin/">
+          <meta property="og:image" content="https://zerotrace.fyi/rabbit-hole/assets/021-did-the-nsa-build-bitcoin-social.png">
+          <meta property="og:image:secure_url" content="https://zerotrace.fyi/rabbit-hole/assets/021-did-the-nsa-build-bitcoin-social.png">
+          <meta property="og:image:type" content="image/png">
+          <meta property="og:image:width" content="1200">
+          <meta property="og:image:height" content="675">
+          <meta property="og:image:alt" content="021 // DID THE NSA BUILD BITCOIN?">
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="DID THE NSA BUILD BITCOIN?">
+          <meta name="twitter:description" content="THE CONNECTIONS NOBODY WANTS TO TALK ABOUT.">
+          <meta name="twitter:image" content="https://zerotrace.fyi/rabbit-hole/assets/021-did-the-nsa-build-bitcoin-social.png">
+          <meta name="twitter:image:alt" content="021 // DID THE NSA BUILD BITCOIN?">
+          <style>html,body{margin:0;background:#05070A;color:#eef4f0;font-family:monospace}main{min-height:100vh;display:grid;place-items:center;padding:24px}a{color:#F4B728}</style>
+          <script>(function(){var target="../?article=did-the-nsa-build-bitcoin";if(location.search!=="?no-redirect=1")location.replace(target);})();</script>
+          </head><body><main><p>Opening <a href="../?article=did-the-nsa-build-bitcoin">DID THE NSA BUILD BITCOIN?</a>…</p></main></body></html>
+          HTML
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('rabbit-hole/index.html')
+          s=p.read_text()
+          old="const articleHref=`${encodeURIComponent(id)}/`;return live?"
+          new="const articleHref=id==='did-the-nsa-build-bitcoin'?'did-nsa-build-bitcoin/':`${encodeURIComponent(id)}/`;return live?"
+          if old not in s:
+              raise SystemExit('Rabbit Hole articleHref renderer anchor not found')
+          s=s.replace(old,new,1)
+          old2="history.replaceState(null,'','/rabbit-hole/'+encodeURIComponent(id)+'/');"
+          new2="history.replaceState(null,'',id==='did-the-nsa-build-bitcoin'?'/rabbit-hole/did-nsa-build-bitcoin/':'/rabbit-hole/'+encodeURIComponent(id)+'/');"
+          if old2 not in s:
+              raise SystemExit('Rabbit Hole history route anchor not found')
+          s=s.replace(old2,new2,1)
+          p.write_text(s)
+          PY
+          rm -rf rabbit-hole/021-share-test
+          git config user.name 'ZeroTrace Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add rabbit-hole/index.html rabbit-hole/did-nsa-build-bitcoin/index.html rabbit-hole/021-share-test
+          git commit -m 'Make fresh 021 share route permanent'
+          git push
