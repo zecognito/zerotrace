@@ -2086,7 +2086,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
        if(i===0){
          const tag=live?'OPEN ENTRY '+no+' →':status;
-         const articleHref=id==='bitcoin-vs-zcash'?'bitcoin-vs-zcash/':`?article=${encodeURIComponent(id)}`;const open=live?`<a class="ztRabbitFeatured ztRabbitFeaturedLink" href="${articleHref}">`:'<div class="ztRabbitFeatured">';
+         const articleHref=`${encodeURIComponent(id)}/`;const open=live?`<a class="ztRabbitFeatured ztRabbitFeaturedLink" href="${articleHref}">`:'<div class="ztRabbitFeatured">';
          const close=live?'</a>':'</div>';
          return `${open}
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
@@ -2099,7 +2099,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
        }
 
        const inner=`<div class="ztEntryNo">${no}</div><div><span>${cat}</span><h4>${title}</h4><p>${sub}${sub&&desc?' — ':''}${desc}</p></div><b>${live?'OPEN →':status}</b>`;
-       const articleHref=id==='bitcoin-vs-zcash'?'bitcoin-vs-zcash/':`?article=${encodeURIComponent(id)}`;return live?`<a class="ztRabbitEntry ztRabbitEntryLink" href="${articleHref}">${inner}</a>`:`<article class="ztRabbitEntry">${inner}</article>`;
+       const articleHref=`${encodeURIComponent(id)}/`;return live?`<a class="ztRabbitEntry ztRabbitEntryLink" href="${articleHref}">${inner}</a>`:`<article class="ztRabbitEntry">${inner}</article>`;
      }).join('');
    })
    .catch(()=>{
