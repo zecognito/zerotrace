@@ -197,6 +197,33 @@
       "subtitle": "THE MYSTERIOUS SIXTH PARTICIPANT. WHO WAS HE?",
       "description": "Six people helped initialize Zcash's original privacy system. Five identities became known. The sixth stayed behind a pseudonym for six years.",
       "status": "PUBLISHED"
+    },
+    {
+      "number": "023",
+      "id": "the-key-you-can-give-away",
+      "category": "ZCASH // VIEWING KEYS",
+      "title": "THE KEY YOU CAN GIVE AWAY",
+      "subtitle": "LET SOMEONE SEE THE MONEY. NEVER LET THEM SPEND IT.",
+      "description": "How Zcash separates spending authority from viewing authority — turning financial disclosure into something a user can grant instead of something a public ledger grants to everyone.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "024",
+      "id": "the-message-inside-the-money",
+      "category": "ZCASH // ENCRYPTED MEMOS",
+      "title": "THE MESSAGE INSIDE THE MONEY",
+      "subtitle": "A SHIELDED PAYMENT CAN CARRY MORE THAN VALUE.",
+      "description": "Inside Zcash shielded notes is an encrypted memo channel that can carry private context with a payment — and proposals could expand what that channel can become.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "025",
+      "id": "prove-the-payment-not-your-wallet",
+      "category": "ZCASH // PAYMENT DISCLOSURE",
+      "title": "PROVE THE PAYMENT. NOT YOUR WALLET.",
+      "subtitle": "WHAT IF A PRIVATE TRANSACTION COULD PRODUCE A RECEIPT ON DEMAND?",
+      "description": "A draft Zcash design explores how a sender could prove a specific shielded payment without exposing the unrelated financial history around it.",
+      "status": "PUBLISHED"
     }
   ]
 }
