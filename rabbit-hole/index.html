@@ -2086,7 +2086,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
        if(i===0){
          const tag=live?'OPEN ENTRY '+no+' →':status;
-         const articleHref=`${encodeURIComponent(id)}/`;const open=live?`<a class="ztRabbitFeatured ztRabbitFeaturedLink" href="${articleHref}">`:'<div class="ztRabbitFeatured">';
+         const articleHref=id==='john-dobbertin'?'who-is-john-dobbertin/':`${encodeURIComponent(id)}/`;const open=live?`<a class="ztRabbitFeatured ztRabbitFeaturedLink" href="${articleHref}">`:'<div class="ztRabbitFeatured">';
          const close=live?'</a>':'</div>';
          return `${open}
            <div class="ztEntryMeta"><span>${no}</span><i></i><b>${cat}</b></div>
@@ -2099,7 +2099,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
        }
 
        const inner=`<div class="ztEntryNo">${no}</div><div><span>${cat}</span><h4>${title}</h4><p>${sub}${sub&&desc?' — ':''}${desc}</p></div><b>${live?'OPEN →':status}</b>`;
-       const articleHref=id==='did-the-nsa-build-bitcoin'?'did-nsa-build-bitcoin/':`${encodeURIComponent(id)}/`;return live?`<a class="ztRabbitEntry ztRabbitEntryLink" href="${articleHref}">${inner}</a>`:`<article class="ztRabbitEntry">${inner}</article>`;
+       const articleHref=id==='did-the-nsa-build-bitcoin'?'did-nsa-build-bitcoin/':id==='john-dobbertin'?'who-is-john-dobbertin/':`${encodeURIComponent(id)}/`;return live?`<a class="ztRabbitEntry ztRabbitEntryLink" href="${articleHref}">${inner}</a>`:`<article class="ztRabbitEntry">${inner}</article>`;
      }).join('');
    })
    .catch(()=>{
@@ -2124,7 +2124,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   .then(r=>{if(!r.ok)throw new Error('article');return r.json()})
   .then(a=>{
     document.title=(a.title||'Rabbit Hole')+' // ZeroTrace';
-     history.replaceState(null,'',id==='did-the-nsa-build-bitcoin'?'/rabbit-hole/did-nsa-build-bitcoin/':'/rabbit-hole/'+encodeURIComponent(id)+'/');
+     history.replaceState(null,'',id==='did-the-nsa-build-bitcoin'?'/rabbit-hole/did-nsa-build-bitcoin/':id==='john-dobbertin'?'/rabbit-hole/who-is-john-dobbertin/':'/rabbit-hole/'+encodeURIComponent(id)+'/');
     rabbit.innerHTML=`
       <div class="ztArticle">
         <a class="ztArticleBack" href="/rabbit-hole/">← RABBIT HOLE</a>
