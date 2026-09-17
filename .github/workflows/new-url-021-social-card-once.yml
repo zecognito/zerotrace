@@ -1,0 +1,37 @@
+name: New URL for 021 social card once
+on:
+  push:
+    paths:
+      - '.github/workflows/new-url-021-social-card-once.yml'
+permissions:
+  contents: write
+jobs:
+  replace-url:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create fresh 021 asset URL and repoint metadata
+        run: |
+          set -euo pipefail
+          src='rabbit-hole/assets/021-did-the-nsa-build-bitcoin.png'
+          dst='rabbit-hole/assets/021-did-the-nsa-build-bitcoin-social.png'
+          route='rabbit-hole/did-the-nsa-build-bitcoin/index.html'
+          test -f "$src"
+          cp "$src" "$dst"
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('rabbit-hole/did-the-nsa-build-bitcoin/index.html')
+          s=p.read_text()
+          old='https://zerotrace.fyi/rabbit-hole/assets/021-did-the-nsa-build-bitcoin.png?v=20260917f'
+          new='https://zerotrace.fyi/rabbit-hole/assets/021-did-the-nsa-build-bitcoin-social.png'
+          if old not in s:
+              raise SystemExit('Expected current 021 image URL not found')
+          s=s.replace(old,new)
+          p.write_text(s)
+          PY
+          grep -q '021-did-the-nsa-build-bitcoin-social.png' "$route"
+          git config user.name 'ZeroTrace Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$dst" "$route"
+          git commit -m 'Move 021 social card to fresh image URL'
+          git push
