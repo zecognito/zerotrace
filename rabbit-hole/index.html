@@ -2431,59 +2431,9 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 })();
 </script>
 
-<style id="zt-rabbit-visited-css-v1">
-.ztRabbitEntryLink.ztVisited{position:relative}
-.ztRabbitEntryLink.ztVisited:after{content:"VISITED";position:absolute;right:2px;top:15px;color:#52605a;font:900 7px/1 var(--mono);letter-spacing:.12em}
-.ztRabbitEntryLink.ztVisited>b{color:#65736d}
-.ztRabbitEntryLink.ztVisited .ztEntryNo{color:#8f7228}
-.ztRabbitEntryLink.ztVisited h4{color:#aab3af}
-@media(max-width:760px){.ztRabbitEntryLink.ztVisited:after{top:11px;right:0;font-size:6px}}
-</style>
 
-<script id="zt-rabbit-visited-js-v1">
-(()=>{
- const KEY='ztRabbitVisited';
- const read=()=>{try{return new Set(JSON.parse(localStorage.getItem(KEY)||'[]'))}catch(e){return new Set()}};
- const write=s=>{try{localStorage.setItem(KEY,JSON.stringify([...s]))}catch(e){}};
- const slugFromHref=href=>{
-   try{
-     const p=new URL(href,location.href).pathname.split('/').filter(Boolean).pop()||'';
-     if(p==='did-nsa-build-bitcoin')return 'did-the-nsa-build-bitcoin';
-     if(p==='who-is-john-dobbertin')return 'john-dobbertin';
-     return decodeURIComponent(p);
-   }catch(e){return ''}
- };
- const current=()=>{
-   const q=new URLSearchParams(location.search).get('article');
-   if(q)return q;
-   const p=location.pathname.split('/').filter(Boolean);
-   if(p[0]!=='rabbit-hole'||p.length<2)return '';
-   const s=p[p.length-1];
-   if(s==='did-nsa-build-bitcoin')return 'did-the-nsa-build-bitcoin';
-   if(s==='who-is-john-dobbertin')return 'john-dobbertin';
-   return s;
- };
- const mark=()=>{
-   const seen=read();
-   document.querySelectorAll('.ztRabbitEntryLink').forEach(a=>{
-     const id=slugFromHref(a.getAttribute('href')||'');
-     a.classList.toggle('ztVisited',seen.has(id));
-   });
- };
- const id=current();
- if(id&&id!=='rabbit-hole'){const seen=read();seen.add(id);write(seen)}
- document.addEventListener('click',e=>{
-   const a=e.target.closest('.ztRabbitEntryLink');
-   if(!a)return;
-   const id=slugFromHref(a.getAttribute('href')||'');if(!id)return;
-   const seen=read();seen.add(id);write(seen);
- },true);
- const obs=new MutationObserver(mark);
- const feed=document.getElementById('ztRabbitEntriesFeed');
- if(feed)obs.observe(feed,{childList:true,subtree:true});
- mark();
-})();
-</script>
+
+
 </body></html>
 <style>
 /* V8.25.20 — center Shielded in Practice flow-node labels on all screen sizes */
