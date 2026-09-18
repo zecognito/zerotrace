@@ -2127,7 +2127,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
      history.replaceState(null,'',id==='did-the-nsa-build-bitcoin'?'/rabbit-hole/did-nsa-build-bitcoin/':id==='john-dobbertin'?'/rabbit-hole/who-is-john-dobbertin/':'/rabbit-hole/'+encodeURIComponent(id)+'/');
     rabbit.innerHTML=`
       <div class="ztArticle">
-        <a class="ztArticleBack" href="/rabbit-hole/">← RABBIT HOLE</a>
+        <a class="ztArticleBack" href="/rabbit-hole/" data-zt-rabbit-back>← RABBIT HOLE</a>
         <header class="ztArticleHead">
           <span class="ztRabbitKicker">${safe(a.category||'ZEROTRACE // RABBIT HOLE')}</span>
           <h2>${safe(a.title||'UNTITLED')}</h2>
@@ -2142,7 +2142,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
             <p>If ZeroTrace helped you see things a little differently, consider supporting the project and helping me keep building.</p>
             <a href="/support/">SUPPORT ZEROTRACE →</a>
           </div>
-          <a class="ztArticleBack ztArticleBackBottom" href="/rabbit-hole/">← BACK TO RABBIT HOLE</a>
+          <a class="ztArticleBack ztArticleBackBottom" href="/rabbit-hole/" data-zt-rabbit-back>← BACK TO RABBIT HOLE</a>
         </div>
       </div>`;
     scrollTo(0,0);
@@ -2217,7 +2217,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   const feed=document.getElementById('ztRabbitEntriesFeed');
   if(!feed)return;
   const PAGE=9;
-  let page=0, pager=null;
+  let page=Math.max(0,(parseInt(sessionStorage.getItem('ztRabbitPage')||'1',10)||1)-1), pager=null;
 
   function cards(){
     return [...feed.children].filter(el=>el.matches('.ztRabbitFeatured,.ztRabbitEntry'));
@@ -2236,6 +2236,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     }
     function show(next, userAction){
       page=Math.max(0,Math.min(pages-1,next));
+      sessionStorage.setItem('ztRabbitPage',String(page+1));
       all.forEach((el,i)=>{
         const visible=Math.floor(i/PAGE)===page;
         el.style.display=visible?'':'none';
@@ -2257,6 +2258,35 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   const obs=new MutationObserver(()=>{ if(build()) obs.disconnect(); });
   obs.observe(feed,{childList:true});
   requestAnimationFrame(()=>setTimeout(build,60));
+})();
+</script>
+
+<script id="zt-rabbit-return-state-v1">
+(()=>{
+  const KEY_PAGE='ztRabbitPage', KEY_SCROLL='ztRabbitScroll';
+  document.addEventListener('click',e=>{
+    const article=e.target.closest('.ztRabbitFeaturedLink,.ztRabbitEntryLink');
+    if(article){
+      sessionStorage.setItem(KEY_SCROLL,String(window.scrollY));
+      return;
+    }
+    const back=e.target.closest('[data-zt-rabbit-back]');
+    if(back){
+      e.preventDefault();
+      location.href='/rabbit-hole/';
+    }
+  },true);
+
+  if(!new URLSearchParams(location.search).get('article')){
+    const restore=()=>{
+      if(!window.__ztRabbitShowPage)return requestAnimationFrame(restore);
+      const y=parseInt(sessionStorage.getItem(KEY_SCROLL)||'',10);
+      if(Number.isFinite(y)){
+        requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo(0,y)));
+      }
+    };
+    restore();
+  }
 })();
 </script>
 </body></html>
