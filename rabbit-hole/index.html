@@ -2378,6 +2378,50 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
  obs.observe(feed,{childList:true});
 })();
 </script>
+
+<style id="zt-rabbit-reading-progress-css-v1">
+.ztReadingProgress{position:fixed;top:64px;left:0;right:0;height:2px;z-index:59;pointer-events:none;background:transparent;opacity:0;transition:opacity .18s ease}
+.ztReadingProgress.on{opacity:1}
+.ztReadingProgressBar{display:block;width:0;height:100%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.3);transform-origin:left center}
+.ztArticleComplete{display:flex;align-items:center;gap:12px;margin:38px 0 0;color:#65736d;font:900 8px/1 var(--mono);letter-spacing:.12em}
+.ztArticleComplete i{height:1px;flex:1;background:#182126}
+.ztArticleComplete b{color:#F4B728;font:inherit}
+@media(max-width:760px){.ztReadingProgress{top:64px}}
+</style>
+
+<script id="zt-rabbit-reading-progress-js-v1">
+(()=>{
+ let ticking=false;
+ function init(){
+   const article=document.querySelector('.ztArticle'),body=document.querySelector('.ztArticleBody');
+   if(!article||!body||article.dataset.progressReady)return false;
+   article.dataset.progressReady='1';
+   const meta=document.querySelector('.ztRabbitKicker')?.textContent||'';
+   const number=(meta.match(/\b(\d{3})\b/)||[])[1]||'';
+   const rail=document.createElement('div');
+   rail.className='ztReadingProgress on';rail.setAttribute('aria-hidden','true');
+   rail.innerHTML='<span class="ztReadingProgressBar"></span>';document.body.appendChild(rail);
+   const bar=rail.firstElementChild;
+   const complete=document.createElement('div');complete.className='ztArticleComplete';
+   complete.innerHTML='<i></i><span>ENTRY '+(number?'<b>'+number+'</b> // ':'')+'COMPLETE</span><i></i>';
+   body.insertAdjacentElement('afterend',complete);
+   const update=()=>{
+     ticking=false;
+     const start=body.getBoundingClientRect().top+window.scrollY;
+     const end=body.getBoundingClientRect().bottom+window.scrollY-window.innerHeight;
+     const span=Math.max(1,end-start);
+     const pct=Math.max(0,Math.min(1,(window.scrollY-start)/span));
+     bar.style.width=(pct*100).toFixed(2)+'%';
+   };
+   const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
+   addEventListener('scroll',request,{passive:true});addEventListener('resize',request,{passive:true});update();
+   return true;
+ }
+ if(init())return;
+ const obs=new MutationObserver(()=>{if(init())obs.disconnect()});
+ obs.observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body></html>
 <style>
 /* V8.25.20 — center Shielded in Practice flow-node labels on all screen sizes */
