@@ -2136,16 +2136,16 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
         </header>
         <article class="ztArticleBody">${renderBlocks(a.blocks||[])}</article>
         <div class="ztArticleEnd">
-          <section class="ztRabbitConnections" data-current-id="${safe(id)}" aria-label="Related Rabbit Hole entries">
-            <div class="ztRabbitConnectionsHead"><span>CONTINUE DOWN THE RABBIT HOLE</span><i></i></div>
-            <div class="ztRabbitConnectionsList"></div>
-          </section>
           <div class="ztArticleSupport">
             <span>SUPPORT // ZEROTRACE</span>
             <h3>LIKED WHAT YOU SAW?</h3>
             <p>If ZeroTrace helped you see things a little differently, consider supporting the project and helping me keep building.</p>
             <a href="/support/">SUPPORT ZEROTRACE →</a>
           </div>
+          <section class="ztRabbitConnections" data-current-id="${safe(id)}" aria-label="Related Rabbit Hole entries" hidden>
+            <div class="ztRabbitConnectionsHead"><span>CONTINUE DOWN THE RABBIT HOLE</span><i></i></div>
+            <div class="ztRabbitConnectionsList"></div>
+          </section>
           <a class="ztArticleBack ztArticleBackBottom" href="/rabbit-hole/" data-zt-rabbit-back>← BACK TO RABBIT HOLE</a>
         </div>
       </div>`;
@@ -2327,6 +2327,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
    const related=all.filter(e=>e.id!==current).map(e=>({e,s:score(here,e)}))
      .sort((a,b)=>b.s-a.s||Math.abs(parseInt(a.e.number)-parseInt(here.number))-Math.abs(parseInt(b.e.number)-parseInt(here.number)))
      .slice(0,3).map(x=>x.e);
+   if(!related.length){section.hidden=true;return;} section.hidden=false;
    list.innerHTML=related.map(e=>`<a class="ztRabbitConnection" href="/rabbit-hole/${encodeURIComponent(route(e))}/"><div class="ztRabbitConnectionMeta"><b>${safe(e.number)}</b>${safe(e.category)}</div><h3>${safe(e.title)}</h3><p>${safe(e.subtitle)}</p></a>`).join('');
  }).catch(()=>{section.hidden=true});
  function safe(v){return String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]))}
