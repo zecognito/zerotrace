@@ -2136,6 +2136,10 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
         </header>
         <article class="ztArticleBody">${renderBlocks(a.blocks||[])}</article>
         <div class="ztArticleEnd">
+          <section class="ztRabbitConnections" data-current-id="${safe(id)}" aria-label="Related Rabbit Hole entries">
+            <div class="ztRabbitConnectionsHead"><span>CONTINUE DOWN THE RABBIT HOLE</span><i></i></div>
+            <div class="ztRabbitConnectionsList"></div>
+          </section>
           <div class="ztArticleSupport">
             <span>SUPPORT // ZEROTRACE</span>
             <h3>LIKED WHAT YOU SAW?</h3>
@@ -2287,6 +2291,45 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     };
     restore();
   }
+})();
+</script>
+
+<style id="zt-rabbit-connections-css-v1">
+.ztRabbitConnections{margin:42px 0 34px}
+.ztRabbitConnectionsHead{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.ztRabbitConnectionsHead i{height:1px;background:#182126;flex:1}
+.ztRabbitConnectionsHead span{color:#F4B728;font:900 9px/1 var(--mono);letter-spacing:.12em}
+.ztRabbitConnection{display:block;padding:19px 2px;border-top:1px solid #182126;color:inherit;text-decoration:none}
+.ztRabbitConnection:last-child{border-bottom:1px solid #182126}
+.ztRabbitConnectionMeta{margin-bottom:7px;color:#82918a;font:800 8px/1.4 var(--mono);letter-spacing:.1em}
+.ztRabbitConnectionMeta b{margin-right:10px;color:#F4B728}
+.ztRabbitConnection h3{margin:0 0 6px!important;font-size:17px!important;line-height:1.15!important;letter-spacing:-.02em}
+.ztRabbitConnection p{margin:0!important;color:#82918a!important;font:500 10px/1.55 var(--mono)!important}
+.ztRabbitConnection:hover h3,.ztRabbitConnection:focus-visible h3{color:#F4B728}
+.ztRabbitConnection:focus-visible{outline:1px solid rgba(244,183,40,.35);outline-offset:4px}
+</style>
+<script id="zt-rabbit-connections-js-v1">
+(()=>{
+ const section=document.querySelector('.ztRabbitConnections');
+ if(!section)return;
+ const current=section.dataset.currentId;
+ const list=section.querySelector('.ztRabbitConnectionsList');
+ const route=e=>e.id==='did-the-nsa-build-bitcoin'?'did-nsa-build-bitcoin':e.id==='john-dobbertin'?'who-is-john-dobbertin':e.id;
+ const words=s=>new Set(String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').split(/\s+/).filter(w=>w.length>3&&!['privacy','rabbit','hole','published'].includes(w)));
+ const score=(a,b)=>{
+   const ac=words(a.category), bc=words(b.category), at=words(a.title+' '+a.subtitle+' '+a.description), bt=words(b.title+' '+b.subtitle+' '+b.description);
+   let n=0; ac.forEach(w=>{if(bc.has(w))n+=5;if(bt.has(w))n+=2}); at.forEach(w=>{if(bc.has(w))n+=2;if(bt.has(w))n+=1});
+   return n;
+ };
+ fetch('/rabbit-hole/entries.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
+   const all=(data.entries||[]).filter(e=>String(e.status).toUpperCase()==='PUBLISHED');
+   const here=all.find(e=>e.id===current); if(!here)return;
+   const related=all.filter(e=>e.id!==current).map(e=>({e,s:score(here,e)}))
+     .sort((a,b)=>b.s-a.s||Math.abs(parseInt(a.e.number)-parseInt(here.number))-Math.abs(parseInt(b.e.number)-parseInt(here.number)))
+     .slice(0,3).map(x=>x.e);
+   list.innerHTML=related.map(e=>`<a class="ztRabbitConnection" href="/rabbit-hole/${encodeURIComponent(route(e))}/"><div class="ztRabbitConnectionMeta"><b>${safe(e.number)}</b>${safe(e.category)}</div><h3>${safe(e.title)}</h3><p>${safe(e.subtitle)}</p></a>`).join('');
+ }).catch(()=>{section.hidden=true});
+ function safe(v){return String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]))}
 })();
 </script>
 </body></html>
