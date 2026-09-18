@@ -2123,7 +2123,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
           <span class="ztRabbitKicker">${safe(a.category||'ZEROTRACE // RABBIT HOLE')}</span>
           <h2>${safe(a.title||'UNTITLED')}</h2>
           ${a.subtitle?`<p class="ztArticleSubtitle">${safe(a.subtitle)}</p>`:''}
-          <div class="ztArticleMeta">${safe(a.date||'')} ${a.readTime?'// '+safe(a.readTime):''}</div>
+          <div class="ztArticleMeta">${safe(a.date||'')} ${a.readTime?'// '+safe(a.readTime):''} <button class="ztCopyArticleLink" type="button">COPY LINK</button></div>
         </header>
         <article class="ztArticleBody">${renderBlocks(a.blocks||[])}</article>
         <div class="ztArticleEnd">
@@ -2369,12 +2369,20 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
      const show=terms.every(t=>hay.includes(t));
      el.style.display=show?'':'none';if(show)hits++;
    });
-   state.textContent=hits+' '+(hits===1?'MATCH':'MATCHES')+' // '+all.length+' ENTRIES';
+   state.textContent=String(hits).padStart(2,'0')+' // '+String(all.length).padStart(2,'0')+' FOUND';
    if(!hits){
      const empty=document.createElement('div');empty.className='ztRabbitNoResults';empty.textContent='NO MATCHES // TRY ANOTHER TERM';feed.appendChild(empty);
    }
  }
  input.addEventListener('input',run);
+ document.addEventListener('keydown',e=>{
+   if(e.key==='/' && !e.ctrlKey && !e.metaKey && !e.altKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'')){
+     e.preventDefault();input.focus();
+   }
+   if(e.key==='Escape' && document.activeElement===input){
+     input.value='';run();input.blur();
+   }
+ });
  const obs=new MutationObserver(()=>{if(searching||input.value)run()});
  obs.observe(feed,{childList:true});
 })();
@@ -2384,6 +2392,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 .ztReadingProgress{position:fixed;top:64px;left:0;right:0;height:2px;z-index:59;pointer-events:none;background:transparent;opacity:0;transition:opacity .18s ease}
 .ztReadingProgress.on{opacity:1}
 .ztReadingProgressBar{display:block;width:0;height:100%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.3);transform-origin:left center}
+.ztReadingProgressLabel{position:absolute;right:12px;top:7px;color:#65736d;font:900 7px/1 var(--mono);letter-spacing:.1em;text-shadow:0 1px 3px #05070a}
 .ztArticleComplete{display:flex;align-items:center;gap:12px;margin:38px 0 0;color:#65736d;font:900 8px/1 var(--mono);letter-spacing:.12em}
 .ztArticleComplete i{height:1px;flex:1;background:#182126}
 .ztArticleComplete b{color:#F4B728;font:inherit}
@@ -2403,9 +2412,9 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
    let rail=document.querySelector('.ztReadingProgress');
    if(!rail){
      rail=document.createElement('div');rail.className='ztReadingProgress on';rail.setAttribute('aria-hidden','true');
-     rail.innerHTML='<span class="ztReadingProgressBar"></span>';document.body.appendChild(rail);
+     rail.innerHTML='<span class="ztReadingProgressBar"></span><span class="ztReadingProgressLabel"></span>';document.body.appendChild(rail);
    }else rail.classList.add('on');
-   const bar=rail.querySelector('.ztReadingProgressBar');
+   const bar=rail.querySelector('.ztReadingProgressBar'),label=rail.querySelector('.ztReadingProgressLabel');
    if(!article.querySelector('.ztArticleComplete')){
      const complete=document.createElement('div');complete.className='ztArticleComplete';
      complete.innerHTML='<i></i><span>ENTRY '+(number?'<b>'+number+'</b> // ':'')+'COMPLETE</span><i></i>';
@@ -2417,7 +2426,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
      const bottom=body.getBoundingClientRect().bottom+window.scrollY;
      const finish=Math.max(top+1,bottom-window.innerHeight);
      const pct=Math.max(0,Math.min(1,(window.scrollY-top)/(finish-top)));
-     bar.style.width=(pct*100).toFixed(2)+'%';
+     const whole=Math.round(pct*100);bar.style.width=(pct*100).toFixed(2)+'%';if(label)label.textContent=(number||'ENTRY')+' // '+whole+'%';
    };
    const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
    addEventListener('scroll',request,{passive:true});addEventListener('resize',request,{passive:true});
@@ -2434,6 +2443,22 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 
 
 
+
+<style id="zt-small-polish-v1">
+::selection{background:#F4B728;color:#05070a}
+.ztCopyArticleLink{margin-left:10px;padding:0;border:0;background:transparent;color:#F4B728;font:900 8px/1 var(--mono);letter-spacing:.1em;cursor:pointer}
+.ztCopyArticleLink:hover,.ztCopyArticleLink:focus-visible{text-decoration:underline;outline:none}
+@media(max-width:760px){.ztReadingProgressLabel{right:8px;top:7px;font-size:6px}}
+</style>
+<script id="zt-copy-article-link-v1">
+document.addEventListener('click',async e=>{
+ const b=e.target.closest('.ztCopyArticleLink');if(!b)return;
+ const original='COPY LINK';
+ try{await navigator.clipboard.writeText(location.href);b.textContent='COPIED //';}
+ catch(err){b.textContent='COPY FAILED';}
+ setTimeout(()=>{b.textContent=original},1400);
+});
+</script>
 </body></html>
 <style>
 /* V8.25.20 — center Shielded in Practice flow-node labels on all screen sizes */
