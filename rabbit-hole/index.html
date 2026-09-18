@@ -1719,6 +1719,11 @@ body.page-rabbit .dedicatedHero h1{
     </div>
     <span class="ztRabbitCount" id="ztRabbitCount">LOADING // ENTRIES</span>
   </div>
+  <div class="ztRabbitSearch" id="ztRabbitSearch">
+    <label for="ztRabbitSearchInput">SEARCH //</label>
+    <input id="ztRabbitSearchInput" type="search" autocomplete="off" spellcheck="false" placeholder="TITLE, TOPIC, KEYWORD..." aria-label="Search Rabbit Hole archive">
+  </div>
+  <div class="ztRabbitSearchState" id="ztRabbitSearchState" aria-live="polite"></div>
   <div id="ztRabbitEntriesFeed" aria-live="polite"></div>
   <div class="ztRabbitDivider"><span></span><b>THE ORIGINAL TRAIL CONTINUES BELOW</b><span></span></div>
 </div>
@@ -2337,6 +2342,54 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
  if(init())return;
  const observer=new MutationObserver(()=>{if(init())observer.disconnect()});
  observer.observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
+<style id="zt-rabbit-search-css-v1">
+.ztRabbitSearch{margin:18px 0 0;display:flex;align-items:center;gap:10px;min-height:46px;padding:0 14px;border:1px solid #263944;border-radius:9px;background:#080c0f}
+.ztRabbitSearch:focus-within{border-color:rgba(244,183,40,.55);box-shadow:0 0 0 1px rgba(244,183,40,.06)}
+.ztRabbitSearch label{flex:0 0 auto;color:#F4B728;font:900 9px/1 var(--mono);letter-spacing:.1em}
+.ztRabbitSearch input{min-width:0;width:100%;height:44px;padding:0;border:0;outline:0;background:transparent;color:#eef4f0;font:700 10px/1 var(--mono);letter-spacing:.04em}
+.ztRabbitSearch input::placeholder{color:#56635d}
+.ztRabbitSearch input::-webkit-search-cancel-button{filter:grayscale(1);opacity:.55}
+.ztRabbitSearchState{min-height:25px;color:#65736d;font:800 8px/25px var(--mono);letter-spacing:.1em}
+.ztRabbitNoResults{padding:28px 2px;border-top:1px solid #182126;border-bottom:1px solid #182126;color:#82918a;font:800 9px/1.6 var(--mono);letter-spacing:.08em}
+@media(max-width:760px){.ztRabbitSearch{min-height:43px;padding:0 12px}.ztRabbitSearch input{height:41px;font-size:9px}.ztRabbitSearch label{font-size:8px}}
+</style>
+
+<script id="zt-rabbit-search-js-v1">
+(()=>{
+ const input=document.getElementById('ztRabbitSearchInput'),feed=document.getElementById('ztRabbitEntriesFeed'),state=document.getElementById('ztRabbitSearchState');
+ if(!input||!feed||!state)return;
+ let searching=false;
+ const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ function cards(){return [...feed.children].filter(el=>el.matches('.ztRabbitFeatured,.ztRabbitEntry'))}
+ function run(){
+   const q=norm(input.value),all=cards(),pager=document.querySelector('.ztRabbitPager');
+   if(!q){
+     searching=false;state.textContent='';
+     const saved=Math.max(1,parseInt(sessionStorage.getItem('ztRabbitPage')||'1',10)||1);
+     if(window.__ztRabbitShowPage)window.__ztRabbitShowPage(saved-1,false);
+     if(pager)pager.hidden=false;
+     feed.querySelectorAll('.ztRabbitNoResults').forEach(x=>x.remove());
+     return;
+   }
+   searching=true;if(pager)pager.hidden=true;
+   feed.querySelectorAll('.ztRabbitNoResults').forEach(x=>x.remove());
+   const terms=q.split(/\s+/).filter(Boolean);let hits=0;
+   all.forEach(el=>{
+     const hay=norm(el.textContent);
+     const show=terms.every(t=>hay.includes(t));
+     el.style.display=show?'':'none';if(show)hits++;
+   });
+   state.textContent=hits+' '+(hits===1?'MATCH':'MATCHES')+' // '+all.length+' ENTRIES';
+   if(!hits){
+     const empty=document.createElement('div');empty.className='ztRabbitNoResults';empty.textContent='NO MATCHES // TRY ANOTHER TERM';feed.appendChild(empty);
+   }
+ }
+ input.addEventListener('input',run);
+ const obs=new MutationObserver(()=>{if(searching||input.value)run()});
+ obs.observe(feed,{childList:true});
 })();
 </script>
 </body></html>
