@@ -2161,7 +2161,8 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 <script id="zt-article-001-enhance-v1">
 (()=>{
  const q=new URLSearchParams(location.search);
- if(q.get('article')!=='bitcoin-vs-zcash')return;
+ const clean001=location.pathname.replace(/\/+$/,'').endsWith('/rabbit-hole/bitcoin-vs-zcash');
+ if(q.get('article')!=='bitcoin-vs-zcash' && !clean001)return;
  const watch=new MutationObserver(()=>{
    const body=document.querySelector('.ztArticleBody');
    if(!body||body.dataset.enhanced)return;
