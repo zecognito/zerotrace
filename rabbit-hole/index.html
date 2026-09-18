@@ -2308,29 +2308,35 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 .ztRabbitConnection:hover h3,.ztRabbitConnection:focus-visible h3{color:#F4B728}
 .ztRabbitConnection:focus-visible{outline:1px solid rgba(244,183,40,.35);outline-offset:4px}
 </style>
-<script id="zt-rabbit-connections-js-v1">
+<script id="zt-rabbit-connections-js-v2">
 (()=>{
- const section=document.querySelector('.ztRabbitConnections');
- if(!section)return;
- const current=section.dataset.currentId;
- const list=section.querySelector('.ztRabbitConnectionsList');
  const route=e=>e.id==='did-the-nsa-build-bitcoin'?'did-nsa-build-bitcoin':e.id==='john-dobbertin'?'who-is-john-dobbertin':e.id;
  const words=s=>new Set(String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').split(/\s+/).filter(w=>w.length>3&&!['privacy','rabbit','hole','published'].includes(w)));
  const score=(a,b)=>{
-   const ac=words(a.category), bc=words(b.category), at=words(a.title+' '+a.subtitle+' '+a.description), bt=words(b.title+' '+b.subtitle+' '+b.description);
-   let n=0; ac.forEach(w=>{if(bc.has(w))n+=5;if(bt.has(w))n+=2}); at.forEach(w=>{if(bc.has(w))n+=2;if(bt.has(w))n+=1});
-   return n;
+   const ac=words(a.category),bc=words(b.category),at=words(a.title+' '+a.subtitle+' '+a.description),bt=words(b.title+' '+b.subtitle+' '+b.description);
+   let n=0;ac.forEach(w=>{if(bc.has(w))n+=5;if(bt.has(w))n+=2});at.forEach(w=>{if(bc.has(w))n+=2;if(bt.has(w))n+=1});return n;
  };
- fetch('/rabbit-hole/entries.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
-   const all=(data.entries||[]).filter(e=>String(e.status).toUpperCase()==='PUBLISHED');
-   const here=all.find(e=>e.id===current); if(!here)return;
-   const related=all.filter(e=>e.id!==current).map(e=>({e,s:score(here,e)}))
-     .sort((a,b)=>b.s-a.s||Math.abs(parseInt(a.e.number)-parseInt(here.number))-Math.abs(parseInt(b.e.number)-parseInt(here.number)))
-     .slice(0,3).map(x=>x.e);
-   if(!related.length){section.hidden=true;return;} section.hidden=false;
-   list.innerHTML=related.map(e=>`<a class="ztRabbitConnection" href="/rabbit-hole/${encodeURIComponent(route(e))}/"><div class="ztRabbitConnectionMeta"><b>${safe(e.number)}</b>${safe(e.category)}</div><h3>${safe(e.title)}</h3><p>${safe(e.subtitle)}</p></a>`).join('');
- }).catch(()=>{section.hidden=true});
- function safe(v){return String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]))}
+ const safe=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]));
+ function init(){
+   const section=document.querySelector('.ztRabbitConnections');
+   if(!section||section.dataset.ready)return false;
+   section.dataset.ready='1';
+   const current=section.dataset.currentId,list=section.querySelector('.ztRabbitConnectionsList');
+   fetch('/rabbit-hole/entries.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
+     const all=(data.entries||[]).filter(e=>String(e.status).toUpperCase()==='PUBLISHED');
+     const here=all.find(e=>e.id===current);if(!here)return;
+     const related=all.filter(e=>e.id!==current).map(e=>({e,s:score(here,e)}))
+       .sort((a,b)=>b.s-a.s||Math.abs(parseInt(a.e.number)-parseInt(here.number))-Math.abs(parseInt(b.e.number)-parseInt(here.number)))
+       .slice(0,3).map(x=>x.e);
+     if(!related.length)return;
+     list.innerHTML=related.map(e=>`<a class="ztRabbitConnection" href="/rabbit-hole/${encodeURIComponent(route(e))}/"><div class="ztRabbitConnectionMeta"><b>${safe(e.number)}</b>${safe(e.category)}</div><h3>${safe(e.title)}</h3><p>${safe(e.subtitle)}</p></a>`).join('');
+     section.hidden=false;
+   }).catch(()=>{section.hidden=true});
+   return true;
+ }
+ if(init())return;
+ const observer=new MutationObserver(()=>{if(init())observer.disconnect()});
+ observer.observe(document.documentElement,{childList:true,subtree:true});
 })();
 </script>
 </body></html>
