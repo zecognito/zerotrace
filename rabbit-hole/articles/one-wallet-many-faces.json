@@ -1,0 +1,129 @@
+{
+  "title": "ONE WALLET. MANY FACES.",
+  "subtitle": "ZCASH CAN GIVE DIFFERENT PEOPLE DIFFERENT ADDRESSES THAT LEAD TO THE SAME SPENDING AUTHORITY.",
+  "category": "028 // ZCASH // DIVERSIFIED ADDRESSES // UNLINKABILITY",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "REUSING ONE ADDRESS GIVES EVERY COUNTERPARTY THE SAME IDENTIFIER. ZCASH WAS DESIGNED SO A WALLET DOESN'T HAVE TO."
+    },
+    {
+      "type": "heading",
+      "text": "AN ADDRESS CAN BECOME A LABEL"
+    },
+    {
+      "type": "paragraph",
+      "text": "Even when a blockchain hides transaction contents, handing the exact same payment address to different people gives those people something they can compare. If Alice and Bob are both shown the same address, they do not need chain analysis to know they were given the same identifier."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sapling and Orchard solve this with diversified payment addresses: many distinct shielded addresses can share the same underlying spending authority."
+    },
+    {
+      "type": "heading",
+      "text": "SAME WALLET. DIFFERENT ADDRESS."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Zcash protocol allows a wallet account to derive a large stream of diversified addresses. Payments sent to those different addresses can still be detected and controlled by the same wallet keys."
+    },
+    {
+      "type": "paragraph",
+      "text": "For Orchard, the diversifier space is 88 bits. ZIP 32 specifies that an Orchard account can have up to 2^88 payment addresses. The point is not that anyone needs to generate that many. The point is that address scarcity is not what forces reuse."
+    },
+    {
+      "type": "callout",
+      "text": "THE PERSON PAYING YOU DOES NOT NEED THE SAME IDENTIFIER YOU GAVE SOMEONE ELSE."
+    },
+    {
+      "type": "heading",
+      "text": "UNLINKABLE DOES NOT MEAN MAGIC"
+    },
+    {
+      "type": "paragraph",
+      "text": "The protocol specification describes diversified addresses as unlinkable to outside parties under the intended shielded design. But context can still destroy that separation. Give two addresses to the same website account, publish both under your name, or disclose the relevant viewing authority and the relationship may become knowable."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unified Addresses can also contain transparent receivers, and ZIP 316 notes that transparent transaction-graph information can weaken unlinkability. Metadata attached to addresses can introduce additional linkage risks as well."
+    },
+    {
+      "type": "heading",
+      "text": "THE WALLET STILL KNOWS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlinkability is about what outsiders can determine. The wallet needs the opposite capability: it must efficiently recognize payments sent to all of its diversified addresses."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sapling and Orchard let groups of diversified addresses share viewing-key material. That means creating more addresses does not require the wallet to scan the chain as though every address belonged to a completely unrelated wallet."
+    },
+    {
+      "type": "heading",
+      "text": "WHY THIS IS DIFFERENT FROM BITCOIN CHANGE"
+    },
+    {
+      "type": "paragraph",
+      "text": "Transparent wallets can rotate addresses too, but their transactions still publish graph relationships that analysts can use to cluster activity. ZIP 32 explicitly notes that shielded addresses are not publicly visible in transactions in the same way."
+    },
+    {
+      "type": "paragraph",
+      "text": "Diversification therefore is not merely cosmetic address rotation. It sits on top of a shielded protocol where the ledger is already withholding the sender-recipient graph."
+    },
+    {
+      "type": "heading",
+      "text": "PRIVACY BEFORE THE TRANSACTION"
+    },
+    {
+      "type": "paragraph",
+      "text": "Most privacy discussions begin after a payment hits the chain. Diversified addresses move part of the privacy decision earlier: what identifier should you give the counterparty before they pay you?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A private ledger can hide the payment graph. A diversified address can also reduce the amount of identity linkage created before that graph ever exists."
+    },
+    {
+      "type": "callout",
+      "text": "DON'T JUST HIDE THE PAYMENT. STOP REUSING THE LABEL."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 32 — Shielded Hierarchical Deterministic Wallets",
+      "url": "https://zips.z.cash/zip-0032"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 316 — Unified Addresses and Unified Viewing Keys",
+      "url": "https://zips.z.cash/zip-0316"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 212 — Diversified Address Linkability Hardening",
+      "url": "https://zips.z.cash/zip-0212"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "heading",
+      "text": "ONE SPENDING AUTHORITY."
+    },
+    {
+      "type": "callout",
+      "text": "NO REASON TO WEAR THE SAME ADDRESS EVERYWHERE."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
