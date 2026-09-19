@@ -1,0 +1,137 @@
+{
+  "title": "THE BUG PRIVACY COULDN'T REVEAL",
+  "subtitle": "ORCHARD COULD HAVE CREATED COUNTERFEIT ZEC. THE CHAIN COULD NOT TELL YOU IF IT HAPPENED.",
+  "category": "026 // ZCASH // ORCHARD // IRONWOOD",
+  "date": "SEPTEMBER 2026",
+  "readTime": "10 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "PRIVACY CAN HIDE USERS. IN 2026, ZCASH HAD TO CONFRONT A HARDER QUESTION: WHAT HAPPENS WHEN PRIVACY CAN ALSO HIDE EVIDENCE OF A COUNTERFEITING BUG?"
+    },
+    {
+      "type": "heading",
+      "text": "MAY 29, 2026"
+    },
+    {
+      "type": "paragraph",
+      "text": "Security researcher Taylor Hornby discovered a critical soundness flaw in the Orchard zero-knowledge proof circuit and privately reported it to Zcash Open Development Lab engineers. The flaw was not a privacy break. It was a proof-soundness break: under the vulnerable circuit, a malicious prover could construct a proof for value that should not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "According to the public disclosure, Hornby built a working exploit in a local regtest environment. The vulnerability had been present since Orchard activated in May 2022."
+    },
+    {
+      "type": "heading",
+      "text": "THE WORST PART WASN'T THE BUG"
+    },
+    {
+      "type": "paragraph",
+      "text": "A transparent ledger can make unexpected inflation visible because amounts and balances are public. Orchard deliberately hides the values inside shielded transactions. That privacy meant the historical chain could not provide a definitive cryptographic answer to whether the soundness flaw had ever been exploited before it was fixed."
+    },
+    {
+      "type": "callout",
+      "text": "THE SAME ENCRYPTION THAT PROTECTED LEGITIMATE USERS ALSO MEANT THE LEDGER COULD NOT SIMPLY DISPLAY A COUNTERFEITER'S BALANCE."
+    },
+    {
+      "type": "paragraph",
+      "text": "That does not mean counterfeiting occurred. Zcash organizations reported no evidence of unauthorized value creation or exploitation. It means the strongest statement available about the vulnerable period was not the same as a mathematical proof that exploitation never happened."
+    },
+    {
+      "type": "heading",
+      "text": "THE NETWORK STOPPED ORCHARD"
+    },
+    {
+      "type": "paragraph",
+      "text": "The response moved quickly. A coordinated emergency soft fork temporarily rejected Orchard transactions while engineers prepared the corrected circuit. NU6.2 then activated on June 3, re-enabling Orchard with the fix."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sapling and transparent transactions continued operating during the Orchard interruption. Public reports say user privacy itself was not compromised by the flaw."
+    },
+    {
+      "type": "heading",
+      "text": "FIXING THE CIRCUIT DIDN'T FIX THE HISTORY"
+    },
+    {
+      "type": "paragraph",
+      "text": "Correcting the circuit prevented future use of the vulnerability. It could not retroactively turn the old Orchard ledger into evidence that proved every historical note had been created honestly."
+    },
+    {
+      "type": "paragraph",
+      "text": "That distinction led to Ironwood: a new shielded pool using the Orchard protocol but starting from a fresh state, with additional formal-verification work and a migration path designed around Zcash's value-pool accounting."
+    },
+    {
+      "type": "heading",
+      "text": "THE TURNSTILE"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash publicly tracks how much value crosses into and out of each shielded pool even though transfers inside the pool remain private. Consensus rules prevent a pool from withdrawing more value than has entered it. This accounting boundary is commonly called the turnstile."
+    },
+    {
+      "type": "paragraph",
+      "text": "NU6.3 restricted the old Orchard pool and introduced Ironwood. Funds leaving Orchard must cross the accounting boundary before entering the new pool. The design lets the network bound what can emerge from the old pool while establishing a fresh pool whose supply integrity can be independently checked."
+    },
+    {
+      "type": "heading",
+      "text": "IRONWOOD WENT LIVE"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ironwood activated on Zcash mainnet at block height 3,428,143 on July 28, 2026. It has its own note-commitment tree, nullifier set and chain value-pool balance while reusing the Orchard protocol design."
+    },
+    {
+      "type": "heading",
+      "text": "PRIVACY AND AUDITABILITY ARE DIFFERENT PROBLEMS"
+    },
+    {
+      "type": "paragraph",
+      "text": "This incident exposes a tension that privacy systems cannot hand-wave away. A private ledger should hide who paid whom and how much. A monetary system still needs credible rules preventing value from being created from nothing."
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash's answer was not to make shielded payments transparent. It was to strengthen the boundary around the private pool and move forward into a fresh, more heavily verified state."
+    },
+    {
+      "type": "callout",
+      "text": "THE GOAL IS NOT TO SEE EVERY COIN. THE GOAL IS TO KNOW THE RULES CANNOT CREATE COINS."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Foundation — Zebra 4.5.3 and 5.0.0: Emergency Soft Fork and NU6.2 Activation",
+      "url": "https://zfnd.org/zebra-4-5-3-and-5-0-0-emergency-soft-fork-and-nu6-2-activation/"
+    },
+    {
+      "type": "source",
+      "label": "Zcash — NU6.3 / Ironwood",
+      "url": "https://z.cash/upgrade/nu6-3/"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 229 — Version 6 Transaction Format",
+      "url": "https://zips.z.cash/zip-0229"
+    },
+    {
+      "type": "source",
+      "label": "Project Tachyon — Auditing the Orchard Pool's Supply",
+      "url": "https://tachyon.z.cash/blog/auditing-orchard-supply/"
+    },
+    {
+      "type": "heading",
+      "text": "THE LEDGER STAYED PRIVATE."
+    },
+    {
+      "type": "callout",
+      "text": "THE SECURITY MODEL HAD TO GET STRONGER."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
