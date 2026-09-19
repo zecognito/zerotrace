@@ -2019,6 +2019,21 @@ body.ztHasFixedHeader{
 }
 </style>
 
+
+<style id="ztStep73LiveSource">
+.ztMGSourceWatermark{
+ position:absolute;left:auto;top:auto;right:12px;bottom:10px;transform:none;
+ z-index:0;pointer-events:none;user-select:none;text-align:right;white-space:nowrap;opacity:.34;
+}
+.ztMGSourceWatermark strong{display:block;color:#a6aaa7;font:900 11px/1 var(--mono);letter-spacing:.04em}
+.ztMGSourceWatermark span{display:block;margin-top:3px;color:#818681;font:800 6px/1 var(--mono);letter-spacing:.13em}
+@media(max-width:600px){
+ .ztMGSourceWatermark{right:9px;bottom:8px}
+ .ztMGSourceWatermark strong{font-size:10px}
+ .ztMGSourceWatermark span{font-size:6px}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-signal">
 <nav class="ztUnifiedHeader"><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div><nav class="ztIndicatorNav"><div class="ztINLabel">ZEROTRACE // SIGNAL NAV</div><div class="ztINScroll"><a class="hot" href="#market-grid">MARKET GRID</a><a href="#market-signal">MARKET SIGNAL</a><a href="#zt-field-guide">HOW TO READ</a></div></nav></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
@@ -2102,7 +2117,7 @@ body.ztHasFixedHeader{
  <div class="ztMGTop"><div class="ztMGTitle" id="market-grid">ZEC // <b>MARKET GRID</b></div><div class="ztMGLive" id="ztMGLive">CONNECTING</div></div>
  <div class="ztMGFrames"><button data-tf="5M">5M</button><button data-tf="15M">15M</button><button data-tf="30M">30M</button><button data-tf="1H" class="on">1H</button><button data-tf="4H">4H</button><button data-tf="1D">1D</button><div class="ztTopSignal neutral" id="ztTopSignal"><b>WAITING</b></div></div>
  <div class="ztMGView">
-  <div class="ztMGGrid"></div><div class="ztVPTag">VOLUME AT PRICE //</div><div class="ztVP" id="ztVP"></div>
+  <div class="ztMGGrid"></div><div class="ztMGSourceWatermark" aria-hidden="true"><strong>ZEC-USD</strong><span>COINBASE // SPOT</span></div><div class="ztVPTag">VOLUME AT PRICE //</div><div class="ztVP" id="ztVP"></div>
   <div class="ztLvl r r3" data-level="r3"><strong>WEAK RESISTANCE <span class="tf">5M</span></strong><em>$—</em></div>
   <div class="ztLvl r strong major r2" data-level="r2"><strong>MAJOR RESISTANCE // POC <span class="tf">5M + 15M + 1H</span></strong><em>$—</em></div>
   <div class="ztLvl r r1" data-level="r1"><strong>WEAK RESISTANCE</strong><em>$—</em></div>
@@ -2274,6 +2289,11 @@ body.ztHasFixedHeader{
   <details id="guide-explore">
    <summary><b>11</b><span>EXPLORE MODE</span><em>MOVE THROUGH PRICE SPACE</em></summary>
    <div class="ztFGBody"><p>Drag vertically inside the grid to inspect real price space away from the live camera. The temporary guide shows the price under your finger.</p><p>The view stays parked where you leave it. Tap <strong>RETURN TO LIVE</strong> to resume following current price.</p></div>
+  </details>
+
+  <details id="guide-data">
+   <summary><b>12</b><span>DATA + METHODOLOGY</span><em>ZEC-USD // SPOT</em></summary>
+   <div class="ztFGBody"><p><strong>DATA SOURCE</strong> — Market data is sourced from the Coinbase <strong>ZEC-USD spot market</strong>.</p><p>ZeroTrace derives market structure, support and resistance, multi-timeframe confluence, volume profile / POC, buying and selling pressure, momentum and Market Signal from that underlying market data.</p><p><strong>NOT INCLUDED</strong> — Perpetual futures, funding rates, open interest and liquidation data are not currently part of the Market Grid.</p></div>
   </details>
  </div>
 
