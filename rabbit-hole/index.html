@@ -1630,8 +1630,9 @@ body.page-rabbit .dedicatedHero h1{
 }
 .ztRabbitPager button:not(:disabled):active{transform:scale(.97)}
 @media(max-width:760px){
-  .ztRabbitPager{margin-top:16px}
-  .ztRabbitPager button{min-height:38px;padding:0 13px}
+  .ztRabbitPager{margin-top:16px;gap:5px}
+  .ztRabbitPager button{min-height:36px;padding:0 8px;font-size:7px;letter-spacing:.07em}
+  .ztRabbitPager .ztRabbitPageState{min-width:44px;font-size:7px;letter-spacing:.08em}
 }
 </style>
 </head>
@@ -2225,10 +2226,12 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
     if(!pager){
       pager=document.createElement('div');
       pager.className='ztRabbitPager';
-      pager.innerHTML='<button type="button" class="ztPrev">↑ PREVIOUS</button><span class="ztRabbitPageState"></span><button type="button" class="ztNext">NEXT ↓</button>';
+      pager.innerHTML='<button type="button" class="ztFirst">↑ FIRST</button><button type="button" class="ztPrev">PREV</button><span class="ztRabbitPageState"></span><button type="button" class="ztNext">NEXT</button><button type="button" class="ztLast">LAST ↓</button>';
       feed.insertAdjacentElement('afterend',pager);
+      pager.querySelector('.ztFirst').addEventListener('click',()=>show(0,true));
       pager.querySelector('.ztPrev').addEventListener('click',()=>show(page-1,true));
       pager.querySelector('.ztNext').addEventListener('click',()=>show(page+1,true));
+      pager.querySelector('.ztLast').addEventListener('click',()=>show(pages-1,true));
     }
     function show(next, userAction){
       page=Math.max(0,Math.min(pages-1,next));
@@ -2238,8 +2241,10 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
         el.style.display=visible?'':'none';
       });
       feed.style.height='auto';
+      pager.querySelector('.ztFirst').disabled=page===0;
       pager.querySelector('.ztPrev').disabled=page===0;
       pager.querySelector('.ztNext').disabled=page===pages-1;
+      pager.querySelector('.ztLast').disabled=page===pages-1;
       pager.querySelector('.ztRabbitPageState').textContent=String(page+1).padStart(2,'0')+' / '+String(pages).padStart(2,'0');
       if(userAction){
         const top=feed.getBoundingClientRect().top+window.scrollY-78;
