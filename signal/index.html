@@ -1283,9 +1283,745 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
 }
 </style>
 
+
+<style>
+/* V8.38.0 LIVE ENGINE TEST // ZEC MARKET GRID — preview only */
+.ztMG{position:relative;margin:0 0 20px;border:1px solid #3b311b;border-radius:12px;overflow:hidden;background:#050706;box-shadow:0 0 32px rgba(244,183,40,.055)}
+.ztMGTop{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #24251f}.ztMGTitle{font:900 10px var(--mono);letter-spacing:.14em}.ztMGTitle b{color:#F4B728}.ztMGLive{font:800 8px var(--mono);letter-spacing:.1em;color:#20F58A}.ztMGLive:before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:#20F58A;box-shadow:0 0 10px #20F58A}
+.ztMGFrames{display:flex;gap:4px;padding:9px 12px;border-bottom:1px solid #1c201c}.ztMGFrames button{border:1px solid transparent;background:none;color:#606963;border-radius:4px;padding:6px 10px;font:800 7px var(--mono)}.ztMGFrames .on{color:#F4B728;border-color:#58461d;background:#0d0b06}
+.ztMGView{height:390px;position:relative;overflow:hidden;background:linear-gradient(180deg,#060807,#040605)}
+.ztMGGrid{position:absolute;inset:0;width:200%;background-image:linear-gradient(rgba(244,183,40,.052) 1px,transparent 1px),linear-gradient(90deg,rgba(244,183,40,.052) 1px,transparent 1px);background-size:52px 42px;animation:mgmove 9s linear infinite}@keyframes mgmove{to{transform:translateX(-52px)}}
+.ztMGAnchor{position:absolute;left:24%;top:0;bottom:0;width:1px;background:linear-gradient(transparent,#F4B728 12%,#F4B728 88%,transparent);box-shadow:0 0 13px rgba(244,183,40,.42);z-index:7}.ztMGDot{position:absolute;left:24%;top:49%;width:14px;height:14px;margin:-7px;border:2px solid #fff;border-radius:50%;background:#F4B728;box-shadow:0 0 0 5px rgba(244,183,40,.1),0 0 20px rgba(244,183,40,.55);z-index:9}
+.ztMGTrail{position:absolute;left:3%;top:calc(49% - 22px);width:21%;height:44px;z-index:8}.ztMGTrail svg{width:100%;height:100%;overflow:visible}.ztMGTrail path{fill:none;stroke:rgba(244,183,40,.30);stroke-width:1;filter:drop-shadow(0 0 3px rgba(244,183,40,.16))}
+.ztMGNow{position:absolute;left:calc(24% + 12px);top:calc(49% - 12px);z-index:10;font:900 9px var(--mono);color:#e9eeeb}.ztMGNow b{color:#F4B728}
+.ztLvl{position:absolute;left:0;right:0;height:1px;z-index:5;color:#7f7250}.ztLvl:after{content:"";position:absolute;left:0;right:0;height:1px;background:currentColor;opacity:.48}.ztLvl strong{position:absolute;left:10px;top:-14px;background:#050706;padding:3px 6px;border-left:2px solid currentColor;font:900 7px var(--mono);letter-spacing:.07em;color:currentColor}.ztLvl em{position:absolute;right:12px;top:-12px;background:#050706;padding:2px 5px;font:800 8px var(--mono);font-style:normal;color:#9aa39d}.ztLvl.strong:after{height:1px;opacity:.68;box-shadow:none}.ztLvl.strong strong{font-size:8px}.ztLvl.r{color:#F4B728}.ztLvl.s{color:#20F58A}.r3{top:15%}.r2{top:29%}.r1{top:39%}.s1{top:62%}.s2{top:76%}.s3{top:89%}
+.ztVP{position:absolute;right:0;top:0;bottom:0;width:22%;z-index:3;opacity:.68;pointer-events:none}.ztVP i{position:absolute;right:0;height:3px;background:linear-gradient(90deg,transparent,#806a2c);transform:translateY(-50%)}.ztVP i.poc{height:5px;background:linear-gradient(90deg,transparent,#F4B728);box-shadow:0 0 9px rgba(244,183,40,.42)}.ztVP i.poc:before{content:"POC";position:absolute;right:calc(100% + 5px);top:-3px;font:900 6px var(--mono);color:#F4B728}
+.ztVPTag{position:absolute;right:10px;top:9px;font:800 6px var(--mono);letter-spacing:.1em;color:#625c49;z-index:6}
+.ztMarketNums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #29291f;background:#070907}.ztMN{padding:12px 14px;border-right:1px solid #22251f}.ztMN:last-child{border-right:0}.ztMN span,.ztMS span{display:block;font:700 7px var(--mono);letter-spacing:.1em;color:#66706a}.ztMN b{display:block;margin-top:5px;font:900 11px var(--mono);color:#dce2df}
+.ztStructure{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #22251f}.ztMS{padding:12px 13px;border-right:1px solid #22251f}.ztMS:last-child{border-right:0}.ztMS b{display:block;margin-top:5px;font:900 10px var(--mono);color:#dce2df}.ztMS .g{color:#20F58A}.ztMS .gold{color:#F4B728}
+.ztSignalRead{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:16px;border-top:1px solid #352d1b;background:linear-gradient(90deg,#090a07,#070806)}.ztSRK{font:800 7px var(--mono);letter-spacing:.14em;color:#6b736d}.ztSRV{margin-top:4px;font:900 21px var(--mono);letter-spacing:.04em;color:#F4B728}.ztSRWhy{margin-top:6px;font:700 8px/1.5 var(--mono);color:#747d77}.ztSRCount{border:1px solid #5b4820;border-radius:999px;padding:8px 10px;font:900 7px var(--mono);letter-spacing:.08em;color:#F4B728;white-space:nowrap}
+.ztMGFoot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #22251f;font:700 7px var(--mono);letter-spacing:.08em;color:#59635e}.ztMGFoot b{color:#F4B728}
+@media(max-width:700px){.ztMGView{height:330px}.ztMGAnchor,.ztMGDot{left:23%}.ztMGNow{left:calc(23% + 11px);font-size:8px}.ztMGTrail{left:2%;width:21%}.ztLvl strong{left:6px;font-size:6px}.ztLvl.strong strong{font-size:7px}.ztLvl em{right:6px;font-size:7px}.ztVP{width:25%}.ztMarketNums{grid-template-columns:1fr 1fr}.ztMN:nth-child(2){border-right:0}.ztMN:nth-child(-n+2){border-bottom:1px solid #22251f}.ztStructure{grid-template-columns:1fr 1fr}.ztMS:nth-child(2n){border-right:0}.ztMS:last-child{grid-column:1/-1;border-top:1px solid #22251f}.ztSignalRead{grid-template-columns:1fr}.ztSRCount{width:max-content}.ztMGFrames{overflow:auto}}
+@media(prefers-reduced-motion:reduce){.ztMGGrid{animation:none}}
+</style>
+
+
+<style>
+/* V8.36.2 // multi-timeframe confluence layer */
+.ztLvl .tf{display:inline-block;margin-left:5px;padding:2px 4px;border:1px solid currentColor;border-radius:3px;font-size:6px;opacity:.78}
+.ztLvl.major:after{height:1px;opacity:.72;box-shadow:none}
+.ztLvl.major strong{font-size:8px;letter-spacing:.055em}
+.ztConfluence{display:flex;gap:5px;flex-wrap:wrap;padding:10px 13px;border-top:1px solid #24251f;background:#060806}
+.ztConfluence span{padding:5px 7px;border:1px solid #292b24;border-radius:4px;font:800 6px var(--mono);letter-spacing:.08em;color:#68716b}
+.ztConfluence span.active{border-color:#5b4820;color:#F4B728;background:#0d0b06}
+.ztConfluence .label{border:0;padding-left:0;color:#4f5752}
+.ztTFNote{position:absolute;left:calc(24% + 12px);bottom:11px;z-index:10;font:800 6px var(--mono);letter-spacing:.09em;color:#70684d}
+@media(max-width:700px){.ztTFNote{left:calc(23% + 10px)}.ztConfluence{gap:4px}.ztConfluence span{font-size:5.5px}}
+</style>
+
+
+<style>
+/* V8.36.4 // adaptive live-price marker concept */
+.ztMGDot{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.ztMGDot.approach{background:#FF7272;border-color:#ffd0d0;box-shadow:0 0 0 5px rgba(255,114,114,.08),0 0 20px rgba(255,114,114,.48);animation:ztRiskPulse 1.25s ease-in-out infinite}
+.ztMGDot.breakout{background:#20F58A;border-color:#d9ffec;box-shadow:0 0 0 5px rgba(32,245,138,.09),0 0 22px rgba(32,245,138,.55);animation:ztBreakShake .18s linear infinite,ztBreakPulse .8s ease-in-out infinite}
+@keyframes ztRiskPulse{50%{box-shadow:0 0 0 8px rgba(255,114,114,.025),0 0 26px rgba(255,114,114,.58)}}
+@keyframes ztBreakPulse{50%{box-shadow:0 0 0 9px rgba(32,245,138,.025),0 0 30px rgba(32,245,138,.65)}}
+@keyframes ztBreakShake{0%,100%{transform:translate(0,0)}25%{transform:translate(1.5px,-1px)}50%{transform:translate(-1px,.5px)}75%{transform:translate(1px,1px)}}
+.ztMarkerLegend{display:flex;gap:13px;align-items:center;flex-wrap:wrap;padding:8px 13px;border-top:1px solid #20231e;background:#050705;font:700 6px var(--mono);letter-spacing:.08em;color:#626b65}
+.ztMarkerLegend span{display:flex;align-items:center;gap:5px}.ztMarkerLegend i{width:6px;height:6px;border-radius:50%;display:inline-block}.ztMarkerLegend .n{background:#F4B728}.ztMarkerLegend .r{background:#FF7272}.ztMarkerLegend .g{background:#20F58A}
+</style>
+
+
+<style>
+/* V8.36.5 // the signal speaks */
+.ztMGVoice{position:absolute;left:calc(24% + 22px);top:calc(49% - 42px);z-index:12;opacity:0;transform:translateY(4px);pointer-events:none;white-space:nowrap;padding:5px 8px;border:1px solid rgba(32,245,138,.35);border-radius:4px;background:rgba(4,8,6,.92);font:900 7px var(--mono);letter-spacing:.1em;color:#20F58A;text-shadow:0 0 9px rgba(32,245,138,.32);box-shadow:0 0 16px rgba(32,245,138,.08);transition:opacity .16s ease,transform .16s ease}
+.ztMGVoice.show{opacity:1;transform:translateY(0);animation:ztVoiceFlicker .8s steps(2,end) infinite}
+.ztMGVoice.down{color:#FF7272;border-color:rgba(255,114,114,.35);text-shadow:0 0 9px rgba(255,114,114,.3)}
+@keyframes ztVoiceFlicker{0%,92%,100%{opacity:1}94%{opacity:.62}97%{opacity:.86}}
+@media(max-width:700px){.ztMGVoice{left:calc(23% + 18px);font-size:6px;padding:4px 6px}}
+</style>
+
+
+<style>
+/* V8.36.6 // breakout outcome states */
+.ztMGDot.success{background:#20F58A;border-color:#e3fff0;box-shadow:0 0 0 5px rgba(32,245,138,.07),0 0 25px rgba(32,245,138,.6);animation:ztSuccessPulse 1.35s ease-in-out infinite}
+.ztMGDot.failed{background:#FF7272;border-color:#ffdada;box-shadow:0 0 0 5px rgba(255,114,114,.08),0 0 25px rgba(255,114,114,.55);animation:ztFailSnap .28s ease-out 1,ztRiskPulse 1.1s ease-in-out infinite}
+@keyframes ztSuccessPulse{50%{box-shadow:0 0 0 9px rgba(32,245,138,.02),0 0 31px rgba(32,245,138,.68)}}
+@keyframes ztFailSnap{0%{transform:translateX(0)}35%{transform:translateX(-5px)}65%{transform:translateX(2px)}100%{transform:translateX(0)}}
+.ztMGVoice.success{color:#20F58A;border-color:rgba(32,245,138,.42)}
+.ztMGVoice.failed{color:#FF7272;border-color:rgba(255,114,114,.42);text-shadow:0 0 9px rgba(255,114,114,.32)}
+.ztOutcomeTag{position:absolute;left:calc(24% + 12px);top:calc(49% + 18px);z-index:11;opacity:0;font:800 6px var(--mono);letter-spacing:.1em;transition:opacity .18s ease}
+.ztOutcomeTag.show{opacity:.78}.ztOutcomeTag.ok{color:#20F58A}.ztOutcomeTag.no{color:#FF7272}
+@media(max-width:700px){.ztOutcomeTag{left:calc(23% + 10px)}}
+</style>
+
+
+<style>
+/* V8.36.7 // ZEC character marker + attached live price */
+.ztMGDot{display:flex;align-items:center;justify-content:center;width:20px;height:20px;margin:-10px;border-width:1px;font:900 13px/1 Arial,sans-serif;color:#070805;text-shadow:none}
+.ztMGDot::after{content:"Z";font-weight:1000;transform:scaleX(1.03)}
+.ztMGNow{left:calc(24% + 17px);top:calc(49% - 10px);padding:3px 6px;border-radius:3px;background:rgba(5,7,6,.82);font-size:9px;letter-spacing:.03em;transition:color .3s ease}
+.ztMGNow .ztLiveNum{color:#F4B728}
+.ztMGNow.red .ztLiveNum{color:#FF7272}.ztMGNow.green .ztLiveNum{color:#20F58A}
+.ztMGVoice{left:calc(24% + 29px);top:calc(49% - 48px)}
+@media(max-width:700px){.ztMGNow{left:calc(23% + 16px);font-size:8px}.ztMGVoice{left:calc(23% + 27px)}}
+</style>
+
+
+<style>
+/* V8.37.0 // clean adaptive marker — no logo/glyph */
+.ztMGDot::after{content:none!important}
+.ztMGDot{font-size:0}
+</style>
+
+
+<style>
+/* V8.37.1 // smaller clean live-price marker */
+.ztMGDot{width:14px!important;height:14px!important;margin:-7px!important;border-width:1px!important}
+</style>
+
+<style>
+.ztMGTrail,.ztTrail{display:none!important}
+</style>
+<style>
+.ztSignalRead{display:none!important}
+.ztTopSignal{
+ display:inline-flex;align-items:center;margin-left:auto;padding:6px 9px;
+ border:1px solid rgba(244,183,40,.30);border-radius:8px;
+ background:rgba(244,183,40,.04);white-space:nowrap;
+ font:800 9px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ letter-spacing:.08em;color:#F4B728
+}
+.ztTopSignal.buy,.ztTopSignal.strong-buy{color:#20F58A;border-color:rgba(32,245,138,.32)}
+.ztTopSignal.sell,.ztTopSignal.strong-sell{color:#FF7272;border-color:rgba(255,114,114,.32)}
+.ztTopSignal.neutral{color:#F4B728}
+@media(max-width:520px){
+ .ztMGFrames{display:flex;align-items:center;gap:5px;flex-wrap:nowrap}
+ .ztMGFrames button{padding-left:8px!important;padding-right:8px!important}
+ .ztTopSignal{padding:6px 8px;font-size:9px}
+}
+</style>
+<style id="ztGridVisibilityBoost">
+.ztMGGrid{opacity:.82!important;filter:contrast(1.22) brightness(1.18)}
+</style>
+<style id="ztGridVisibilityBoost2">
+/* STEP 5 // clearly visible moving grid, still subordinate to S/R */
+.ztMGGrid{
+  opacity:1!important;
+  filter:contrast(1.65) brightness(1.48)!important;
+}
+</style>
+<style id="ztGridHighVisibility">
+.ztMGGrid{
+ opacity:1!important;filter:none!important;
+ background-image:
+ linear-gradient(to right,rgba(244,183,40,.22) 1px,transparent 1px),
+ linear-gradient(to bottom,rgba(244,183,40,.18) 1px,transparent 1px)!important;
+ background-size:82px 100%,100% 66px!important;
+}
+</style><style id="ztVerticalGridOnly">
+.ztMGGrid{
+ opacity:1!important;
+ filter:none!important;
+ background-image:linear-gradient(to right,rgba(244,183,40,.22) 1px,transparent 1px)!important;
+ background-size:82px 100%!important;
+}
+</style><!-- STEP14 // live moving price viewport + open-sky reaction -->
+<!-- STEP15 // evolving live volume profile + timeframe POC -->
+
+<style id="ztDevPOCCSS">
+.ztDevPOC{
+  position:absolute;left:0;right:0;height:1px;z-index:5;
+  border-top:1px dashed rgba(244,183,40,.82);
+  pointer-events:none;
+  filter:drop-shadow(0 0 4px rgba(244,183,40,.28));
+  animation:ztDevPOCPulse 1.45s ease-in-out infinite;
+}
+.ztDevPOC::after{
+  content:'DEVELOPING POC';
+  position:absolute;right:9px;top:-18px;
+  font-size:8px;letter-spacing:.12em;font-weight:800;
+  color:#F4B728;background:rgba(8,10,12,.78);
+  padding:2px 5px;border-radius:4px;
+  white-space:nowrap;
+}
+@keyframes ztDevPOCPulse{
+  0%,100%{opacity:.42;filter:drop-shadow(0 0 2px rgba(244,183,40,.18))}
+  50%{opacity:1;filter:drop-shadow(0 0 8px rgba(244,183,40,.62))}
+}
+</style>
+
+<!-- STEP16 // stable POC + pulsing Developing POC -->
+<style id="ztCleanLevelLines">
+.ztLvl{transition:opacity .18s ease,filter .18s ease}
+.ztLvl.ztActiveLevel:after{opacity:1;box-shadow:0 0 5px currentColor}
+</style>
+<!-- STEP18 // hybrid viewport: free-moving dot + edge-triggered grid scroll -->
+
+<style id="ztLagCameraCSS">
+.ztMGDot,.ztMGNow,#ztMGVoice,#ztOutcomeTag,.ztLvl,.ztDevPOC{
+  transition:top .18s linear,opacity .18s ease,filter .18s ease;
+}
+</style>
+
+<!-- STEP19 // dot leads, grid follows -->
+<!-- STEP20 // touch crosshair + draggable price-space explorer -->
+
+<style id="ztTouchExploreCSS">
+.ztTouchGuide{position:absolute;left:0;right:0;height:1px;border-top:1px solid rgba(232,238,242,.78);z-index:999;pointer-events:none;display:none}
+.ztTouchGuide.show{display:block}
+.ztTouchGuide b{position:absolute;right:7px;top:-11px;background:#11161b;border:1px solid rgba(232,238,242,.32);border-radius:5px;padding:2px 6px;color:#eef2f4;font:800 9px/1.35 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.ztExploreHint{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);z-index:998;pointer-events:none;color:rgba(232,238,242,.48);font-size:7px;font-weight:800;letter-spacing:.13em;opacity:0}
+.ztExploreHint.show{opacity:1}
+</style>
+
+<!-- STEP20.2 native mobile touch explorer -->
+<!-- STEP21 // persistent free-pan + visibly leading live dot -->
+<!-- STEP22 // volume profile + established POC price-locked to viewport -->
+
+<style id="ztReturnLiveCSS">
+.ztReturnLive{
+ position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+ z-index:1001;display:none;appearance:none;border:1px solid rgba(244,183,40,.42);
+ background:rgba(8,10,10,.92);color:#F4B728;border-radius:999px;
+ padding:6px 10px;font:900 7px/1 var(--mono);letter-spacing:.11em;
+ box-shadow:0 0 12px rgba(244,183,40,.10);
+ touch-action:manipulation;
+}
+.ztReturnLive.show{display:block}
+</style>
+
+<!-- STEP23 // persistent explore lock + explicit Return to Live -->
+
+<style id="ztConfluenceBadgeFix">
+.ztLvl strong{display:inline-flex;align-items:center;gap:6px;max-width:72%;white-space:nowrap}
+.ztLvl strong .tf{position:static!important;display:inline-block!important;margin:0!important;transform:none!important;white-space:nowrap}
+</style>
+
+
+<style id="ztDenseVolumeProfile">
+.ztVP i{height:2px;opacity:.62}
+.ztVP i.poc{height:4px;opacity:1}
+</style>
+
+<!-- STEP24 // collision-safe TF badges + dense true-price volume profile -->
+
+<style id="ztStep31PlainConfluence">
+.ztLvl strong{
+ display:block!important;position:absolute!important;left:10px!important;top:-14px!important;
+ width:max-content!important;max-width:62%!important;padding:0!important;margin:0!important;
+ background:rgba(5,7,6,.90)!important;border:0!important;border-radius:0!important;
+ box-shadow:none!important;outline:0!important;white-space:nowrap!important;
+ font:900 7px/1 var(--mono)!important;letter-spacing:.055em!important;z-index:40!important;
+}
+.ztLvl strong *{display:none!important}
+.ztLvl strong:before,.ztLvl strong:after{content:none!important;display:none!important}
+.ztLvl em{z-index:40!important}
+</style>
+
+<!-- STEP31 // STEP24 volume preserved; confluence is one plain text string -->
+
+
+
+
+<style id="ztStep35Features">
+/* Gold heartbeat around the actual live-price dot. No pseudo-element: ::after is reserved by the dot. */
+.ztMGDot{animation:ztGoldHeartbeat 1.9s ease-in-out infinite}
+.ztMGDot.approach{animation:ztRiskPulse 1.25s ease-in-out infinite,ztGoldHeartbeat 1.9s ease-in-out infinite!important}
+.ztMGDot.breakout{animation:ztBreakShake .18s linear infinite,ztBreakPulse .8s ease-in-out infinite,ztGoldHeartbeat 1.9s ease-in-out infinite!important}
+.ztMGDot.success{animation:ztSuccessPulse 1.35s ease-in-out infinite,ztGoldHeartbeat 1.9s ease-in-out infinite!important}
+.ztMGDot.failed{animation:ztFailSnap .28s ease-out 1,ztRiskPulse 1.1s ease-in-out infinite,ztGoldHeartbeat 1.9s ease-in-out infinite!important}
+@keyframes ztGoldHeartbeat{
+  0%,100%{outline:1px solid rgba(244,183,40,.10);outline-offset:2px}
+  50%{outline:1px solid rgba(244,183,40,.70);outline-offset:9px}
+}
+
+/* Existing green LIVE dot gets the same living pulse language, smaller. */
+#signal .liveFeed .liveDot{animation:ztLiveHeartbeat 1.9s ease-out infinite!important}
+@keyframes ztLiveHeartbeat{
+  0%{box-shadow:0 0 0 0 rgba(32,245,138,.55),0 0 5px rgba(32,245,138,.45)}
+  72%,100%{box-shadow:0 0 0 7px rgba(32,245,138,0),0 0 10px rgba(32,245,138,.78)}
+}
+
+/* Confluence intensity: line only. Text remains clean/plain. */
+.ztLvl.ztConf2:after{opacity:.82!important;box-shadow:0 0 4px currentColor!important}
+.ztLvl.ztConf3:after{opacity:1!important;box-shadow:0 0 8px currentColor,0 0 14px currentColor!important}
+
+/* Explore depth sits beside RETURN TO LIVE and exists only in parked explore mode. */
+.ztExploreDepth{
+ display:none;position:absolute;right:10px;bottom:38px;z-index:1001;
+ font:800 7px/1 var(--mono);letter-spacing:.08em;color:#d5b75d;
+ background:rgba(5,7,6,.82);border:1px solid rgba(244,183,40,.18);
+ border-radius:5px;padding:5px 7px;pointer-events:none;white-space:nowrap
+}
+.ztExploreDepth.show{display:block}
+
+/* Compact, opt-in event log. */
+.ztEventToggle{
+ position:absolute;left:9px;bottom:8px;z-index:1001;border:0;background:rgba(5,7,6,.72);
+ color:rgba(244,183,40,.68);font:900 7px/1 var(--mono);letter-spacing:.10em;
+ padding:5px 6px;border-radius:4px
+}
+.ztEventLog{
+ display:none;position:absolute;left:9px;bottom:32px;z-index:1002;width:min(245px,72%);
+ max-height:105px;overflow:auto;background:rgba(4,6,5,.94);
+ border:1px solid rgba(244,183,40,.18);border-radius:6px;padding:6px 8px;
+ box-shadow:0 8px 22px rgba(0,0,0,.38)
+}
+.ztEventLog.show{display:block}
+.ztEventLog div{font:700 7px/1.4 var(--mono);color:#a79e86;padding:3px 0}
+.ztEventLog div+div{border-top:1px solid rgba(255,255,255,.045)}
+.ztEventLog time{color:#686253;margin-right:6px}
+</style>
+
+
+<style id="ztStep38WorkingReset">
+/* Pure visual overrides only. */
+.ztMGDot{outline:none!important}
+.ztExploreDepth{display:none!important}
+.ztMGHint{display:none!important}
+</style>
+
+
+<style id="ztStep39RequestedCleanup">
+/* 1. No outlined ring around the market dot. */
+.ztMGDot{outline:0!important}
+
+/* 2. Hide the unwanted bottom-center explanatory sentence.
+   STEP35/38 renders it as #ztMGHint, not .ztMGHint. */
+#ztMGHint{display:none!important}
+
+/* 3. Hide the unwanted bottom-right LIVE +/- price depth pill.
+   STEP35/38 renders this as .ztExploreDepth. */
+.ztExploreDepth{display:none!important}
+
+/* 4. Confluence hierarchy:
+      ordinary 1-TF structure = normal line
+      2 TFs = illuminated confluence
+      3+ TFs = stronger illuminated confluence */
+.ztLvl.ztConf2:after{
+ opacity:1!important;
+ filter:drop-shadow(0 0 3px currentColor)!important;
+ box-shadow:0 0 5px currentColor!important;
+}
+.ztLvl.ztConf3:after{
+ opacity:1!important;
+ filter:drop-shadow(0 0 6px currentColor)!important;
+ box-shadow:0 0 7px currentColor,0 0 13px currentColor!important;
+}
+.ztLvl.ztConf2 strong,.ztLvl.ztConf3 strong{
+ text-shadow:0 0 6px currentColor!important;
+}
+</style>
+
+
+<style id="ztStep40ExactFixes">
+/* MAIN DOT — remove the actual white BORDER, then give the dot a soft gold breathing halo.
+   Do not replace its fill color; red/green/yellow state behavior stays intact. */
+.ztMGDot{
+ border-color:rgba(244,183,40,.88)!important;
+ outline:none!important;
+ animation:ztMainSoftPulse 1.9s ease-in-out infinite!important;
+}
+@keyframes ztMainSoftPulse{
+ 0%,100%{
+   box-shadow:0 0 0 2px rgba(244,183,40,.10),0 0 10px rgba(244,183,40,.42),0 0 20px rgba(244,183,40,.14)
+ }
+ 50%{
+   box-shadow:0 0 0 7px rgba(244,183,40,0),0 0 18px rgba(244,183,40,.80),0 0 32px rgba(244,183,40,.30)
+ }
+}
+/* Preserve reaction animations while retaining a gold halo. */
+.ztMGDot.approach{border-color:#ff7272!important}
+.ztMGDot.breakout,.ztMGDot.success{border-color:#20f58a!important}
+
+/* TOP-RIGHT MARKET GRID LIVE DOT — exact element. */
+.ztMGLive i{
+ animation:ztLiveSoftPulse 1.9s ease-out infinite!important;
+}
+@keyframes ztLiveSoftPulse{
+ 0%{box-shadow:0 0 0 0 rgba(32,245,138,.58),0 0 5px rgba(32,245,138,.52)}
+ 70%,100%{box-shadow:0 0 0 8px rgba(32,245,138,0),0 0 13px rgba(32,245,138,.88)}
+}
+
+/* Also pulse the page-level LIVE FEED dot if present. */
+.liveFeed .liveDot{
+ animation:ztLiveSoftPulse 1.9s ease-out infinite!important;
+}
+
+/* BOTTOM GRID COPY — exact element inherited from the base. */
+#ztMGMeta{display:none!important}
+
+/* Keep the unwanted explore-depth price pill gone. */
+.ztExploreDepth{display:none!important}
+</style>
+
+
+<style id="ztStep41ExactVisualFix">
+/* Actual bottom explanatory node in markup */
+.ztTFNote{display:none!important}
+
+/* Main price dot: no white border in ANY state; pulse is a separate halo so
+   existing reaction animations cannot overwrite it. */
+.ztMGDot,
+.ztMGDot.approach,.ztMGDot.breakout,.ztMGDot.success,.ztMGDot.failed,
+.ztMGDot.ztRxTest,.ztMGDot.ztRxBreak,.ztMGDot.ztRxThrough,.ztMGDot.ztRxFail{
+ border-color:transparent!important;
+}
+.ztMGDot::before{
+ content:""!important;display:block!important;position:absolute!important;
+ left:50%;top:50%;width:100%;height:100%;border-radius:50%;
+ transform:translate(-50%,-50%) scale(1);
+ pointer-events:none;z-index:-1;
+ box-shadow:0 0 12px rgba(244,183,40,.78),0 0 24px rgba(244,183,40,.34);
+ animation:zt41GoldHalo 1.75s ease-out infinite!important;
+}
+@keyframes zt41GoldHalo{
+ 0%{transform:translate(-50%,-50%) scale(.9);opacity:1;box-shadow:0 0 12px rgba(244,183,40,.88),0 0 24px rgba(244,183,40,.42)}
+ 72%,100%{transform:translate(-50%,-50%) scale(2.65);opacity:0;box-shadow:0 0 26px rgba(244,183,40,.16),0 0 42px rgba(244,183,40,.05)}
+}
+
+/* Actual MARKET GRID LIVE indicator is a ::before pseudo-dot on .ztMGLive. */
+.ztMGLive::before{
+ animation:zt41GreenHalo 1.8s ease-out infinite!important;
+}
+@keyframes zt41GreenHalo{
+ 0%{box-shadow:0 0 0 0 rgba(32,245,138,.62),0 0 7px rgba(32,245,138,.72)}
+ 72%,100%{box-shadow:0 0 0 8px rgba(32,245,138,0),0 0 14px rgba(32,245,138,.88)}
+}
+
+/* Page-level LIVE FEED dot too. */
+.liveFeed .liveDot{animation:zt41GreenHalo 1.8s ease-out infinite!important}
+
+/* Keep unwanted explore price pill gone. */
+.ztExploreDepth{display:none!important}
+</style>
+
+
+<style id="ztStep44PressureUnderGrid">
+#ztPressureDeck{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(244,183,40,.14);border-bottom:1px solid rgba(255,255,255,.07);background:linear-gradient(90deg,rgba(32,245,138,.025),transparent 45%,transparent 55%,rgba(255,114,114,.025))}
+#ztPressureDeck .ztPD{position:relative;padding:13px 18px 15px;min-height:62px;overflow:hidden}
+#ztPressureDeck .ztPD+.ztPD{border-left:1px solid rgba(255,255,255,.08)}
+#ztPressureDeck span{display:block;font:800 7px/1 var(--mono);letter-spacing:.13em;color:#666b66;margin-bottom:7px}
+#ztPressureDeck b{display:block;font:900 15px/1 var(--mono);color:#858a85}
+#ztPressureDeck i{position:absolute;left:18px;bottom:8px;height:1px;width:0;background:currentColor;transition:width .35s ease}
+#ztPressureDeck .buy.lead{color:#20f58a} #ztPressureDeck .sell.lead{color:#ff7272}
+#ztPressureDeck .lead b{color:currentColor;text-shadow:0 0 10px currentColor}
+#ztPressureDeck .lead i{box-shadow:0 0 7px currentColor}
+</style>
+
+
+<style id="ztStep48FieldGuide">
+.ztFieldGuide{max-width:1180px;margin:28px auto 18px;padding:22px 20px;border:1px solid rgba(244,183,40,.16);border-radius:14px;background:linear-gradient(180deg,rgba(244,183,40,.025),rgba(3,6,5,.52))}
+.ztFGTop{font:900 7px/1 var(--mono);letter-spacing:.18em;color:#80691f;margin-bottom:8px}
+.ztFGTitle{font:900 16px/1.1 var(--mono);letter-spacing:.02em;color:#e6e8e3;margin-bottom:15px}
+.ztFGGrid{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.065);border-radius:8px;overflow:hidden}
+.ztFGCard{position:relative;min-height:92px;padding:13px 13px 12px 40px;background:rgba(3,6,5,.42)}
+.ztFGCard:nth-child(even){border-left:1px solid rgba(255,255,255,.065)}
+.ztFGCard:nth-child(n+3){border-top:1px solid rgba(255,255,255,.065)}
+.ztFGCard>b{position:absolute;left:13px;top:14px;font:900 8px/1 var(--mono);color:#65531d}
+.ztFGCard>span{display:block;font:900 7px/1.25 var(--mono);letter-spacing:.10em;color:#cdd0cb;margin-bottom:7px}
+.ztFGCard p{margin:0;font:600 6.5px/1.55 var(--mono);letter-spacing:.015em;color:#666b66}
+.ztFGCard i{display:inline-block;width:5px;height:5px;border-radius:50%;vertical-align:1px}
+.ztFGCard i.y{background:#f4b728}.ztFGCard i.r{background:#ff7272}.ztFGCard i.g{background:#20f58a}
+.ztFGRule{margin-top:12px;padding-top:12px;border-top:1px solid rgba(244,183,40,.10);font:900 7px/1.2 var(--mono);letter-spacing:.13em;color:#a4862b}
+@media(max-width:600px){
+ .ztFieldGuide{margin:22px 14px 14px;padding:18px 14px}
+ .ztFGGrid{grid-template-columns:1fr}
+ .ztFGCard:nth-child(even){border-left:0}
+ .ztFGCard:nth-child(n+2){border-top:1px solid rgba(255,255,255,.065)}
+ .ztFGCard{min-height:82px}
+}
+</style>
+
+
+<style id="ztStep49LargerGuide">
+.ztFieldGuide{padding:26px 22px 22px!important}
+.ztFGTop{font-size:9px!important;letter-spacing:.17em!important}
+.ztFGTitle{font-size:22px!important;margin-bottom:18px!important}
+.ztFGCard{min-height:112px!important;padding:18px 18px 16px 52px!important}
+.ztFGCard>b{left:17px!important;top:19px!important;font-size:11px!important}
+.ztFGCard>span{font-size:10px!important;line-height:1.25!important;margin-bottom:9px!important}
+.ztFGCard p{font-size:9px!important;line-height:1.65!important;letter-spacing:.01em!important}
+.ztFGCard i{width:7px!important;height:7px!important}
+.ztFGRule{font-size:9px!important;line-height:1.4!important;padding-top:15px!important;margin-top:15px!important}
+@media(max-width:600px){
+ .ztFieldGuide{margin:22px 14px 14px!important;padding:22px 18px 20px!important}
+ .ztFGTitle{font-size:20px!important}
+ .ztFGCard{min-height:105px!important;padding:17px 15px 15px 48px!important}
+ .ztFGCard>b{left:15px!important;top:18px!important;font-size:10px!important}
+ .ztFGCard>span{font-size:10px!important}
+ .ztFGCard p{font-size:9px!important;line-height:1.6!important}
+ .ztFGRule{font-size:8.5px!important}
+}
+</style>
+
+
+<style id="ztStep50ReadableGuide">
+/* STEP50: phone-first readable Field Guide */
+.ztFGTop{font-size:11px!important}
+.ztFGTitle{font-size:25px!important;line-height:1.15!important}
+.ztFGCard{min-height:128px!important;padding:20px 18px 18px 58px!important}
+.ztFGCard>b{left:18px!important;top:21px!important;font-size:13px!important}
+.ztFGCard>span{font-size:13px!important;line-height:1.3!important;letter-spacing:.09em!important;margin-bottom:12px!important}
+.ztFGCard p{font-size:12px!important;line-height:1.65!important;letter-spacing:.015em!important;color:#8b908b!important}
+.ztFGCard i{width:9px!important;height:9px!important}
+.ztFGRule{font-size:11px!important;line-height:1.5!important}
+@media(max-width:600px){
+ .ztFieldGuide{padding:24px 18px 22px!important}
+ .ztFGTop{font-size:10px!important}
+ .ztFGTitle{font-size:23px!important;margin-bottom:20px!important}
+ .ztFGCard{min-height:126px!important;padding:19px 16px 18px 55px!important}
+ .ztFGCard>b{left:17px!important;top:20px!important;font-size:12px!important}
+ .ztFGCard>span{font-size:12.5px!important}
+ .ztFGCard p{font-size:11.5px!important;line-height:1.65!important}
+ .ztFGRule{font-size:10.5px!important}
+}
+</style>
+
+
+<style id="ztStep51ExpandableGuide">
+.ztFGIntro{margin:0 0 18px;font:600 12px/1.65 var(--mono);color:#8a8f8a;max-width:760px}
+.ztAccordion{border:1px solid rgba(255,255,255,.075);border-radius:9px;overflow:hidden}
+.ztAccordion details{background:rgba(3,6,5,.5);border-top:1px solid rgba(255,255,255,.07)}
+.ztAccordion details:first-child{border-top:0}
+.ztAccordion summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:18px 17px;min-height:64px}
+.ztAccordion summary::-webkit-details-marker{display:none}
+.ztAccordion summary>b{font:900 12px/1 var(--mono);color:#806820}
+.ztAccordion summary>span{font:900 12px/1.25 var(--mono);letter-spacing:.09em;color:#e1e3df}
+.ztAccordion summary>em{font:800 9px/1.2 var(--mono);font-style:normal;letter-spacing:.08em;color:#686d68;text-align:right}
+.ztAccordion summary:after{content:"+";font:900 17px/1 var(--mono);color:#b28d25;grid-column:4}
+.ztAccordion details[open] summary:after{content:"−"}
+.ztAccordion details[open] summary{background:linear-gradient(90deg,rgba(244,183,40,.035),transparent)}
+.ztFGBody{padding:0 18px 19px 61px;max-width:900px}
+.ztFGBody p{margin:0 0 11px;font:600 12px/1.72 var(--mono);letter-spacing:.01em;color:#929792}
+.ztFGBody p:last-child{margin-bottom:0}
+.ztFGBody strong{font-weight:900;color:#c9ccc7}
+.ztFGBody .gd{width:8px;height:8px;margin-right:7px}
+@media(max-width:600px){
+ .ztFieldGuide{padding:24px 17px 21px!important}
+ .ztFGIntro{font-size:12px!important;line-height:1.6!important}
+ .ztAccordion summary{grid-template-columns:31px 1fr 18px;padding:17px 14px;gap:9px}
+ .ztAccordion summary>b{font-size:12px}
+ .ztAccordion summary>span{font-size:12px}
+ .ztAccordion summary>em{grid-column:2;grid-row:2;text-align:left;font-size:9px;margin-top:2px}
+ .ztAccordion summary:after{grid-column:3;grid-row:1/3;align-self:center}
+ .ztFGBody{padding:0 15px 18px 54px}
+ .ztFGBody p{font-size:12px!important;line-height:1.68!important}
+}
+</style>
+
+<style id="zt52">html{scroll-behavior:smooth}.ztIndicatorNav{max-width:1180px;margin:18px auto 5px;padding:0 20px;position:relative;z-index:20}.ztINLabel{font:900 8px/1 var(--mono);letter-spacing:.18em;color:#80691f;margin:0 0 10px}.ztINScroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}.ztINScroll::-webkit-scrollbar{display:none}.ztINScroll a,.ztINScroll button{flex:none;min-height:42px;padding:0 14px;border:1px solid rgba(244,183,40,.22);border-radius:8px;background:linear-gradient(180deg,rgba(244,183,40,.05),rgba(3,6,5,.82));color:#aeb1ac;text-decoration:none;font:900 9px/1 var(--mono);letter-spacing:.09em;display:flex;align-items:center}.ztINScroll .hot{color:#f4b728;border-color:rgba(244,183,40,.45);box-shadow:0 0 18px rgba(244,183,40,.05)}.ztINScroll button b{color:#f4b728;font-size:15px;margin-left:8px}.ztINMenu{display:none;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2px;border:1px solid rgba(244,183,40,.18);border-radius:9px;overflow:hidden;background:#493a10;box-shadow:0 18px 50px #000}.ztINMenu.open{display:grid}.ztINMenu a{padding:15px 12px;background:#050806;color:#929792;text-decoration:none;font:900 8px/1.2 var(--mono);letter-spacing:.08em}.ztINMenu a:active{color:#f4b728}#market-grid,#market-signal,#zt-field-guide,.ztFieldGuide details{scroll-margin-top:90px}@media(max-width:600px){.ztIndicatorNav{padding:0 14px;margin-top:14px}.ztINScroll a,.ztINScroll button{font-size:9px;min-height:44px}.ztINMenu{grid-template-columns:1fr 1fr}.ztINMenu a{font-size:9px}}</style>
+<style id="ztStep53NavPlacement">
+.ztIndicatorNav{margin-top:14px!important;margin-bottom:10px!important}
+</style>
+
+<style id="ztStep54CleanSubnav">
+.ztIndicatorNav{position:relative!important;width:100%!important;max-width:none!important;margin:0!important;padding:9px 22px!important;border-bottom:1px solid rgba(244,183,40,.13)!important;background:linear-gradient(180deg,rgba(5,8,7,.98),rgba(3,6,5,.95))!important;z-index:18!important}
+.ztINLabel{display:none!important}
+.ztINScroll{max-width:1180px!important;margin:0 auto!important;display:flex!important;gap:7px!important;overflow-x:auto!important;padding:0!important}
+.ztINScroll a,.ztINScroll button{min-height:34px!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.09)!important;border-radius:6px!important;background:rgba(255,255,255,.018)!important;font-size:8px!important;color:#858a85!important}
+.ztINScroll .hot{color:#f4b728!important;border-color:rgba(244,183,40,.3)!important;background:rgba(244,183,40,.035)!important}
+.ztINScroll button b{font-size:12px!important}.ztINMenu{max-width:1180px!important;margin:7px auto 0!important}
+@media(max-width:600px){.ztIndicatorNav{padding:8px 14px!important}.ztINScroll{gap:6px!important}.ztINScroll a,.ztINScroll button{min-height:36px!important;padding:0 11px!important;font-size:8px!important}}
+</style>
+<style id="zt56">
+.ztUnifiedHeader{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(3,7,8,.985)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.32)}
+.ztUnifiedHeader .ztIndicatorNav{position:relative!important;top:auto!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 22px 8px!important;border:0!important;border-top:1px solid rgba(255,255,255,.035)!important;border-bottom:1px solid rgba(244,183,40,.12)!important;background:transparent!important;box-shadow:none!important}
+.ztUnifiedHeader .ztINLabel{display:none!important}
+.ztUnifiedHeader .ztINScroll{max-width:1180px!important;margin:0 auto!important;display:flex!important;gap:6px!important;overflow-x:auto!important;padding:7px 0 0!important;scrollbar-width:none}
+.ztUnifiedHeader .ztINScroll::-webkit-scrollbar{display:none}
+.ztUnifiedHeader .ztINScroll a,.ztUnifiedHeader .ztINScroll button{min-height:32px!important;padding:0 11px!important;border-radius:6px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.015)!important;font-size:7.5px!important;color:#7e837e!important}
+.ztUnifiedHeader .ztINScroll .hot{color:#f4b728!important;border-color:rgba(244,183,40,.28)!important;background:rgba(244,183,40,.035)!important}
+.ztUnifiedHeader .ztINMenu{max-width:1180px!important;margin:6px auto 0!important}
+@media(max-width:600px){.ztUnifiedHeader .ztIndicatorNav{padding:0 14px 8px!important}.ztUnifiedHeader .ztINScroll a,.ztUnifiedHeader .ztINScroll button{min-height:34px!important;font-size:8px!important;padding:0 10px!important}}
+</style>
+<style id="ztStep57Polish">
+.ztUnifiedHeader .ztIndicatorNav{
+ padding:0 22px 6px!important;
+ border-top:1px solid rgba(255,255,255,.025)!important;
+ border-bottom:1px solid rgba(244,183,40,.08)!important;
+}
+.ztUnifiedHeader .ztINScroll{
+ display:grid!important;
+ grid-template-columns:repeat(3,1fr)!important;
+ gap:0!important;
+ overflow:visible!important;
+ padding:4px 0 0!important;
+}
+.ztUnifiedHeader .ztINScroll a{
+ justify-content:center!important;
+ min-height:28px!important;
+ padding:0 8px!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ color:#666b66!important;
+ font-size:7px!important;
+ letter-spacing:.11em!important;
+ position:relative!important;
+}
+.ztUnifiedHeader .ztINScroll a+a{
+ border-left:1px solid rgba(255,255,255,.055)!important;
+}
+.ztUnifiedHeader .ztINScroll a.hot{
+ color:#c99a26!important;
+ background:transparent!important;
+ box-shadow:none!important;
+}
+.ztUnifiedHeader .ztINScroll a.hot:after{
+ content:""!important;
+ position:absolute!important;
+ left:24%!important;
+ right:24%!important;
+ bottom:0!important;
+ height:1px!important;
+ background:#f4b728!important;
+ box-shadow:0 0 7px rgba(244,183,40,.32)!important;
+}
+
+/* Pull hero upward toward the unified nav */
+.hero{padding-top:42px!important}
+@media(max-width:600px){
+ .ztUnifiedHeader .ztIndicatorNav{padding:0 14px 5px!important}
+ .ztUnifiedHeader .ztINScroll a{
+   min-height:27px!important;
+   font-size:7px!important;
+   padding:0 4px!important;
+ }
+ .hero{padding-top:28px!important}
+}
+</style>
+
+
+<style id="ztStep58FixedNav">
+/* Keep the complete two-row ZeroTrace header visible at all times */
+.ztUnifiedHeader{
+ position:fixed!important;
+ top:0!important;
+ left:0!important;
+ right:0!important;
+ width:100%!important;
+ z-index:5000!important;
+ background:rgba(3,7,8,.985)!important;
+}
+
+/* Reserve the exact header area so page content never slides underneath it */
+body.ztHasFixedHeader{padding-top:128px!important}
+
+.ztUnifiedHeader .ztINScroll a{
+ transition:color .18s ease,border-color .18s ease,background .18s ease!important;
+}
+.ztUnifiedHeader .ztINScroll a.hot{
+ color:#f4b728!important;
+}
+.ztUnifiedHeader .ztINScroll a:not(.hot):after{
+ opacity:0!important;
+}
+@media(max-width:600px){
+ body.ztHasFixedHeader{padding-top:128px!important}
+}
+</style>
+
+
+<style id="ztStep65HeaderOffset">
+/* Match page offset to the actual two-row fixed header height. */
+body.ztHasFixedHeader{
+  padding-top:160px!important;
+}
+
+/* Keep original hero layout intact; only trim the oversized lower hero gap. */
+@media(max-width:600px){
+  body.ztHasFixedHeader{
+    padding-top:160px!important;
+  }
+  .dedicatedHero{
+    padding-top:72px!important;
+    padding-bottom:30px!important;
+  }
+}
+</style>
+
+
+<style id="ztStep66HeroCardLower">
+@media(max-width:600px){
+  main > .dedicatedHero{
+    transform:translateY(42px)!important;
+    margin-bottom:42px!important;
+  }
+}
+@media(min-width:601px){
+  main > .dedicatedHero{
+    transform:translateY(30px)!important;
+    margin-bottom:30px!important;
+  }
+}
+</style>
+
+
+<style id="ztStep70ArticleSupport">
+.ztSignalSupport{
+  max-width:1180px;
+  margin:34px auto 34px;
+  padding:0 22px;
+}
+.ztSignalSupportInner{
+  position:relative;
+  overflow:hidden;
+  padding:30px 30px 28px;
+  border:1px solid rgba(244,183,40,.28);
+  background:linear-gradient(135deg,rgba(244,183,40,.035),rgba(5,8,9,.96) 34%,#050809);
+  box-shadow:inset 3px 0 0 #F4B728,0 0 28px rgba(244,183,40,.045);
+}
+.ztSignalSupportInner:after{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(244,183,40,.72),transparent);
+}
+.ztSignalSupportInner>span{
+  display:block;
+  margin-bottom:13px;
+  font:700 9px/1 var(--mono);
+  letter-spacing:.18em;
+  color:#F4B728;
+}
+.ztSignalSupportInner h3{
+  margin:0 0 12px;
+  font:800 clamp(20px,3.2vw,29px)/1.05 var(--mono);
+  letter-spacing:-.025em;
+  color:#f0f4f1;
+}
+.ztSignalSupportInner p{
+  max-width:680px;
+  margin:0 0 20px;
+  font:11px/1.7 var(--mono);
+  letter-spacing:.035em;
+  color:#7f8883;
+}
+.ztSignalSupportInner a{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  padding:0 15px;
+  border:1px solid rgba(244,183,40,.32);
+  background:rgba(244,183,40,.045);
+  color:#F4B728;
+  text-decoration:none;
+  font:700 8px/1 var(--mono);
+  letter-spacing:.13em;
+}
+@media(max-width:600px){
+  .ztSignalSupport{margin:28px auto;padding:0 14px}
+  .ztSignalSupportInner{padding:24px 22px 22px}
+  .ztSignalSupportInner h3{font-size:22px}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-signal">
-<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+<nav class="ztUnifiedHeader"><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div><nav class="ztIndicatorNav"><div class="ztINLabel">ZEROTRACE // SIGNAL NAV</div><div class="ztINScroll"><a class="hot" href="#market-grid">MARKET GRID</a><a href="#market-signal">MARKET SIGNAL</a><a href="#zt-field-guide">HOW TO READ</a></div></nav></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
   <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
   <div class="ztNavRule"></div>
   <a href="/#lab" onclick="closeMenu()"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
@@ -1300,7 +2036,9 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
   <a href="/support/" onclick="closeMenu()"><span class="ztNavNo">08</span><span>SUPPORT</span></a>
   <div class="ztNavFooter"><i></i><span>WHAT YOU REVEAL IS YOUR CHOICE.</span></div>
 </div>
-<main><div class="dedicatedHero"><div class="wrap"><div class="dedicatedKicker">ZEROTRACE // LIVE INTELLIGENCE</div><h1><span class="ztReadWhite">READ THE</span> <span class="ztSignalGold">SIGNAL.</span></h1><p class="dedicatedLead">PRICE MOVES. ORDERS FLOW. THE NETWORK SPEAKS.</p><div class="ztHeroVerify">DON'T TRUST THE SIGNAL. VERIFY WHY IT'S FIRING.</div><div class="ztHeroDisclaimer"><strong>DISCLAIMER //</strong> ZeroTrace signals are quantitative indicators generated from market data for informational and educational purposes only. They are not financial, investment, or trading advice and do not constitute a recommendation to buy or sell any asset. Crypto markets are volatile. Verify the data and make your own decisions.</div><div class="dedicatedMode">LIVE FEED // AUTO UPDATE</div></div></div>
+<main><div class="dedicatedHero"><div class="wrap">
+<div class="dedicatedKicker">ZEROTRACE // LIVE INTELLIGENCE</div><h1><span class="ztReadWhite">READ THE</span> <span class="ztSignalGold">SIGNAL.</span></h1><p class="dedicatedLead">PRICE MOVES. ORDERS FLOW. THE NETWORK SPEAKS.</p><div class="ztHeroVerify">DON'T TRUST THE SIGNAL. VERIFY WHY IT'S FIRING.</div><div class="ztHeroDisclaimer"><strong>DISCLAIMER //</strong> ZeroTrace signals are quantitative indicators generated from market data for informational and educational purposes only. They are not financial, investment, or trading advice and do not constitute a recommendation to buy or sell any asset. Crypto markets are volatile. Verify the data and make your own decisions.</div>
+<div class="dedicatedMode">LIVE FEED // AUTO UPDATE</div></div></div>
 <section class="hero heroV7" id="top"><div class="wrap heroV7inner"><div class="heroV7art"><img alt="ZeroTrace hooded privacy figure" src="../assets/zerotrace-hood.png"/></div><div class="heroV7copy"><h1 class="heroChoice"><span class="heroChoiceTop">WHAT YOU REVEAL.</span><br/><span class="heroChoiceBottom">IS YOUR CHOICE.</span></h1><i></i><p>Zcash gives you the choice.<br/>Transparent when you need it.<br/>Private when it matters.</p><strong>PRIVACY ISN’T ABOUT HIDING.<br/>IT’S ABOUT CONTROL.</strong></div></div></section>
 <section aria-label="ZeroTrace mission" class="identityBridge" id="identityBridge">
 <div class="wrap">
@@ -1359,9 +2097,40 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
 <article class="chartbox compositionBox" data-live-card="composition"><div class="charttop"><div><h3>SHIELDED POOL COMPOSITION <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="compositionValue">—</div></div><button class="shareMini" data-share="composition">SHARE ↗</button></div><div aria-live="polite" class="poolComposition" id="compositionChart"></div><div class="chartnote">Live observed balances by shielded pool. Transparent value is excluded from this chart.</div><span class="changeStamp" data-change-stamp="composition">WAITING FOR FIRST VERIFIED READING</span></article>
 <article class="chartbox desktopOnlyChart" data-live-card="blockactivity"><div class="charttop"><div><h3>RECENT BLOCK ACTIVITY <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h3><div class="chartValue" id="blockActivityValue">—</div></div><button class="shareMini" data-share="blockactivity">SHARE ↗</button></div><canvas id="blockActivityChart"></canvas><div class="chartnote">Transactions in the newest blocks reported by the live Zcash network feed. Updates when a new source snapshot arrives.</div><span class="changeStamp" data-change-stamp="blockactivity">WAITING FOR FIRST VERIFIED READING</span><div class="chartTip"></div></article>
 </div></div></section><section id="dedicated-tools"><div class="wrap"><div class="sectionhead"><div><h2>05 // GO DEEPER</h2><p>Signal, the live block explorer and the cypherpunk archive now live on dedicated pages.</p></div><span class="tag">DEDICATED TOOLS</span></div><div class="deeperCard"><div class="deeperLinks"><a class="btn" href="../signal/">OPEN SIGNAL →</a><a class="btn" href="../explorer/">OPEN EXPLORER →</a><a class="btn" href="../rabbit-hole/">ENTER RABBIT HOLE →</a></div></div></div></section><section class="ztPageSection" id="signal"><div class="wrap"><div class="sectionhead"><div><h2>05 // ZEROTRACE SIGNAL <span class="liveFeed" data-live-feed=""><span class="liveDot"></span><span class="liveText">LIVE</span></span></h2><p>Real-time Zcash network activity. No price prediction. No investment advice.</p></div></div>
+
+<div class="ztMG">
+ <div class="ztMGTop"><div class="ztMGTitle" id="market-grid">ZEC // <b>MARKET GRID</b></div><div class="ztMGLive" id="ztMGLive">CONNECTING</div></div>
+ <div class="ztMGFrames"><button data-tf="5M">5M</button><button data-tf="15M">15M</button><button data-tf="30M">30M</button><button data-tf="1H" class="on">1H</button><button data-tf="4H">4H</button><button data-tf="1D">1D</button><div class="ztTopSignal neutral" id="ztTopSignal"><b>WAITING</b></div></div>
+ <div class="ztMGView">
+  <div class="ztMGGrid"></div><div class="ztVPTag">VOLUME AT PRICE //</div><div class="ztVP" id="ztVP"></div>
+  <div class="ztLvl r r3" data-level="r3"><strong>WEAK RESISTANCE <span class="tf">5M</span></strong><em>$—</em></div>
+  <div class="ztLvl r strong major r2" data-level="r2"><strong>MAJOR RESISTANCE // POC <span class="tf">5M + 15M + 1H</span></strong><em>$—</em></div>
+  <div class="ztLvl r r1" data-level="r1"><strong>WEAK RESISTANCE</strong><em>$—</em></div>
+  <div class="ztLvl s s1" data-level="s1"><strong>WEAK SUPPORT <span class="tf">5M</span></strong><em>$—</em></div>
+  <div class="ztLvl s strong s2" data-level="s2"><strong>STRONG SUPPORT // POC <span class="tf">15M + 1H</span></strong><em>$—</em></div>
+  <div class="ztLvl s s3" data-level="s3"><strong>WEAK SUPPORT</strong><em>$—</em></div>
+  <div class="ztMGTrail"><svg viewBox="0 0 220 44" preserveAspectRatio="none"><path d="M0 31 L18 29 L34 34 L50 23 L65 27 L81 16 L97 20 L113 11 L130 17 L146 9 L162 14 L179 7 L196 12 L220 8"/></svg></div>
+  <div class="ztMGAnchor"></div><div class="ztMGDot"></div><div class="ztMGVoice" id="ztMGVoice">I’M BREAKING THROUGH.</div><div class="ztOutcomeTag" id="ztOutcomeTag"></div><div class="ztMGNow"><b class="ztLiveNum">$247.96</b></div><div class="ztTFNote">PRIMARY // 5M &nbsp;·&nbsp; HIGHER-TF LEVELS MERGED BY PRICE CONFLUENCE</div>
+ </div>
+ <div id="ztPressureDeck">
+ <div class="ztPD buy" id="ztBuyPressure"><span>BUYING PRESSURE</span><b id="ztBuyPressureValue">—%</b><i id="ztBuyPressureBar"></i></div>
+ <div class="ztPD sell" id="ztSellPressure"><span>SELLING PRESSURE</span><b id="ztSellPressureValue">—%</b><i id="ztSellPressureBar"></i></div>
+</div>
+<div class="ztMarkerLegend"><span><i class="n"></i> YELLOW // NORMAL</span><span><i class="r"></i> RED // RESISTANCE PRESSURE</span><span><i class="g"></i> GREEN + SHAKE // BREAKOUT CONDITIONS ALIGNING</span></div>
+<div class="ztMarketNums">
+  <div class="ztMN"><span>DAILY OPEN</span><b id="ztDayOpen">$—</b></div><div class="ztMN"><span>PREV. DAILY CLOSE</span><b id="ztPrevClose">$—</b></div><div class="ztMN"><span>DAY HIGH</span><b id="ztDayHigh">$—</b></div><div class="ztMN"><span>DAY LOW</span><b id="ztDayLow">$—</b></div>
+ </div>
+ <div class="ztStructure">
+  <div class="ztMS"><span>NEAREST SUPPORT</span><b class="g" id="ztNearSupport">$—</b></div><div class="ztMS"><span>LIVE ZEC</span><b class="gold" id="ztGridPrice">$—</b></div><div class="ztMS"><span>NEAREST RESISTANCE</span><b id="ztNearResistance">$—</b></div><div class="ztMS"><span>POC</span><b class="gold" id="ztGridPOC">$—</b></div><div style="display:none"><b id="ztGridPressure">CALCULATING</b></div>
+ </div>
+ 
+<div class="ztSignalRead"><div><div class="ztSRK">ZEROTRACE // COMPOSITE SIGNAL</div><div class="ztSRV" id="ztComposite">WAITING FOR LIVE DATA</div><div class="ztSRWhy" id="ztCompositeWhy">MULTI-TF CONFLUENCE · VOLUME PROFILE · ORDER FLOW · BUY/SELL PRESSURE · MOMENTUM · LEVEL REACTION</div></div><div class="ztSRCount" id="ztCompositeCount">0 / 6 CONDITIONS</div></div>
+ 
+</div>
+
 <div class="ztTradeSignal" id="ztTradeSignal">
   <div class="ztTradeTop">
-    <div class="ztTradeTitle">MARKET SIGNAL // ZEC-USD</div>
+    <div class="ztTradeTitle" id="market-signal">MARKET SIGNAL // ZEC-USD</div>
     <div class="ztTradeLive"><i></i><span id="ztTradeFeed">LIVE MARKET</span></div>
   </div>
   <div class="ztTradeCore">
@@ -1435,6 +2204,81 @@ linear-gradient(180deg,#090a08,#050605);box-shadow:inset 0 1px rgba(255,255,255,
 <a class="resource" href="https://z.cash/community-hub/" rel="noopener" target="_blank"><div><strong>COMMUNITY HUB</strong><span>Groups and wider ecosystem resources</span></div><b>↗</b></a>
 <a class="resource" href="https://zecstats.org/" rel="noopener" target="_blank"><div><strong>ZECSTATS</strong><span>Live network data used throughout ZeroTrace</span></div><b>↗</b></a>
 </div></div></section><section id="support"><div class="wrap"><div class="sectionhead"><div><h2>07 // SUPPORT ZEROTRACE</h2><p>ZeroTrace is designed as an independent community resource: no accounts, no ad network, no invasive analytics.</p></div><span class="tag">ZEC ONLY</span></div><div class="donate"><div class="donatebox"><h3>PRIVACY INFRASTRUCTURE DOESN'T BUILD ITSELF.</h3><p class="muted">If ZeroTrace helps you understand Zcash or privacy, you can support the project with ZEC.</p><div class="addressLabel"><span>SHIELDED ZEC UNIFIED ADDRESS</span><span>FULL ADDRESS COPIED BELOW</span></div><div class="address" id="donateAddress" title="u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh">u18zls53mxdcsnwu53alkq8r06f5fakxg3gnv5qkxz7su8jngq46m5jgyj4ysx90gxr7hpz2zjgpw8hcmywnd46vkz92z2ujr2kcms3hd63g4j5xe5dh4klfuntxjkwguwv0s0kqz9s4hwmjp6fx275uxa4e6664qmzhczlk6zwu40p0nh</div><div class="copyrow"><button onclick="copyDonate(this)">COPY FULL ADDRESS</button><button class="alt" onclick="shareDonate()">SHARE</button></div><div class="notice">Shielded unified address. Always verify the address before sending. Never share a seed phrase or private key.</div></div><div class="qr"><img alt="ZeroTrace Zcash donation QR code" src="../support/zerotrace-donate-qr.png"/><div class="qrlabel">SCAN TO SEND ZEC</div></div></div></div></section><section id="manifesto"><div class="wrap"><div class="sectionhead"><h2>08 // ZEROTRACE</h2><span class="tag">INDEPENDENT</span></div><div class="manifesto">DON'T TRUST ZEROTRACE.<br/><span class="g">VERIFY IT.</span></div><div class="ztTerminal" id="ztTerminal"><div class="ztTerminalBar"><div class="ztTermBrand"><span class="ztTermMark">ZT //</span><span class="ztTermTitle">INTERACTIVE CONSOLE</span></div><span class="ztTermVersion"><i></i> READY</span></div><div class="ztTerminalGrid"><div class="ztConsole"><div aria-label="ZeroTrace terminal output" aria-live="polite" class="ztTermOutput" id="ztTermOutput" role="log"><div class="ztIntro"><span class="ztIntroEyebrow">ZEROTRACE // TERMINAL</span><strong>TYPE A COMMAND.</strong><span>Try <b>help</b> or tap a command below.</span></div></div><form autocomplete="off" class="ztPromptRow" id="ztTerminalForm"><label class="srOnly" for="ztTerminalInput">Terminal command</label><span class="ztPrompt">&gt;</span><input aria-label="Type a ZeroTrace terminal command" autocapitalize="none" autocomplete="off" id="ztTerminalInput" inputmode="text" placeholder="type a command" spellcheck="false" type="text"/><span aria-hidden="true" class="cursor"></span></form></div></div><div aria-label="Terminal quick commands" class="ztQuickCommands"><button data-zt-command="whoami" type="button">whoami</button><button data-zt-command="privacy" type="button">privacy</button><button data-zt-command="tracking" type="button">tracking</button><button data-zt-command="status" type="button">status</button><button data-zt-command="mission" type="button">mission</button><button data-zt-command="zec" type="button">zec</button><button data-zt-command="links" type="button">links</button><button data-zt-command="help" type="button">help</button><button data-zt-command="clear" type="button">clear</button></div></div></div></section></main>
+
+
+<section class="ztSignalSupport">
+  <div class="ztSignalSupportInner">
+    <span>SUPPORT // ZEROTRACE</span>
+    <h3>INDICATORS DON'T BUILD THEMSELVES.</h3>
+    <p>If ZeroTrace helps you read the market a little differently, consider supporting the project and helping me keep building.</p>
+    <a href="../support/">SUPPORT ZEROTRACE →</a>
+  </div>
+</section>
+
+<section class="ztFieldGuide" id="zt-field-guide">
+ <div class="ztFGTop">ZEROTRACE // FIELD GUIDE</div>
+ <div class="ztFGTitle">HOW TO READ THE SIGNALS</div>
+ <p class="ztFGIntro">Tap any indicator to see what it measures, what the visual changes mean, and how to read it with the rest of the system.</p>
+
+ <div class="ztAccordion">
+  <details open id="guide-signal">
+   <summary><b>01</b><span>MARKET SIGNAL</span><em>STRONG SELL → STRONG BUY</em></summary>
+   <div class="ztFGBody"><p>The composite readout combines market structure, multi-timeframe confluence, volume profile / POC, buying and selling pressure, momentum and live reactions at key levels.</p><p><strong>SIGNAL STRENGTH</strong> shows how strongly those inputs agree. Treat the label as the summary, then use the grid to verify what is driving it.</p></div>
+  </details>
+
+  <details id="guide-dot">
+   <summary><b>02</b><span>LIVE PRICE DOT</span><em>COLOR + MOVEMENT</em></summary>
+   <div class="ztFGBody"><p><i class="gd y"></i><strong>YELLOW</strong> — normal live-price state.</p><p><i class="gd r"></i><strong>RED</strong> — price is pressing into resistance.</p><p><i class="gd g"></i><strong>GREEN + SHAKE</strong> — breakout conditions are aligning. The shake is intentional: the engine has multiple breakout confirmations and the dot is visually reacting to the attempt.</p><p>If there is no valid resistance above price, the grid can enter the <strong>TO THE MOON!</strong> state instead of inventing a resistance level.</p></div>
+  </details>
+
+  <details id="guide-levels">
+   <summary><b>03</b><span>SUPPORT + RESISTANCE</span><em>WEAK / STRONG</em></summary>
+   <div class="ztFGBody"><p>These are structural price levels calculated for the selected timeframe. Support sits below live price; resistance sits above it.</p><p><strong>WEAK / STRONG</strong> describes the level's structural significance inside that timeframe. The grid does not create a fake resistance simply to fill the screen.</p></div>
+  </details>
+
+  <details id="guide-confluence">
+   <summary><b>04</b><span>CONFLUENCE GLOW</span><em>WHY LEVELS LIGHT UP</em></summary>
+   <div class="ztFGBody"><p>A level lights up when structure from more than one timeframe overlaps around the same price.</p><p><strong>CONFLUENCE</strong> = two timeframes agree. <strong>HIGH CONFLUENCE</strong> = three or more agree. High-confluence levels glow more intensely so you can immediately see where multiple structures are stacking.</p><p>The timeframe labels beside the level show which timeframes created that agreement.</p></div>
+  </details>
+
+  <details id="guide-pressure">
+   <summary><b>05</b><span>BUYING / SELLING PRESSURE</span><em>ORDER FLOW</em></summary>
+   <div class="ztFGBody"><p>The two percentages show which side currently controls measured flow. The dominant side illuminates: green for buying pressure and red for selling pressure.</p><p>Pressure is context, not a standalone trade signal. Read it against the level price is currently testing.</p></div>
+  </details>
+
+  <details id="guide-poc">
+   <summary><b>06</b><span>POC + VOLUME PROFILE</span><em>WHERE VOLUME LIVES</em></summary>
+   <div class="ztFGBody"><p><strong>POC — Point of Control</strong> marks the highest-volume price area in the selected candle-volume profile. The horizontal profile bars show relative volume distributed through price space.</p><p>A <strong>developing POC pulses</strong> while it is still moving. Once established, it returns to the normal non-pulsing state.</p></div>
+  </details>
+
+  <details id="guide-timeframes">
+   <summary><b>07</b><span>TIMEFRAMES</span><em>5M · 15M · 30M · 1H · 4H · 1D</em></summary>
+   <div class="ztFGBody"><p>Your selected timeframe defines the primary structure. Nearby timeframes can confirm the same level and create confluence.</p><p>Lower timeframes react faster. Higher timeframes expose broader structure. Switching timeframe returns that view to its live camera.</p></div>
+  </details>
+
+  <details id="guide-daily">
+   <summary><b>08</b><span>DAILY LEVELS</span><em>OPEN · CLOSE · HIGH · LOW</em></summary>
+   <div class="ztFGBody"><p><strong>Daily Open, Previous Daily Close, Day High and Day Low</strong> give the live grid session context. Nearest Support, Nearest Resistance and Live ZEC show where current price sits relative to active structure.</p></div>
+  </details>
+
+  <details id="guide-reactions">
+   <summary><b>09</b><span>LEVEL REACTIONS</span><em>TEST · BREAK · THROUGH · FAIL</em></summary>
+   <div class="ztFGBody"><p>The dot can react as price interacts with a structural level. A breakout attempt can display <strong>I'M BREAKING THROUGH.</strong>; confirmation can move to <strong>I'M THROUGH.</strong>; a failed attempt can resolve to <strong>…NEVER MIND.</strong></p><p>These reactions are why the dot may change color or movement while price is interacting with a level.</p></div>
+  </details>
+
+  <details id="guide-events">
+   <summary><b>10</b><span>EVENT LOG</span><em>WHAT JUST HAPPENED</em></summary>
+   <div class="ztFGBody"><p>The Event Log records meaningful grid events and reaction-state changes without leaving every event permanently visible on the chart.</p></div>
+  </details>
+
+  <details id="guide-explore">
+   <summary><b>11</b><span>EXPLORE MODE</span><em>MOVE THROUGH PRICE SPACE</em></summary>
+   <div class="ztFGBody"><p>Drag vertically inside the grid to inspect real price space away from the live camera. The temporary guide shows the price under your finger.</p><p>The view stays parked where you leave it. Tap <strong>RETURN TO LIVE</strong> to resume following current price.</p></div>
+  </details>
+ </div>
+
+ <div class="ztFGRule">DON'T TRUST THE SIGNAL // VERIFY WHY IT'S FIRING</div>
+</section>
 <footer class="ztPageFooter"><div class="wrap ztPageFooterInner"><div><div class="ztPageBrand">ZEROTRACE <b>//</b></div><div class="ztPageMotto">WHAT YOU REVEAL IS YOUR CHOICE.</div></div><div class="ztPageLinks"><a href="../about/">ABOUT</a><a href="../resources/">RESOURCES</a><a class="support" href="../support/">SUPPORT ZEROTRACE</a></div><div class="ztPageData">ZeroTrace is an independent community project and is not financial advice. Live network data may be delayed or unavailable. Verify primary sources before relying on any claim.</div></div></footer>
 <div class="toast" id="toast">COPIED</div>
 <script>
@@ -1918,6 +2762,620 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
   setTimeout(updateZTTradeSignal,700);
   setInterval(updateZTTradeSignal,60000);
 })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+/* V8.40.4 // WORKING FEED + TOP SIGNAL ONLY
+   Public Coinbase ZEC-USD candles + executed-trade WebSocket.
+   POC/profile uses real candle volume assigned to each candle's typical price;
+   it is a candle-volume profile approximation, not tick-perfect historical volume-at-price. */
+(function(){
+ const API='https://api.exchange.coinbase.com/products/ZEC-USD/candles';
+ const TICKER='https://api.exchange.coinbase.com/products/ZEC-USD/ticker';
+ const WS='wss://ws-feed.exchange.coinbase.com', PRODUCT='ZEC-USD';
+ const TFS={M5:{label:'5M',g:300,n:240},M15:{label:'15M',g:900,n:240},M30:{label:'30M',g:1800,n:120},H1:{label:'1H',g:3600,n:240},H4:{label:'4H',g:3600,n:300,agg:4},D1:{label:'1D',g:86400,n:220}};
+ const keyByLabel={'5M':'M5','15M':'M15','30M':'M30','1H':'H1','4H':'H4','1D':'D1'};
+ let selected='H1', cache={}, price=null, trades=[], socket, refreshTimer, tickerTimer, lastBreakState='normal';
+ const liveVol={M5:[],M15:[],M30:[],H1:[],H4:[],D1:[]};
+ const liveWindowMs={M5:5*60e3,M15:15*60e3,M30:30*60e3,H1:60*60e3,H4:4*60*60e3,D1:24*60*60e3};
+ const gridView={};
+ const explore={active:false,returning:false,parked:false,startY:0,lastY:0,startLo:0,startHi:0,price:null,timer:null};
+ const ztEvents=[];
+ let ztLastEventKey='',ztLastBreakSeen='';
+ function ztLog(msg){
+   if(!msg||msg===ztLastEventKey)return;
+   ztLastEventKey=msg;
+   ztEvents.unshift({t:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),msg});
+   if(ztEvents.length>10)ztEvents.length=10;
+   const el=document.querySelector('.ztEventLog');
+   if(el)el.innerHTML=ztEvents.map(x=>'<div><time>'+x.t+'</time>'+x.msg+'</div>').join('');
+ }
+
+ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+ const money=n=>Number.isFinite(n)?'$'+n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}):'$—';
+ const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ function pct(a,b){return b?((a/b)-1)*100:0}
+ function aggregate(rows,k){
+   let out=[]; for(let i=0;i<rows.length;i+=k){let a=rows.slice(i,i+k);if(!a.length)continue;
+    out.push({t:a[0].t,low:Math.min(...a.map(x=>x.low)),high:Math.max(...a.map(x=>x.high)),open:a[0].open,close:a.at(-1).close,vol:a.reduce((s,x)=>s+x.vol,0)});
+   } return out;
+ }
+ async function candles(tf){
+   const q=TFS[tf], end=new Date(), start=new Date(end.getTime()-q.n*q.g*1000);
+   const u=API+'?granularity='+q.g+'&start='+encodeURIComponent(start.toISOString())+'&end='+encodeURIComponent(end.toISOString());
+   const r=await fetch(u,{cache:'no-store'}); if(!r.ok)throw Error('candles '+r.status);
+   let a=(await r.json()).sort((x,y)=>x[0]-y[0]).map(x=>({t:+x[0],low:+x[1],high:+x[2],open:+x[3],close:+x[4],vol:+x[5]}));
+   return q.agg?aggregate(a,q.agg):a;
+ }
+ function atr(a,n=14){let z=a.slice(-n-1),v=[];for(let i=1;i<z.length;i++)v.push(Math.max(z[i].high-z[i].low,Math.abs(z[i].high-z[i-1].close),Math.abs(z[i].low-z[i-1].close)));return avg(v)}
+ function pivots(a){
+   let p=[]; const w=3;
+   for(let i=w;i<a.length-w;i++){let hi=true,lo=true;for(let j=i-w;j<=i+w;j++){if(j===i)continue;if(a[j].high>=a[i].high)hi=false;if(a[j].low<=a[i].low)lo=false}
+    if(hi)p.push({p:a[i].high,type:'R',w:1+a[i].vol}); if(lo)p.push({p:a[i].low,type:'S',w:1+a[i].vol});
+   } return p;
+ }
+ function profile(a,bins=30){
+   const lo=Math.min(...a.map(x=>x.low)),hi=Math.max(...a.map(x=>x.high)),step=(hi-lo)/bins||1;
+   let b=Array.from({length:bins},(_,i)=>({p:lo+(i+.5)*step,v:0}));
+   for(const c of a){let tp=(c.high+c.low+c.close)/3, i=clamp(Math.floor((tp-lo)/step),0,bins-1);b[i].v+=c.vol}
+   let mx=Math.max(...b.map(x=>x.v),1), poc=b.reduce((x,y)=>y.v>x.v?y:x,b[0]);
+   return {bins:b,max:mx,poc:poc.p,lo,hi,step};
+ }
+ function evolvingProfile(base,tf){
+   const now=Date.now(), win=liveWindowMs[tf]||60*60e3;
+   const recent=(liveVol[tf]||[]).filter(x=>x.ts>=now-win);
+   liveVol[tf]=recent;
+   if(!recent.length)return base;
+
+   /* Preserve the candle-derived profile, then add live traded volume into
+      the same price bins. POC changes only when another bin truly becomes
+      the highest-volume bin. */
+   const bins=base.bins.map(x=>({p:x.p,v:x.v}));
+   const step=base.step||1, lo=base.lo;
+   for(const t of recent){
+     const i=clamp(Math.floor((t.price-lo)/step),0,bins.length-1);
+     if(t.price>=base.lo&&t.price<=base.hi)bins[i].v+=t.size;
+   }
+   const max=Math.max(...bins.map(x=>x.v),1);
+   const poc=bins.reduce((a,b)=>b.v>a.v?b:a,bins[0]);
+   return {...base,bins,max,poc:poc.p};
+ }
+ function levelsFor(a,tf){
+   const last=a.at(-1).close, A=atr(a)||last*.01, prof=profile(a), ps=pivots(a);
+   let nodes=[...ps,{p:prof.poc,type:prof.poc>=last?'R':'S',w:1e12,poc:true}].sort((x,y)=>x.p-y.p);
+   let clusters=[];
+   for(const n of nodes){let c=clusters.find(x=>Math.abs(x.p-n.p)<=A*.35);if(c){c.p=(c.p*c.n+n.p)/(c.n+1);c.n++;c.w+=n.w;c.poc||=n.poc;c.tfs.add(tf)}else clusters.push({p:n.p,n:1,w:n.w,poc:!!n.poc,tfs:new Set([tf])})}
+   let sup=clusters.filter(x=>x.p<last).sort((a,b)=>b.p-a.p),res=clusters.filter(x=>x.p>last).sort((a,b)=>a.p-b.p);
+   return {last,A,prof,sup,res};
+ }
+ function mergeConfluence(base, all){
+   const tol=base.A*.45;
+   let arr=[...base.sup,...base.res].map(x=>({...x,tfs:new Set(x.tfs),primary:true}));
+
+   /* Each view has its own structural resolution.
+      Context may confirm a primary level. It does NOT automatically become
+      another displayed level on M5/M15/M30/H1. H4/D1 alone may use context
+      levels to fill genuinely empty structure. */
+   const confirmMap={
+     M5:['M15'],
+     M15:['M5','M30'],
+     M30:['M15','H1'],
+     H1:['M30','H4'],
+     H4:['H1','M30'],
+     D1:['H4','H1']
+   };
+   for(const tf of (confirmMap[selected]||[])){
+     const L=all[tf]; if(!L)continue;
+     for(const n of [...L.sup.slice(0,8),...L.res.slice(0,8)]){
+       const c=arr.find(x=>Math.abs(x.p-n.p)<=tol);
+       if(c)c.tfs.add(tf);
+     }
+   }
+
+   /* Only the two broadest views receive foreign levels as gap-fillers. */
+   if(selected==='H4'||selected==='D1'){
+     const fillers=selected==='H4'?['H1','M30']:['H4','H1'];
+     for(const tf of fillers){
+       const L=all[tf]; if(!L)continue;
+       for(const n of [...L.sup.slice(0,10),...L.res.slice(0,10)]){
+         if(arr.some(x=>Math.abs(x.p-n.p)<=tol))continue;
+         arr.push({...n,tfs:new Set([tf]),primary:false,context:true});
+       }
+     }
+   }
+   return arr;
+ }
+ function renderDevelopingPOC(stableProf,devProf,lo,hi){
+   const dot=$('.ztMGDot'), host=dot?.parentElement;
+   if(!host)return;
+   let el=host.querySelector('.ztDevPOC');
+   const p=devProf?.poc;
+   /* If live POC equals established POC, visually merge them: no duplicate line. */
+   const same=Number.isFinite(p)&&Number.isFinite(stableProf?.poc)&&Math.abs(p-stableProf.poc)<=(stableProf.step||1)*.51;
+   if(!Number.isFinite(p)||p<lo||p>hi||same){if(el)el.remove();return}
+   if(!el){el=document.createElement('div');el.className='ztDevPOC';host.appendChild(el)}
+   el.style.top=clamp(92-(p-lo)/(hi-lo)*84,8,92)+'%';
+   el.title='Developing POC '+money(p);
+ }
+ function renderProfile(prof,viewLo=null,viewHi=null){
+   const el=$('#ztVP'); if(!el)return; el.innerHTML='';
+   const mapped=Number.isFinite(viewLo)&&Number.isFinite(viewHi)&&viewHi>viewLo;
+   if(!mapped)return;
+
+   const raw=[...prof.bins].sort((a,b)=>a.p-b.p);
+   if(!raw.length)return;
+
+   /* Build denser DISPLAY samples by linearly interpolating volume between
+      real profile-bin centers. This changes only drawing resolution: every
+      sample still occupies its mathematically correct price coordinate. */
+   const sampleStep=Math.max((viewHi-viewLo)/70,(prof.step||1)/4);
+   const samples=[];
+   const volumeAt=p=>{
+     if(p<=raw[0].p)return raw[0].v;
+     if(p>=raw.at(-1).p)return raw.at(-1).v;
+     let j=1; while(j<raw.length&&raw[j].p<p)j++;
+     const a=raw[j-1],b=raw[j],t=(p-a.p)/(b.p-a.p||1);
+     return a.v+(b.v-a.v)*t;
+   };
+   for(let p=viewLo;p<=viewHi;p+=sampleStep){
+     if(p<prof.lo||p>prof.hi)continue;
+     samples.push({p,v:volumeAt(p)});
+   }
+   if(!samples.length)return;
+
+   const vmax=Math.max(...samples.map(x=>x.v),1);
+   samples.forEach(x=>{
+     const i=document.createElement('i');
+     i.style.width=(x.v/vmax*100).toFixed(1)+'%';
+     i.style.top=clamp(92-(x.p-viewLo)/(viewHi-viewLo)*84,8,92)+'%';
+     el.appendChild(i);
+   });
+
+   /* Established POC gets its own exact-price bar; never interpolated or moved. */
+   if(prof.poc>=viewLo&&prof.poc<=viewHi){
+     const poc=document.createElement('i');
+     poc.className='poc';
+     poc.style.width='100%';
+     poc.style.top=clamp(92-(prof.poc-viewLo)/(viewHi-viewLo)*84,8,92)+'%';
+     el.appendChild(poc);
+   }
+ }
+ function setLevel(el,obj,label,strong){
+   if(!el)return;if(!obj){el.style.display='none';return}el.style.display='';
+   el.querySelector('em').textContent=money(obj.p);
+   const tf=[...obj.tfs].map(k=>TFS[k]?.label||k);
+   /* One compact confluence badge per price level prevents adjacent TF boxes
+      from colliding while preserving every confirming timeframe. */
+   const tfText=tf.length?tf.join(' + '):'';
+   const ztTfCount=[...new Set(tf)].length;
+   const ztTfText=[...new Set(tf)].join(' + ');
+   const ztName=ztTfCount>=3
+     ? 'HIGH CONFLUENCE'
+     : ztTfCount===2
+       ? 'CONFLUENCE'
+       : (strong?'STRONG ':'WEAK ')+label+(obj.poc?' // POC':'');
+   el.querySelector('strong').textContent=ztName+(ztTfText?'   '+ztTfText:'');
+   el.classList.remove('ztConf2','ztConf3');
+   if(ztTfCount>=3)el.classList.add('ztConf3');
+   else if(ztTfCount===2)el.classList.add('ztConf2');
+ }
+ function pressure(){
+   let cut=Date.now()-5*60e3,a=trades.filter(x=>x.ts>=cut),buy=0,sell=0;for(const t of a)(t.side==='BUY'?buy+=t.size:sell+=t.size);
+   let total=buy+sell,bp=total?buy/total*100:50;return {bp,sp:100-bp,total,buy,sell};
+ }
+ function dailyStats(){
+   let d=cache.D1;if(!d||d.length<2)return;let today=d.at(-1),prev=d.at(-2);
+   $('#ztDayOpen').textContent=money(today.open);$('#ztPrevClose').textContent=money(prev.close);$('#ztDayHigh').textContent=money(today.high);$('#ztDayLow').textContent=money(today.low);
+ }
+ function signal(L,nearS,nearR){
+   let a=cache[selected],P=pressure(),cl=a.map(x=>x.close),last=price||L.last;
+   let mom=pct(last,cl[Math.max(0,cl.length-7)]), fast=avg(cl.slice(-8)),slow=avg(cl.slice(-21));
+   let distR=nearR?(nearR.p-last)/(L.A||1):99,distS=nearS?(last-nearS.p)/(L.A||1):99;
+   let bull=[P.bp>=58,mom>0,fast>slow,distS<.8,nearS&&nearS.tfs.size>=2,last>L.prof.poc];
+   let bear=[P.sp>=58,mom<0,fast<slow,distR<.8,nearR&&nearR.tfs.size>=2,last<L.prof.poc];
+   let bc=bull.filter(Boolean).length,sc=bear.filter(Boolean).length,label='NEUTRAL',count=Math.max(bc,sc),side=bc>=sc?'BUY':'SELL';
+   if(bc>=5)label='STRONG BUY';else if(sc>=5)label='STRONG SELL';else if(bc>=4)label='BUY';else if(sc>=4)label='SELL';
+   $('#ztComposite').textContent=label;$('#ztCompositeCount').textContent=count+' / 6 CONDITIONS';
+   const topSig=$('#ztTopSignal');
+   if(topSig){topSig.querySelector('b').textContent=label;topSig.className='ztTopSignal '+label.toLowerCase().replace(/\s+/g,'-');}
+   $('#ztCompositeWhy').textContent='MULTI-TF CONFLUENCE · VOLUME PROFILE · ORDER FLOW · '+(P.bp>=50?'BUY':'SELL')+' PRESSURE '+Math.max(P.bp,P.sp).toFixed(0)+'% · MOMENTUM '+(mom>0?'↑':mom<0?'↓':'→');
+   $('#ztGridPressure').textContent=P.total?((P.bp>=50?'BUY ':'SELL ')+Math.max(P.bp,P.sp).toFixed(0)+'%'):'SYNCING';
+ {const raw=$('#ztGridPressure').textContent||'',mm=raw.match(/(BUY|SELL)\s+(\d+(?:\.\d+)?)%/);
+ if(mm){const lead=mm[1],v=Math.max(0,Math.min(100,parseFloat(mm[2]))),buy=lead==='BUY'?v:100-v,sell=100-buy;
+ $('#ztBuyPressureValue').textContent=Math.round(buy)+'%';$('#ztSellPressureValue').textContent=Math.round(sell)+'%';
+ $('#ztBuyPressureBar').style.width=buy+'%';$('#ztSellPressureBar').style.width=sell+'%';
+ $('#ztBuyPressure').classList.toggle('lead',buy>sell);$('#ztSellPressure').classList.toggle('lead',sell>buy);}}
+
+   return {label,bc,sc,distR,distS,mom,P};
+ }
+ function marker(L,nearS,nearR,S,scale){
+   if(!price)return;
+   let lo=scale?.lo??L.prof.lo,hi=scale?.hi??L.prof.hi;
+   if(!(hi>lo)){lo=L.prof.lo;hi=L.prof.hi}
+   let y=clamp(92-(price-lo)/(hi-lo)*84,8,92),dot=$('.ztMGDot'),now=$('.ztMGNow'),voice=$('#ztMGVoice'),tag=$('#ztOutcomeTag');
+   dot.style.top=y+'%';now.style.top=`calc(${y}% - 10px)`;voice.style.top=`calc(${y}% - 48px)`;tag.style.top=`calc(${y}% + 18px)`;
+   $('.ztLiveNum').textContent=money(price);$('#ztGridPrice').textContent=money(price);
+   dot.classList.remove('approach','breakout','success','failed');now.classList.remove('red','green');voice.classList.remove('show','success','failed');tag.classList.remove('show','ok','no');
+   let nearRes=nearR&&Math.abs(nearR.p-price)<=L.A*.35,breakBull=nearRes&&S.bc>=5;
+   /* No valid resistance above live price = open-sky state. Never invent a level. */
+   if(!nearR){
+     dot.classList.add('breakout');now.classList.add('green');
+     voice.textContent='TO THE MOON!';voice.classList.add('show','success');
+     tag.textContent='NO RESISTANCE ABOVE';tag.classList.add('show','ok');
+     lastBreakState='open-sky';
+     return;
+   }
+   if(nearRes&&!breakBull){dot.classList.add('approach');now.classList.add('red');tag.textContent='RESISTANCE PRESSURE';tag.classList.add('show');lastBreakState='approach'}
+   if(breakBull){dot.classList.add('breakout');now.classList.add('green');voice.textContent='I’M BREAKING THROUGH.';voice.classList.add('show');tag.textContent='BREAKOUT ATTEMPT';tag.classList.add('show');lastBreakState='breakout'}
+   if(lastBreakState==='breakout'&&nearR&&price>nearR.p+L.A*.12){dot.classList.add('success');now.classList.add('green');voice.textContent='I’M THROUGH.';voice.classList.add('show','success');tag.textContent='BREAK + HOLD';tag.classList.add('show','ok');lastBreakState='success'}
+   if(lastBreakState==='breakout'&&nearR&&price<nearR.p-L.A*.15&&S.sc>=3){dot.classList.add('failed');now.classList.add('red');voice.textContent='…NEVER MIND.';voice.classList.add('show','failed');tag.textContent='FAILED BREAKOUT';tag.classList.add('show','no');lastBreakState='failed'}
+   if(lastBreakState!==ztLastBreakSeen){
+     const map={'open-sky':'NO RESISTANCE ABOVE','approach':'RESISTANCE PRESSURE','breakout':'BREAKOUT ATTEMPT','success':'BREAK + HOLD','failed':'FAILED BREAKOUT'};
+     if(map[lastBreakState])ztLog(map[lastBreakState]+' // '+money(price));
+     ztLastBreakSeen=lastBreakState;
+   }
+ }
+ function render(){
+   if(!cache[selected])return;let all={};for(const k in cache)if(cache[k]?.length>20)all[k]=levelsFor(cache[k],k);
+   let L=all[selected],merged=mergeConfluence(L,all),last=price||L.last;
+   let sup=merged.filter(x=>x.p<last).sort((a,b)=>b.p-a.p),res=merged.filter(x=>x.p>last).sort((a,b)=>a.p-b.p);
+
+   /* Select levels by timeframe significance, not by a universal nearest-price
+      list. Primary levels belong to the selected timeframe. Context confirms
+      them; H4/D1 can additionally fill large structural gaps. */
+   const primarySup=sup.filter(x=>x.primary!==false);
+   const primaryRes=res.filter(x=>x.primary!==false);
+   const contextSup=sup.filter(x=>x.primary===false);
+   const contextRes=res.filter(x=>x.primary===false);
+
+   const minGapFactor={M5:.28,M15:.42,M30:.58,H1:.82,H4:1.15,D1:1.55}[selected]||.6;
+   const minGap=Math.max(L.A*minGapFactor,last*({M5:.0012,M15:.0018,M30:.0025,H1:.0035,H4:.006,D1:.010}[selected]||.0025));
+
+   const choose=(primary,context,count)=>{
+     const picked=[];
+     const add=(x,gap=minGap)=>{
+       if(!x||picked.includes(x))return false;
+       if(picked.every(y=>Math.abs(y.p-x.p)>=gap)){picked.push(x);return true}
+       return false;
+     };
+     /* selected timeframe always gets first claim on the visible slots */
+     for(const x of primary){ if(picked.length>=count)break; add(x); }
+
+     /* H4/D1 may use lower-TF context only when it fills a real empty region */
+     if((selected==='H4'||selected==='D1')&&picked.length<count){
+       for(const x of context){ if(picked.length>=count)break; add(x,minGap*1.15); }
+     }
+
+     /* Relax only enough to avoid an empty row; never replace the view with
+        repeated context levels. */
+     if(picked.length<count){
+       for(const x of primary){ if(picked.length>=count)break; add(x,minGap*.58); }
+     }
+     return picked;
+   };
+
+   const showSup=choose(primarySup,contextSup,3);
+   const showRes=choose(primaryRes,contextRes,3);
+   const shown=[showRes[2],showRes[1]||showRes[0],showRes[0],showSup[0],showSup[1]||showSup[0],showSup[2]].filter(Boolean);
+
+   /* HYBRID LIVE VIEWPORT //
+      Price is free to travel through the grid. The viewport only scrolls when
+      price reaches a soft edge zone, so both the dot AND the grid feel alive. */
+   const spanATR={M5:5.8,M15:7.2,M30:8.8,H1:11.5,H4:17,D1:24}[selected]||8;
+   const pctFloor={M5:.010,M15:.014,M30:.019,H1:.027,H4:.055,D1:.11}[selected]||.02;
+   let targetSpan=Math.max(L.A*spanATR,last*pctFloor);
+   const nearestAbove=res[0]?.p, nearestBelow=sup[0]?.p;
+   const neededUp=nearestAbove ? Math.max(0,nearestAbove-last) : 0;
+   const neededDn=nearestBelow ? Math.max(0,last-nearestBelow) : 0;
+   targetSpan=Math.max(targetSpan,Math.min(targetSpan*1.55,Math.max(neededUp,neededDn)*2.35));
+
+   let V=gridView[selected];
+   if(!V || !(V.hi>V.lo)){
+     V=gridView[selected]={lo:last-targetSpan*.46,hi:last+targetSpan*.54};
+   }else{
+     /* Let span adapt gradually, without snapping the dot back to center. */
+     const curSpan=V.hi-V.lo;
+     if(targetSpan>curSpan*1.18){
+       const mid=(V.hi+V.lo)/2, ns=curSpan+(targetSpan-curSpan)*.18;
+       V.lo=mid-ns/2; V.hi=mid+ns/2;
+     }else if(targetSpan<curSpan*.72){
+       const ns=curSpan+(targetSpan-curSpan)*.035;
+       const mid=(V.hi+V.lo)/2; V.lo=mid-ns/2; V.hi=mid+ns/2;
+     }
+   }
+
+   let span=V.hi-V.lo;
+
+   /* LAGGING CAMERA //
+      The dot moves first. The grid follows behind smoothly.
+      A narrower visual span makes normal live moves readable, while the camera
+      only absorbs part of the displacement on each render. */
+   const visualFactor={M5:.30,M15:.36,M30:.44,H1:.52,H4:.66,D1:.78}[selected]||.48;
+   const desiredSpan=Math.max(targetSpan*visualFactor,L.A*2.8,last*.0045);
+   if(span>desiredSpan*1.08){
+     const mid=(V.lo+V.hi)/2, ns=span+(desiredSpan-span)*.12;
+     V.lo=mid-ns/2; V.hi=mid+ns/2; span=ns;
+   }
+
+   if(!explore.active){
+     span=V.hi-V.lo;
+
+     if(!explore.parked){
+       const center=(V.lo+V.hi)/2;
+       const displacement=last-center;
+       /* Wider dead zone + slower camera = dot visibly moves first. */
+       const dead=span*.12;
+       if(Math.abs(displacement)>dead){
+         const excess=Math.abs(displacement)-dead;
+         const shift=Math.sign(displacement)*excess*.055;
+         V.lo+=shift; V.hi+=shift;
+       }
+     }
+
+     /* Explore lock is absolute: live renders cannot alter a manually parked
+        viewport. Safety rails apply only in LIVE mode. */
+     if(!explore.parked){
+       span=V.hi-V.lo;
+       const lowRail=V.lo+span*.075, highRail=V.lo+span*.925;
+       if(last>highRail){const s=last-highRail;V.lo+=s;V.hi+=s}
+       if(last<lowRail){const s=lowRail-last;V.lo-=s;V.hi-=s}
+     }
+   }
+
+   let scaleLo=V.lo, scaleHi=V.hi;
+   const py=p=>92-(p-scaleLo)/(scaleHi-scaleLo)*84;
+   const place=(sel,obj,label,strong)=>{
+     const e=$(sel);
+     if(!e)return;
+     if(!obj || obj.p<scaleLo || obj.p>scaleHi){e.style.display='none';return}
+     setLevel(e,obj,label,strong);
+     e.style.top=clamp(py(obj.p),8,92)+'%';
+   };
+   place('[data-level="r1"]',showRes[0],'RESISTANCE',false);place('[data-level="r2"]',showRes[1]||showRes[0],'RESISTANCE',true);place('[data-level="r3"]',showRes[2],'RESISTANCE',false);
+   place('[data-level="s1"]',showSup[0],'SUPPORT',false);place('[data-level="s2"]',showSup[1]||showSup[0],'SUPPORT',true);place('[data-level="s3"]',showSup[2],'SUPPORT',false);
+   const liveProf=evolvingProfile(L.prof,selected);
+   /* Established POC/profile stays solid. Live accumulation is shown separately. */
+   renderProfile(L.prof,scaleLo,scaleHi);
+   renderDevelopingPOC(L.prof,liveProf,scaleLo,scaleHi);
+   $('#ztNearSupport').textContent=money(sup[0]?.p);$('#ztNearResistance').textContent=money(res[0]?.p);$('#ztGridPOC').textContent=(L.prof.poc>=scaleLo&&L.prof.poc<=scaleHi)?money(L.prof.poc):money(L.prof.poc)+' ↕';
+   $('.ztTFNote').innerHTML='PRIMARY // '+TFS[selected].label+' &nbsp;·&nbsp; '+(selected==='H4'?'PRIMARY 4H · 1H + 30M GAP CONTEXT':selected==='D1'?'PRIMARY 1D · 4H + 1H GAP CONTEXT':'PRIMARY LEVELS · ADJACENT TF CONFIRMS CONFLUENCE');
+   dailyStats();let S=signal(L,sup[0],res[0]);marker(L,sup[0],res[0],S,{lo:scaleLo,hi:scaleHi});
+ }
+ async function load(){
+   $('#ztMGLive').textContent='SYNCING';
+   let keys=['M5','M15','H1','H4','D1'];await Promise.all(keys.map(async k=>{try{cache[k]=await candles(k)}catch(e){console.warn('Market Grid '+k,e)}}));
+   if(cache.M15?.length)cache.M30=aggregate(cache.M15,2);
+   if(cache[selected]?.length)price=cache[selected].at(-1).close;$('#ztMGLive').textContent='LIVE DATA';render();
+ }
+ function ingest(m){
+   let size=+m.size,p=+m.price,ts=m.time?Date.parse(m.time):Date.now();if(!(size>0&&p>0))return;
+   let side=String(m.side).toLowerCase()==='sell'?'BUY':'SELL';trades.push({ts,size,price:p,side});trades=trades.filter(x=>x.ts>Date.now()-15*60e3);
+   for(const tf of Object.keys(liveVol)){
+     liveVol[tf].push({ts,size,price:p});
+     const cut=Date.now()-(liveWindowMs[tf]||60*60e3);
+     liveVol[tf]=liveVol[tf].filter(x=>x.ts>=cut);
+   }
+   price=p;render();
+ }
+
+ async function verifiedTicker(){
+   try{
+     const r=await fetch(TICKER+'?cb='+Date.now(),{cache:'no-store',mode:'cors'});
+     if(!r.ok)throw new Error('HTTP '+r.status);
+     const j=await r.json(),p=Number(j.price);
+     if(p>0){
+       price=p;
+       $('#ztMGLive').textContent='LIVE';
+       render();
+     }
+   }catch(e){
+     console.warn('Market Grid live ticker',e);
+     $('#ztMGLive').textContent='RECONNECTING';
+   }
+ }
+ function connect(){
+   try{socket?.close()}catch(e){};socket=new WebSocket(WS);
+   socket.onopen=()=>{socket.send(JSON.stringify({type:'subscribe',product_ids:[PRODUCT],channels:['matches']}));$('#ztMGLive').textContent='LIVE'};
+   socket.onmessage=e=>{try{let m=JSON.parse(e.data);if((m.type==='match'||m.type==='last_match')&&m.product_id===PRODUCT)ingest(m)}catch(_){}};
+   socket.onclose=()=>setTimeout(connect,2500);
+ }
+ $$('.ztMGFrames button').forEach(b=>b.addEventListener('click',()=>{selected=keyByLabel[b.dataset.tf];explore.parked=false;explore.returning=false;document.querySelector('.ztReturnLive')?.classList.remove('show');$$('.ztMGFrames button').forEach(x=>x.classList.toggle('on',x===b));render()}));
+ function installTouchExplore(){
+   const dot=$('.ztMGDot'), host=dot?.parentElement;
+   if(!host||host.dataset.touchExplore==='1')return;
+   host.dataset.touchExplore='1';
+   host.style.touchAction='none';
+   host.style.userSelect='none';
+
+   const guide=document.createElement('div');
+   guide.className='ztTouchGuide';
+   guide.innerHTML='<b>$—</b>';
+   host.appendChild(guide);
+
+   const hint=document.createElement('div');
+   hint.className='ztExploreHint';
+   hint.textContent='EXPLORE PRICE SPACE';
+   host.appendChild(hint);
+
+   const liveBtn=document.createElement('button');
+   liveBtn.type='button'; liveBtn.className='ztReturnLive';
+   liveBtn.textContent='RETURN TO LIVE';
+   host.appendChild(liveBtn);
+
+   const depth=document.createElement('div');
+   depth.className='ztExploreDepth';
+   host.appendChild(depth);
+
+   const eventBtn=document.createElement('button');
+   eventBtn.type='button';eventBtn.className='ztEventToggle';eventBtn.textContent='EVENT LOG';
+   host.appendChild(eventBtn);
+   const eventLog=document.createElement('div');
+   eventLog.className='ztEventLog';
+   host.appendChild(eventLog);
+   eventBtn.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});
+   eventBtn.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});
+   eventBtn.addEventListener('click',e=>{e.stopPropagation();eventLog.classList.toggle('show')});
+   ztLog('SIGNAL GRID ONLINE');
+   liveBtn.addEventListener('touchstart',e=>e.stopPropagation(),{passive:true});
+   liveBtn.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});
+   liveBtn.addEventListener('click',e=>{
+     e.stopPropagation();
+     explore.parked=false; explore.returning=false;
+     delete gridView[selected];
+     liveBtn.classList.remove('show');
+     depth.classList.remove('show');
+     ztLog('RETURNED TO LIVE');
+     render();
+   });
+
+   const yOf=e=>{
+     const r=host.getBoundingClientRect();
+     const t=e.touches?.[0]||e.changedTouches?.[0]||e;
+     return clamp(t.clientY-r.top,0,r.height);
+   };
+   const paint=y=>{
+     const V=gridView[selected]; if(!V)return;
+     const r=host.getBoundingClientRect();
+     const pct=clamp(y/r.height*100,8,92);
+     const p=V.lo+((92-pct)/84)*(V.hi-V.lo);
+     guide.style.top=pct+'%';
+     guide.querySelector('b').textContent=money(p);
+   };
+   const begin=e=>{
+     const V=gridView[selected]; if(!V)return;
+     clearTimeout(explore.timer);
+     explore.active=true; explore.returning=false; explore.parked=false;
+     explore.startY=explore.lastY=yOf(e);
+     explore.startLo=V.lo; explore.startHi=V.hi;
+     guide.classList.add('show'); hint.classList.add('show');
+     paint(explore.startY);
+     e.preventDefault();
+   };
+   const move=e=>{
+     if(!explore.active)return;
+     const V=gridView[selected], y=yOf(e), r=host.getBoundingClientRect();
+     const span=explore.startHi-explore.startLo;
+     const shift=(y-explore.startY)/r.height*span;
+     V.lo=explore.startLo+shift; V.hi=explore.startHi+shift;
+     explore.lastY=y;
+     const mid=(V.lo+V.hi)/2, d=(price||0)-mid;
+     depth.textContent='LIVE '+(d>=0?'↑ ':'↓ ')+money(Math.abs(d));
+     depth.classList.add('show');
+     render(); paint(y);
+     e.preventDefault();
+   };
+   const end=e=>{
+     if(!explore.active)return;
+     explore.active=false; explore.parked=true;
+     guide.classList.remove('show'); hint.classList.remove('show'); liveBtn.classList.add('show'); depth.classList.add('show');
+     ztLog('EXPLORE MODE LOCKED');
+     /* Stay exactly where the user leaves the viewport.
+        Live price still updates; auto-camera resumes only after price reaches
+        a safety edge or the user changes timeframe. */
+     explore.returning=false;
+     e.preventDefault();
+   };
+
+   /* Native touch events are intentional here: Android WebView/Chrome can
+      route pointer events inconsistently through chart overlays. */
+   host.addEventListener('touchstart',begin,{passive:false});
+   host.addEventListener('touchmove',move,{passive:false});
+   host.addEventListener('touchend',end,{passive:false});
+   host.addEventListener('touchcancel',end,{passive:false});
+
+   /* Desktop preview support. */
+   let mouse=false;
+   host.addEventListener('mousedown',e=>{if(e.button!==0)return;mouse=true;begin(e)});
+   window.addEventListener('mousemove',e=>{if(mouse)move(e)});
+   window.addEventListener('mouseup',e=>{if(mouse){mouse=false;end(e)}});
+ }
+ installTouchExplore();
+ load().then(()=>{connect();verifiedTicker();});tickerTimer=setInterval(verifiedTicker,2000);refreshTimer=setInterval(load,5*60e3);
+})();
+</script>
+
+
+<style id="ztRxCSS">
+.ztMGDot.ztRxTest{background:#FF7272!important;border-color:#ffd1d1!important;animation:ztRxHead .34s ease-in-out infinite!important}
+.ztMGDot.ztRxBreak{background:#20F58A!important;border-color:#d9ffed!important;animation:ztRxBreak .16s linear infinite!important}
+.ztMGDot.ztRxThrough{background:#20F58A!important;border-color:#d9ffed!important}
+.ztMGDot.ztRxFail{background:#FF7272!important;border-color:#ffd1d1!important}
+@keyframes ztRxHead{0%,100%{translate:0 0}35%{translate:0 -2px}55%{translate:0 1px}72%{translate:0 -1px}}
+@keyframes ztRxBreak{0%{translate:-1.4px 0}25%{translate:1.4px -1px}50%{translate:-1px 1px}75%{translate:1px 0}100%{translate:-1.4px 0}}
+</style>
+<script id="ztRxJS">
+(function(){
+'use strict';
+let state='normal',active=null,crossed=0;
+const q=s=>document.querySelector(s);
+function n(s){const v=Number(String(s||'').replace(/[^0-9.-]/g,''));return Number.isFinite(v)?v:NaN}
+function levels(){return [...document.querySelectorAll('.ztLvl')].map(e=>({p:n(e.querySelector('em')?.textContent),t:e.classList.contains('r')?'r':'s'})).filter(x=>x.p>0)}
+function voice(s,c){const e=q('#ztMGVoice');if(!e)return;e.textContent=s;e.classList.remove('success','failed');if(c)e.classList.add(c);e.classList.add('show')}
+function tag(s,c){const e=q('#ztOutcomeTag');if(!e)return;e.textContent=s;e.classList.remove('ok','no');if(c)e.classList.add(c);e.classList.add('show')}
+function tick(){
+ try{
+  const d=q('.ztMGDot'),p=n(q('.ztLiveNum')?.textContent);if(!d||!(p>0))return;
+  const a=levels();if(!a.length)return;
+  const x=a.reduce((u,v)=>Math.abs(v.p-p)<Math.abs(u.p-p)?v:u);
+  const z=Math.max(p*.0015,.01),r=(p-x.p)/z,same=active===x.p;
+  d.classList.remove('ztRxTest','ztRxBreak','ztRxThrough','ztRxFail');
+  if(x.t==='r'){
+   if(r>=-.34&&r<=0){d.classList.add('ztRxTest');voice('OUCH. MY HEAD.');tag('TESTING RESISTANCE');state='test';active=x.p;return}
+   if(r>0&&r<=.30){d.classList.add('ztRxBreak');voice('I’M BREAKING THROUGH.');tag('BREAKOUT ATTEMPT');if(state!=='break'||!same)crossed=Date.now();state='break';active=x.p;return}
+   if(r>.30&&same&&(state==='break'||state==='test')){d.classList.add('ztRxThrough');voice('I’M THROUGH.','success');tag('BREAK + HOLD','ok');state='through';return}
+   if(r<-.34&&same&&(state==='break'||state==='test')&&Date.now()-crossed<15000){d.classList.add('ztRxFail');voice('…NEVER MIND.','failed');tag('FAILED BREAKOUT','no');state='failed';return}
+  } else {
+   if(r<=.34&&r>=0){d.classList.add('ztRxTest');voice('OUCH. MY FEET.');tag('TESTING SUPPORT');state='testS';active=x.p;return}
+   if(r<0&&r>=-.30){d.classList.add('ztRxBreak');voice('I’M BREAKING THROUGH.');tag('BREAKDOWN ATTEMPT');state='breakS';active=x.p;return}
+  }
+ }catch(e){}
+}
+setInterval(tick,250);
+})();
+</script>
+
+
+
+<script id="ztStep58ActiveNav">
+document.addEventListener('DOMContentLoaded',()=>{
+ const links=[...document.querySelectorAll('.ztUnifiedHeader .ztINScroll a[href^="#"]')];
+ const setActive=a=>{
+   links.forEach(x=>x.classList.remove('hot'));
+   if(a)a.classList.add('hot');
+ };
+ links.forEach(a=>a.addEventListener('click',()=>setActive(a)));
+
+ const targets=links.map(a=>({
+   a,
+   el:document.querySelector(a.getAttribute('href'))
+ })).filter(x=>x.el);
+
+ const update=()=>{
+   const header=document.querySelector('.ztUnifiedHeader');
+   const line=(header?.getBoundingClientRect().height||128)+24;
+   let current=null;
+   for(const x of targets){
+     if(x.el.getBoundingClientRect().top<=line) current=x;
+   }
+   if(current)setActive(current.a);
+ };
+ window.addEventListener('scroll',update,{passive:true});
+ update();
+});
 </script>
 
 </body></html>
