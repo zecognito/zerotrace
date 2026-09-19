@@ -2034,6 +2034,48 @@ body.ztHasFixedHeader{
 }
 </style>
 
+
+<style id="ztStep80LiveRefinement">
+/* Volume Profile // improved visibility */
+#ztVP i:not(.poc){
+  opacity:.78!important;
+  filter:brightness(1.42)!important;
+}
+#ztVP i.poc{
+  opacity:1!important;
+  filter:brightness(1.28)!important;
+}
+/* POC label // match Grid lettering */
+#ztVP i.poc:before{
+  font-size:8px!important;
+  font-weight:900!important;
+  letter-spacing:.07em!important;
+  top:-5px!important;
+}
+@media(max-width:700px){
+  #ztVP i.poc:before{font-size:7px!important}
+}
+@media(max-width:600px){
+  /* Market Grid timeframe row */
+  .ztMGFrames button{
+    font-size:10px!important;
+    font-weight:800!important;
+    opacity:.72!important;
+    letter-spacing:.035em!important;
+  }
+  .ztMGFrames button.on{opacity:1!important}
+
+  /* Unified navigation row */
+  .ztUnifiedHeader .ztINScroll a{
+    font-size:9px!important;
+    font-weight:800!important;
+    letter-spacing:.10em!important;
+    opacity:.76!important;
+  }
+  .ztUnifiedHeader .ztINScroll a.hot{opacity:1!important}
+}
+</style>
+
 </head>
 <body class="ztLoading homePage ztDedicated page-signal">
 <nav class="ztUnifiedHeader"><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="../signal/">SIGNAL</a><a href="../explorer/">EXPLORER</a><a href="../rabbit-hole/">RABBIT HOLE</a><a href="../resources/">RESOURCES</a><a class="ztMineNav" href="../mine/">MINE ZEC</a><a href="../about/">ABOUT</a></div><a class="supportTop" href="../support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div><nav class="ztIndicatorNav"><div class="ztINLabel">ZEROTRACE // SIGNAL NAV</div><div class="ztINScroll"><a class="hot" href="#market-grid">MARKET GRID</a><a href="#market-signal">MARKET SIGNAL</a><a href="#zt-field-guide">HOW TO READ</a></div></nav></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
