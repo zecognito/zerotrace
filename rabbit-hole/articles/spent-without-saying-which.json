@@ -1,0 +1,116 @@
+{
+  "title": "SPENT WITHOUT SAYING WHICH",
+  "subtitle": "HOW ZCASH STOPS A DOUBLE-SPEND WITHOUT REVEALING THE COIN.",
+  "category": "027 // ZCASH // NULLIFIERS // DOUBLE-SPENDS",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "A PRIVATE COIN CREATES A STRANGE PROBLEM: THE NETWORK MUST KNOW IT WAS SPENT WITHOUT LEARNING WHICH PRIVATE NOTE YOU SPENT."
+    },
+    {
+      "type": "heading",
+      "text": "PUBLIC MONEY HAS AN EASY ANSWER"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a transparent UTXO system, validators can identify the exact output being spent. If someone tries to spend that same output again, the duplicate is obvious."
+    },
+    {
+      "type": "paragraph",
+      "text": "A shielded system cannot use that answer directly. Revealing the note being consumed would create a link between its creation and its spend — exactly the relationship the shielded protocol is designed to hide."
+    },
+    {
+      "type": "heading",
+      "text": "ENTER THE NULLIFIER"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a shielded Zcash note is spent, the transaction reveals a nullifier: a value derived in a way that is tied to the note and the spender's secret information. Validators do not need the note's public identity. They need to know that the revealed nullifier is valid and has never appeared before."
+    },
+    {
+      "type": "paragraph",
+      "text": "Each full validator maintains nullifier sets. Zcash consensus requires nullifiers to be unique within a valid blockchain. A repeated nullifier makes the attempted spend invalid."
+    },
+    {
+      "type": "callout",
+      "text": "THE NETWORK REMEMBERS THAT SOMETHING WAS SPENT WITHOUT PUBLISHING WHICH PRIVATE NOTE IT WAS."
+    },
+    {
+      "type": "heading",
+      "text": "THE PROOF CONNECTS WHAT THE LEDGER CANNOT"
+    },
+    {
+      "type": "paragraph",
+      "text": "The zero-knowledge proof establishes the conditions required for a valid spend, including that the spender is authorized and that the nullifier corresponds correctly to the hidden note. The public chain receives enough information to reject reuse without receiving the hidden note contents."
+    },
+    {
+      "type": "heading",
+      "text": "A PUBLIC MARKER. A PRIVATE ORIGIN."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nullifiers themselves are public. That is necessary: every validator must be able to compare a new one against the set already seen."
+    },
+    {
+      "type": "paragraph",
+      "text": "But the useful privacy property is that an observer should not be able to take the nullifier and use it to identify the note commitment it came from. The spent marker is visible; the link back to the private coin is not simply published with it."
+    },
+    {
+      "type": "heading",
+      "text": "WHY NOTE COMMITMENTS EXIST"
+    },
+    {
+      "type": "paragraph",
+      "text": "When shielded notes are created, commitments to those notes are placed into a commitment tree. A spender later proves that the note being spent belongs to the committed set without exposing which leaf is theirs."
+    },
+    {
+      "type": "paragraph",
+      "text": "The commitment answers 'this valid note exists in the set.' The nullifier answers 'this hidden note has not already been spent.' Zero knowledge lets those two statements coexist without turning the private note into a public UTXO."
+    },
+    {
+      "type": "heading",
+      "text": "THE DATABASE OF THINGS YOU CANNOT IDENTIFY"
+    },
+    {
+      "type": "paragraph",
+      "text": "This produces an unusual public record. Anyone can see the nullifier set grow. Anyone validating the chain can enforce that a nullifier never repeats. Yet that public set is not a public list of wallet balances or a readable map from incoming payment to outgoing payment."
+    },
+    {
+      "type": "callout",
+      "text": "CONSENSUS NEEDS UNIQUENESS. SURVEILLANCE NEEDS LINKAGE. THEY ARE NOT THE SAME REQUIREMENT."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification — Nullifier Sets",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 225 — Version 5 Transaction Format",
+      "url": "https://zips.z.cash/zip-0225"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 224 — Orchard Shielded Protocol",
+      "url": "https://zips.z.cash/zip-0224"
+    },
+    {
+      "type": "heading",
+      "text": "MARK THE SPEND."
+    },
+    {
+      "type": "callout",
+      "text": "DON'T EXPOSE THE COIN."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
