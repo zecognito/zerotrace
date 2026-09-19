@@ -224,6 +224,33 @@
       "subtitle": "WHAT IF A PRIVATE TRANSACTION COULD PRODUCE A RECEIPT ON DEMAND?",
       "description": "A draft Zcash design explores how a sender could prove a specific shielded payment without exposing the unrelated financial history around it.",
       "status": "PUBLISHED"
+    },
+    {
+      "number": "026",
+      "id": "the-bug-privacy-couldnt-reveal",
+      "category": "ZCASH // ORCHARD // IRONWOOD",
+      "title": "THE BUG PRIVACY COULDN'T REVEAL",
+      "subtitle": "ORCHARD COULD HAVE CREATED COUNTERFEIT ZEC. THE CHAIN COULD NOT TELL YOU IF IT HAPPENED.",
+      "description": "The 2026 Orchard soundness flaw exposed a hard privacy-system problem: fixing a counterfeiting vulnerability is one thing; proving the private historical ledger was never exploited is another.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "027",
+      "id": "spent-without-saying-which",
+      "category": "ZCASH // NULLIFIERS",
+      "title": "SPENT WITHOUT SAYING WHICH",
+      "subtitle": "HOW ZCASH STOPS A DOUBLE-SPEND WITHOUT REVEALING THE COIN.",
+      "description": "Nullifiers let Zcash reject a second spend while keeping the identity of the shielded note hidden from the public ledger.",
+      "status": "PUBLISHED"
+    },
+    {
+      "number": "028",
+      "id": "one-wallet-many-faces",
+      "category": "ZCASH // DIVERSIFIED ADDRESSES",
+      "title": "ONE WALLET. MANY FACES.",
+      "subtitle": "ZCASH CAN GIVE DIFFERENT PEOPLE DIFFERENT ADDRESSES THAT LEAD TO THE SAME SPENDING AUTHORITY.",
+      "description": "Diversified addresses let one Zcash account present different shielded payment addresses to different counterparties without forcing address reuse.",
+      "status": "PUBLISHED"
     }
   ]
 }
