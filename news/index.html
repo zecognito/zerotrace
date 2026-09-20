@@ -872,14 +872,14 @@ body.ztDedicated main>section#rabbit-hole{display:block!important}
 
 body.ztModalOpen{overflow:hidden}
 </style>
-<style id="zt-menu-button-rabbit-match">
-.menuBtn{-webkit-appearance:none!important;appearance:none!important;background:#05090c!important;background-image:none!important;border:1px solid #2b3942!important;border-radius:7px!important;box-shadow:none!important;padding:0!important;margin:0!important;width:42px!important;height:38px!important;min-width:42px!important;min-height:38px!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:4px!important;color:transparent!important;font-size:0!important}
-.menuBtn span{display:block!important;width:18px!important;height:2px!important;background:#F4B728!important;border-radius:2px!important;box-shadow:0 0 5px rgba(244,183,40,.18)!important;pointer-events:none!important}
+<style id="zt-rabbit-menu-button-exact">
+.menuBtn{-webkit-appearance:none!important;appearance:none!important;background:#05090c!important;background-image:none!important;border:1px solid #2b3942!important;border-radius:7px!important;box-shadow:none!important;padding:0!important;margin:0!important;width:42px!important;height:38px!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:4px!important;color:transparent!important;font-size:0!important;line-height:0!important}
+.menuBtn span{display:block;width:18px;height:2px;background:#F4B728;border-radius:2px;box-shadow:0 0 5px rgba(244,183,40,.18);pointer-events:none}
 .menuBtn:focus,.menuBtn:active{background:#05090c!important;border-color:#354751!important;box-shadow:none!important;outline:none!important}
 @media(max-width:760px){.menuBtn{display:flex!important}}
 </style></head>
 <body>
-<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
   <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
   <div class="ztNavRule"></div>
   <a href="/#lab"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
