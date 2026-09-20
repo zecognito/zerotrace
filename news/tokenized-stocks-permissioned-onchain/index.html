@@ -15,6 +15,41 @@ nav{height:88px!important}.navin{width:min(1180px,92%)!important}
 .ztPageFooter{border-top:1px solid #1b2832;padding:38px 0 52px;background:#040609}.ztPageFooterInner{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}.ztPageBrand{font:800 15px var(--mono);letter-spacing:.14em}.ztPageBrand b{color:var(--gold)}.ztPageMotto{margin-top:9px;font:9px var(--mono);letter-spacing:.11em;color:#68756f}.ztPageLinks{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:20px}.ztPageLinks a{text-decoration:none;font:800 9px var(--mono);letter-spacing:.1em;color:#89958f}.ztPageLinks .support{color:var(--gold)}.ztPageData{grid-column:1/-1;border-top:1px solid #131c21;padding-top:18px;font:8px/1.7 var(--mono);color:#59645f}
 .relatedNews{padding:0 0 72px}.relatedNews h2{font:800 22px var(--mono);letter-spacing:-.03em;margin:0 0 22px}.relatedGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.relatedCard{display:block;text-decoration:none;border:1px solid #1b2832;border-radius:12px;padding:18px;background:#070b0e}.relatedCard small{display:block;color:var(--gold);font:800 8px var(--mono);letter-spacing:.12em;margin-bottom:10px}.relatedCard strong{font:800 15px/1.25 var(--mono);letter-spacing:-.025em}.relatedCard span{display:block;color:#718079;font:8px var(--mono);letter-spacing:.08em;margin-top:14px}
 @media(max-width:760px){nav{height:88px!important}.navlinks,.supportTop{display:none!important}.menuBtn{display:flex!important}.mobileMenu.ztUniversalMenu{position:absolute;top:88px;left:3%;right:3%;width:auto;padding:27px}.brandWordmark{font-size:15px!important}.ztPageFooterInner{grid-template-columns:1fr}.ztPageLinks{justify-content:flex-start;gap:15px}.ztPageData{grid-column:1}.relatedGrid{grid-template-columns:1fr}}
+</style>
+<style id="news-article-shell-size-fix">
+nav{height:64px!important}
+.brandWordmark{font:900 15px var(--mono)!important;letter-spacing:.1em!important}
+.brandSlash{margin-left:7px!important}
+.menuBtn{width:42px!important;height:42px!important;border-radius:8px!important;gap:4px!important}
+.menuBtn span{width:16px!important;height:1px!important}
+.mobileMenu.ztUniversalMenu{
+  display:none!important;position:fixed!important;top:76px!important;right:max(18px,calc((100vw - 1180px)/2))!important;left:auto!important;
+  width:min(340px,calc(100vw - 28px))!important;max-height:calc(100vh - 96px)!important;overflow:auto!important;
+  padding:15px!important;border:1px solid rgba(244,183,40,.34)!important;border-radius:14px!important;
+  background:linear-gradient(155deg,rgba(8,12,15,.985),rgba(3,6,8,.995))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.72),inset 3px 0 0 rgba(244,183,40,.88),inset 0 1px 0 rgba(255,255,255,.025)!important;
+  z-index:100000!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.mobileMenu.ztUniversalMenu.open{display:block!important;animation:ztNavIn .16s ease-out both}
+@keyframes ztNavIn{from{opacity:0;transform:translateY(-7px) scale(.985)}to{opacity:1;transform:none}}
+.ztUniversalMenu .ztNavHeader{display:flex;align-items:center;gap:7px;padding:7px 10px 12px!important;font-family:monospace!important;font-size:10px!important;letter-spacing:.13em!important}
+.ztUniversalMenu .ztNavHeader span{color:#eef4f0!important;font-weight:900!important}.ztUniversalMenu .ztNavHeader b{color:#F4B728!important;font-weight:900!important}
+.ztUniversalMenu .ztNavRule{height:1px;background:linear-gradient(90deg,#F4B728,rgba(244,183,40,.08));margin:0 8px 7px}
+.mobileMenu.ztUniversalMenu a{display:grid!important;grid-template-columns:28px minmax(0,1fr) 16px!important;align-items:center!important;gap:8px!important;
+  min-height:43px!important;margin:2px 0!important;padding:0 10px!important;border:1px solid transparent!important;border-radius:8px!important;
+  background:transparent!important;color:#c0cbc5!important;text-decoration:none!important;font-family:monospace!important;font-size:10px!important;font-weight:800!important;line-height:1.15!important;letter-spacing:.065em!important;transition:.14s ease!important}
+.mobileMenu.ztUniversalMenu a:hover,.mobileMenu.ztUniversalMenu a:focus-visible{color:#fff!important;border-color:rgba(244,183,40,.2)!important;background:rgba(244,183,40,.055)!important;transform:translateX(2px)}
+.mobileMenu.ztUniversalMenu a .ztNavNo{color:#69756f!important;font-size:9px!important;letter-spacing:.08em!important}.mobileMenu.ztUniversalMenu a:hover .ztNavNo{color:#F4B728!important}
+.mobileMenu.ztUniversalMenu a>b{color:#F4B728!important;font-size:13px!important;text-align:right!important}.ztUniversalMenu .ztNavGap{height:7px;margin:4px 8px;border-top:1px solid rgba(255,255,255,.045)}
+.ztUniversalMenu .ztNavMine{border-color:rgba(244,183,40,.12)!important;background:rgba(244,183,40,.025)!important}
+.ztUniversalMenu .ztNavFooter{display:flex;align-items:center;gap:9px;margin:10px 8px 2px;padding-top:11px;border-top:1px solid rgba(244,183,40,.14);color:#68746e;font:700 8px/1.3 monospace;letter-spacing:.1em}
+.ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
+@media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
+
+@media(max-width:760px){
+ nav{height:64px!important}
+ .mobileMenu.ztUniversalMenu{top:76px!important}
+}
 </style></head><body><nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
   <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
   <div class="ztNavRule"></div>
