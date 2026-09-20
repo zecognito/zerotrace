@@ -251,6 +251,15 @@
       "subtitle": "ZCASH CAN GIVE DIFFERENT PEOPLE DIFFERENT ADDRESSES THAT LEAD TO THE SAME SPENDING AUTHORITY.",
       "description": "Diversified addresses let one Zcash account present different shielded payment addresses to different counterparties without forcing address reuse.",
       "status": "PUBLISHED"
+    },
+    {
+      "number": "029",
+      "id": "one-address-three-worlds",
+      "category": "ZCASH // UNIFIED ADDRESSES",
+      "title": "ONE ADDRESS. THREE WORLDS.",
+      "subtitle": "A ZCASH UNIFIED ADDRESS CAN CARRY MULTIPLE RECEIVERS WITHOUT MAKING THE USER CHOOSE THE PROTOCOL.",
+      "description": "Unified Addresses let one Zcash address carry multiple receiver types so compatible wallets can select the preferred destination without making the user negotiate protocol generations.",
+      "status": "PUBLISHED"
     }
   ]
 }
