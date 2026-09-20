@@ -829,19 +829,20 @@ body.ztDedicated main>section#rabbit-hole{display:block!important}
 </style>
 </head>
 <body>
-<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+<nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
   <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
   <div class="ztNavRule"></div>
-  <a href="/#lab" onclick="closeMenu()"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
-  <a href="/#network" onclick="closeMenu()"><span class="ztNavNo">02</span><span>MINER STATS</span></a>
+  <a href="/#lab"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
+  <a href="/#network"><span class="ztNavNo">02</span><span>MINER STATS</span></a>
   <div class="ztNavGap"></div>
-  <a class="routeNavLink ztNavRoute ztNavMine" href="/mine/" onclick="closeMenu()"><span class="ztNavNo">03</span><span>HOW TO MINE ZEC</span><b>→</b></a>
-  <a class="routeNavLink ztNavRoute" href="/signal/" onclick="closeMenu()"><span class="ztNavNo">04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a>
-  <a class="routeNavLink ztNavRoute" href="/explorer/" onclick="closeMenu()"><span class="ztNavNo">05</span><span>BLOCK EXPLORER</span><b>→</b></a>
-  <a class="routeNavLink ztNavRoute" href="/rabbit-hole/" onclick="closeMenu()"><span class="ztNavNo">06</span><span>RABBIT HOLE</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute ztNavMine" href="/mine/"><span class="ztNavNo">03</span><span>HOW TO MINE ZEC</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/signal/"><span class="ztNavNo">04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/explorer/"><span class="ztNavNo">05</span><span>BLOCK EXPLORER</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/rabbit-hole/"><span class="ztNavNo">06</span><span>RABBIT HOLE</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/news/"><span class="ztNavNo">07</span><span>NEWS</span><b>→</b></a>
   <div class="ztNavGap"></div>
-  <a href="/resources/" onclick="closeMenu()"><span class="ztNavNo">07</span><span>RESOURCES</span></a>
-  <a href="/support/" onclick="closeMenu()"><span class="ztNavNo">08</span><span>SUPPORT</span></a>
+  <a href="/resources/"><span class="ztNavNo">08</span><span>RESOURCES</span></a>
+  <a href="/support/"><span class="ztNavNo">09</span><span>SUPPORT</span></a>
   <div class="ztNavFooter"><i></i><span>WHAT YOU REVEAL IS YOUR CHOICE.</span></div>
 </div>
 <main><div class="dedicatedHero"><div class="wrap"><div class="dedicatedKicker">ZEROTRACE // NEWS</div><h1>NEWS.<span>INTELLIGENCE.</span></h1><p class="dedicatedLead">Zcash. Privacy. Zero knowledge. Regulation. Markets. Current developments, sourced and filtered through the ZeroTrace lens.</p><div class="dedicatedMode">NEWS // CURRENT</div></div></div>
@@ -854,8 +855,18 @@ body.ztDedicated main>section#rabbit-hole{display:block!important}
 <footer class="ztPageFooter"><div class="wrap ztPageFooterInner"><div><div class="ztPageBrand">ZEROTRACE <b>//</b></div><div class="ztPageMotto">WHAT YOU REVEAL IS YOUR CHOICE.</div></div><div class="ztPageLinks"><a href="/about/">ABOUT</a><a href="/resources/">RESOURCES</a><a class="support" href="/support/">SUPPORT ZEROTRACE</a><a href="/privacy/">PRIVACY</a></div><div class="ztPageData">ZeroTrace is an independent community project and is not financial advice. Live network data may be delayed or unavailable. Verify primary sources before relying on any claim.</div></div></footer>
 
 <script>
-function toggleMenu(){const menu=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn');if(!menu)return;const open=menu.classList.toggle('open');if(btn){btn.setAttribute('aria-expanded',String(open));btn.setAttribute('aria-label',open?'Close menu':'Open menu')}}
-function closeMenu(){const menu=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn');if(menu)menu.classList.remove('open');if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}}
-document.addEventListener('click',function(e){const menu=document.getElementById('mobileMenu'),btn=document.getElementById('menuBtn');if(menu&&menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target))closeMenu()});
+(function(){
+ const btn=document.getElementById('menuBtn');
+ const menu=document.getElementById('mobileMenu');
+ if(!btn||!menu)return;
+ function setMenu(open){
+   menu.classList.toggle('open',open);
+   btn.setAttribute('aria-expanded',open?'true':'false');
+   btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+ }
+ btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();setMenu(!menu.classList.contains('open'));});
+ menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+ document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&e.target!==btn)setMenu(false);});
+})();
 </script>
 </body></html>
