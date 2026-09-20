@@ -1,0 +1,123 @@
+{
+  "title": "ONE ADDRESS. THREE WORLDS.",
+  "subtitle": "A ZCASH UNIFIED ADDRESS CAN CARRY MULTIPLE RECEIVERS WITHOUT MAKING THE USER CHOOSE THE PROTOCOL.",
+  "category": "029 // ZCASH // UNIFIED ADDRESSES // RECEIVERS",
+  "date": "SEPTEMBER 2026",
+  "readTime": "8 MIN READ",
+  "blocks": [
+    {
+      "type": "callout",
+      "text": "THE STRING YOU SHARE CAN REPRESENT MORE THAN ONE DESTINATION."
+    },
+    {
+      "type": "heading",
+      "text": "THE ADDRESS IS A CONTAINER"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Unified Address is not a new shielded pool. It is a container that can bundle multiple Zcash receiver types into one address encoding — including Orchard, Sapling and transparent receivers."
+    },
+    {
+      "type": "paragraph",
+      "text": "The sender's wallet decodes that address and selects the most preferred receiver type it supports. Under ZIP 316, Orchard is preferred over Sapling, and Sapling is preferred over transparent receivers."
+    },
+    {
+      "type": "heading",
+      "text": "ONE STRING. MULTIPLE RECEIVERS."
+    },
+    {
+      "type": "paragraph",
+      "text": "A legacy address represents one receiver type. A Unified Address can advertise several ways to reach the same recipient. The sender does not need to ask the recipient which generation of the protocol to use before every payment."
+    },
+    {
+      "type": "callout",
+      "text": "THE USER SHARES ONE ADDRESS. THE WALLET SELECTS THE MOST PREFERRED RECEIVER IT SUPPORTS."
+    },
+    {
+      "type": "heading",
+      "text": "ORCHARD LIVES INSIDE IT"
+    },
+    {
+      "type": "paragraph",
+      "text": "Zcash deliberately does not define a standalone Bech32 string encoding for Orchard shielded payment addresses. Instead, an Orchard raw address can be carried as a receiver inside a Unified Address."
+    },
+    {
+      "type": "paragraph",
+      "text": "That makes the Unified Address more than a cosmetic wrapper. It is the user-facing address format that lets Orchard coexist with other receiver types."
+    },
+    {
+      "type": "heading",
+      "text": "COMPATIBILITY WITHOUT FREEZING THE PROTOCOL"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sapling changed Zcash's shielded system. Orchard changed it again. If every upgrade forced users to understand, generate and redistribute a completely separate address format, protocol evolution would leak directly into the payment experience."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unified Addresses create an abstraction layer. Receiver types can coexist inside a common encoding, while wallets handle selection according to the protocol rules."
+    },
+    {
+      "type": "heading",
+      "text": "BUT THE RECEIVER STILL MATTERS"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Unified Address does not make every possible payment equally private. A transparent receiver still has the privacy properties of the transparent protocol. The address format can hide complexity from the user, but it cannot turn a public transfer into a shielded one."
+    },
+    {
+      "type": "callout",
+      "text": "A UNIFIED ADDRESS CAN HIDE COMPLEXITY. IT CANNOT TURN A PUBLIC RECEIVER PRIVATE."
+    },
+    {
+      "type": "heading",
+      "text": "THE NEXT LAYER AFTER 028"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unified Addresses connect directly to diversified address derivation. One account can derive different Unified Addresses while keeping them under the same account authority. The previous layer of the Rabbit Hole showed how one wallet can wear many faces. This layer reveals that each face can contain more than one way in."
+    },
+    {
+      "type": "heading",
+      "text": "THE PROTOCOL MOVES. THE HUMAN DOESN'T HAVE TO."
+    },
+    {
+      "type": "paragraph",
+      "text": "Good cryptography is not enough if using it requires everyone to understand the machinery underneath. Unified Addresses push receiver selection into wallet software, where compatibility can be handled automatically."
+    },
+    {
+      "type": "paragraph",
+      "text": "What looks like one address to a human can be an interface to multiple generations of Zcash underneath."
+    },
+    {
+      "type": "callout",
+      "text": "ONE ADDRESS ON THE SURFACE. AN ENTIRE PROTOCOL STACK UNDERNEATH."
+    },
+    {
+      "type": "heading",
+      "text": "SOURCES // VERIFY IT YOURSELF"
+    },
+    {
+      "type": "source",
+      "label": "ZIP 316 — Unified Addresses and Unified Viewing Keys",
+      "url": "https://zips.z.cash/zip-0316"
+    },
+    {
+      "type": "source",
+      "label": "Zcash Protocol Specification",
+      "url": "https://zips.z.cash/protocol/protocol.pdf"
+    },
+    {
+      "type": "heading",
+      "text": "ONE STRING."
+    },
+    {
+      "type": "callout",
+      "text": "MORE THAN ONE WAY IN."
+    },
+    {
+      "type": "heading",
+      "text": "ZEROTRACE //"
+    }
+  ]
+}
