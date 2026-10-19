@@ -999,7 +999,7 @@ body.ztModalOpen{overflow:hidden}
   empty.hidden=matches.length!==0;
   featured.hidden=matches.length===0;
   if(!matches.length)return;
-  const latest=matches[0], title=latest.querySelector('h4')?.textContent||'',desc=latest.querySelector('p')?.textContent||'',category=latest.querySelector('.storyCat')?.textContent?.split('//')[0].trim()||'NEWS',date=latest.dataset.date||'',reading=latest.querySelector('.storyTime')?.textContent?.match(/(\\d+) MIN/)?.[1]||'5';
+  const latest=matches[0], title=latest.querySelector('h4')?.textContent||'',desc=latest.querySelector('p')?.textContent||'',category=latest.querySelector('.storyCat')?.textContent?.split('//')[0].trim()||'NEWS',date=latest.dataset.date||'',reading=latest.querySelector('.storyTime')?.textContent?.match(/(\d+) MIN/)?.[1]||'5';
   featured.href=latest.getAttribute('href');featured.setAttribute('aria-label','Read latest: '+title);
   featured.querySelector('.meta').textContent=category+' // '+(date?new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}).toUpperCase():'LATEST')+' // '+reading+' MIN READ';
   featured.querySelector('h2').textContent=title;featured.querySelector('p').textContent=desc;
