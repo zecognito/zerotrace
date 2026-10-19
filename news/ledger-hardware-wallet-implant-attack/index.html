@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head>
+<!-- ZeroTrace Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWHGGQ4V6H"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-CWHGGQ4V6H');</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#05070a"><title>The Wallet Was Real. The Security Wasn't. | ZeroTrace</title><meta name="description" content="Criminals modified genuine Ledger wallets to steal recovery phrases. What the CryptoBilis incident reveals about self-custody security."><link rel="canonical" href="https://zerotrace.fyi/news/ledger-hardware-wallet-implant-attack/">
+
+
+
+
+
+
+<meta property="og:type" content="article"><meta property="og:title" content="The Wallet Was Real. The Security Wasn't. | ZeroTrace"><meta property="og:description" content="Criminals modified genuine Ledger wallets to steal recovery phrases. What the CryptoBilis incident reveals about self-custody security."><meta property="og:url" content="https://zerotrace.fyi/news/ledger-hardware-wallet-implant-attack/"><meta property="og:site_name" content="ZeroTrace"><meta property="article:published_time" content="2026-10-19T00:00:00-05:00"><meta name="twitter:title" content="The Wallet Was Real. The Security Wasn't. | ZeroTrace"><meta name="twitter:description" content="Criminals modified genuine Ledger wallets to steal recovery phrases. What the CryptoBilis incident reveals about self-custody security."><script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"THE WALLET WAS REAL. THE SECURITY WASN'T.","description":"Criminals modified genuine Ledger wallets to steal recovery phrases. What the CryptoBilis incident reveals about self-custody security.","datePublished":"2026-10-19","dateModified":"2026-10-19","author":{"@type":"Organization","name":"ZeroTrace"},"publisher":{"@type":"Organization","name":"ZeroTrace","url":"https://zerotrace.fyi/"},"mainEntityOfPage":"https://zerotrace.fyi/news/ledger-hardware-wallet-implant-attack/"}</script><style>:root{--bg:#05070a;--panel:#080d11;--line:#1b2832;--text:#eef4f0;--muted:#82918a;--gold:#F4B728;--green:#20F58A;--mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--text);font-family:var(--sans);background:radial-gradient(circle at 72% -5%,rgba(244,183,40,.07),transparent 25%),#05070a;overflow-x:hidden}a{color:inherit}.wrap{width:min(900px,90%);margin:auto}nav{height:64px;border-bottom:1px solid #24313a;background:rgba(5,7,10,.94);display:flex;align-items:center}.navin{width:min(1180px,92%);margin:auto;display:flex;justify-content:space-between;align-items:center}.brand{text-decoration:none;font:900 15px var(--mono);letter-spacing:.1em}.brand b{color:var(--gold)}.back{font:800 9px var(--mono);letter-spacing:.1em;color:var(--gold);text-decoration:none}.hero{padding:76px 0 44px;border-bottom:1px solid var(--line)}.kicker{font:800 9px var(--mono);letter-spacing:.18em;color:var(--gold)}h1{font:800 clamp(38px,7vw,72px)/.95 var(--mono);letter-spacing:-.055em;margin:20px 0 18px}.dek{font-size:17px;line-height:1.7;color:#a0aca6;max-width:760px}.meta{margin-top:25px;font:800 9px var(--mono);letter-spacing:.1em;color:#68756f}.media{margin:34px auto 0;aspect-ratio:1.91/1;border:1px solid rgba(244,183,40,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,rgba(244,183,40,.07),transparent 45%),linear-gradient(145deg,#0b0f12,#05080a);font:900 clamp(28px,7vw,62px) var(--mono);letter-spacing:-.05em;color:var(--gold);overflow:hidden}.article{padding:46px 0 80px}.article h2{font:800 22px var(--mono);letter-spacing:-.03em;margin:40px 0 13px}.article p{font-size:15px;line-height:1.85;color:#b1bbb6}.article .zt{padding:20px;border-left:2px solid var(--gold);background:#080b0d;margin:34px 0}.article .zt strong{display:block;color:var(--gold);font:800 9px var(--mono);letter-spacing:.13em;margin-bottom:9px}.sources{margin-top:46px;padding-top:22px;border-top:1px solid var(--line)}.sources h3{font:800 10px var(--mono);letter-spacing:.14em;color:#68756f}.sources a{display:block;margin:10px 0;color:var(--gold);font:800 10px/1.5 var(--mono);text-decoration:none}.foot{border-top:1px solid var(--line);padding:30px 0 44px;font:9px var(--mono);color:#68756f}.foot a{color:var(--gold);text-decoration:none}@media(max-width:760px){.hero{padding:48px 0 32px}h1{font-size:clamp(34px,11vw,48px)}.dek{font-size:14px}.article{padding-top:32px}.article p{font-size:14px}.media{margin-top:26px}}</style>
+<style id="news-article-shell-v2">
+nav{height:88px!important}.navin{width:min(1180px,92%)!important}
+.brandV7{display:flex!important;align-items:center!important;text-decoration:none!important}
+.brandWordmark{font:900 16px var(--mono)!important;letter-spacing:.18em!important;white-space:nowrap}
+.brandZero,.brandTrace{color:#eef4f0}.brandSlash{color:var(--gold);margin-left:4px}
+.navlinks{display:flex;gap:18px;align-items:center}.navlinks a,.supportTop{font:800 8px var(--mono);letter-spacing:.08em;text-decoration:none;color:#7f8b85}.supportTop{color:var(--gold)}
+.menuBtn{display:none}
+
+.mobileMenu.ztUniversalMenu{display:none;position:absolute;z-index:9999;top:88px;right:4%;width:min(650px,92%);padding:30px;border:1px solid rgba(244,183,40,.32);border-left:4px solid var(--gold);border-radius:18px;background:linear-gradient(180deg,#080d11,#05090c);box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.mobileMenu.ztUniversalMenu.open{display:block!important}
+.ztNavHeader{font:800 11px var(--mono);letter-spacing:.14em}.ztNavHeader b{color:var(--gold)}.ztNavRule{height:1px;background:#3a2e10;margin:18px 0}
+.ztUniversalMenu>a{display:grid;grid-template-columns:44px 1fr auto;align-items:center;min-height:58px;text-decoration:none;border-bottom:1px solid #10181d;font:800 10px var(--mono);letter-spacing:.08em;color:#c2cbc6}
+.ztNavNo{color:#66736d}.ztUniversalMenu>a b{color:var(--gold)}.ztNavGap{height:10px}.ztNavFooter{border-top:1px solid #33290d;margin-top:14px;padding-top:18px;font:8px var(--mono);letter-spacing:.1em;color:#65716b}
+.ztPageFooter{border-top:1px solid #1b2832;padding:38px 0 52px;background:#040609}.ztPageFooterInner{width:min(1180px,92%);margin:auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}.ztPageBrand{font:800 15px var(--mono);letter-spacing:.14em}.ztPageBrand b{color:var(--gold)}.ztPageMotto{margin-top:9px;font:9px var(--mono);letter-spacing:.11em;color:#68756f}.ztPageLinks{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:20px}.ztPageLinks a{text-decoration:none;font:800 9px var(--mono);letter-spacing:.1em;color:#89958f}.ztPageLinks .support{color:var(--gold)}.ztPageData{grid-column:1/-1;border-top:1px solid #131c21;padding-top:18px;font:8px/1.7 var(--mono);color:#59645f}
+.relatedNews{padding:0 0 72px}.relatedNews h2{font:800 22px var(--mono);letter-spacing:-.03em;margin:0 0 22px}.relatedGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.relatedCard{display:block;text-decoration:none;border:1px solid #1b2832;border-radius:12px;padding:18px;background:#070b0e}.relatedCard small{display:block;color:var(--gold);font:800 8px var(--mono);letter-spacing:.12em;margin-bottom:10px}.relatedCard strong{font:800 15px/1.25 var(--mono);letter-spacing:-.025em}.relatedCard span{display:block;color:#718079;font:8px var(--mono);letter-spacing:.08em;margin-top:14px}
+@media(max-width:760px){nav{height:88px!important}.navlinks,.supportTop{display:none!important}.menuBtn{display:flex!important}.mobileMenu.ztUniversalMenu{position:absolute;top:88px;left:3%;right:3%;width:auto;padding:27px}.brandWordmark{font-size:15px!important}.ztPageFooterInner{grid-template-columns:1fr}.ztPageLinks{justify-content:flex-start;gap:15px}.ztPageData{grid-column:1}.relatedGrid{grid-template-columns:1fr}}
+</style>
+<style id="news-article-shell-size-fix">
+nav{height:64px!important}
+.brandWordmark{font:900 15px var(--mono)!important;letter-spacing:.1em!important}
+.brandSlash{margin-left:7px!important}
+
+
+.mobileMenu.ztUniversalMenu{
+  display:none!important;position:fixed!important;top:76px!important;right:max(18px,calc((100vw - 1180px)/2))!important;left:auto!important;
+  width:min(340px,calc(100vw - 28px))!important;max-height:calc(100vh - 96px)!important;overflow:auto!important;
+  padding:15px!important;border:1px solid rgba(244,183,40,.34)!important;border-radius:14px!important;
+  background:linear-gradient(155deg,rgba(8,12,15,.985),rgba(3,6,8,.995))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.72),inset 3px 0 0 rgba(244,183,40,.88),inset 0 1px 0 rgba(255,255,255,.025)!important;
+  z-index:100000!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.mobileMenu.ztUniversalMenu.open{display:block!important;animation:ztNavIn .16s ease-out both}
+@keyframes ztNavIn{from{opacity:0;transform:translateY(-7px) scale(.985)}to{opacity:1;transform:none}}
+.ztUniversalMenu .ztNavHeader{display:flex;align-items:center;gap:7px;padding:7px 10px 12px!important;font-family:monospace!important;font-size:10px!important;letter-spacing:.13em!important}
+.ztUniversalMenu .ztNavHeader span{color:#eef4f0!important;font-weight:900!important}.ztUniversalMenu .ztNavHeader b{color:#F4B728!important;font-weight:900!important}
+.ztUniversalMenu .ztNavRule{height:1px;background:linear-gradient(90deg,#F4B728,rgba(244,183,40,.08));margin:0 8px 7px}
+.mobileMenu.ztUniversalMenu a{display:grid!important;grid-template-columns:28px minmax(0,1fr) 16px!important;align-items:center!important;gap:8px!important;
+  min-height:43px!important;margin:2px 0!important;padding:0 10px!important;border:1px solid transparent!important;border-radius:8px!important;
+  background:transparent!important;color:#c0cbc5!important;text-decoration:none!important;font-family:monospace!important;font-size:10px!important;font-weight:800!important;line-height:1.15!important;letter-spacing:.065em!important;transition:.14s ease!important}
+.mobileMenu.ztUniversalMenu a:hover,.mobileMenu.ztUniversalMenu a:focus-visible{color:#fff!important;border-color:rgba(244,183,40,.2)!important;background:rgba(244,183,40,.055)!important;transform:translateX(2px)}
+.mobileMenu.ztUniversalMenu a .ztNavNo{color:#69756f!important;font-size:9px!important;letter-spacing:.08em!important}.mobileMenu.ztUniversalMenu a:hover .ztNavNo{color:#F4B728!important}
+.mobileMenu.ztUniversalMenu a>b{color:#F4B728!important;font-size:13px!important;text-align:right!important}.ztUniversalMenu .ztNavGap{height:7px;margin:4px 8px;border-top:1px solid rgba(255,255,255,.045)}
+.ztUniversalMenu .ztNavMine{border-color:rgba(244,183,40,.12)!important;background:rgba(244,183,40,.025)!important}
+.ztUniversalMenu .ztNavFooter{display:flex;align-items:center;gap:9px;margin:10px 8px 2px;padding-top:11px;border-top:1px solid rgba(244,183,40,.14);color:#68746e;font:700 8px/1.3 monospace;letter-spacing:.1em}
+.ztUniversalMenu .ztNavFooter i{display:block;width:5px;height:5px;border-radius:50%;background:#F4B728;box-shadow:0 0 10px rgba(244,183,40,.42);flex:0 0 auto}
+@media(max-width:620px){.mobileMenu.ztUniversalMenu{top:70px!important;right:12px!important;width:calc(100vw - 24px)!important;max-height:calc(100vh - 82px)!important;padding:13px!important}.mobileMenu.ztUniversalMenu a{min-height:41px!important}}
+
+@media(max-width:760px){
+ nav{height:64px!important}
+ .mobileMenu.ztUniversalMenu{top:76px!important}
+}
+</style><style id="zt-mine-disclaimer-style">
+.ztMineModal{
+  position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;
+  padding:22px;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);
+}
+.ztMineModal.open{display:flex}
+.ztMineDialog{
+  width:min(720px,100%);max-height:min(84vh,760px);overflow:auto;
+  border:1px solid rgba(244,183,40,.34);border-radius:16px;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(244,183,40,.07),transparent 30%),
+    linear-gradient(180deg,#0b1014,#06090c);
+  box-shadow:0 28px 80px rgba(0,0,0,.55);
+  padding:24px;
+  color:#eef4f0;
+}
+.ztMineModalTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ztMineKicker{font:800 9px/1.2 var(--mono,monospace);letter-spacing:.15em;color:#F4B728}
+.ztMineDialog h2{margin:9px 0 15px;font:800 22px/1.08 var(--mono,monospace);letter-spacing:-.03em}
+.ztMineClose{
+  flex:0 0 auto;width:36px;height:36px;border:1px solid #263944;border-radius:8px;
+  background:#080d11;color:#aab4af;font:700 18px/1 monospace;cursor:pointer
+}
+.ztMineDialog p{margin:11px 0;color:#aab4af;font:11px/1.72 var(--mono,monospace)}
+.ztMineDialog strong{color:#e7eee9}
+.ztMineRisk{
+  margin:16px 0;padding:13px 14px;border:1px solid rgba(255,121,121,.23);
+  border-left:3px solid #ff7979;border-radius:8px;background:rgba(255,121,121,.025);
+  color:#c9b5b5!important
+}
+.ztMineActions{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:19px}
+.ztMineContinue,.ztMineCancel{
+  min-height:44px;border-radius:8px;padding:0 15px;cursor:pointer;
+  font:800 10px var(--mono,monospace);letter-spacing:.055em
+}
+.ztMineContinue{border:1px solid #F4B728;background:#F4B728;color:#080b09}
+.ztMineCancel{border:1px solid #263944;background:#080d11;color:#aab4af}
+@media(max-width:620px){
+ .ztMineModal{padding:14px}.ztMineDialog{padding:19px;max-height:88vh}
+ .ztMineDialog h2{font-size:19px}.ztMineActions{grid-template-columns:1fr}
+ .ztMineCancel{order:2}.ztMineContinue{order:1}
+}
+
+body.ztModalOpen{overflow:hidden}
+</style><style id="zt-rabbit-menu-button-exact">
+.menuBtn{-webkit-appearance:none!important;appearance:none!important;background:#05090c!important;background-image:none!important;border:1px solid #2b3942!important;border-radius:7px!important;box-shadow:none!important;padding:0!important;margin:0!important;width:42px!important;height:38px!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:4px!important;color:transparent!important;font-size:0!important;line-height:0!important}
+.menuBtn span{display:block;width:18px;height:2px;background:#F4B728;border-radius:2px;box-shadow:0 0 5px rgba(244,183,40,.18);pointer-events:none}
+.menuBtn:focus,.menuBtn:active{background:#05090c!important;border-color:#354751!important;box-shadow:none!important;outline:none!important}
+@media(max-width:760px){.menuBtn{display:flex!important}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"THE WALLET WAS REAL. THE SECURITY WASN'T.","description":"Criminals modified genuine Ledger wallets to steal recovery phrases. What the CryptoBilis incident reveals about self-custody security.","datePublished":"2026-10-19","dateModified":"2026-10-19","author":{"@type":"Organization","name":"ZeroTrace"},"publisher":{"@type":"Organization","name":"ZeroTrace","url":"https://zerotrace.fyi/"},"mainEntityOfPage":"https://zerotrace.fyi/news/ledger-hardware-wallet-implant-attack/"}</script>
+<meta name="twitter:card" content="summary"></head><body><nav><div class="wrap navin"><a class="brand brandV7" href="../"><span class="brandWordmark"><span class="brandZero">ZERO</span><span class="brandTrace">TRACE</span><span class="brandSlash">//</span></span></a><div class="navlinks"><a href="../">HOME</a><a href="/signal/">SIGNAL</a><a href="/explorer/">EXPLORER</a><a href="/rabbit-hole/">RABBIT HOLE</a><a href="/resources/">RESOURCES</a><a href="/about/">ABOUT</a></div><a class="supportTop" href="/support/">SUPPORT ZEROTRACE</a><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menuBtn" id="menuBtn" type="button"><span></span><span></span><span></span></button></div></nav><div class="mobileMenu ztUniversalMenu" id="mobileMenu" aria-label="ZeroTrace navigation">
+  <div class="ztNavHeader"><span>ZEROTRACE</span><b>// NAVIGATION</b></div>
+  <div class="ztNavRule"></div>
+  <a href="/#lab"><span class="ztNavNo">01</span><span>PRIVACY LAB</span></a>
+  <a href="/#network"><span class="ztNavNo">02</span><span>MINER STATS</span></a>
+  <div class="ztNavGap"></div>
+  <a class="routeNavLink ztNavRoute ztNavMine" href="/mine/"><span class="ztNavNo">03</span><span>HOW TO MINE ZEC</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/signal/"><span class="ztNavNo">04</span><span>ZEROTRACE SIGNAL</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/explorer/"><span class="ztNavNo">05</span><span>BLOCK EXPLORER</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/rabbit-hole/"><span class="ztNavNo">06</span><span>RABBIT HOLE</span><b>→</b></a>
+  <a class="routeNavLink ztNavRoute" href="/news/"><span class="ztNavNo">07</span><span>NEWS</span><b>→</b></a>
+  <div class="ztNavGap"></div>
+  <a href="/resources/"><span class="ztNavNo">08</span><span>RESOURCES</span></a>
+  <a href="/support/"><span class="ztNavNo">09</span><span>SUPPORT</span></a>
+  <div class="ztNavFooter"><i></i><span>WHAT YOU REVEAL IS YOUR CHOICE.</span></div>
+</div>
+<main><header class="hero"><div class="wrap"><div class="kicker">ZEROTRACE // NEWS // WALLET SECURITY</div><h1>THE WALLET WAS REAL. THE SECURITY WASN'T.</h1><div class="dek">Criminals modified genuine Ledger devices to capture recovery phrases. The CryptoBilis incident exposes a weakness cryptography alone cannot solve.</div><div class="meta">OCT 19, 2026 // BY ZEROTRACE NEWS DESK // 5 MIN READ // INVESTIGATION ONGOING</div></div></header><article class="article"><div class="wrap"><p>A hardware wallet can be genuine and still be unsafe. That is the uncomfortable finding at the center of an attack involving Ledger devices distributed through reseller channels in Southeast Asia.</p><p>The devices were authentic. The hardware inside them had been altered. And the attack was already present before the owner made a first transaction.</p><h2>THE ATTACK HAPPENED BEFORE THE FIRST TRANSACTION</h2><p>Hardware wallets are supposed to keep private keys away from internet-connected computers. But criminals targeted the device before its owner made a transaction. Ledger says attackers purchased genuine devices, opened them, installed concealed components and returned them to reseller distribution channels in Southeast Asia.</p><p>The implants reportedly captured the 24-word recovery phrase shown on the wallet's screen during setup and transmitted it using cellular connectivity. Anyone with that phrase can recreate the wallet and move its funds. No cryptographic breakthrough was required.</p><h2>GENUINE DOES NOT MEAN UNALTERED</h2><p>A counterfeit device impersonates a legitimate product. A tampered device begins as the real thing. That difference matters because a genuine-chip or firmware check may not detect additional unauthorized circuitry inside the enclosure.</p><p>Ledger says its chip, operating system, servers and direct sales channels were not compromised. The company calls this a localized distribution-channel attack, not a compromise of its manufacturing systems. The physical chain of custody became the security boundary.</p><h2>THE REPORTED LOSSES</h2><p>Independent investigators estimate losses of approximately $90 million, but published totals vary. Ledger has not confirmed a final loss figure or the full number of victims. The figures are estimates, not a completed audit.</p><p>The mechanism matters even without an exact total. A phrase intercepted once can enable theft later, without any further contact with the original wallet.</p><h2>WHAT OWNERS SHOULD DO</h2><p>Ledger advised people who purchased affected devices through CryptoBilis not to initialize unused wallets and to contact official support. Those who already initialized potentially compromised hardware should follow official guidance and move assets to a new wallet generated on trusted hardware with an entirely new recovery phrase.</p><p>Buying through the manufacturer or a verified authorized channel reduces some reseller risk but cannot guarantee immunity from every attack. Never use a prewritten recovery phrase or enter seed words into an unsolicited website. A metal recovery-phrase backup protects against physical damage; it cannot prevent an implant from capturing the words during setup.</p><h2>THE PRIVACY IMPLICATION</h2><p>Compromised recovery material can threaten more than balances. Depending on the protocol and wallet, it may expose addresses, account relationships or transaction history. Shielded transactions cannot compensate for compromised custody of the keys.</p><p>Privacy at the blockchain layer and security of the physical device are separate boundaries. Both matter.</p><h2>SELF-CUSTODY STILL HAS A SUPPLY CHAIN</h2><p>Self-custody reduces dependence on exchanges and other custodians. It does not eliminate trust. Some trust moves into hardware design, manufacturing, distribution and everyone who handles a device before it reaches its owner.</p><p>The blockchain can be uncompromised. The encryption can be sound. The device can be genuine. And the wallet can still betray its owner.</p><div class="zt"><strong>ZEROTRACE // ANALYSIS</strong><p>The weakest point was not the blockchain. It was the moment a recovery phrase appeared on a screen that unauthorized circuitry could observe. The keys were offline. The attack was already inside.</p></div><div class="sources"><h3>SOURCES // VERIFY IT YOURSELF</h3><a href="https://support.ledger.com/article/Ledger-s-Response-to-the-Hardware-Implant-Attack" target="_blank" rel="noopener noreferrer">Ledger — Official incident response ↗</a><a href="https://www.galaxy.com/insights/research/ledger-cryptobilis-wallet-implant-theft" target="_blank" rel="noopener noreferrer">Galaxy Research — Incident analysis ↗</a><a href="https://www.theblock.co/news/business/2026-10-13-ledger-confirms-hardware-implant-cryptobilis-reseller-units-mediamarkt-suspends-sales-europe-418442" target="_blank" rel="noopener noreferrer">The Block — Technical reporting ↗</a></div></div></article><section class="relatedNews"><div class="wrap"><h2>RELATED NEWS</h2><div class="relatedGrid"><a class="relatedCard" href="../zcash-quantum-privacy-one-time-keys/"><small>ZCASH // PRIVACY</small><strong>THE ADDRESS IS PUBLIC. THE PAYMENTS AREN'T. FOR NOW.</strong><span>OCT 19 // 5 MIN →</span></a><a class="relatedCard" href="../nu7-scope-takes-shape/"><small>ZCASH // PROTOCOL</small><strong>NU7’S SCOPE IS TAKING SHAPE.</strong><span>SEP 14 // 4 MIN →</span></a></div></div></section></main><footer class="ztPageFooter"><div class="wrap ztPageFooterInner"><div><div class="ztPageBrand">ZEROTRACE <b>//</b></div><div class="ztPageMotto">WHAT YOU REVEAL IS YOUR CHOICE.</div></div><div class="ztPageLinks"><a href="/about/">ABOUT</a><a href="/resources/">RESOURCES</a><a class="support" href="/support/">SUPPORT ZEROTRACE</a><a href="/privacy/">PRIVACY</a></div><div class="ztPageData">ZeroTrace is an independent community project and is not financial advice. Live network data may be delayed or unavailable. Verify primary sources before relying on any claim.</div></div></footer><script>
+(function(){
+ const btn=document.getElementById('menuBtn');
+ const menu=document.getElementById('mobileMenu');
+ if(!btn||!menu)return;
+ function setMenu(open){
+   menu.classList.toggle('open',open);
+   btn.setAttribute('aria-expanded',open?'true':'false');
+   btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+ }
+ btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();setMenu(!menu.classList.contains('open'));});
+ menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+ document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!menu.contains(e.target)&&e.target!==btn)setMenu(false);});
+})();
+</script>
+<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
+ <div class="ztMineDialog">
+  <div class="ztMineModalTop">
+   <div>
+    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
+    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
+   </div>
+   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
+  </div>
+  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
+  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
+  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
+  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
+  <div class="ztMineActions">
+   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
+   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
+  </div>
+ </div>
+</div>
+<script id="zt-mine-disclaimer-js">
+(()=>{
+ const modal=document.getElementById('ztMineModal');
+ const close=document.getElementById('ztMineClose');
+ const cancel=document.getElementById('ztMineCancel');
+ const go=document.getElementById('ztMineContinue');
+ let pending='/mine/';
+
+ function openMineDisclaimer(e){
+   if(e)e.preventDefault();
+   pending=(e&&e.currentTarget&&e.currentTarget.href)||'/mine/';
+   modal.classList.add('open');
+   document.body.classList.add('ztModalOpen');
+   go.focus();
+ }
+ function closeMineDisclaimer(){
+   modal.classList.remove('open');
+   document.body.classList.remove('ztModalOpen');
+ }
+ document.querySelectorAll('a[href]').forEach(a=>{
+   let u;
+   try{u=new URL(a.href,location.href)}catch(_e){return}
+   const p=u.pathname.replace(/\/+$/,'');
+   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
+ });
+ close?.addEventListener('click',closeMineDisclaimer);
+ cancel?.addEventListener('click',closeMineDisclaimer);
+ modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
+ go?.addEventListener('click',()=>{window.location.href=pending||'/mine/'});
+})();
+</script>
+</body></html>
