@@ -2577,6 +2577,7 @@ fetch('/rabbit-hole/entries.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>
 fetch('/news/',{cache:'no-cache'}).then(r=>r.text()).then(html=>{let doc=new DOMParser().parseFromString(html,'text/html');let rows=[...doc.querySelectorAll('a.story[href]')].map(a=>({url:new URL(a.getAttribute('href'),location.origin+'/news/').href,tag:a.querySelector('.storyCat')?.textContent?.trim()||'NEWS',title:a.querySelector('h4')?.textContent?.trim(),summary:a.querySelector('p')?.textContent?.trim()})).filter(x=>x.title&&new URL(x.url).origin===location.origin);rows=[...new Map(rows.map(x=>[x.url,x])).values()].slice(0,12);fill('ztNewsRail',rows);return Promise.all(rows.map(async(x,i)=>{try{let r=await fetch(x.url);if(!r.ok)return;let d=new DOMParser().parseFromString(await r.text(),'text/html');let img=d.querySelector('meta[property="og:image"]')?.content;if(img&&new URL(img,location.origin).origin===location.origin){x.image=img}}catch(e){}})).then(()=>fill('ztNewsRail',rows))}).catch(()=>{});
 })();
 </script>
+<script defer src="/assets/zerotrace-navigation.js"></script>
 </body></html>
 <style>
 /* V8.25.20 — center How to Shield flow-node labels on all screen sizes */
