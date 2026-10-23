@@ -1497,59 +1497,7 @@ document.addEventListener('click',e=>{const menu=$('mobileMenu'),btn=$('menuBtn'
 })();
 </script>
 
-<div class="ztMineModal" id="ztMineModal" role="dialog" aria-modal="true" aria-labelledby="ztMineModalTitle">
- <div class="ztMineDialog">
-  <div class="ztMineModalTop">
-   <div>
-    <div class="ztMineKicker">ZEROTRACE // MINING DISCLAIMER</div>
-    <h2 id="ztMineModalTitle">READ BEFORE YOU MINE.</h2>
-   </div>
-   <button class="ztMineClose" id="ztMineClose" type="button" aria-label="Close disclaimer">×</button>
-  </div>
-  <p>The ZeroTrace mining guide is provided <strong>for educational and informational purposes only.</strong> ZeroTrace does not encourage, recommend, or promote cryptocurrency mining and does not provide electrical, financial, legal, tax, or other professional advice.</p>
-  <p class="ztMineRisk"><strong>YOU MINE AT YOUR OWN RISK.</strong> To the fullest extent permitted by applicable law, ZeroTrace is not responsible for losses, damage, injury, equipment failure, electrical problems, fire, overheating, wallet or configuration mistakes, lost funds, lost profits, or other consequences arising from your decision to mine or from your use of this guide.</p>
-  <p>Mining hardware can draw substantial electrical power and produce significant heat and noise. Follow the current manufacturer instructions, use properly rated and grounded equipment, do not improvise mains wiring or overload circuits, and use a qualified/licensed electrician when you are not certain that your electrical installation is suitable.</p>
-  <p>Mining profitability is not guaranteed. Hardware costs, electricity rates, network conditions, ZEC price, pool rules, taxes, regulations, downtime, and equipment failure can all change. You are responsible for verifying the information, complying with applicable rules, protecting your wallet, and deciding whether mining is appropriate for you.</p>
-  <div class="ztMineActions">
-   <button class="ztMineCancel" id="ztMineCancel" type="button">GO BACK</button>
-   <button class="ztMineContinue" id="ztMineContinue" type="button">I UNDERSTAND — CONTINUE →</button>
-  </div>
- </div>
-</div>
 
-
-<script id="zt-mine-disclaimer-js">
-(()=>{
- const modal=document.getElementById('ztMineModal');
- const close=document.getElementById('ztMineClose');
- const cancel=document.getElementById('ztMineCancel');
- const go=document.getElementById('ztMineContinue');
- let pending='../mine/';
-
- function openMineDisclaimer(e){
-   if(e)e.preventDefault();
-   pending=(e&&e.currentTarget&&e.currentTarget.href)||'../mine/';
-   modal.classList.add('open');
-   document.body.classList.add('ztModalOpen');
-   go.focus();
- }
- function closeMineDisclaimer(){
-   modal.classList.remove('open');
-   document.body.classList.remove('ztModalOpen');
- }
- document.querySelectorAll('a[href]').forEach(a=>{
-   let u;
-   try{u=new URL(a.href,location.href)}catch(_e){return}
-   const p=u.pathname.replace(/\/+$/,'');
-   if(p.endsWith('/mine')) a.addEventListener('click',openMineDisclaimer);
- });
- close?.addEventListener('click',closeMineDisclaimer);
- cancel?.addEventListener('click',closeMineDisclaimer);
- modal?.addEventListener('click',e=>{if(e.target===modal)closeMineDisclaimer()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeMineDisclaimer()});
- go?.addEventListener('click',()=>{window.location.href=pending||'../mine/'});
-})();
-</script>
 
 <script defer src="/assets/zerotrace-navigation.js"></script>
 </body></html>
