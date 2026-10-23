@@ -1884,7 +1884,7 @@ function enterNetwork(){closeMenu();const el=document.getElementById('network');
 // Cypherpunk Rabbit Hole interactions
 const rabbitEnter=document.getElementById('rabbitEnter'),rabbitBody=document.getElementById('rabbitBody');
 if(rabbitEnter&&rabbitBody){rabbitEnter.addEventListener('click',()=>{const open=rabbitBody.classList.toggle('open');rabbitEnter.setAttribute('aria-expanded',String(open));rabbitEnter.textContent=open?'CLOSE THE RABBIT HOLE ↑':'ENTER THE RABBIT HOLE ↓';if(open)rabbitBody.scrollIntoView({behavior:'smooth',block:'nearest'})})}
-document.querySelectorAll('.archiveItem').forEach(item=>{const btn=item.querySelector('.archiveBtn'),arrow=item.querySelector('.archiveArrow');btn.addEventListener('click',()=>{const open=item.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));arrow.textContent=open?'−':'+'})});
+/* Archive click handling is initialized independently in zt-archive-interaction-v1 below. */
 
 const minerRefreshBtn=$('minerRefreshBtn');if(minerRefreshBtn)minerRefreshBtn.addEventListener('click',manualMiningRefresh);
 renderObserver();refresh();setInterval(refresh,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-state.lastSuccess>15000)refresh()});window.addEventListener('focus',()=>{if(Date.now()-state.lastSuccess>15000)refresh()});
@@ -2372,6 +2372,19 @@ document.addEventListener('click',async e=>{
  try{await navigator.clipboard.writeText(location.href);b.textContent='COPIED //';}
  catch(err){b.textContent='COPY FAILED';}
  setTimeout(()=>{b.textContent=original},1400);
+});
+</script>
+<script id="zt-archive-interaction-v1">
+/* Standalone archive accordion: remains functional if legacy dashboard JS fails. */
+document.querySelectorAll('.rabbitTimeline .archiveItem').forEach(item=>{
+  const btn=item.querySelector('.archiveBtn');
+  const arrow=item.querySelector('.archiveArrow');
+  if(!btn)return;
+  btn.addEventListener('click',()=>{
+    const isOpen=item.classList.toggle('open');
+    btn.setAttribute('aria-expanded',String(isOpen));
+    if(arrow)arrow.textContent=isOpen?'−':'+';
+  });
 });
 </script>
 <script defer src="/assets/zerotrace-navigation.js"></script>
