@@ -36,11 +36,33 @@
     const label=document.createElement('p');
     label.textContent='Advertisement · Paid link';
     label.style.cssText='margin:0 0 9px;font:10px/1.5 ui-monospace,monospace;letter-spacing:.06em;color:#9ba7a1';
-    const disclosure=document.createElement('p');
-    disclosure.textContent='As an Amazon Associate, I earn from qualifying purchases.';
-    disclosure.style.cssText='margin:9px 0 0;font:10px/1.5 ui-monospace,monospace;color:#9ba7a1';
-    section.append(label,link,disclosure);
+    const info=document.createElement('button');
+    info.type='button';
+    info.textContent='ⓘ';
+    info.setAttribute('aria-label','Affiliate disclosure information');
+    info.setAttribute('aria-expanded','false');
+    info.style.cssText='background:transparent;border:0;color:#d4b56b;cursor:pointer;font:15px/1 sans-serif;padding:0 5px;vertical-align:middle;min-width:30px;min-height:30px';
+    const popup=document.createElement('div');
+    popup.hidden=true;
+    popup.setAttribute('role','dialog');
+    popup.setAttribute('aria-label','Affiliate disclosure');
+    popup.style.cssText='position:absolute;z-index:20;top:100%;left:0;width:min(350px,90vw);padding:17px 20px;border:1px solid #38464b;background:#0a1014;box-shadow:0 14px 36px #000b;color:#c4ceca;font:12px/1.65 ui-monospace,monospace';
+    const heading=document.createElement('strong');
+    heading.textContent='AFFILIATE DISCLOSURE //';
+    heading.style.cssText='display:block;color:#f4b728;margin-bottom:8px;letter-spacing:.06em';
+    const copy=document.createElement('span');
+    copy.textContent='ZeroTrace may earn a commission when you purchase through affiliate links, at no additional cost to you. As an Amazon Associate, I earn from qualifying purchases.';
+    popup.append(heading,copy);
+    label.style.position='relative';
+    label.append(info,popup);
+    info.addEventListener('click',e=>{e.stopPropagation();popup.hidden=!popup.hidden;info.setAttribute('aria-expanded',String(!popup.hidden));});
+    document.addEventListener('click',e=>{if(!label.contains(e.target)){popup.hidden=true;info.setAttribute('aria-expanded','false');}});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){popup.hidden=true;info.setAttribute('aria-expanded','false');info.focus();}});
+    section.append(label,link);
     article.insertAdjacentElement('afterend',section);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
+
+/* Amazon Associates identification: visibly displayed in the shared footer. */
+(()=>{const add=()=>{document.querySelectorAll('footer').forEach(footer=>{if(footer.querySelector('.ztAmazonDisclosure'))return;const p=document.createElement('p');p.className='ztAmazonDisclosure';p.textContent='As an Amazon Associate, I earn from qualifying purchases.';p.style.cssText='width:100%;margin:14px 0 0;color:#aab5b0;font:11px/1.6 ui-monospace,monospace;text-align:center';const inner=footer.querySelector('.ztPageFooterInner')||footer;inner.append(p);inner.style.flexWrap='wrap';});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',add,{once:true});else add();})();
