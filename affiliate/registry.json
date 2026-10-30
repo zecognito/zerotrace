@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "active_banner_id": "ZT-AFF-001",
+  "banners": [
+    {
+      "id": "ZT-AFF-001",
+      "product": "CRYPTOTAG Zeus Starter Kit",
+      "merchant": "Amazon",
+      "tracking_id": "zerotrace-20",
+      "affiliate_url": "https://link.amazon/B092O5UIa",
+      "image": "/affiliate/banners/zerotrace-affiliate-cryptotag-zeus-banner.webp",
+      "placement": "news_articles",
+      "status": "pending_image_upload",
+      "disclosure": "Advertisement · Amazon affiliate"
+    }
+  ]
+}
