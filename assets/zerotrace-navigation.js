@@ -33,13 +33,10 @@
     img.decoding='async';
     img.style.cssText='display:block;width:100%;height:auto;border:1px solid #263038';
     link.append(img);
-    const label=document.createElement('p');
-    label.textContent='Advertisement · Paid link';
-    label.style.cssText='margin:9px 0 0;font:10px/1.5 ui-monospace,monospace;letter-spacing:.06em;color:#9ba7a1';
     const disclosure=document.createElement('p');
-    disclosure.textContent='As an Amazon Associate, I earn from qualifying purchases.';
-    disclosure.style.cssText='margin:5px 0 0;font:10px/1.5 ui-monospace,monospace;color:#9ba7a1';
-    section.append(link,label,disclosure);
+    disclosure.textContent='Advertisement · As an Amazon Associate, I earn from qualifying purchases.';
+    disclosure.style.cssText='margin:9px 0 0;font:10px/1.5 ui-monospace,monospace;color:#9ba7a1';
+    section.append(link,disclosure);
     article.insertAdjacentElement('afterend',section);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
