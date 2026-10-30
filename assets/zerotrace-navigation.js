@@ -64,5 +64,17 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
 })();
 
-/* Amazon Associates identification: visibly displayed in the shared footer. */
-(()=>{const add=()=>{document.querySelectorAll('footer').forEach(footer=>{if(footer.querySelector('.ztAmazonDisclosure'))return;const p=document.createElement('p');p.className='ztAmazonDisclosure';p.textContent='As an Amazon Associate, I earn from qualifying purchases.';p.style.cssText='width:100%;margin:14px 0 0;color:#aab5b0;font:11px/1.6 ui-monospace,monospace;text-align:center';const inner=footer.querySelector('.ztPageFooterInner')||footer;inner.append(p);inner.style.flexWrap='wrap';});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',add,{once:true});else add();})();
+/* Amazon Associates identification beside the existing copyright. */
+(()=>{const add=()=>{document.querySelectorAll('footer').forEach(footer=>{
+  if(footer.querySelector('.ztAmazonDisclosure'))return;
+  const copyright=footer.querySelector('.ztPageData');
+  if(!copyright)return;
+  const disclosure=document.createElement('span');
+  disclosure.className='ztAmazonDisclosure';
+  disclosure.textContent='As an Amazon Associate, I earn from qualifying purchases.';
+  disclosure.style.cssText='font:inherit;color:inherit;letter-spacing:inherit';
+  const separator=document.createElement('span');
+  separator.textContent=' · ';
+  separator.style.cssText='font:inherit;color:inherit';
+  copyright.append(separator,disclosure);
+});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',add,{once:true});else add();})();
